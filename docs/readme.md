@@ -1,5 +1,5 @@
 # Ace_Seventh_Heaven
-Ace_Seventh_Heaven
+Ace Editor Seventh Heaven
 
 https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
