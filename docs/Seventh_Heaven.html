@@ -2500,7 +2500,9 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 <script src="https://ldijkman.github.io/Ace-Editor-Click-Link-window.open-URL/hoverlink.js"></script>  
 <!--  https://github.com/ldijkman/Ace-Editor-Click-Link-window.open-URL/tree/main/docs -->
 
-    
+<script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
+<link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
+
     
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -2518,7 +2520,14 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 		ace.require("ace/ext/language_tools")
 		//ace.require("ace/ext/emmet")
 		editor.setTheme("ace/theme/vibrant_ink")
-		editor.session.setMode("ace/mode/html")
+		 editor.session.setMode("ace/mode/html", function() {
+        LoadColorPicker()
+      })
+  function LoadColorPicker() {
+    console.log("load colorpicker now in function LoadColorPicker");
+    window.editor = ace.edit("editor");
+    AceColorPicker.load(ace, editor);
+  }
 var Range = ace.require('ace/range').Range // get reference to ace/range
        ace.require("ace/ext/language_tools");
     //ace.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
@@ -2541,11 +2550,14 @@ var Range = ace.require('ace/range').Range // get reference to ace/range
 
  editor.setOption(editor.$options.animatedScroll.name, true);
  editor.setOption("enableEmmet", true);
+var myTimeout;  // for update timeout minimap
+
+ 
 
     HoverLink = require("hoverlink").HoverLink
     editor.hoverLink = new HoverLink(editor);
 
-var myTimeout;  // for update timeout minimap
+
 
   
 editor.hoverLink.on("open", function() {
