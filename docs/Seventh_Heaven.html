@@ -241,6 +241,8 @@ a:-webkit-any-link {
 &nbsp;
 <button onclick='save()' style="background-color:lightgreen;color:black;font-weight: bold;">Save by DownLoad</button>
 &nbsp;
+<button class=text type="button" style="background-color:lightgreen;color:black;font-weight: bold;">Save to Disk?</button>
+&nbsp;
 <button onclick="toggleFullScreen()" title="Toggle FullScreen" style="background-color:lightblue;color:black;font-weight: bold;">Toggle FullScreen</button>
 &nbsp;
        <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -">&nbsp;-&nbsp;</button>
@@ -2827,6 +2829,64 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+
+ 
+<textarea rows=5 cols ="55" hidden>
+4 7th Heaven Editor?<br>
+<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="7th_Heaven">https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html</a><br> 
+</textarea>
+ <input class=text value=7th_Heaven.html hidden >
+    
+ <script>
+     // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
+    // https://web.dev/patterns/files/save-a-file/demo.html
+ //editor.getValue()
+
+
+     const textarea = editor.getValue(),
+      textInput = document.querySelector("input.text"),
+      textButton = document.querySelector("button.text"),
+      img = document.querySelector("img"),
+      imgInput = document.querySelector("input.img"),
+      imgButton = document.querySelector("button.img"),
+      saveFile = async (e, t) => {
+        if ("showSaveFilePicker" in window && (() => {
+            try {
+              return window.self === window.top
+            } catch {
+              return !1
+            }
+          })()) try {
+          const n = await showSaveFilePicker({
+              suggestedName: t
+            }),
+            a = await n.createWritable();
+          return await a.write(e), void await a.close()
+        } catch (e) {
+          return void("AbortError" !== e.name && console.error(e.name, e.message))
+        }
+        const n = URL.createObjectURL(e),
+        a = document.createElement("a");
+        a.href = n, 
+        a.download = t, 
+        a.style.display = "none", 
+        document.body.append(a), a.click(), 
+        setTimeout((() => {
+          URL.revokeObjectURL(n), a.remove()
+        }), 1e3)
+      };
+    textButton.addEventListener("click", (async () => {
+      const e = new Blob([editor.getValue()], {
+        type: "text/plain"
+      });
+      await saveFile(e, textInput.value)
+    })), imgButton.addEventListener("click", (async () => {
+      const e = await fetch(img.src).then((e => e.blob()));
+      await saveFile(e, imgInput.value)
+    }));
+    // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
+    // https://web.dev/patterns/files/save-a-file/demo.html
+  </script>
 
 </body>
 
