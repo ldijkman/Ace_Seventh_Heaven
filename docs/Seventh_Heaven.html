@@ -2533,8 +2533,8 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
     window.editor = ace.edit("editor");
     AceColorPicker.load(ace, editor);
   }
-var Range = ace.require('ace/range').Range // get reference to ace/range
-       ace.require("ace/ext/language_tools");
+    var Range = ace.require('ace/range').Range // get reference to ace/range
+    ace.require("ace/ext/language_tools");
     //ace.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
 	  ace.require("ace/ext/emmet");
 
@@ -2555,16 +2555,15 @@ var Range = ace.require('ace/range').Range // get reference to ace/range
 
  editor.setOption(editor.$options.animatedScroll.name, true);
  editor.setOption("enableEmmet", true);
-var myTimeout;  // for update timeout minimap
 
- 
+var myTimeout;  // for update timeout minimap
 
     HoverLink = require("hoverlink").HoverLink
     editor.hoverLink = new HoverLink(editor);
 
 
 
-  
+// click on URL link in editor  
 editor.hoverLink.on("open", function() {
   // alert("trying to open")
   console.log("trying to open",editor.hoverLink.link.value);
@@ -2575,19 +2574,19 @@ editor.hoverLink.on("open", function() {
   console.log("this.link",editor.hoverLink.isOpen);
 })
 
-editor.execCommand("find");
+editor.execCommand("find");  // create the search find replace popup
 // https://jqueryui.com/draggable/
-$( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable 
-$( function() {
-    $( ".ace_search" ).draggable();
-} );
-  
+// maybe a little delay before make it draggable
+// think draggable wants to add code to div class="ace_search" 
+Time_out_delay = setTimeout(function(){
+   $( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable 
+}, 250);
 
+//$( function() {
+//    $( ".ace_search" ).draggable();
+//} );
 
-
-   editor.getSession().on('change', function () { 
-  
-   });
+ 
      
  
 		new AceScrollbars(editor);
@@ -2614,10 +2613,10 @@ $( function() {
 			name = editor.getValue()
 		}
                                           
-   //const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
+   // const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
    // addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }");     
         
-   //const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css; 
+   // const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css; 
    // addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }"); 
     
          
@@ -2629,7 +2628,7 @@ editor.on('mousedown', () => {
 
 
 
-var marker; //grsy select on minimap
+var marker; //gray select on minimap
 
 editor.session.on("changeScrollTop", function() {
     
@@ -2647,7 +2646,6 @@ editor.session.on("changeScrollTop", function() {
 
 
 
-
 // on change main big editor change content minimap editor 5 sec delay of no change
 editor.getSession().on('change', function () {
 
@@ -2662,15 +2660,14 @@ editor.getSession().on('change', function () {
     ace.edit("editor").focus(); // To focus the ace editor
     ace.edit("editor").renderer.$cursorLayer.showCursor();
 
-     
-
-    
-
-
 });                                               
 
 
-  //////////////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////////////
 // minimaoeditor
 //////////////////////////////////////////////////////////
   var minimapeditor = ace.edit("minimapeditor");
@@ -2705,7 +2702,7 @@ minimapeditor.on('mouseup', () => {       // var cursor = minimapeditor.getCurso
     // move cursorr big editor to cursor rom clickpos minimapeditor
     ace.edit("editor").gotoLine(cursorrow,cursorcolumn);
     ace.edit("editor").moveCursorTo(cursorrow,cursorcolumn);
-   // console.log("getcursor row",cursorrow );
+    // console.log("getcursor row",cursorrow );
     // minimapeditor.selection.clearSelection();
 
     minimapeditor.scrollToLine(cursorrow, true, true, function () {});
@@ -2754,7 +2751,7 @@ function toggleFullScreen() {
 
 // save part of https://codepen.io/8354801/pen/OeOBXm
 function save() {
-  download('Electric_Storm.html', editor.getValue());
+  download('Ace_Seventh_Heaven.html', editor.getValue());
 }
 
 // download part of https://codepen.io/8354801/pen/OeOBXm
@@ -2791,8 +2788,8 @@ function download(filename, text) {
       }
 
 
-    id = document.getElementById('ace-theme');
-    id.addEventListener('change', function(e) {
+    
+    document.getElementById('ace-theme').addEventListener('change', function(e) {
       console.log((document.getElementById('ace-theme').value).toLowerCase());
       e.preventDefault();
       ace.edit("editor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
@@ -2801,8 +2798,8 @@ function download(filename, text) {
     floatbuttons();
     });
 
-    id = document.getElementById('ace-mode');
-    id.addEventListener('change', function(e) {
+    
+    document.getElementById('ace-mode').addEventListener('change', function(e) {
       console.log((document.getElementById('ace-mode').value).toLowerCase());
       e.preventDefault();
       ace.edit("editor").getSession().setMode('ace/mode/' + (document.getElementById('ace-mode').value).toLowerCase());
@@ -2828,6 +2825,7 @@ function map_range(value, low1, high1, low2, high2) {
 document.addEventListener("DOMContentLoaded", () => {
    editor.find("function");
 });
+
 </script>
 
 </body>
