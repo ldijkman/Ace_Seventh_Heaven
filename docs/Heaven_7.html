@@ -19,7 +19,7 @@ window.onbeforeunload = function() {
 
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/Electra.jpg">
 
-<title>Ace Editor MiniMap ScrollBar Visualizer Seventh Heaven Cloud9</title>
+<title>Ace Seventh Heaven</title>
 
 <head>
 	<meta charset="UTF-8">
@@ -241,7 +241,7 @@ a:-webkit-any-link {
 &nbsp;
 <button onclick='save()' style="background-color:lightgreen;color:black;font-weight: bold;">Save by DownLoad</button>
 &nbsp;
-<button class=text type="button" style="background-color:lightgreen;color:black;font-weight: bold;">Save to Disk?</button>
+<button class=text type="button" style="background-color:lightgreen;color:black;font-weight: bold;" title="if Framed DownLoad- if FullScreen maybe Save to Disk">Save to Disk?</button>
 &nbsp;
 <button onclick="toggleFullScreen()" title="Toggle FullScreen" style="background-color:lightblue;color:black;font-weight: bold;">Toggle FullScreen</button>
 &nbsp;
@@ -2521,11 +2521,12 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 
 <script>
 
-		var beauty = ace.require("ace/ext/beautify")
+		
 		var editor = ace.edit("editor")
+    var beauty = ace.require("ace/ext/beautify")
 
 		ace.require("ace/ext/language_tools")
-		//ace.require("ace/ext/emmet")
+		//ace.require("ace/ext/emmet")     // do not know what emmet is and does
 		editor.setTheme("ace/theme/vibrant_ink")
 		 editor.session.setMode("ace/mode/html", function() {
         LoadColorPicker()
@@ -2538,14 +2539,14 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
     var Range = ace.require('ace/range').Range // get reference to ace/range
     ace.require("ace/ext/language_tools");
     //ace.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
-	  ace.require("ace/ext/emmet");
+	  ace.require("ace/ext/emmet");          // do not know what emmet is and does
 
 
 		editor.setOptions({
 			enableBasicAutocompletion: true,
 			enableLiveAutocompletion: true,
 			enableSnippets: true,
-			//enableEmmet: true,
+			//enableEmmet: true,                 // do not know what emmet is and does
 			fixedWidthGutter: true,
 			showFoldWidgets: false,
 			displayIndentGuides: false,
@@ -2556,7 +2557,7 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 		})
 
  editor.setOption(editor.$options.animatedScroll.name, true);
- editor.setOption("enableEmmet", true);
+ editor.setOption("enableEmmet", true);     // do not know what emmet is and does
 
 var myTimeout;  // for update timeout minimap
 
@@ -2576,14 +2577,15 @@ editor.hoverLink.on("open", function() {
   console.log("this.link",editor.hoverLink.isOpen);
 })
 
-editor.execCommand("find");  // create the search find replace popup
-// https://jqueryui.com/draggable/
-// maybe a little delay before make it draggable
-// think draggable wants to add code to div class="ace_search" 
+editor.execCommand('find');         // create the search find replace popup
+                                    // https://jqueryui.com/draggable/
+                                    // maybe a little delay before make it draggable
+                                    // think draggable wants to add code to div class="ace_search" 
 Time_out_delay = setTimeout(function(){
    $( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable 
 }, 250);
 
+// https://jqueryui.com/draggable/
 //$( function() {
 //    $( ".ace_search" ).draggable();
 //} );
@@ -2840,7 +2842,8 @@ document.addEventListener("DOMContentLoaded", () => {
  <script>
      // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
     // https://web.dev/patterns/files/save-a-file/demo.html
- //editor.getValue()
+    // https://plnkr.co/edit/oOmxxNPfJlkjIh9i
+ 
 
 
      const textarea = editor.getValue(),
@@ -2886,6 +2889,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
     // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
     // https://web.dev/patterns/files/save-a-file/demo.html
+    // https://plnkr.co/edit/oOmxxNPfJlkjIh9i
   </script>
 
 </body>
