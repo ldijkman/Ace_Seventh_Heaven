@@ -4,18 +4,18 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 
 https://github.com/ldijkman/Ace-Scrollbars/tree/master/docs
 
---> 
+-->
 
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 <script>
 var warning = true;
-window.onbeforeunload = function() {  
-  if (warning) {  
-    return "You have made changes on this page that you have not yet confirmed. If you navigate away from this page you will lose your unsaved changes";  
-    }  
+window.onbeforeunload = function() {
+  if (warning) {
+    return "You have made changes on this page that you have not yet confirmed. If you navigate away from this page you will lose your unsaved changes";
+    }
 }
-</script> 
+</script>
 
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/Electra.jpg">
 
@@ -31,13 +31,13 @@ window.onbeforeunload = function() {
     body {
   color-scheme:  dark;
   background-color:black;
-  overscroll-behavior: none;	
+  overscroll-behavior: none;
   	overflow: hidden;
 }
 
 
 		#editor {
-		
+
 			position: absolute;
 			top: 5%;
     width: 99%;
@@ -45,8 +45,8 @@ window.onbeforeunload = function() {
  }
 
 
- .ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }     
-        
+ .ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }
+
  .ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }
 
 
@@ -82,7 +82,7 @@ window.onbeforeunload = function() {
 	right: 0;
 	bottom: 0;
 	height: 12px;
-	background: yellow 
+	background: yellow
 }
 
 .ace_thumb-h {
@@ -115,7 +115,7 @@ window.onbeforeunload = function() {
       border-bottom: 5px solid red;
       //background:aqua;
       opacity:50%;
-      
+
 }
 
 .ace_search  {
@@ -153,7 +153,7 @@ window.onbeforeunload = function() {
     top:5%;
     width: 150px;
     height: 94%;
-    background-color:; 
+    background-color:;
     border:1px;
     border: solid;
     border-color:gray;
@@ -166,7 +166,7 @@ window.onbeforeunload = function() {
     display: none;
 }
 
-			
+
 
 
 
@@ -186,7 +186,7 @@ a:-webkit-any-link {
       border-bottom: 5px solid red;
       //background:aqua;
       opacity:50%;
-      
+
 }
 
  .ace_search  {
@@ -214,15 +214,15 @@ a:-webkit-any-link {
 #minimapeditor .ace_scrollbar-v {
     //display: block;
 }
-</style>  
+</style>
 
 
 <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.js"></script>
 <!--
  <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.css" />
 -->
-   
- 
+
+
 </head>
 
 <body>
@@ -232,7 +232,7 @@ a:-webkit-any-link {
 <input
         type="file"
         id="openbton"
-        onchange="openCode(this.files)" 
+        onchange="openCode(this.files)"
         value="Open PC"
         style="background-color:lightgray;color:black;font-weight: bold;"
         title="For PC load a file from Disk"
@@ -266,8 +266,8 @@ a:-webkit-any-link {
 <input type="number" id="minimapfontSize" style="width: 3em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +">&nbsp;+&nbsp;</button>
 &nbsp;
-<button onclick="showhideminimap()">Show / Hde MiniMap</button>
- 
+<button onclick="showhideminimap()">Show / Hide MiniMap</button>
+
 
 	<!--////////////////////////////////////////////////////////////-->
 <div id="editor" onmouseover='ace.edit("editor").focus();'><textarea>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -276,7 +276,7 @@ https://github.com/ldijkman/Ace-Scrollbars/blob/master/docs/Ace_editor_custom_sc
 custom scrollbar show search / select highlight position in vertical scrollbar
 
 
- You can drag move the search/replace! 
+ You can drag move the search/replace!
     to a desired position on the screen
         Beat that! VisualStudio Monaco ;-)
 
@@ -286,19 +286,19 @@ The Editor of the Web
   BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
 
 
-this demo adds a vertical scrollbar 
+this demo adds a vertical scrollbar
 higlight search / select positions file Overview vertical scrollbar visualizer
 MiniMap File OverView
 links / url in the the editor highlight red underline
-on mouseover and if clicked open in a new window 
+on mouseover and if clicked open in a new window
 
     click on the editor text, so that the focus is on the editor
     ctrl+f search/find
     search for function
     results positions are  visible in vertical scrollbar
-    
+
     if you select highlight a word by doubleclck on a word
-    => say doubleclick on next  => function  
+    => say doubleclick on next  => function
     it also shows occurrence positions on vertical scrollbar
     search shows more like functional
     doubleclick on function does not do functional
@@ -307,30 +307,30 @@ focus must be on editor
 
    control+, (ctrl+comma) for options
    F1 for shortcuts
-   
+
    ctrl+c copy
    ctrl+v paste     (mouse mid button)
    ctrl+a selectall
-   
+
    ctrl+f find
    ctrl+h replace
-   
+
    ctrl+z undo
    ctrl+y redo
 
    ctrl+alt+mouseleft click or drag  blockselect multicursor set
 
-   
+
 focus must be on editor
 
-    only gray view is off target   
+    only gray view is off target
     changed custom scrollbar visualizer code a bit from pixels to percent
     think it works a bit better now
 
     Ace MiniMap Demo https://ldijkman.github.io/Ace_MiniMap/ace_editor_minimap.html
 
     https://youtu.be/YjZ-waKmJbc
-    
+
     https://youtu.be/OMbZ_-kfY2M
 
     https://plnkr.co/edit/Digj5Fw7D6hxaTU4
@@ -344,7 +344,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 <!--
 BParray=[2,41,85,191,230,427,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,2089];
 ScrollMarks, JumpMarks, mark or unmark by mouseclick left of linenumbers     https://codepen.io/ldijkman/pen/poqbbqa
-     
+
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html
@@ -358,19 +358,19 @@ https://youtu.be/17K2TtYPI_A
 
   prefer plain javascript and not jquery,  but there is some jquery in the javascript
   wich i try to make plain javascript
-  
+
   try to make a scheduler from scratch with some more comments and easier to understand code
 
 most updated
-  https://plnkr.co/edit/p7xyOMhDtuTc49aZ  
+  https://plnkr.co/edit/p7xyOMhDtuTc49aZ
   https://codepen.io/ldijkman/pen/PoxVjXB
   https://github.com/ldijkman/randomnerd_esp32_wifi_manager/new/main/docs/mrs/create_from_scratch
   https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html
 
-less updated 
-  https://replit.com/@LuberthDijkman/Visual-Scheduler-for-irrigation-sprinklers-lights-wifi?v=1 
+less updated
+  https://replit.com/@LuberthDijkman/Visual-Scheduler-for-irrigation-sprinklers-lights-wifi?v=1
   https://jsfiddle.net/luberth/cx7ftgqd/
-  https://playcode.io/luberth      
+  https://playcode.io/luberth
   https://luberth.playcode.io/
   https://electricstorm.w3spaces.com/visual/scheduler.html
   https://sites.google.com/view/visual-scheduler-touch-friendl/home
@@ -397,34 +397,34 @@ maybe add a coockie for lat lon location
 <!-- when save to home screen on phone - it is full screen - no annoying adres bar -->
     <!-- Allow web app to be run in full-screen mode - iOS. -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    
+
     <!-- Allow web app to be run in full-screen mode - Android. -->
     <meta name="mobile-web-app-capable" content="yes">
 
-     <!-- 
+     <!--
        do not show google translate popup, translate does not work
-       should not be translated Google won't translate any of the content 
+       should not be translated Google won't translate any of the content
      -->
-    <meta name="google" value="notranslate">  
-    <meta name="google" content="notranslate"> 
+    <meta name="google" value="notranslate">
+    <meta name="google" content="notranslate">
 
     <meta name="description" content="Visual Day scheduler.">
     <meta name="author" content="Copyright Dirk Luberth Dijkman 2023">
- 
- 
+
+
   <!--
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   -->
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-   
-   <!-- modified version analog timepcker on github https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs --> 
+
+   <!-- modified version analog timepcker on github https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs -->
    <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/timepicker.js"></script>
    <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/ismobile.js"></script>
-   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/suncalc.js"></script> 
-    
+   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/suncalc.js"></script>
 
-    
+
+
 
 <style>
   #editpopup {          /* # = id */
@@ -437,7 +437,7 @@ maybe add a coockie for lat lon location
   border: 1px solid orange;
   padding: 1px;
   z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000*/
-  display: none;  
+  display: none;
 }
 
 #editpopupheader {      /* # = id */
@@ -466,7 +466,7 @@ maybe add a coockie for lat lon location
   width:100%;
   height:50px;
   border: 1px solid black;
- 
+
 }
 #innerDiv {
   position:relative;
@@ -476,7 +476,7 @@ maybe add a coockie for lat lon location
   background-color: green;
   opacity:50%;
   z-index:500;
- 
+
 }
 .ruler-line {               /* . = class */
   background: #999;
@@ -496,13 +496,13 @@ maybe add a coockie for lat lon location
 
 
 .evening_shade {               /* . = class */
- position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
- width: 5%; 
+ position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;
+ width: 5%;
 }
-.morning_shade { 
-  position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
-  left:91%;  
-  width: 5%;   
+.morning_shade {
+  position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;
+  left:91%;
+  width: 5%;
 }
 
 #label_monday{
@@ -520,7 +520,7 @@ label  {
 
 body{
   caret-color: transparent;   /*no blibking cursor at some places*/
-  user-select: none;          
+  user-select: none;
   /*
   disable mouse text drag selection on body
   is that what facebook uses?
@@ -535,7 +535,7 @@ body{
 <body bgcolor="#f2f2ed">
 
 
-<script> 
+<script>
 /////////////////////////////////////////////
 // served from ESP32
 // screenshots
@@ -547,7 +547,7 @@ body{
  * ESP32 Remote Control with WebSocket
  * ----------------------------------------------------------------------------
  * © 2020 Stéphane Calderoni
- * 
+ *
  * https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
  *
  * https://github.com/m1cr0lab-esp32/remote-control-with-websocket
@@ -608,10 +608,10 @@ function send_to_ESP(){                              // call by save and delete
 /////////////////////////////////////////////
 
 
-/* 
+/*
 *  var dy=daytext;
    var ts=timeslots;
-   timeslot_to_ESP = {dy,ts}; 
+   timeslot_to_ESP = {dy,ts};
 
 * deserialize {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
 * websocket message {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
@@ -643,7 +643,7 @@ int ts_7 = ts[7]; // 960
 int ts_8 = ts[8]; // 1200
 int ts_9 = ts[9]; // 1260
 */
-</script> 
+</script>
 
 
 
@@ -652,8 +652,8 @@ int ts_9 = ts[9]; // 1260
 
 
 <center>
-<pre class="gofullscreenmessage" id="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>  
-<pre class="pleaserotatetolandscape" id="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
+<pre class="gofullscreenmessage" id="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>
+<pre class="pleaserotatetolandscape" id="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>
 
 <br>
 
@@ -707,7 +707,7 @@ Sunday
 <label for="days">Copy <b class id="copyday"></b> Schema to</label>
 <select id="days">
   <option id="firstoption" value="none" style="color:gray;" selected disabled>Select Day</option>
-  <optgroup label=" "> 
+  <optgroup label=" ">
   <option value="monday">Monday</option>
   <option value="tuesday">Tuesday</option>
   <option value="wednesday">Wednesday</option>
@@ -804,7 +804,7 @@ function useit(){
 a bar for each day<br>
 click on bar should open a popup at that clicked time<br>
 text field should open an analog timepicker dail that looks the same on all systems<br>
-<br> 
+<br>
 i Think most people use a phone or tablet not pc with mouse<br>
 so should work for phone or tablet touch<br>
 Touch drag edit popup should work<br>
@@ -814,15 +814,15 @@ Touch drag edit popup should work<br>
 <div style="width:100%;font-size:1vw;">
 /*
 <pre>
- __      ___                 _        _____      _              _       _           
- \ \    / (_)               | |      / ____|    | |            | |     | |          
-  \ \  / / _ ___ _   _  __ _| |_____| (___   ___| |__   ___  __| |_   _| | ___ _ __ 
+ __      ___                 _        _____      _              _       _
+ \ \    / (_)               | |      / ____|    | |            | |     | |
+  \ \  / / _ ___ _   _  __ _| |_____| (___   ___| |__   ___  __| |_   _| | ___ _ __
    \ \/ / | / __| | | |/ _` | |______\___ \ / __| '_ \ / _ \/ _` | | | | |/ _ \ '__|
-    \  /  | \__ \ |_| | (_| | |      ____) | (__| | | |  __/ (_| | |_| | |  __/ |   
-     \/   |_|___/\__,_|\__,_|_|     |_____/ \___|_| |_|\___|\__,_|\__,_|_|\___|_|   
-                                                                                    
-                                                                                    
-Figlet font Big <a href="https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0" target="ACE">https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0</a> 
+    \  /  | \__ \ |_| | (_| | |      ____) | (__| | | |  __/ (_| | |_| | |  __/ |
+     \/   |_|___/\__,_|\__,_|_|     |_____/ \___|_| |_|\___|\__,_|\__,_|_|\___|_|
+
+
+Figlet font Big <a href="https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0" target="ACE">https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0</a>
 </pre>
 */
 </div>
@@ -860,12 +860,12 @@ Figlet font Big <a href="https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0" target="A
 // id("label_monday").style.borderColor = "green";
 // same as
 // document.getElementById("label_monday").style.borderColor = "green";
-function id(id) { 
-  return document.getElementById(id); 
+function id(id) {
+  return document.getElementById(id);
 }
 
 // classname() short for document.getElementsByClassName()
-function classname(classname) { 
+function classname(classname) {
   return document.getElementsByClassName(classname);
 }
 
@@ -876,9 +876,9 @@ function classname(classname) {
 // with %template_placeholder% variable replace on load?
 // https://github.com/me-no-dev/ESPAsyncWebServer#template-processing
 // but the % sign is a bit tricky i would say if not an even number page may be messed up by other % signs
-  
+
   //let monday_timeslots = [%monday_times_from_ESP_on_upload%];       // %vaiable% filled with variables in ESP on upload
-  
+
   let monday_timeslots = [450,990,15,135,240,285,1200,1440];          // timeslots pairs of 2 in minutes of day
   let tuesday_timeslots = [0,60,300,360,600,660,900,960,1200,1260];   // timeslots pairs of 2 in minutes of day
   let wednesday_timeslots = [0,300,360,660,900,1260];                 // timeslots pairs of 2 in minutes of day
@@ -888,7 +888,7 @@ function classname(classname) {
   let sunday_timeslots = [720,1440];                                  // timeslots pairs of 2 in minutes of day
 // ESP8266 ESP32 webserver should set above on pageload?
 
-  let timeslots = monday_timeslots; 
+  let timeslots = monday_timeslots;
   var daytext;
 ///////////////////////////////////////////////////
 // send_to_ESP()
@@ -920,57 +920,57 @@ function copy_schema(wichtimeslot){
     console.log("copy_schema to ",wichtimeslot);
     if(wichtimeslot=="monday"){
       monday_timeslots=[];                // empty timeslot
-      monday_timeslots= timeslots;        //  
+      monday_timeslots= timeslots;        //
     }
     if(wichtimeslot=="tuesday"){
-      tuesday_timeslots=[]; 
+      tuesday_timeslots=[];
       tuesday_timeslots= timeslots;
     }
     if(wichtimeslot=="wednesday"){
-      wednesday_timeslots=[]; 
+      wednesday_timeslots=[];
       wednesday_timeslots= timeslots;
     }
     if(wichtimeslot=="thursday"){
-      thursday_timeslots=[]; 
+      thursday_timeslots=[];
       thursday_timeslots= timeslots;
     }
     if(wichtimeslot=="friday"){
-      friday_timeslots=[]; 
+      friday_timeslots=[];
       friday_timeslots= timeslots;
     }
     if(wichtimeslot=="saturday"){
-      saturday_timeslots=[]; 
+      saturday_timeslots=[];
       saturday_timeslots= timeslots;
     }
     if(wichtimeslot=="sunday"){
-      sunday_timeslots=[]; 
+      sunday_timeslots=[];
       sunday_timeslots= timeslots;
     }
 
 
 
     if(wichtimeslot=="weekdays"){    // monday to friday
-      monday_timeslots=[]; 
+      monday_timeslots=[];
       monday_timeslots= timeslots;
-    
-      tuesday_timeslots=[]; 
+
+      tuesday_timeslots=[];
       tuesday_timeslots= timeslots;
-    
-      wednesday_timeslots=[]; 
+
+      wednesday_timeslots=[];
       wednesday_timeslots= timeslots;
-    
-      thursday_timeslots=[]; 
+
+      thursday_timeslots=[];
       thursday_timeslots= timeslots;
-    
-      friday_timeslots=[]; 
+
+      friday_timeslots=[];
       friday_timeslots= timeslots;
     }
 
-  // change option text and ok button text for a moment  
+  // change option text and ok button text for a moment
   id("firstoption").innerHTML = "Copy Done!";
   id("copyokbutton").value = "Sending to Server!";
   // reset text after 2.5 second
-  setTimeout( () => {    
+  setTimeout( () => {
       id("copyokbutton").value = "OK";
       id("firstoption").innerHTML = "Select Day";
   }, 2500 );
@@ -1075,7 +1075,7 @@ function checkit(wich) {
     timeslots = saturday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     id("day").innerHTML = "<h1>Saturday</h1>";
-    id("copyday").innerHTML = "Saturday"; 
+    id("copyday").innerHTML = "Saturday";
     //id('radio_saturday').checked
     console.log("radio_saturday");
     id("label_saturday").style.color = "green";
@@ -1090,7 +1090,7 @@ function checkit(wich) {
     timeslots = sunday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     id("day").innerHTML = "<h1>Sunday</h1>";
-    id("copyday").innerHTML = "Sunday"; 
+    id("copyday").innerHTML = "Sunday";
     //id('radio_saturday').checked
     console.log("radio_sunday");
     id("label_sunday").style.color = "green";
@@ -1115,12 +1115,12 @@ function offtimechange(){
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()"> 
+// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()">
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 function deletebutton(){
     console.log("deletebutton clicked");
     console.log("timeslotpointer  ",timeslotpointer);
-    
+
     if(timeslotpointer===""){return;}                  // timeslotpointer is from function timeslotclicked(wich)
     timeslots.splice( timeslotpointer, 2);             // remove 2 from timeslotarray
     timeslotpointer = "";                              // otherwise if delete is clicked again it will remove other
@@ -1139,7 +1139,7 @@ function deletebutton(){
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
-// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()"> 
+// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()">
 //////////////////////////////////////////////////////////////////////////////////////////////
 function cancelbutton(){
   showhideeditpopup();
@@ -1147,8 +1147,8 @@ function cancelbutton(){
   id('innerDiv').style.width='';
   id('startlabel').innerHTML='';
   id('endlabel').innerHTML='';
-  
-   savefromedit = 0;  
+
+   savefromedit = 0;
    selected_highlight = -1;                              // erase edit timeslot highlight
 }
 
@@ -1177,8 +1177,8 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
     timeslotpointer = wich;
 
     selected_highlight = wich;                        // wich timeslot edit highlight color
-  
- 
+
+
 
 
     id("addoredit").innerHTML="EDIT TimeSlot";
@@ -1191,7 +1191,7 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
     id("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
     savefromedit=1;                                 // a flag for savebutton
 // if changes need to modify the timeslot array data
- 
+
 }
 
 
@@ -1200,8 +1200,8 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // save time slot
-// call from HTML save button <input type="button" value="Save" onclick="savetimeslot()"> 
-// save button pressed, save to timeslot array 
+// call from HTML save button <input type="button" value="Save" onclick="savetimeslot()">
+// save button pressed, save to timeslot array
 //////////////////////////////////////////////////////////////////////////////////////////
 function savetimeslot() {
 
@@ -1209,7 +1209,7 @@ function savetimeslot() {
         id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
          console.log("change 00:00 to 24:00");
   }
-    
+
     var onhhmm = id("ontime").value;
     var offhhmm = id("offtime").value;
     console.log("onval, offval", onhhmm, offhhmm);
@@ -1232,7 +1232,7 @@ function savetimeslot() {
 
 
 /////////////////////////////////////////////////////////////////
-// test nest 
+// test nest
 // try overlapping when sort is on
 // timeslots.sort(function(a, b){return a - b});   // sort array following order of values
 // should do something to prevent overlapping the pairs mix in new pairs
@@ -1265,7 +1265,7 @@ id('message3').innerHTML = ("nestedsorted"+JSON.stringify(sorted));//javascript
 
 console.log("nestedsorted?",sorted);
 /*
-nestedsorted? 
+nestedsorted?
 (5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
 0: (2) [15, 135]
 1: (2) [240, 285]
@@ -1288,7 +1288,7 @@ var newArray = Array.prototype.concat.apply([], nestedsorted);
 console.log("newArray",newArray);
 timeslots.length = 0;                  // Clear contents
 timeslots.push.apply(timeslots, newArray);
-// thats silly, this is stupid 
+// thats silly, this is stupid
 ////////////////////////////////
 
 
@@ -1298,7 +1298,7 @@ timeslots.push.apply(timeslots, newArray);
 *******************************************************/
 for (let i = 0; i < timeslots.length; i=i+2) {
  if(timeslots[i+1] >= timeslots[i+2]){            // compare off to next on
-      timeslots[i+1]=timeslots[i+2];          
+      timeslots[i+1]=timeslots[i+2];
       alert(`
       cannot create that endpoint,\n`
       +toHoursAndMinutes(timeslots[i+3])+
@@ -1311,19 +1311,19 @@ for (let i = 0; i < timeslots.length; i=i+2) {
       ` remove`);
 
  }
-}  
+}
 
 // delete the points that are in middle of selection timeslot overlap
 for (let i = 0; i < timeslots.length; i=i+2) {
   if(timeslots[i+1] == timeslots[i+2]){          // compare off to next on
       timeslots.splice( (i+1), 2);               // if off & next on the same, delete both from array
   }
-}  
+}
 //////////////////////////////////////////////
     console.log("timeslots ",timeslots);
-    
 
-    domessage();  
+
+    domessage();
     drawtimeslots();
     send_to_ESP();
 
@@ -1338,19 +1338,19 @@ for (let i = 0; i < timeslots.length; i=i+2) {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-// write messsage to html <pre id="" or class=""> will be replaced, message goes here </pre> 
+// write messsage to html <pre id="" or class=""> will be replaced, message goes here </pre>
 /////////////////////////////////////////////////////////////////////////////////////////////
-function domessage(){    
+function domessage(){
     // next muttiline because use of ` = ~ tilde key lef side number keys keyboard
-    // Alternatively known as acute, backtick, left quote, or an open quote, 
-    // the back quote or backquote is a punctuation mark (`). 
+    // Alternatively known as acute, backtick, left quote, or an open quote,
+    // the back quote or backquote is a punctuation mark (`).
     // It's on the same U.S. computer keyboard key as the tilde ~.
-    
+
     // just for easy compare to minutes next hours array has no other use
     const hourarray=[];
     for (var i=0 ;  i < timeslots.length; i++) {
           hourarray[i]=toHoursAndMinutes(timeslots[i]);
-    }   
+    }
 
 
 // when i compare this to other sites the vissiblity calculated is not correct
@@ -1363,10 +1363,10 @@ console.log("moonval",moonval);
 // moonval=0.25;                          // 0.07797258947334718; i get 16% other sites say 6%
 
 // map moonval in range 0 to 0.5 to scale 0% to 100%
-var moonvisible=Math.round(map_range(moonval,0,0.5,0,100)); 
+var moonvisible=Math.round(map_range(moonval,0,0.5,0,100));
 
 // a message writen to <pre class="message"></pre> in the html
-$('pre.message').html(`                            
+$('pre.message').html(`
     <p style=\"color:red\">timeslots array length `
     +timeslots.length+
     "<br>timeslots in minutes <br>"
@@ -1396,21 +1396,21 @@ String.prototype.left = function(n) {
 /////////////////////////////////////
 function drawtimeslots(){
 // draw timeslots array
- 
- 
+
+
   id('innerDiv').style.left='';   // erase edit timeslot???????
   id('innerDiv').style.width='';
   id('startlabel').innerHTML='';
   id('endlabel').innerHTML='';
  // draw timeslots array
-  $("div.timeslot").remove(); // remove all previous generated divs with Class timeslot 
-  $("div.slabel").remove(); // remove all previous generated divs with Class timeslot 
-  $("div.elabel").remove(); // remove all previous generated divs with Class timeslot 
-  $("div.startlabel").remove(); // remove all previous generated divs with Class timeslot 
-  $("div.endlabel").remove(); // remove all previous generated divs with Class timeslot 
+  $("div.timeslot").remove(); // remove all previous generated divs with Class timeslot
+  $("div.slabel").remove(); // remove all previous generated divs with Class timeslot
+  $("div.elabel").remove(); // remove all previous generated divs with Class timeslot
+  $("div.startlabel").remove(); // remove all previous generated divs with Class timeslot
+  $("div.endlabel").remove(); // remove all previous generated divs with Class timeslot
   for (let i = 0; i < timeslots.length; i=i+2) {
     console.log("timeslots[i] and [i+1]", timeslots[i]," ",timeslots[i+1]);
-   
+
 
      var left=map_range(timeslots[i],  0,1440,0,100);              // scale time in range 0to1440 to 0 to 100%
      var width=map_range(timeslots[i+1],  0,1440,0,100)-left;      // scale time in range 0to1440 to 0 to 100%
@@ -1424,7 +1424,7 @@ function drawtimeslots(){
         timeslotcolor = "rgba(100,200, 250, 0.6)";  // use RGBA highlight color edit timeslot
         label_opacity = 60;                         // if edit timeslot, shade original timeslot time text labels
         timeslot_opacity = 40;
-    }      
+    }
 
 // want to remove leading zero from timelabel
 var ontext = toHoursAndMinutes(timeslots[i]);
@@ -1444,7 +1444,7 @@ console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
 // maybe if slots are close together, change fontsze to smaller
 // or nouislider has a join merging https://refreshless.com/nouislider/examples/#section-merging-tooltips
 // or do a webkit rotate label
-var fontsize;          // nochange     
+var fontsize;          // nochange
 // var fontsize = 12;  // px
 
 
@@ -1454,7 +1454,7 @@ var fontsize;          // nochange
       // The opacity of the parent's background sets the maximum perceived opacity of the child elements.
       // child div class "slabel" opacity can never be made greater as parent "timeslot"
       // thats why the time text labels are fade, and i can not change it
-      // workaround set background-color RGBA color with opacity value in color for <div class="timeslot" 
+      // workaround set background-color RGBA color with opacity value in color for <div class="timeslot"
 
      $(".outerDiv").append(   // draw timeslots and textlabels underneath
           `<div class="timeslot" data-index="`
@@ -1462,7 +1462,7 @@ var fontsize;          // nochange
           `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:`
           +timeslotcolor+
           `;top:0px;left:`
-          +left+    
+          +left+
           `%;width:`
           +width+
           `%;z-index:40;opacity:`
@@ -1474,7 +1474,7 @@ var fontsize;          // nochange
           <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -17px; top: 15px;font-size:`
           +fontsize+
           `px;">`
-          +ontext+   
+          +ontext+
           `</div></div>
           <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;opacity:`
           +label_opacity+  // next child endlabel takes same opacity
@@ -1482,11 +1482,11 @@ var fontsize;          // nochange
           <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -17px; top: 30px;font-size:`
           +fontsize+
           `px;">`
-          +offtext+  
+          +offtext+
           `</div>
           </div>
           </div>`
-     ); 
+     );
 
   } // end for
 
@@ -1496,28 +1496,28 @@ var fontsize;          // nochange
 
 
 ////////////////////////////////////////
-// showhideeditpopup();             // toggle show hide on each call 
+// showhideeditpopup();             // toggle show hide on each call
 // showhideeditpopup("show");       // show
 // showhideeditpopup("hide");       // hide
 ////////////////////////////////////////
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
       id("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
-      document.body.style.backgroundColor="#c3c3c3";                              // make body background a little darker so that popup stands out?         
-                              
-  } else if (showorhide == "hide") { 
+      document.body.style.backgroundColor="#c3c3c3";                              // make body background a little darker so that popup stands out?
+
+  } else if (showorhide == "hide") {
       id("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
       document.body.style.backgroundColor= "";                                  // reset body background to lighter shade
-     
+
   }else {
     if (id("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
       id("editpopup").style.display = "block";
-      document.body.style.backgroundColor="#c3c3c3";                           // make body background a little darker so that popup stands out? 
-     
+      document.body.style.backgroundColor="#c3c3c3";                           // make body background a little darker so that popup stands out?
+
     } else {
       id("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
       document.body.style.backgroundColor= "";                                   // reset body background to lighter shade
-      
+
     }
   }
   drawtimeslots(); // if you close by x green selection may be left if not closed bij cancel or save
@@ -1528,7 +1528,7 @@ function showhideeditpopup(showorhide) {
 
 
 
- 
+
 
 var innerdivclick=0;
 var timeslotdivclick=0;
@@ -1545,7 +1545,7 @@ $( "#startlabel" ).on( "click", function() {
     // $('pre.message').html("slabel click");
     console.log("slabel clicked");
     $("#ontime").focus();
-    
+
     //return;
  });
   $( "#endlabel" ).on( "click", function() {
@@ -1553,23 +1553,23 @@ $( "#startlabel" ).on( "click", function() {
     console.log("elabel clicked");
     $("#offtime").focus();
     //return;
- }); 
+ });
 
 // think above is not used anymore
 //////////////////////////////////////
 
 // click on timescale added new slots inside timeslots
 // https://stackoverflow.com/questions/5259191/disable-clicking-of-a-divs-element
-//$(".outerDiv").children().bind('click', function(){ 
+//$(".outerDiv").children().bind('click', function(){
 //  console.log("click event is turned off for this")
-  //return false; 
+  //return false;
 //});
 
 // next no use
 
 function sunriselabelclicked(){
   // call from HTML onclick
-  sunclicked=1;                     // a flag to return from outerdiv click 
+  sunclicked=1;                     // a flag to return from outerdiv click
   //showhideeditpopup("hide");
   console.log("function sunriselabelclicked(){");
   // maybe set ontime an hour before sunrisetime
@@ -1580,7 +1580,7 @@ function sunriselabelclicked(){
 
 function sunsetlabelclicked(){
   // call from HTML onclick
-  sunclicked=1;                     // a flag to return from outerdiv click 
+  sunclicked=1;                     // a flag to return from outerdiv click
   //showhideeditpopup("hide");
   console.log("function sunsetlabelclicked(){");
   // maybe set ontime to sunsettime
@@ -1590,9 +1590,9 @@ function sunsetlabelclicked(){
 
 /*
 $(document).on('click', '.sunriselabel', function(event) {
-  event.stopPropagation(); 
+  event.stopPropagation();
   event.preventDefault();
-  //sunclicked=1; 
+  //sunclicked=1;
   //console.clear();
   console.log('sunrise Child Clicked');
 });
@@ -1600,7 +1600,7 @@ $(document).on('click', '.sunriselabel', function(event) {
 $(document).on('click', '.sunsetlabel', function(event) {
   event.stopPropagation();
   event.preventDefault();
-  //sunclicked=1; 
+  //sunclicked=1;
   //console.clear();
   console.log('sunset Child Clicked');
 });
@@ -1615,23 +1615,23 @@ $( ".timeslot" ).on( "click", function() {
 
 
 /*
-              _               _ _                          _ _      _    
+              _               _ _                          _ _      _
    ___  _   _| |_ ___ _ __ __| (_)_   __   ___  _ __   ___| (_) ___| | __
   / _ \| | | | __/ _ \ '__/ _` | \ \ / /  / _ \| '_ \ / __| | |/ __| |/ /
- | (_) | |_| | ||  __/ | | (_| | |\ V /  | (_) | | | | (__| | | (__|   < 
+ | (_) | |_| | ||  __/ | | (_| | |\ V /  | (_) | | | | (__| | | (__|   <
   \___/ \__,_|\__\___|_|  \__,_|_| \_/    \___/|_| |_|\___|_|_|\___|_|\_\
-                                                                         
-Figlet font Standard https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
+
+Figlet font Standard https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 */
 // $("#outerDiv").on("click", function(event) { // jquery
 id( "outerDiv" ).addEventListener("click", function(event){    // javascript
-  //event.stopPropagation(); 
+  //event.stopPropagation();
   //event.preventDefault();
   selected_highlight = -1;        // erase edit timeslot highlight
   if(innerdivclick==1){           // outerdiv click comes after innerdivclick
     showhideeditpopup("show");
     innerdivclick=0;
-    return;                       // i want to return to the innerdiv click              
+    return;                       // i want to return to the innerdiv click
   }
    if(timeslotdivclick==1){       // outerdiv click comes after innerdivclick
     timeslotdivclick=0;
@@ -1652,13 +1652,13 @@ id( "outerDiv" ).addEventListener("click", function(event){    // javascript
    console.log("outerdiv clicked");
    savefromedit=0;
    let outerDiv = id('outerDiv');
-   
+
 
   id('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
   console.log("mouse click x position on outerdiv ",event.clientX-outerDiv.offsetLeft);
   console.log("outerDiv width ",outerDiv.offsetWidth);
-         
-         // map_range returns a float that does not work for later convert to hh:mm 
+
+         // map_range returns a float that does not work for later convert to hh:mm
          // but the float is better for left% width% scaling otherwise the selections are of target
   var clickposinminutes=Math.round(map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440));
   console.log("clickposinminutes ",clickposinminutes);
@@ -1687,15 +1687,15 @@ id( "outerDiv" ).addEventListener("click", function(event){    // javascript
 
 
 
-// https://stackoverflow.com/questions/60923136/how-to-get-the-width-on-where-the-mouse-clicks-a-div        
+// https://stackoverflow.com/questions/60923136/how-to-get-the-width-on-where-the-mouse-clicks-a-div
 function changeWidth(event) {
-/*  
+/*
   let outerDiv = document.getElementById('outerDiv');
- 
+
   document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
   console.log(event.clientX-outerDiv.offsetLeft);
   console.log(outerDiv.offsetWidth);
-         
+
   var clickposinminutes=map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440)
   console.log("clickposinminutes ",clickposinminutes);
   var hhmm=toHoursAndMinutes(clickposinminutes);
@@ -1708,15 +1708,15 @@ function changeWidth(event) {
   drawtemp();
   */
 }
- 
+
 
 
 ///////////////////////////////////////////////////////////////////////////
-// arduino alike map function == Re-maps a number from one range to another. 
-// https://www.arduino.cc/reference/en/language/functions/math/map/ 
+// arduino alike map function == Re-maps a number from one range to another.
+// https://www.arduino.cc/reference/en/language/functions/math/map/
 // https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
-// scale range 1 into range2 bar range to 0 to 1440 minute range  
-// or 
+// scale range 1 into range2 bar range to 0 to 1440 minute range
+// or
 // scale a minutevalue in range 0 to 1440 minutes to 0% to 100%,  used for left and width of timeslot divs
 ///////////////////////////////////////////////////////////////////////////////
 function map_range(value, low1, high1, low2, high2) {
@@ -1725,15 +1725,15 @@ function map_range(value, low1, high1, low2, high2) {
 
 
 
-///////////////////////////////////////////////////////////////     
-// 0 to 1440 minutes in a day convert timeinminutes to hh:mm  
-// https://codingbeautydev.com/blog/javascript-convert-minutes-to-hours-and-minutes/#:~:text=To%20convert%20minutes%20to%20hours%20and%20minutes%20in%20JavaScript%2C%20divide,the%20remainder%20of%20the%20division.    
+///////////////////////////////////////////////////////////////
+// 0 to 1440 minutes in a day convert timeinminutes to hh:mm
+// https://codingbeautydev.com/blog/javascript-convert-minutes-to-hours-and-minutes/#:~:text=To%20convert%20minutes%20to%20hours%20and%20minutes%20in%20JavaScript%2C%20divide,the%20remainder%20of%20the%20division.
 /////////////////////////////////////////////////////////////////////////////
 function toHoursAndMinutes(totalMinutes) {
   if(totalMinutes>=1440)totalMinutes=1440;       // max 24:00
   var hours = Math.floor(totalMinutes / 60);
   var minutes = totalMinutes % 60;
-  if (hours<=9){hours='0'+hours;} 
+  if (hours<=9){hours='0'+hours;}
   if (minutes<=9){minutes='0'+minutes;}         // add a zero if <= 9
 
   return (hours+":"+minutes) ;
@@ -1742,14 +1742,14 @@ function toHoursAndMinutes(totalMinutes) {
 
 
 /////////////////////////////////////
-// convert hh:mm to time in minutes 
+// convert hh:mm to time in minutes
 ////////////////////////////////////
 function hhmm_to_minutes(hhmm) {
   console.log("hhmm_to_minutes(hhmm) ",hhmm);
 
   var hhmm_array = hhmm.split(':');                                       // split hh:mm  at the colons
   var timeinminutes = (+hhmm_array[0]) * 60 + (+hhmm_array[1]);          // Hours are worth 60 minutes
-  
+
   console.log("timeinminutes ",timeinminutes);
 
   return (timeinminutes) ;
@@ -1759,34 +1759,34 @@ function hhmm_to_minutes(hhmm) {
 
 
 //////////////////////////////////////////
-// draw selection on bar from text input 
+// draw selection on bar from text input
 /////////////////////////////////////////
 function drawtemp (){
   // document.getElementById("ontime").value;                                     // get time from on text field
   // document.getElementById("offtime").value;                                    // get time from off text field
-  
-  
+
+
   if(id("offtime").value == "00:00"){
         id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
   }
 
-  
-  var startminutes = hhmm_to_minutes(id("ontime").value);    // convert hh:mm to minutes                       
-  var endminutes = hhmm_to_minutes(id("offtime").value);     // convert hh:mm to minutes  
+
+  var startminutes = hhmm_to_minutes(id("ontime").value);    // convert hh:mm to minutes
+  var endminutes = hhmm_to_minutes(id("offtime").value);     // convert hh:mm to minutes
 
   console.log("start / endminutes",startminutes," / ",endminutes)
 
   var divwidth=outerDiv.offsetWidth;
 
   // console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
-  // console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));           
-  
+  // console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));
+
 // better not in pixels /////////////////////////////
       var startpos=map_range(startminutes,  0,1440, 0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
       var endpos=map_range(endminutes,  0,1440, 0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
       id('innerDiv').style.left=(startpos)+'px';
       id('innerDiv').style.width=(endpos-startpos)+'px';
-// do left and width in % not in px  
+// do left and width in % not in px
 // do it again better in % above in px did strange on screen rotate
       var startpos = map_range(startminutes,  0,1440, 0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
       var endpos = map_range(endminutes,  0,1440, 0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
@@ -1816,10 +1816,10 @@ for (i = 0; i <= pips; i = i + 1) {
   // console.log("imod4", imod4);
 
   if (imod4 == 0) {
-    number = i / 4;                            // for hour numbers 
+    number = i / 4;                            // for hour numbers
   } else {
     number = "";                               // no number for 15, 30, 45, minutes
-  } 
+  }
 
   var ruler = $(
     '\n\n<span class="ruler-pip">\n<span class="ruler-line" style="width:2px; color:black;"></span>\n<span class="ruler-number" style="position:absolute;">' +
@@ -1885,17 +1885,17 @@ $(".outerDiv").append(
 // add div for time text label below timeslot selection
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
-$('#innerDiv').append('<div id="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;"><div  id="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;"></div></div>');   
+$('#innerDiv').append('<div id="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;"><div  id="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;"></div></div>');
 // endlabel bit lower so they do not overlap when close to eachother
-$('#innerDiv').append('<div id="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;"><div id="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;"></div></div>');              
+$('#innerDiv').append('<div id="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;"><div id="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;"></div></div>');
 
 
 // add divs for sunrise actualtime and sunset line and label
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
-$('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');                 
-$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" onclick="sunrise_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunrise</div></div>');            
-$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" onclick="sunset_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunset</div></div>');              
+$('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');
+$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" onclick="sunrise_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunrise</div></div>');
+$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" onclick="sunset_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunset</div></div>');
 
 
 // add 3 divs for night shade and dayshine
@@ -1918,7 +1918,7 @@ $('.outerDiv').append('<div class="evening_shade" style="position:absolute;heigh
 // https://github.com/mourner/suncalc
 // https://www.latlong.net/
 
-// do not know make it global 
+// do not know make it global
 var times;
 var sunrisemin;
 var sunriseStr;
@@ -1935,11 +1935,11 @@ function dogeoloc(){
   var lon=id('lon').value;
   console.log(lat," : ",lon);
   times = SunCalc.getTimes(new Date(),lat,lon);
- 
+
 
  moon = SunCalc.getMoonIllumination(new Date());
- console.log("moon ", moon); 
-console.log("moon.phase ", moon.phase); 
+ console.log("moon ", moon);
+console.log("moon.phase ", moon.phase);
 
 // format sunrise time from the Date object
  sunrisemin =times.sunrise.getMinutes();
@@ -1951,18 +1951,18 @@ if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zer
 sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
 
 var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
-  for (let i = 0; i < 1; i++) {  
+  for (let i = 0; i < 1; i++) {
    //document.getElementsByClass('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-   
+
    //document.getElementsByClass('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
   }
-    
+
 var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
-  for (let i = 0; i < 1; i++) {  
+  for (let i = 0; i < 1; i++) {
    //document.getElementsByClass('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-  
+
    //document.getElementsByClass('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
-  }  
+  }
 
 // get position of the sun (azimuth and altitude) at today's sunrise
 /////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
@@ -1981,9 +1981,9 @@ console.log("sunset "+sunsetStr);
 //document.getElementsByClass('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
 //document.getElementsByClass('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
 //document.getElementsByClass('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
-//document.getElementsByClass('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+//document.getElementsByClass('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";
 
-/*  
+/*
 const sunrise = document.querySelectorAll('.sunrise');
 sunrise.forEach(sunrise => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
@@ -1995,12 +1995,12 @@ sunrise.forEach(sunrise => {
 const sunset = document.querySelectorAll('.sunset');
 sunset.forEach(sunset => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
-  //sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet "+sunsetStr)+"</a>   "; 
+  //sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet "+sunsetStr)+"</a>   ";
 });
 */
 }
 
- 
+
  dogeoloc();
 
 
@@ -2008,7 +2008,7 @@ sunset.forEach(sunset => {
 
 
 ///////////////////////////////////////////////////////////////////////////
-// doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond() 
+// doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond()
 ///////////////////////////////////////////////////////////////////////////
 function doiteverysecond() {
 
@@ -2027,58 +2027,58 @@ function doiteverysecond() {
         id("gofullscreenmessage").innerHTML='<h3><a href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html" target="fullscreen">Go Full Screen,it works Better!</a></h3>';
   }else{      // erase
         id("gofullscreenmessage").innerHTML="";
-  } 
+  }
 
 
   const now = new Date();
   const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
   var sec;
   var min;
-  
+
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var dayName = days[now.getDay()];
 
-   
-   
-   
+
+
+
   if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
   if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
 
- for (let i = 0; i < 1; i++) {  
+ for (let i = 0; i < 1; i++) {
       classname('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
-  
+
       classname('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
  }
 
  var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
   var sunrisecur=currents;
-  for (let i = 0; i < 1; i++) {  
+  for (let i = 0; i < 1; i++) {
       classname('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-  
+
       classname('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
- 
+
       classname('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
   }
-  
+
 var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
   var sunsetcur=currents;
-  for (let i = 0; i < 1; i++) {  
+  for (let i = 0; i < 1; i++) {
       classname('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-  
+
       classname('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
- 
+
       classname('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
- 
+
       classname('morning_shade')[i].style.left= currents+"%";
 
       classname('dayshine')[i].style.left= sunrisecur+"%";
-      classname('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%"; 
-  } 
+      classname('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%";
+  }
 
 
 }
 ///////////////////////////////////////////////////////////////////////
-// end doiteverysecond()  end doiteverysecond()  end doiteverysecond()  
+// end doiteverysecond()  end doiteverysecond()  end doiteverysecond()
 ///////////////////////////////////////////////////////////////////////
 
 
@@ -2097,7 +2097,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     // https://github.com/loebi-ch/jquery-clock-timepicker
     $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> ON time</font><br>"});  // activate analog timepicker popup for id ontime text field
     $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> OFF time</font><br>"}); // activate analog timepicker popup for id offtime text field
-        
+
     dragElement(id("editpopup"));            // make editpopup draggable by mouse and touch
 
     drawtemp();
@@ -2107,7 +2107,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
 
     // select day, set radio day to today,  makes label for radiobutton green
     var daynr=new Date().getDay();                  // 0=sunday ... 6=saturday
-    if (daynr==0)daynr=7;          
+    if (daynr==0)daynr=7;
     console.log("daynr ",daynr);
     // $('.radioday')[daynr-1].checked="true";                                // jquery
     classname('radioday')[daynr-1].checked="true";      // javascript
@@ -2116,10 +2116,10 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
 
     setInterval(doiteverysecond, 1000); // Milliseconds  call function doiteverysecond() every second
 
-   
- 
 
-}, false);     
+
+
+}, false);
 //////////////////////
 // END DOMContentLoaded
 /////////////////////
@@ -2132,7 +2132,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
 function showhideabout() {
   if (id("aboutDIV").style.display === "none") {
     id("aboutDIV").style.display = "block";
-     // should be something to block scrolling of body 
+     // should be something to block scrolling of body
      // only popup scroll
      // https://codepen.io/anon/pen/oEMmrm
   } else {
@@ -2268,11 +2268,11 @@ function dragElement(elmnt) {
 
 <!--
   ///////////////////////////
-  // begin editpopup HTML 
+  // begin editpopup HTML
   //////////////////////////
   -->
 <div id="editpopup">
- <div id="editpopupheader" class="drag-handle"> 
+ <div id="editpopupheader" class="drag-handle">
     <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;">
       <b>X</b></button>
     </div>
@@ -2283,10 +2283,10 @@ function dragElement(elmnt) {
     <input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
 <input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="offtimechange();drawtemp()"  value="16:30" change="offtimechange();" onchange="offtimechange();drawtemp();console.log('Time changed to: ' + this.value)"/>
   <br><br>
-<input type="button" value="Cancel" onclick="cancelbutton()">    
+<input type="button" value="Cancel" onclick="cancelbutton()">
 <input type="button" value="Save" onclick="savetimeslot()">
-<br><br> 
-<input type="button" id="deletebutton" value="Delete" onclick="deletebutton()"> 
+<br><br>
+<input type="button" id="deletebutton" value="Delete" onclick="deletebutton()">
 <br><br>
 <font color="green"">
 <small>Touch drag is Working ;-) ???</small>
@@ -2314,14 +2314,14 @@ function dragElement(elmnt) {
   text-align: center;
   background-color: lightgray;borderColor:black;border:5px solid;border-radius:10px;
   margin-top: 10px;display:none;z-index:1001;overflow-y:scroll; height:100%;overscroll-behavior: contain;">
- 
+
  <div id="closeit" style="
  position: fixed;
  display: absolute;
  float:right;right: 2em;">
     <button onclick="showhideabout()" style="border-color:red; color:red;"><b>X</b></button>
   </div><h1>Visual Scheduler / Graphical Scheduler</h1>
-  
+
   <br>Visual TimeSlot Scheduler<br>
 Easy Set and Overview Scheduled timeslots<br>
 Touch Friendly Scheduler<br>
@@ -2330,7 +2330,7 @@ Create a scheduler from scratch <br>
 (a bit like Plasma-Cloud WiFi POE Scheduler / Apple Elgato Eve Schedule)<br>
 <br>
 Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<br>
-  irrigation Scheduler, Sprinkler Scheduler, Light Scheduler, WiFi relays Scheduler, WiFi switches Scheduler<br> 
+  irrigation Scheduler, Sprinkler Scheduler, Light Scheduler, WiFi relays Scheduler, WiFi switches Scheduler<br>
   Time Activated Relays - Relay Control on a Schedule<br>
   daily scheduler, weekly scheduler, timed switching<br>
   visual timed automation, etcetera <a href="https://www.youtube.com/watch?v=mfJhMfOPWdE" target="blahblah">BlahBlah!</a><br>
@@ -2341,7 +2341,7 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
   Do not forget to Subscribe at the end of the video ?! ;-)<br>
   <br>
   <a href="https://youtu.be/Uy8vY94GGuE" target="phonehome">youtube video => Add icon link to phone home screen</a><br>
-  <br>  
+  <br>
   <br>
   <center>
   <hr>
@@ -2380,9 +2380,9 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
   Sorry for the kindergarden aged, there is no AM/PM<br>
   <br>
   <br>
-  Free for personal use.<br> 
+  Free for personal use.<br>
   Not free for commercial use.<br>
-  Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script><br> 
+  Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script><br>
   <br>
   <br>
   <button onclick="showhideabout()" style="color:green;">Accept!</button><br>
@@ -2400,11 +2400,11 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
 
 <br><br>
 
-<input type="button" onclick="showhideabout()" value="About"><br>                                                      
+<input type="button" onclick="showhideabout()" value="About"><br>
 <!-- Copyright Dirk Luberth Dijkman 2023 -->
 <br><br>
 <small><small><small>
-Free for personal use.<br> 
+Free for personal use.<br>
 Not free for commercial use.<br>
 Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script></small></small></small>
 <!-- https://stackoverflow.com/questions/4562587/shortest-way-to-print-current-year-in-a-website -->
@@ -2414,7 +2414,7 @@ Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFul
 <!--
 webcam for sound in my youtune videos screen recordings<br>
 -->
-<button class="btn btn-primary" id="button">Display Webcam feed in Picture-in-Picture mode</button> 
+<button class="btn btn-primary" id="button">Display Webcam feed in Picture-in-Picture mode</button>
 <script>
 const button = document.getElementById('button');
 
@@ -2447,7 +2447,7 @@ It is prohibited to redistribute or reproduce of any part or all of the software
  3. You may not, except with my express written permission, distribute or commercially exploit the content.
  4. You may not transmit it or store it in any other website or other form of electronic retrieval system for commercial purposes.
  5. You MUST include all of this copyright and permission notice ('as annotated') and this shall be included in all copies or substantial portions of the software and where the software use is visible to an end-user.
- 
+
 THE SOFTWARE IS PROVIDED "AS IS" FOR PRIVATE USE ONLY, IT IS NOT FOR COMMERCIAL USE IN WHOLE OR PART OR CONCEPT.
 
 FOR PERSONAL USE IT IS SUPPLIED WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -2460,16 +2460,16 @@ Elon Musk do not use this scheduler to launch your trip to Mars
 https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github.io%2Frandomnerd_esp32_wifi_manager%2Fmrs%2Fcreate_from_scratch%2Findex.html
 -->
 
-                                
-                                
 
-    
+
+
+
   </textarea>
-  <!--////////////////////////////////////////////////////////////-->   
+  <!--////////////////////////////////////////////////////////////-->
 	</div>
   <div id="minimapeditor" onmouseover='ace.edit("minimapeditor").focus();'></div>
- 
- 
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ace.js"></script>
 
@@ -2502,26 +2502,26 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-keybinding_menu.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-spellcheck.min.js"></script>
-  
-    
-<script src="https://ldijkman.github.io/Ace-Editor-Click-Link-window.open-URL/hoverlink.js"></script>  
+
+
+<script src="https://ldijkman.github.io/Ace-Editor-Click-Link-window.open-URL/hoverlink.js"></script>
 <!--  https://github.com/ldijkman/Ace-Editor-Click-Link-window.open-URL/tree/main/docs -->
 
 <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
 <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
 
-    
+
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
- 
-    
+
+
 
 
 <script>
 
-		
+
 		var editor = ace.edit("editor")
     var beauty = ace.require("ace/ext/beautify")
 
@@ -2566,11 +2566,11 @@ var myTimeout;  // for update timeout minimap
 
 
 
-// click on URL link in editor  
+// click on URL link in editor
 editor.hoverLink.on("open", function() {
   // alert("trying to open")
   console.log("trying to open",editor.hoverLink.link.value);
-  
+
   if(editor.hoverLink.isOpen){
       window.open(editor.hoverLink.link.value);
  }
@@ -2580,9 +2580,9 @@ editor.hoverLink.on("open", function() {
 editor.execCommand('find');         // create the search find replace popup
                                     // https://jqueryui.com/draggable/
                                     // maybe a little delay before make it draggable
-                                    // think draggable wants to add code to div class="ace_search" 
+                                    // think draggable wants to add code to div class="ace_search"
 Time_out_delay = setTimeout(function(){
-   $( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable 
+   $( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable
 }, 250);
 
 // https://jqueryui.com/draggable/
@@ -2590,12 +2590,12 @@ Time_out_delay = setTimeout(function(){
 //    $( ".ace_search" ).draggable();
 //} );
 
- 
-     
- 
+
+
+
 		new AceScrollbars(editor);
 
-		function indentCode() { 
+		function indentCode() {
 			let p = editor.selection.getCursor()
 			beauty.beautify(editor.session)
 			editor.selection.moveToPosition(p)
@@ -2616,14 +2616,14 @@ Time_out_delay = setTimeout(function(){
 		function getSource() {
 			name = editor.getValue()
 		}
-                                          
-   // const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
-   // addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }");     
-        
-   // const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css; 
-   // addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }"); 
-    
-         
+
+   // const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css;
+   // addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }");
+
+   // const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css;
+   // addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }");
+
+
 
 editor.on('mousedown', () => {
      minimapeditor.selection.clearSelection();
@@ -2635,11 +2635,11 @@ editor.on('mousedown', () => {
 var marker; //gray select on minimap
 
 editor.session.on("changeScrollTop", function() {
-    
+
     var s=editor.renderer.getFirstVisibleRow()
     var e=editor.renderer.getLastVisibleRow()
     var m = s+((e-s)/2);    // center of editor
-   
+
     minimapeditor.scrollToLine(m, true, true, function () {});
     ace.edit("minimapeditor").moveCursorTo(m);
     ace.edit("minimapeditor").gotoLine(m);
@@ -2654,7 +2654,7 @@ editor.session.on("changeScrollTop", function() {
 editor.getSession().on('change', function () {
 
     // timeout here?
-    // update minimap after 5 seconds no change (update every keypres makes editor slow) 
+    // update minimap after 5 seconds no change (update every keypres makes editor slow)
     clearTimeout(myTimeout); // clear if new change
     myTimeout = setTimeout(function(){
         minimapeditor.setValue(editor.getSession().getValue());
@@ -2664,7 +2664,7 @@ editor.getSession().on('change', function () {
     ace.edit("editor").focus(); // To focus the ace editor
     ace.edit("editor").renderer.$cursorLayer.showCursor();
 
-});                                               
+});
 
 
 
@@ -2675,34 +2675,34 @@ editor.getSession().on('change', function () {
 // minimaoeditor
 //////////////////////////////////////////////////////////
   var minimapeditor = ace.edit("minimapeditor");
-  minimapeditor.session.setMode("ace/mode/html"); 
+  minimapeditor.session.setMode("ace/mode/html");
   minimapeditor.setTheme("ace/theme/vibrant_ink");
   minimapeditor.setFontSize(3.0);
   minimapeditor.setShowPrintMargin(false);
   minimapeditor.renderer.setShowGutter(false);
   minimapeditor.setReadOnly(true);
-  minimapeditor.renderer.setOption('showLineNumbers', false);  
-  editor.setOption("showPrintMargin", false); 
+  minimapeditor.renderer.setOption('showLineNumbers', false);
+  editor.setOption("showPrintMargin", false);
 
   minimapeditor.setValue(editor.getSession().getValue());
   minimapeditor.selection.clearSelection();
   //minimapeditor.setOption(minimapeditor.$options.animatedScroll.name, true);
   //minimapeditor.setAutoScrollEditorIntoView(true)
 
-   
+
 // get linenumeber on minimap mouseclick
 minimapeditor.on('mousedown', () => {
-    // mouseup works better?         
+    // mouseup works better?
 });
 
 
 
-// get linenumeber on minimap mouseup, for set main editor cursor position 
+// get linenumeber on minimap mouseup, for set main editor cursor position
 minimapeditor.on('mouseup', () => {       // var cursor = minimapeditor.getCursorPosition();
     var cursorrow = minimapeditor.getCursorPosition().row;
     var cursorcolumn = minimapeditor.getCursorPosition().column;
     // var cursorPos = $scope.editor.getCursorPosition()
-    
+
     // move cursorr big editor to cursor rom clickpos minimapeditor
     ace.edit("editor").gotoLine(cursorrow,cursorcolumn);
     ace.edit("editor").moveCursorTo(cursorrow,cursorcolumn);
@@ -2786,23 +2786,23 @@ function download(filename, text) {
         reader.onload = function () {
           editor.session.setValue(reader.result);
         };
-        reader.readAsText(file);   
-    
-        
+        reader.readAsText(file);
+
+
       }
 
 
-    
+
     document.getElementById('ace-theme').addEventListener('change', function(e) {
       console.log((document.getElementById('ace-theme').value).toLowerCase());
       e.preventDefault();
       ace.edit("editor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
      ace.edit("minimapeditor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
-    
+
     floatbuttons();
     });
 
-    
+
     document.getElementById('ace-mode').addEventListener('change', function(e) {
       console.log((document.getElementById('ace-mode').value).toLowerCase());
       e.preventDefault();
@@ -2813,11 +2813,11 @@ function download(filename, text) {
 
 
 ///////////////////////////////////////////////////////////////////////////
-// arduino alike map function == Re-maps a number from one range to another. 
-// https://www.arduino.cc/reference/en/language/functions/math/map/ 
+// arduino alike map function == Re-maps a number from one range to another.
+// https://www.arduino.cc/reference/en/language/functions/math/map/
 // https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
-// scale range 1 into range2 bar range to 0 to 1440 minute range  
-// or 
+// scale range 1 into range2 bar range to 0 to 1440 minute range
+// or
 // scale a minutevalue in range 0 to 1440 minutes to 0% to 100%,  used for left and width of timeslot divs
 ///////////////////////////////////////////////////////////////////////////////
 function map_range(value, low1, high1, low2, high2) {
@@ -2832,18 +2832,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
- 
+
 <textarea rows=5 cols ="55" hidden>
 4 7th Heaven Editor?<br>
-<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="7th_Heaven">https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html</a><br> 
+<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="7th_Heaven">https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html</a><br>
 </textarea>
  <input class=text value=7th_Heaven.html hidden >
-    
+
  <script>
      // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
     // https://web.dev/patterns/files/save-a-file/demo.html
     // https://plnkr.co/edit/oOmxxNPfJlkjIh9i
- 
+
 
 
      const textarea = editor.getValue(),
@@ -2870,10 +2870,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         const n = URL.createObjectURL(e),
         a = document.createElement("a");
-        a.href = n, 
-        a.download = t, 
-        a.style.display = "none", 
-        document.body.append(a), a.click(), 
+        a.href = n,
+        a.download = t,
+        a.style.display = "none",
+        document.body.append(a), a.click(),
         setTimeout((() => {
           URL.revokeObjectURL(n), a.remove()
         }), 1e3)
