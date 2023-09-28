@@ -2775,12 +2775,19 @@ function download(filename, text) {
 
 // https://plnkr.co/edit/GCLwKqNGqi4R2Fnr?preview
 
+
   function openCode(files) {
         var file = files[0];
         if (!file) return;
         var modelist = ace.require('ace/ext/modelist');
         var modeName = modelist.getModeForPath(file.name).mode;
         editor.session.setMode(modeName);
+
+        console.log("file.name",file.name);
+        console.log("change page title",file.name+" Ace Seventh Heaven");
+        document.querySelector('title').textContent = file.name+" Ace Seventh Heaven";
+        // silly set filename text field for save to disk filename
+        document.querySelector("input.text").value=file.name;      
 
         reader = new FileReader();
         reader.onload = function () {
@@ -2837,7 +2844,7 @@ document.addEventListener("DOMContentLoaded", () => {
 4 7th Heaven Editor?<br>
 <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="7th_Heaven">https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html</a><br>
 </textarea>
- <input class=text value=7th_Heaven.html hidden >
+ <input class="text" value="7th_Heaven.html" hidden >
 
  <script>
     // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
@@ -2848,7 +2855,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-     const textarea = editor.getValue(),
+     var textarea = editor.getValue(),
       textInput = document.querySelector("input.text"),
       textButton = document.querySelector("button.text"),
       img = document.querySelector("img"),
