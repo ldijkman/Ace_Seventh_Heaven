@@ -2762,6 +2762,8 @@ function save() {
 function download(filename, text) {
       var element = document.createElement('a');
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      // get text value name is set by openfile
+      filename=document.querySelector("input.text").value;
       element.setAttribute('download', filename);
 
       element.style.display = 'none';
