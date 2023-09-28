@@ -2522,15 +2522,15 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 <script>
 
 
-		var editor = ace.edit("editor")
-    var beauty = ace.require("ace/ext/beautify")
+var editor = ace.edit("editor")
+var beauty = ace.require("ace/ext/beautify")
 
-		ace.require("ace/ext/language_tools")
-		//ace.require("ace/ext/emmet")     // do not know what emmet is and does
-		editor.setTheme("ace/theme/vibrant_ink")
-		 editor.session.setMode("ace/mode/html", function() {
-        LoadColorPicker()
-      })
+ace.require("ace/ext/language_tools")
+//ace.require("ace/ext/emmet")     // do not know what emmet is and does
+editor.setTheme("ace/theme/vibrant_ink")
+editor.session.setMode("ace/mode/html", function() {
+	LoadColorPicker()
+})
   function LoadColorPicker() {
     console.log("load colorpicker now in function LoadColorPicker");
     window.editor = ace.edit("editor");
@@ -2840,9 +2840,11 @@ document.addEventListener("DOMContentLoaded", () => {
  <input class=text value=7th_Heaven.html hidden >
 
  <script>
-     // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
+    // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
     // https://web.dev/patterns/files/save-a-file/demo.html
     // https://plnkr.co/edit/oOmxxNPfJlkjIh9i
+    // https://github.com/GoogleChromeLabs/browser-fs-access	 
+    // https://googlechromelabs.github.io/browser-fs-access/demo/
 
 
 
@@ -2890,6 +2892,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // https://web.dev/patterns/files/save-a-file/#using-the-file-system-access-apis-showsavefilepicker-method
     // https://web.dev/patterns/files/save-a-file/demo.html
     // https://plnkr.co/edit/oOmxxNPfJlkjIh9i
+    // https://github.com/GoogleChromeLabs/browser-fs-access	 
+    // https://googlechromelabs.github.io/browser-fs-access/demo/	 
   </script>
 
 </body>
