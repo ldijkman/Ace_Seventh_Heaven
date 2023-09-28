@@ -5,6 +5,8 @@ Demo: https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
 Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
 
+BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
+
 ![Ace_Editor_save_file_to_disk](https://github.com/ldijkman/Ace_Seventh_Heaven/assets/45427770/a7292516-f77f-4cf0-9d06-293d894e3c39)
 
 
