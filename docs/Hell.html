@@ -150,9 +150,9 @@ window.onbeforeunload = function() {
   #minimapeditor {
     position:absolute;
     right:50px;
-    top:5%;
+    top:0;
     width: 150px;
-    height: 94%;
+    height: 97%;
     background-color:;
     border:1px;
     border: solid;
@@ -2470,8 +2470,7 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
   </textarea>
   <!--////////////////////////////////////////////////////////////-->
 	</div>
-  <div id="minimapeditor" onmouseover='ace.edit("minimapeditor").focus();'></div>
-
+  <!--<div id="minimapeditor" onmouseover='ace.edit("minimapeditor").focus();'></div>-->
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ace.js"></script>
@@ -2672,7 +2671,8 @@ editor.getSession().on('change', function () {
 
 
 
-
+// test maybe better for plugin alike code
+editor.container.insertAdjacentHTML("beforeend", "<div id=\"minimapeditor\" onmouseover=\'ace.edit(\"minimapeditor\").focus();\'></div>")
 
 //////////////////////////////////////////////////////////
 // minimaoeditor
@@ -2914,3 +2914,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
