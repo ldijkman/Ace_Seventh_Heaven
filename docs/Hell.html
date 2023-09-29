@@ -3016,14 +3016,22 @@ function showhideminimap() {
 
 
 function toggleFullScreen() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      }
+  if (top.location!= self.location) {
+    top.location = self.location.href;
+  }
+  if (window.location !== window.top.location) {
+    window.top.location = window.location;
+  }
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
 }
+
+
 
 // save part of https://codepen.io/8354801/pen/OeOBXm
 function save() {
