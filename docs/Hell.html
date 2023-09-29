@@ -8,6 +8,10 @@ only problem i have is i want
 and not 
   v scrollbar for editor
 
+how can i hide the editor vertical scrollbar?
+and 
+how can i show the minimap vertical scrollbar?  
+
 i want a resizeble html previewer 
     https://codepen.io/ldijkman/pen/jOXKLaW
     https://codepen.io/ldijkman/pen/QWzxqyv?editors=1010
@@ -2813,7 +2817,7 @@ editor.session.setMode("ace/mode/html", function() {
  editor.setOption(editor.$options.animatedScroll.name, true);
  editor.setOption("enableEmmet", true);     // do not know what emmet is and does
 
-var myTimeout;  // for update timeout minimap
+
 
     HoverLink = require("hoverlink").HoverLink
     editor.hoverLink = new HoverLink(editor);
@@ -2879,56 +2883,26 @@ Time_out_delay = setTimeout(function(){
 
 
 
-editor.on('mousedown', () => {
-     minimapeditor.selection.clearSelection();
-     minimapeditor.selection.selectLine();
-});
-
-
-
-var marker; //gray select on minimap
-
-editor.session.on("changeScrollTop", function() {
-
-    var s=editor.renderer.getFirstVisibleRow()
-    var e=editor.renderer.getLastVisibleRow()
-    var m = s+((e-s)/2);    // center of editor
-
-    minimapeditor.scrollToLine(m, true, true, function () {});
-    ace.edit("minimapeditor").moveCursorTo(m);
-    ace.edit("minimapeditor").gotoLine(m);
-
- minimapeditor.session.removeMarker(marker);  // grau selection on minimap
- marker=minimapeditor.session.addMarker(new Range(s, 0, e, 0), "ace_active-line", "fullLine");
-})
-
-
-
-// on change main big editor change content minimap editor 5 sec delay of no change
-editor.getSession().on('change', function () {
-
-    // timeout here?
-    // update minimap after 5 seconds no change (update every keypres makes editor slow)
-    clearTimeout(myTimeout); // clear if new change
-    myTimeout = setTimeout(function(){
-        minimapeditor.setValue(editor.getSession().getValue());
-        minimapeditor.selection.clearSelection();
-    }, 1000);
-
-    ace.edit("editor").focus(); // To focus the ace editor
-    ace.edit("editor").renderer.$cursorLayer.showCursor();
-
-});
 
 
 
 
+
+
+
+
+
+
+
+
+// minimapeditor
+var myTimeout;  // for update timeout minimap
 // test maybe better for plugin alike code
 editor.container.insertAdjacentHTML("beforeend", "<div id=\"minimapeditor\" class=\"minimapeditor\" onmouseover=\'ace.edit(\"minimapeditor\").focus();\'></div>")
 
 
 //////////////////////////////////////////////////////////
-// minimaoeditor
+// minimapeditor
 //////////////////////////////////////////////////////////
   var minimapeditor = ace.edit("minimapeditor");
   minimapeditor.session.setMode("ace/mode/html");
@@ -2975,8 +2949,47 @@ minimapeditor.on('mouseup', () => {       // var cursor = minimapeditor.getCurso
 
 });
 
+editor.on('mousedown', () => {
+     minimapeditor.selection.clearSelection();
+     minimapeditor.selection.selectLine();
+});
+
+var marker; //gray select on minimap
+
+editor.session.on("changeScrollTop", function() {
+
+    var s=editor.renderer.getFirstVisibleRow()
+    var e=editor.renderer.getLastVisibleRow()
+    var m = s+((e-s)/2);    // center of editor
+
+    minimapeditor.scrollToLine(m, true, true, function () {});
+    ace.edit("minimapeditor").moveCursorTo(m);
+    ace.edit("minimapeditor").gotoLine(m);
+
+ minimapeditor.session.removeMarker(marker);  // grau selection on minimap
+ marker=minimapeditor.session.addMarker(new Range(s, 0, e, 0), "ace_active-line", "fullLine");
+})
 
 
+// on change main big editor change content minimap editor 5 sec delay of no change
+editor.getSession().on('change', function () {
+
+    // timeout here?
+    // update minimap after 5 seconds no change (update every keypres makes editor slow)
+    clearTimeout(myTimeout); // clear if new change
+    myTimeout = setTimeout(function(){
+        minimapeditor.setValue(editor.getSession().getValue());
+        minimapeditor.selection.clearSelection();
+    }, 1000);
+
+    ace.edit("editor").focus(); // To focus the ace editor
+    ace.edit("editor").renderer.$cursorLayer.showCursor();
+
+});
+
+
+
+/////////////////////////////// end minimap ?
 
 
 
