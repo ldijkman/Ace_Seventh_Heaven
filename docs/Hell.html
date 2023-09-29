@@ -68,7 +68,7 @@ window.onbeforeunload = function() {
 
 
 #editor .ace_scrollbar-v {  /* hide vertical scrollbar */
-	//overflow: hidden;
+	ooverflow: hidden;
 }
 .ace_scrollbar-h {  /*  */
 	width: 100%;
@@ -225,7 +225,7 @@ a:-webkit-any-link {
   background-color:red;
 }
 #minimapeditor .ace_scrollbar-v {
-    //display: block;
+    
 }
     
     
@@ -276,7 +276,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 
 
 .ace_scrollbar-v {  /* hide vertical scrollbar */
-	overflow: hidden;
+	ooverflow: hidden;
 }
 .ace_scrollbar-h {  /*  */
 	width: 100%;
@@ -484,7 +484,77 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="container">
     <div id="editor" onmouseover='ace.edit("editor").focus();'>
       <textarea>
-      left
+      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+https://github.com/ldijkman/Ace-Scrollbars/blob/master/docs/Ace_editor_custom_scrollbar.html
+
+custom scrollbar show search / select highlight position in vertical scrollbar
+
+
+ You can drag move the search/replace!
+    to a desired position on the screen
+        Beat that! VisualStudio Monaco ;-)
+
+The Editor of the Web
+  Demo: https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
+  Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+  BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
+
+
+this demo adds a vertical scrollbar
+higlight search / select positions file Overview vertical scrollbar visualizer
+MiniMap File OverView
+links / url in the the editor highlight red underline
+on mouseover and if clicked open in a new window
+
+    click on the editor text, so that the focus is on the editor
+    ctrl+f search/find
+    search for function
+    results positions are  visible in vertical scrollbar
+
+    if you select highlight a word by doubleclck on a word
+    => say doubleclick on next  => function
+    it also shows occurrence positions on vertical scrollbar
+    search shows more like functional
+    doubleclick on function does not do functional
+
+focus must be on editor
+
+   control+, (ctrl+comma) for options
+   F1 for shortcuts
+
+   ctrl+c copy
+   ctrl+v paste     (mouse mid button)
+   ctrl+a selectall
+
+   ctrl+f find
+   ctrl+h replace
+
+   ctrl+z undo
+   ctrl+y redo
+
+   ctrl+alt+mouseleft click or drag  blockselect multicursor set
+
+
+focus must be on editor
+
+    only gray view is off target
+    changed custom scrollbar visualizer code a bit from pixels to percent
+    think it works a bit better now
+
+    Ace MiniMap Demo https://ldijkman.github.io/Ace_MiniMap/ace_editor_minimap.html
+
+    https://youtu.be/YjZ-waKmJbc
+
+    https://youtu.be/OMbZ_-kfY2M
+
+    https://plnkr.co/edit/Digj5Fw7D6hxaTU4
+
+    https://github.com/ldijkman/Ace-Scrollbars/tree/master/docs
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
        </textarea>
     </div>
   
@@ -1007,4 +1077,3 @@ $("#editor").on('keyup', function(e) {
 </body>
 
 </html>
-
