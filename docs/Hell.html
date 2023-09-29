@@ -1,8 +1,10 @@
 
 <!--
-https://github.com/ukandrewc/Ace-Scrollbars/tree/master
+i think the editor is now more like plugin like in the editor
+only problem i have is i wat v scroll for minimapeditor and not for editor
 
-https://github.com/ldijkman/Ace-Scrollbars/tree/master/docs
+i want a resizeble html previewer https://codepen.io/ldijkman/pen/jOXKLaW
+
 
 -->
 
@@ -535,7 +537,9 @@ body{
   */
 }
 
-
+.minimapeditor .ace_scrollbar .ace_scrollbar-v {
+    overflow: show;
+}
 
 </style>
 
@@ -2677,7 +2681,7 @@ editor.getSession().on('change', function () {
 
 
 // test maybe better for plugin alike code
-editor.container.insertAdjacentHTML("beforeend", "<div id=\"minimapeditor\" onmouseover=\'ace.edit(\"minimapeditor\").focus();\'></div>")
+editor.container.insertAdjacentHTML("beforeend", "<div id=\"minimapeditor\" class=\"minimapeditor\" onmouseover=\'ace.edit(\"minimapeditor\").focus();\'></div>")
 
 //////////////////////////////////////////////////////////
 // minimaoeditor
