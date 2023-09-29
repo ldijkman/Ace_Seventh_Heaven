@@ -55,7 +55,11 @@ window.onbeforeunload = function() {
 
 
 #editor .ace_scrollbar-v {  /* hide vertical scrollbar */
-	overflow: hidden;
+	//overflow: hidden;
+  overflow: show;
+}
+#minimapeditor .ace_scrollbar-v {  /* hide vertical scrollbar */
+	overflow: show;
 }
 .ace_scrollbar-h {  /*  */
 	width: 100%;
@@ -166,7 +170,10 @@ window.onbeforeunload = function() {
     display: none;
 }
 
-
+#minimapeditor .ace_scrollbar-v {
+  display: block;
+    overflow: show;
+}
 
 
 
@@ -211,9 +218,7 @@ a:-webkit-any-link {
 .ace_search.ace_searchbtn_close{
   background-color:red;
 }
-#minimapeditor .ace_scrollbar-v {
-    //display: block;
-}
+
 </style>
 
 
