@@ -80,11 +80,11 @@ body {
   background-color: orange;
 }
 
-.ace_scrollbar-h {
+.ace_scrollbar-h {               /*editor horizontal scrollbar*/
   width: 100%;
 }
 
-.ace_scroll-v {
+.ace_scroll-v {                   /*custom vertical scrollbar gray viewport handle*/       
   z-index: 1000;
   position: absolute;
   top: 0;
@@ -99,7 +99,7 @@ body {
   background: lightgray;
 }
 
-.ace_map-row {
+.ace_map-row {                  /*custom vertical scrollbar active cursor line*/
   z-index: 1001;
   position: absolute;
   pointer-events: none;
@@ -110,7 +110,7 @@ body {
   background: greenyellow;
 }
 
-.ace_map-item {
+.ace_map-item {                  /*custom vertical scrollbar list item blue line*/
   z-index: 1002;
   position: absolute;
   pointer-events: none;
@@ -120,13 +120,13 @@ body {
   background: cornflowerblue;
 }
 
-.ace_link_marker {
+.ace_link_marker {                  /*red underline when over url link in editore*/
   position: absolute;
   border-bottom: 5px solid red;
   opacity: 50%;
 }
 
-.ace_search {
+.ace_search {                      /*find search popup box*/
   border-radius: 8px 8px 8px 8px;
   border-right: 0 none;
   right: auto;
@@ -136,7 +136,7 @@ body {
   color: lightgray;
 }
 
-.ace_search.right {
+.ace_search.right {                      /*find search popup box*/
   position: absolute;
   border-radius: 4px 4px 4px 5px;
   border-right: 0 none;
@@ -164,7 +164,7 @@ body {
   border: 1px solid gray;
 }
 
-#minimapeditor .ace_scrollbar-h {
+#minimapeditor .ace_scrollbar-h {   /*do not show horizontal scrollbar on minmap*/
   display: none;
 }
 
@@ -174,7 +174,7 @@ a:-webkit-any-link {
   text-decoration: underline;
 }
 
-.container {
+.container {                      /*contains it all*/
   position: absolute;
   display: flex;
   top: 5%;
@@ -188,7 +188,7 @@ a:-webkit-any-link {
   height: 100%;
   display: flex;
 }
-.resizer {
+.resizer {                   /*drag handle between left and right window*/
   background-color: #dba9b3;
   cursor: ew-resize;
 
@@ -223,7 +223,7 @@ a:-webkit-any-link {
   width: 100%;
   z-index: 100000;
 }
-.ace_scrollbar-v {
+.ace_scrollbar-v {      /*make minimap vertical scrollbar a bit less wide*/
   width: 5px;
 }
 
