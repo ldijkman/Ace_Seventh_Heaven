@@ -26,15 +26,15 @@ Ace Diff: https://ldijkman.github.io/Ace_Seventh_Heaven/Ace-Diff.html
 
 
 
-<p align="center">
 
 
-A penny for sharing my thoughts
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCn5P8yE7Nd7QBcKb9-JZbMWKPSwYT1weQpaY2tJaE9WUFU8bqQwYyLXvthWWqD4wZ_6s&usqp=CAU">
+<p align="center">A penny for sharing my thoughts</p>
 
-Http://paypal.me/LDijkman
+<p align="center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCn5P8yE7Nd7QBcKb9-JZbMWKPSwYT1weQpaY2tJaE9WUFU8bqQwYyLXvthWWqD4wZ_6s&usqp=CAU"></p>
+
+<p align="center">Http://paypal.me/LDijkman</p>
+
   
 
-</p>
 
