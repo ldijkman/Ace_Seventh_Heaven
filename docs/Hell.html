@@ -2986,6 +2986,7 @@ editor.session.on("changeScrollTop", function() {
 })
 
 
+
 // on change main big editor change content minimap editor 5 sec delay of no change
 editor.getSession().on('change', function () {
 
@@ -3001,7 +3002,13 @@ editor.getSession().on('change', function () {
     ace.edit("editor").renderer.$cursorLayer.showCursor();
 //$('.ace_scrollbar.ace_scrollbar-v').style.display = "none";
 //$(".ace_scrollbar.ace_scrollbar-v").eq(1).setAttribute('style', 'overscroll:hidden;');
+
+
+
+
 });
+
+
 
 
 
@@ -3191,11 +3198,21 @@ function map_range(value, low1, high1, low2, high2) {
     return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
 }
 
-
+// https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
+function css(element, style) {
+    for (const property in style)
+        element.style[property] = style[property];
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-   editor.find("function");
-
+    editor.find("function");
+    // https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
+    const note = document.querySelector('.ace_scrollbar.ace_scrollbar-v');
+    css(note, {
+      'background-color': 'yellow',
+      color: 'red',
+      display:'none'
+    });
 
 });
   
