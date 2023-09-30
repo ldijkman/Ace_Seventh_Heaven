@@ -1,7 +1,7 @@
 <!--
        Heaven or Hell, That is the Question
 
-i think the editor is now more like  (could be made) plugin like, in the editor
+i think the minimapeditor is now more like  (could be made) plugin like, in the editor
     // test maybe better for plugin alike code
     editor.container.insertAdjacentHTML("beforeend", "<div id=\"minimapeditor\" class=\"minimapeditor\" onmouseover=\'ace.edit(\"minimapeditor\").focus();\'></div>")
 
@@ -2993,8 +2993,8 @@ editor.getSession().on('change', function () {
 
     ace.edit("editor").focus(); // To focus the ace editor
     ace.edit("editor").renderer.$cursorLayer.showCursor();
- $('.ace_scrollbar-v').style.display = "none";
-
+//$('.ace_scrollbar.ace_scrollbar-v').style.display = "none";
+//$(".ace_scrollbar.ace_scrollbar-v").eq(1).setAttribute('style', 'overscroll:hidden;');
 });
 
 
