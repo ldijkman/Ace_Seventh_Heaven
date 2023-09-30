@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ace-diff - Demo #1</title>
+  <!-- Include Ace editor first -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+  <!-- Include Ace-diff JS and CSS (using unpkg.com CDN in this case) -->
+  <script src="https://unpkg.com/ace-diff@^2"></script>
+  <link href="https://unpkg.com/ace-diff@^2/dist/ace-diff.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Element we will use to render the Ace-diff -->
+  <div class="custom"></div>
+
+  <script>
+    var aceDiffer = new AceDiff({
+      element: '.custom',
+      left: {
+        content: `left`,
+      },
+      right: {
+        content: `right`,
+      },
+    });
+  </script>
+</body>
+</html>
