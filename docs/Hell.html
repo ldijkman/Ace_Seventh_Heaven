@@ -358,7 +358,9 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
       width:100%;
       z-index:100000;
     }
-
+.ace_scrollbar-v{
+  width:5px;
+}
 </style>
   
 
@@ -3168,14 +3170,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const note = document.querySelector('.ace_scrollbar.ace_scrollbar-v');
     css(note, {
       //'background-color': 'yellow',
-      // color: 'red',
+      //width: '10px',
       overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     });                      // but live the minimap vertical scrollbar intact  
 
     const notetwo = document.querySelectorAll('.ace_scrollbar.ace_scrollbar-v')[1];
     css(notetwo, {
-      'background-color': '',
-       color: 'red'             // i do not know maybe make scrollbar slider guide transparent
+       width: '8px'
+      //'background-color': '',
+      // color: 'red'             // i do not know maybe make scrollbar slider guide transparent
       //overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     }); 
 
