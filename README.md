@@ -19,11 +19,22 @@ Ace Diff: https://ldijkman.github.io/Ace_Seventh_Heaven/Ace-Diff.html
 
 ![Ace_Editor_Seventh_Heaven](https://github.com/ldijkman/Ace_Seventh_Heaven/assets/45427770/5177ca3b-b75e-464c-a003-c50e455db494)
 
-<center>
+
+
+
+
+
+
+
+<p align="center">
+
+
 A penny for sharing my thoughts
 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCn5P8yE7Nd7QBcKb9-JZbMWKPSwYT1weQpaY2tJaE9WUFU8bqQwYyLXvthWWqD4wZ_6s&usqp=CAU">
 
 Http://paypal.me/LDijkman
   
-</center>
+
+</p>
+
