@@ -58,29 +58,26 @@ window.onbeforeunload = function() {
 
 	<style type="text/css" media="screen">
 
-
-    body {
+body {
   color-scheme:  dark;
   background-color:black;
   overscroll-behavior: none;
-  	overflow: hidden;
+  overflow: hidden;
 }
 
-
 #editor {
-    /* Initially, the left takes 3/4 width */
     width: 80%;
     height: 100%;
-    /* Misc */
-    
     display: flex;
  }
 
+ .ace_editor .ace_marker-layer .ace_selection{ 
+   background-color:orange; 
+}
 
- .ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }
-
- .ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }
-
+ .ace_editor .ace_marker-layer .ace_selected-word{ 
+   background-color:orange; 
+}
 
 .ace_scrollbar-h {  /*  */
 	width: 100%;
@@ -131,7 +128,7 @@ window.onbeforeunload = function() {
 }
 
 .ace_search  {
-  position:absolute;
+    position:absolute;
     border-radius: 4px 4px 4px 5px;
     border-right: 0 none;
     right:auto;
@@ -141,7 +138,7 @@ window.onbeforeunload = function() {
     color:lightgray;
 }
 .ace_search.right {
-  position:absolute;
+    position:absolute;
     border-radius: 4px 4px 4px 5px;
     border-right: 0 none;
     left:5%;
@@ -157,9 +154,7 @@ window.onbeforeunload = function() {
     color: lightgray;
 }
 
-
-
-   #minimapeditor {
+#minimapeditor {
     position:absolute;
     right:38px;
     top:0;
@@ -178,20 +173,10 @@ window.onbeforeunload = function() {
     display: none;
 }
 
-
-
-
-
-
-
 a:-webkit-any-link {
     color: lightgray;
     cursor: pointer;
     text-decoration: underline;
-}
-
-#minimapeditor .ace_active-line{
- 
 }
 
 .ace_link_marker {
@@ -224,35 +209,24 @@ a:-webkit-any-link {
 .ace_search.ace_searchbtn_close{
   background-color:red;
 }
-
-#minimapeditor .ace_scrollbar-v {   
-}
     
-    
-    /*https://phuoc.ng/collection/html-dom/create-resizable-split-views/*/
 body{
      width: 100%;
     height: 100%;
 }
 .container {
   position:absolute;
-   display: flex;
-    top:5%;
-    width: 100%;
-    height: 95%;
-    /* Misc */
-    border: 1px solid #cbd5e0;  
-
+  display: flex;
+  top:5%;
+  width: 100%;
+  height: 95%;
+  border: 1px solid #cbd5e0;  
 }
 .container__left {
-    /* Initially, the left takes 3/4 width */
-    width: 80%;
+  /* Initially, the left takes 3/4 width */
+  width: 80%;
   height: 100%;
-    /* Misc */
-    
-   display: flex;
-    
-
+  display: flex;
 }
 .resizer {
     background-color: #DBA9B3 ;
@@ -265,16 +239,9 @@ body{
     /* Take the remaining width */
     flex: 1;
     width:100%;
-  height:100%;
-    /* Misc */
-    
-    display: flex;
-    
+    height:100%;
+    display: flex; 
 }
- /*
-https://github.com/ukandrewc/Ace-Scrollbars/tree/master
-*/
-
 
 .ace_scrollbar-h {  /*  */
 	width: 100%;
@@ -314,50 +281,28 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 	height: 2px;
 	background: cornflowerblue
 }   
-        #preview {
-      /**/
+
+#preview {
       /* Take the remaining width */
       flex: 1;
       height: 100%;
       display: flex;
-    }
+}
 
-    #preview iframe {
+#preview iframe {
       width: 100%;
       height: 100%;
       border: none;
       overflow: hidden;
-    }
+}
 
-    #status {
+#status {
       position:absolute;
       padding: 0px 0;
       height: 55px;
       width:100%;
       z-index:100000;
-    }
-        #preview {
-      /**/
-      /* Take the remaining width */
-      flex: 1;
-      height: 100%;
-      display: flex;
-    }
-
-    #preview iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      overflow: hidden;
-    }
-
-    #status {
-      position:absolute;
-      padding: 0px 0;
-      height: 55px;
-      width:100%;
-      z-index:100000;
-    }
+}
 .ace_scrollbar-v{
   width:5px;
 }
