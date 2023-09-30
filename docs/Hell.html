@@ -67,17 +67,13 @@ window.onbeforeunload = function() {
 }
 
 
-		#editor {
-         /* Initially, the left takes 3/4 width */
+#editor {
+    /* Initially, the left takes 3/4 width */
     width: 80%;
-  height: 100%;
+    height: 100%;
     /* Misc */
     
-   display: flex;
-			pposition: relative; 
-			ptop: 0%;
-    pwidth: 100%;
-    pheight: 94%;
+    display: flex;
  }
 
 
@@ -86,16 +82,10 @@ window.onbeforeunload = function() {
  .ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }
 
 
-
-
-
-
-#editor .ace_scrollbar-v {  /* hide vertical scrollbar */
-	ooverflow: hidden;
-}
 .ace_scrollbar-h {  /*  */
 	width: 100%;
 }
+
 .ace_scroll-v {
 	z-index: 1000;
 	position: absolute;
@@ -110,21 +100,7 @@ window.onbeforeunload = function() {
 .ace_thumb-v {
 	background: lightgray;
 }
-/*
-.ace_scroll-h {
-	z-index: 1000;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	height: 12px;
-	background: yellow
-}
 
-.ace_thumb-h {
-	background: lightgray
-}
-*/
 .ace_map-row {
 	z-index: 1001; 
 	position: absolute;
@@ -215,8 +191,9 @@ a:-webkit-any-link {
 }
 
 #minimapeditor .ace_active-line{
- // oooooopacity:60%;
+ 
 }
+
 .ace_link_marker {
       position: absolute;
       border-bottom: 5px solid red;
@@ -247,8 +224,8 @@ a:-webkit-any-link {
 .ace_search.ace_searchbtn_close{
   background-color:red;
 }
-#minimapeditor .ace_scrollbar-v {
-    
+
+#minimapeditor .ace_scrollbar-v {   
 }
     
     
@@ -299,9 +276,6 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 */
 
 
-.ace_scrollbar-v {  /* hide vertical scrollbar */
-	ooverflow: hidden;
-}
 .ace_scrollbar-h {  /*  */
 	width: 100%;
 }
@@ -319,21 +293,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 .ace_thumb-v {
 	background: darkgray;
 }
-/*
-.ace_scroll-h {
-	z-index: 1000;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	height: 12px;
-	background: yellow 
-}
 
-.ace_thumb-h {
-	background: lightgray
-}
-*/
 .ace_map-row {
 	z-index: 1001;
 	position: absolute;
@@ -398,9 +358,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
       width:100%;
       z-index:100000;
     }
-    .ace_scrollbar-v{
-      display:block;
-    } 
+
 </style>
   
 
@@ -3213,6 +3171,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // color: 'red',
       overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     });                      // but live the minimap vertical scrollbar intact  
+
+    const notetwo = document.querySelectorAll('.ace_scrollbar.ace_scrollbar-v')[1];
+    css(notetwo, {
+      'background-color': '',
+       color: 'red'             // i do not know maybe make scrollbar slider guide transparent
+      //overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
+    }); 
 
 });
   
