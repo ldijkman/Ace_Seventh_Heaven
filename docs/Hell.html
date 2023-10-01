@@ -60,11 +60,25 @@ body {
   background-color: orange;
 }
 
+#minimapeditor {                   /*minimap*/
+  position: absolute;
+  right: 32px;
+  top: 0%;
+  width: 125px;
+  height: 98.5%;
+  background-color: ;
+  border: 1px solid gray;
+}
+
+#minimapeditor .ace_scrollbar-h {   /*do not show horizontal scrollbar on minmap*/
+  display: none;
+}
+
 .ace_scrollbar-h {               /*editor horizontal scrollbar*/
   width: 100%;
 }
 
-.ace_scroll-v {                   /*custom vertical scrollbar gray viewport handle*/       
+.ace_scroll-v {                   /*custom vertical scrollbar guide rail*/       
   z-index: 1000;
   position: absolute;
   top: 0;
@@ -72,11 +86,10 @@ body {
   bottom: 12px;
   width: 30px;
   border: 1px solid gray;
-  //background: #D2CECE;
 }
 
 .ace_thumb-v {
-  background: lightgray;
+  background: lightgray;         /*draghandle custom vertical scrollbar*/
 }
 
 .ace_map-row {                  /*custom vertical scrollbar active cursor line*/
@@ -106,19 +119,9 @@ body {
   opacity: 50%;
 }
 
-.ace_search {                      /*find search popup box*/
-  border-radius: 8px 8px 8px 8px;
-  border-right: 0 none;
-  right: auto;
-  cursor: move;
-  color-scheme: dark;
-  background-color: #444444;
-  color: lightgray;
-}
-
 .ace_search.right {                      /*find search popup box*/
   position: absolute;
-  border-radius: 4px 4px 4px 5px;
+  border-radius: 8px 8px 8px 8px;
   border-right: 0 none;
   left: 5%;
   top: 2%;
@@ -130,25 +133,11 @@ body {
   color: lightgray;
 }
 
-.ace_button {
+.ace_button {              /* change color search*/
   color: lightgray;
 }
 
-#minimapeditor {
-  position: absolute;
-  right: 32px;
-  top: 0%;
-  width: 125px;
-  height: 98.5%;
-  background-color: ;
-  border: 1px solid gray;
-}
-
-#minimapeditor .ace_scrollbar-h {   /*do not show horizontal scrollbar on minmap*/
-  display: none;
-}
-
-a:-webkit-any-link {
+a:-webkit-any-link {              /* change color link in topmenu*/
   color: lightgray;
   cursor: pointer;
   text-decoration: underline;
@@ -162,41 +151,33 @@ a:-webkit-any-link {
   height: 95%;
   border: 1px solid #cbd5e0;
 }
-.container__left {
-  /* Initially, the left takes 3/4 width */
-  width: 80%;
-  height: 100%;
-  display: flex;
-}
-.resizer {                   /*drag handle between left and right window*/
-  background-color: #dba9b3;
-  cursor: ew-resize;
 
-  width: 6px;
+.resizer {                    /*drag handle between left and right window*/
+  background-color: #dba9b3;
+  width: 5px;
+  cursor: ew-resize;
 }
 .container__right {
-  /* Take the remaining width */
-  flex: 1;
+  flex: 1;                    /* Take the remaining width */
   width: 100%;
   height: 100%;
   display: flex;
 }
 
 #preview {
-  /* Take the remaining width */
-  flex: 1;
+  flex: 1;                    /* Take the remaining width */
   height: 100%;
   display: flex;
 }
 
-#preview iframe {
+#preview iframe {             /*html preview iframe*/
   width: 100%;
   height: 100%;
   border: none;
   overflow: hidden;
 }
 
-#status {
+#status {                     /*not visible*/
   position: absolute;
   padding: 0px 0;
   height: 55px;
@@ -204,7 +185,7 @@ a:-webkit-any-link {
   z-index: 100000;
 }
 .ace_scrollbar-v {      /*make minimap vertical scrollbar a bit less wide*/
-  width: 5px;
+  width: 6px;
 }
 
 </style>
