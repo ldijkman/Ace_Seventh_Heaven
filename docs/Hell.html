@@ -193,7 +193,8 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 
 .blue {
   position: absolute;
-  background-color: rgba(255,0,255,0.30) ;
+  bbackground-color: rgba(255,0,255,0.10) ;
+  border: 1px solid yellow;
   z-index:100;
 }
 
@@ -3052,14 +3053,10 @@ function doiteverysecond () {
   // get editor find search text
 var text=document.querySelector(".ace_search_field").value;
   //console.log("search",text);
-const prevMarkers = editor.session.getMarkers();
-if (prevMarkers) {
-  const prevMarkersArr = Object.keys(prevMarkers);
-  for (let item of prevMarkersArr) {
-    editor.session.removeMarker(prevMarkers[item].id);
-    minimapeditor.session.removeMarker(prevMarkers[item].id);
-  }
-}
+
+ editor.session.removeMarker(marker);
+ minimapeditor.session.removeMarker(markers);
+
 
   //minimapeditor.find(text);
   //https://codepen.io/ldijkman/pen/gOZjGVL
@@ -3079,10 +3076,8 @@ if (prevMarkers) {
             var end=editor.getSelection().ranges[i].end.column;
   
             var marker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
-            var marker=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
-            var markers=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
             var markers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
-   } 
+             } 
 }
 
  setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
