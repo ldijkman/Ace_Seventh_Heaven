@@ -3047,15 +3047,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
   
-
-
+var mmarker;
+var mmarkers;
 function doiteverysecond () {
   // get editor find search text
 var text=document.querySelector(".ace_search_field").value;
   //console.log("search",text);
 
- editor.session.removeMarker(marker);
- minimapeditor.session.removeMarker(markers);
+ editor.session.removeMarker(mmarker);
+ minimapeditor.session.removeMarker(mmarkers);
 
 
   //minimapeditor.find(text);
@@ -3075,8 +3075,8 @@ var text=document.querySelector(".ace_search_field").value;
             var start=editor.getSelection().ranges[i].start.column;
             var end=editor.getSelection().ranges[i].end.column;
   
-            var marker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
-            var markers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
+            mmarker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
+            mmarkers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
              } 
 }
 
