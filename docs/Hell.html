@@ -3038,26 +3038,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     }); 
 
-          var range=editor.findAll('<br>');
-         
-          console.log("findall <br>  found: ",range)
-          var selectarray=editor.getSelection().getAllRanges();
-          console.log("editor.getSelection().getAllRanges()",selectarray);
-  
-console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
 
-     
-     
-      for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
-            //console.log("editor.selection.getRange()",editor.getRange(i));
-
-     
-  
-            var marker=editor.session.addMarker(new Range(14,1,14,17), "blue", "text");    
-            var marker=minimapeditor.session.addMarker(new Range(14,1,14,17), "blue", "text"); 
-              var markers=editor.session.addMarker(new Range(31,1,31,27), "blue", "text");    
-            var markers=minimapeditor.session.addMarker(new Range(31,1,31,27), "blue", "text"); 
-   } 
 
    
 
@@ -3071,8 +3052,37 @@ function doiteverysecond () {
   // get editor find search text
 var text=document.querySelector(".ace_search_field").value;
   //console.log("search",text);
+const prevMarkers = editor.session.getMarkers();
+if (prevMarkers) {
+  const prevMarkersArr = Object.keys(prevMarkers);
+  for (let item of prevMarkersArr) {
+    editor.session.removeMarker(prevMarkers[item].id);
+    minimapeditor.session.removeMarker(prevMarkers[item].id);
+  }
+}
+
   //minimapeditor.find(text);
   //https://codepen.io/ldijkman/pen/gOZjGVL
+            var range=editor.findAll(text);
+         
+          console.log("findall <br>  found: ",range)
+          //var selectarray=editor.getSelection().getAllRanges();
+          //console.log("editor.getSelection().getAllRanges()",selectarray);
+            //console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
+      for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
+
+           // console.log("line",editor.getSelection().ranges[i].start.row);
+           // console.log("start",editor.getSelection().ranges[i].start.column);
+           // console.log("end",editor.getSelection().ranges[i].end.column);
+            var line=editor.getSelection().ranges[i].start.row;
+            var start=editor.getSelection().ranges[i].start.column;
+            var end=editor.getSelection().ranges[i].end.column;
+  
+            var marker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
+            var marker=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
+            var markers=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
+            var markers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
+   } 
 }
 
  setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
