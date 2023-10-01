@@ -2964,9 +2964,17 @@ function myFunction(){
 myFunction();
 
 var timeout;
+var marker;
+var markers;
+$('.ace_search_field').on('keydown', function(e){
 
-$('#search-form .search-terms').on('keydown', function(e){
-  /*  // get keycode of current keypress event
+   setTimeout(markit, 2000);
+ 
+
+});
+
+function markit() {
+ /*  // get keycode of current keypress event
     var code = (e.keyCode || e.which);
 
     // do nothing if it's an arrow key
@@ -2977,7 +2985,41 @@ $('#search-form .search-terms').on('keydown', function(e){
     // do normal behaviour for any other key
     $('#search-items #autocom').fadeIn();
     */
-});
+ // get editor find search text
+var text=document.querySelector(".ace_search_field").value;
+  //console.log("search",text);
+
+ editor.session.removeMarker(marker);
+ minimapeditor.session.removeMarker(markers);
+
+
+  //minimapeditor.find(text);
+  //https://codepen.io/ldijkman/pen/gOZjGVL
+            var range=editor.findAll(text);
+         
+          console.log("findall <br>  found: ",range)
+          //var selectarray=editor.getSelection().getAllRanges();
+          //console.log("editor.getSelection().getAllRanges()",selectarray);
+            //console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
+      for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
+
+           // console.log("line",editor.getSelection().ranges[i].start.row);
+           // console.log("start",editor.getSelection().ranges[i].start.column);
+           // console.log("end",editor.getSelection().ranges[i].end.column);
+            var line=editor.getSelection().ranges[i].start.row;
+            var start=editor.getSelection().ranges[i].start.column;
+            var end=editor.getSelection().ranges[i].end.column;
+  
+            marker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
+            markers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
+      } 
+
+
+
+}
+
+
+
 
 $("#editor").on('keyup', function(e) {
  
@@ -3047,37 +3089,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
   
-var mmarker;
-var mmarkers;
+
 function doiteverysecond () {
-  // get editor find search text
-var text=document.querySelector(".ace_search_field").value;
-  //console.log("search",text);
-
- editor.session.removeMarker(mmarker);
- minimapeditor.session.removeMarker(mmarkers);
-
-
-  //minimapeditor.find(text);
-  //https://codepen.io/ldijkman/pen/gOZjGVL
-            var range=editor.findAll(text);
-         
-          console.log("findall <br>  found: ",range)
-          //var selectarray=editor.getSelection().getAllRanges();
-          //console.log("editor.getSelection().getAllRanges()",selectarray);
-            //console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
-      for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
-
-           // console.log("line",editor.getSelection().ranges[i].start.row);
-           // console.log("start",editor.getSelection().ranges[i].start.column);
-           // console.log("end",editor.getSelection().ranges[i].end.column);
-            var line=editor.getSelection().ranges[i].start.row;
-            var start=editor.getSelection().ranges[i].start.column;
-            var end=editor.getSelection().ranges[i].end.column;
-  
-            mmarker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
-            mmarkers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
-             } 
+ 
 }
 
  setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
