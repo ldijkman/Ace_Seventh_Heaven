@@ -193,7 +193,8 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 
 .blue {
   position: absolute;
-  background-color: rgba(255,0,255,0.50) ;
+  background-color: rgba(255,0,255,0.30) ;
+  z-index:100;
 }
 
 </style>
@@ -342,6 +343,8 @@ No M$, This is The Editor of the Web.
   Demo: https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
   Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
   BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
+
+the pink is a narker test 
 
   Demo JumpScroll: https://plnkr.co/edit/Digj5Fw7D6hxaTU4?preview
 
@@ -3040,13 +3043,18 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("findall <br>  found: ",range)
           var selectarray=editor.getSelection().getAllRanges();
           console.log("editor.getSelection().getAllRanges()",selectarray);
-console.log("editor.getSelection().getLineRange()",editor.getSelection().getLineRange());
-   
+  
 console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
 
+     
+     
       for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
-  var marker=editor.session.addMarker(new Range(2,12,2,17), "blue", "text");    
-  var marker=minimapeditor.session.addMarker(new Range(2,12,2,17), "blue", "text"); 
+            //console.log("editor.selection.getRange()",editor.getRange(i));
+
+     
+  
+            var marker=editor.session.addMarker(new Range(14,1,14,17), "blue", "text");    
+            var marker=minimapeditor.session.addMarker(new Range(14,1,14,17), "blue", "text"); 
      } 
 
    
