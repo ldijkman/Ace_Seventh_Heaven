@@ -345,7 +345,7 @@ No M$, This is The Editor of the Web.
       a search result marked selection 
          is not cleared by a mouse click on editor
    i need that
-      maybe https://codepen.io/ldijkman/pen/gOZjGVL
+      maybe https://plnkr.co/edit/mk9gQQ5bGFumm9ar?open=lib%2Fscript.js&preview  
    
    why is there not a single working Ace demo with Emmet
 ???
@@ -3043,6 +3043,50 @@ var text=document.querySelector(".ace_search_field").value;
 }
 
  setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
+
+
+
+
+define("DynHighlightRules", [], function(require, exports, module) {
+"use strict";
+
+var oop = require("ace/lib/oop");
+
+var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
+var HtmlHighlightRules = require("ace/mode/html_highlight_rules").HtmlHighlightRules;
+
+
+var DynHighlightRules = function() {
+   this.setKeywords = function(kwMap) {     
+       this.keywordRule.onMatch = this.createKeywordMapper(kwMap, "identifier")
+   }
+   this.keywordRule = {
+       regex : "\\w+",
+       onMatch : function() {return "text"}
+   }
+     
+   this.$rules = {
+        "start" : [ 
+            {
+                token: "string",
+                start: '"', 
+                end: '"',
+                next: [{ token : "constant.language.escape.lsl", regex : /\\[tn"\\]/}]
+            },
+            this.keywordRule
+        ]
+   };
+   this.normalizeRules()
+};
+
+oop.inherits(DynHighlightRules, TextHighlightRules);
+//oop.inherits(DynHighlightRules, HtmlHighlightRules);
+
+exports.DynHighlightRules = DynHighlightRules;
+
+});
+
+
 
 
 
