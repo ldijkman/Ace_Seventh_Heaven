@@ -381,6 +381,7 @@ No M$, This is The Editor of the Web.
       a search result marked selection 
          is not cleared by a mouse click on editor
    i need that
+      maybe https://codepen.io/ldijkman/pen/gOZjGVL
    
    why is there not a single working Ace demo with Emmet
 ???
@@ -3055,8 +3056,24 @@ document.addEventListener("DOMContentLoaded", () => {
       //overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     }); 
 
+       
+
 });
   
+
+
+function doiteverysecond () {
+  // get editor find search text
+var text=document.querySelector(".ace_search_field").value;
+  //console.log("search",text);
+  //minimapeditor.find(text);
+  //https://codepen.io/ldijkman/pen/gOZjGVL
+}
+
+ setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
+
+
+
 </script>
 
 
