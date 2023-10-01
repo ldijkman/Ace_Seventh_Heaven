@@ -191,6 +191,11 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   width: 6px;
 }
 
+.blue {
+  position: absolute;
+  background-color: rgba(255,0,255,0.50) ;
+}
+
 </style>
   
 
@@ -304,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <option value="c_cpp">C and C++</option>
           </select>
 &nbsp;
-<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme"><optgroup label="Bright"><option value="ace/theme/chrome">Chrome</option><option value="ace/theme/clouds">Clouds</option><option value="ace/theme/crimson_editor">Crimson Editor</option><option value="ace/theme/dawn">Dawn</option><option value="ace/theme/dreamweaver">Dreamweaver</option><option value="ace/theme/eclipse">Eclipse</option><option value="ace/theme/github">GitHub</option><option value="ace/theme/iplastic">IPlastic</option><option value="ace/theme/solarized_light">Solarized Light</option><option value="ace/theme/textmate">TextMate</option><option value="ace/theme/tomorrow">Tomorrow</option><option value="ace/theme/xcode">XCode</option><option value="ace/theme/kuroir">Kuroir</option><option value="ace/theme/katzenmilch">KatzenMilch</option><option value="ace/theme/sqlserver">SQL Server</option></optgroup><optgroup label="Dark"><option value="ace/theme/ambiance">Ambiance</option><option value="ace/theme/chaos">Chaos</option><option value="ace/theme/clouds_midnight">Clouds Midnight</option><option value="ace/theme/dracula">Dracula</option><option value="ace/theme/cobalt">Cobalt</option><option value="ace/theme/gruvbox">Gruvbox</option><option value="ace/theme/gob">Green on Black</option><option value="ace/theme/idle_fingers">idle Fingers</option><option value="ace/theme/kr_theme">krTheme</option><option value="ace/theme/merbivore">Merbivore</option><option value="ace/theme/merbivore_soft">Merbivore Soft</option><option value="ace/theme/mono_industrial">Mono Industrial</option><option value="ace/theme/monokai">Monokai</option><option value="ace/theme/nord_dark">Nord Dark</option><option value="ace/theme/one_dark">One Dark</option><option value="ace/theme/pastel_on_dark">Pastel on dark</option><option value="ace/theme/solarized_dark">Solarized Dark</option><option value="ace/theme/terminal">Terminal</option><option value="ace/theme/tomorrow_night">Tomorrow Night</option><option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option><option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option><option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option><option value="ace/theme/twilight">Twilight</option><option value="ace/theme/vibrant_ink" selected>Vibrant Ink</option></optgroup><option value="github_dark">GitHub Dark</option></select>
+<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme"><optgroup label="Bright"><option value="ace/theme/chrome">Chrome</option><option value="ace/theme/clouds">Clouds</option><option value="ace/theme/crimson_editor">Crimson Editor</option><option value="ace/theme/dawn">Dawn</option><option value="ace/theme/dreamweaver">Dreamweaver</option><option value="ace/theme/eclipse">Eclipse</option><option value="ace/theme/github">GitHub</option><option value="ace/theme/iplastic">IPlastic</option><option value="ace/theme/solarized_light">Solarized Light</option><option value="ace/theme/textmate">TextMate</option><option value="ace/theme/tomorrow">Tomorrow</option><option value="ace/theme/xcode">XCode</option><option value="ace/theme/kuroir">Kuroir</option><option value="ace/theme/katzenmilch">KatzenMilch</option><option value="ace/theme/sqlserver">SQL Server</option></optgroup><optgroup label="Dark"><option value="ace/theme/ambiance">Ambiance</option><option value="ace/theme/chaos">Chaos</option><option value="ace/theme/clouds_midnight">Clouds Midnight</option><option value="ace/theme/dracula">Dracula</option><option value="ace/theme/cobalt">Cobalt</option><option value="ace/theme/gruvbox">Gruvbox</option><option value="ace/theme/gob">Green on Black</option><option value="ace/theme/idle_fingers">idle Fingers</option><option value="ace/theme/kr_theme">krTheme</option><option value="ace/theme/merbivore">Merbivore</option><option value="ace/theme/merbivore_soft">Merbivore Soft</option><option value="ace/theme/mono_industrial">Mono Industrial</option><option value="ace/theme/monokai">Monokai</option><option value="ace/theme/nord_dark">Nord Dark</option><option value="ace/theme/one_dark">One Dark</option><option value="ace/theme/pastel_on_dark">Pastel on dark</option><option value="ace/theme/solarized_dark">Solarized Dark</option><option value="ace/theme/terminal">Terminal</option><option value="ace/theme/tomorrow_night">Tomorrow Night</option><option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option><option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option><option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option><option value="ace/theme/twilight">Twilight</option><option value="ace/theme/vibrant_ink" selected>Vibrant Ink</option></optgroup></select>
 &nbsp;
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())-.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize -">-</button>
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize">
@@ -2673,7 +2678,8 @@ Time_out_delay = setTimeout(function(){
 
 
 		new AceScrollbars(editor);
-
+/*
+// i think next is not used
 		function indentCode() {
 			let p = editor.selection.getCursor()
 			beauty.beautify(editor.session)
@@ -2695,7 +2701,8 @@ Time_out_delay = setTimeout(function(){
 		function getSource() {
 			name = editor.getValue()
 		}
-
+*/
+// i think aboee is not used
    // const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css;
    // addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }");
 
@@ -3028,7 +3035,23 @@ document.addEventListener("DOMContentLoaded", () => {
       //overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     }); 
 
-       
+          var range=editor.findAll('<br>');
+         
+          console.log("findall <br>  found: ",range)
+          var selectarray=editor.getSelection().getAllRanges();
+          console.log("editor.getSelection().getAllRanges()",selectarray);
+console.log("editor.getSelection().getLineRange()",editor.getSelection().getLineRange());
+   
+console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
+
+      for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
+  var marker=editor.session.addMarker(new Range(2,12,2,17), "blue", "text");    
+  var marker=minimapeditor.session.addMarker(new Range(2,12,2,17), "blue", "text"); 
+     } 
+
+   
+
+        
 
 });
   
@@ -3047,44 +3070,7 @@ var text=document.querySelector(".ace_search_field").value;
 
 
 
-define("DynHighlightRules", [], function(require, exports, module) {
-"use strict";
 
-var oop = require("ace/lib/oop");
-
-var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
-var HtmlHighlightRules = require("ace/mode/html_highlight_rules").HtmlHighlightRules;
-
-
-var DynHighlightRules = function() {
-   this.setKeywords = function(kwMap) {     
-       this.keywordRule.onMatch = this.createKeywordMapper(kwMap, "identifier")
-   }
-   this.keywordRule = {
-       regex : "\\w+",
-       onMatch : function() {return "text"}
-   }
-     
-   this.$rules = {
-        "start" : [ 
-            {
-                token: "string",
-                start: '"', 
-                end: '"',
-                next: [{ token : "constant.language.escape.lsl", regex : /\\[tn"\\]/}]
-            },
-            this.keywordRule
-        ]
-   };
-   this.normalizeRules()
-};
-
-oop.inherits(DynHighlightRules, TextHighlightRules);
-//oop.inherits(DynHighlightRules, HtmlHighlightRules);
-
-exports.DynHighlightRules = DynHighlightRules;
-
-});
 
 
 
