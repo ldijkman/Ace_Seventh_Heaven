@@ -344,7 +344,7 @@ No M$, This is The Editor of the Web.
   Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
   BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
 
-the pink is a narker test 
+the pink is a marker test for editor and minimap  
 
   Demo JumpScroll: https://plnkr.co/edit/Digj5Fw7D6hxaTU4?preview
 
@@ -3055,7 +3055,9 @@ console.log("editor.getSelection().getAllRanges().length",editor.getSelection().
   
             var marker=editor.session.addMarker(new Range(14,1,14,17), "blue", "text");    
             var marker=minimapeditor.session.addMarker(new Range(14,1,14,17), "blue", "text"); 
-     } 
+              var markers=editor.session.addMarker(new Range(31,1,31,27), "blue", "text");    
+            var markers=minimapeditor.session.addMarker(new Range(31,1,31,27), "blue", "text"); 
+   } 
 
    
 
