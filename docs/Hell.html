@@ -3039,8 +3039,8 @@ var text=document.querySelector(".ace_search_field").value;
 
   //minimapeditor.find(text);
   //https://codepen.io/ldijkman/pen/gOZjGVL
-            var range=editor.findAll(text);
-            minimapeditor.findAll(text);
+            var range=editor.find(text);  // findAll finds more but clears the custom scrollbar 
+            minimapeditor.find(text); // findAll finds more but clears the custom scrollbar 
          
           console.log("findall : ",range)
           //var selectarray=editor.getSelection().getAllRanges();
