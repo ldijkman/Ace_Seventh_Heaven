@@ -28,6 +28,10 @@ i think the minimapeditor is now more like  (could be made) plugin like, in the 
   if lines are add or removed markers are not correct
 
   but i think the yellow border (darkthemes) on minimap is nicer as how vs monaco does it 
+  make it harder
+    a purple border for bright themes
+    a yellow border for dark themes
+
 ??
 
 -->
@@ -203,10 +207,17 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   width: 6px;
 }
 
-.yellowborder {
+.yellowborder {                            /*for dark themes*/
   position: absolute;
   bbackground-color: rgba(255,0,255,0.10) ;
   border: 2px solid yellow;
+  z-index:100;
+}
+
+.purpleborder {                           /*for bright themes*/
+  position: absolute;
+  bbackground-color: rgba(255,0,255,0.10) ;
+  border: 2px solid purple;
   z-index:100;
 }
 
@@ -323,8 +334,51 @@ document.addEventListener('DOMContentLoaded', function () {
             <option value="c_cpp">C and C++</option>
           </select>
 &nbsp;
-<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme"><optgroup label="Bright"><option value="ace/theme/chrome">Chrome</option><option value="ace/theme/clouds">Clouds</option><option value="ace/theme/crimson_editor">Crimson Editor</option><option value="ace/theme/dawn">Dawn</option><option value="ace/theme/dreamweaver">Dreamweaver</option><option value="ace/theme/eclipse">Eclipse</option><option value="ace/theme/github">GitHub</option><option value="ace/theme/iplastic">IPlastic</option><option value="ace/theme/solarized_light">Solarized Light</option><option value="ace/theme/textmate">TextMate</option><option value="ace/theme/tomorrow">Tomorrow</option><option value="ace/theme/xcode">XCode</option><option value="ace/theme/kuroir">Kuroir</option><option value="ace/theme/katzenmilch">KatzenMilch</option><option value="ace/theme/sqlserver">SQL Server</option></optgroup><optgroup label="Dark"><option value="ace/theme/ambiance">Ambiance</option><option value="ace/theme/chaos">Chaos</option><option value="ace/theme/clouds_midnight">Clouds Midnight</option><option value="ace/theme/dracula">Dracula</option><option value="ace/theme/cobalt">Cobalt</option><option value="ace/theme/gruvbox">Gruvbox</option><option value="ace/theme/gob">Green on Black</option><option value="ace/theme/idle_fingers">idle Fingers</option><option value="ace/theme/kr_theme">krTheme</option><option value="ace/theme/merbivore">Merbivore</option><option value="ace/theme/merbivore_soft">Merbivore Soft</option><option value="ace/theme/mono_industrial">Mono Industrial</option><option value="ace/theme/monokai">Monokai</option><option value="ace/theme/nord_dark">Nord Dark</option><option value="ace/theme/one_dark">One Dark</option><option value="ace/theme/pastel_on_dark">Pastel on dark</option><option value="ace/theme/solarized_dark">Solarized Dark</option><option value="ace/theme/terminal">Terminal</option><option value="ace/theme/tomorrow_night">Tomorrow Night</option><option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option><option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option><option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option><option value="ace/theme/twilight">Twilight</option><option value="ace/theme/vibrant_ink" selected>Vibrant Ink</option></optgroup></select>
-&nbsp;
+<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme">
+  <optgroup label="Bright">
+    <option value="ace/theme/chrome">Chrome</option>
+    <option value="ace/theme/clouds">Clouds</option>
+    <option value="ace/theme/crimson_editor">Crimson Editor</option>
+    <option value="ace/theme/dawn">Dawn</option>
+    <option value="ace/theme/dreamweaver">Dreamweaver</option>
+    <option value="ace/theme/eclipse">Eclipse</option>
+    <option value="ace/theme/github">GitHub</option>
+    <option value="ace/theme/iplastic">IPlastic</option>
+    <option value="ace/theme/solarized_light">Solarized Light</option>
+    <option value="ace/theme/textmate">TextMate</option>
+    <option value="ace/theme/tomorrow">Tomorrow</option>
+    <option value="ace/theme/xcode">XCode</option>
+    <option value="ace/theme/kuroir">Kuroir</option>
+    <option value="ace/theme/katzenmilch">KatzenMilch</option>
+    <option value="ace/theme/sqlserver">SQL Server</option>
+  </optgroup>
+  <optgroup label="Dark">
+    <option value="ace/theme/ambiance">Ambiance</option>
+    <option value="ace/theme/chaos">Chaos</option>
+    <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
+    <option value="ace/theme/dracula">Dracula</option>
+    <option value="ace/theme/cobalt">Cobalt</option>
+    <option value="ace/theme/gruvbox">Gruvbox</option>
+    <option value="ace/theme/gob">Green on Black</option>
+    <option value="ace/theme/idle_fingers">idle Fingers</option>
+    <option value="ace/theme/kr_theme">krTheme</option>
+    <option value="ace/theme/merbivore">Merbivore</option>
+    <option value="ace/theme/merbivore_soft">Merbivore Soft</option>
+    <option value="ace/theme/mono_industrial">Mono Industrial</option>
+    <option value="ace/theme/monokai">Monokai</option>
+    <option value="ace/theme/nord_dark">Nord Dark</option>
+    <option value="ace/theme/one_dark">One Dark</option>
+    <option value="ace/theme/pastel_on_dark">Pastel on dark</option>
+    <option value="ace/theme/solarized_dark">Solarized Dark</option>
+    <option value="ace/theme/terminal">Terminal</option>
+    <option value="ace/theme/tomorrow_night">Tomorrow Night</option>
+    <option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option>
+    <option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option>
+    <option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option>
+    <option value="ace/theme/twilight">Twilight</option>
+    <option value="ace/theme/vibrant_ink" selected>Vibrant Ink</option>
+  </optgroup>
+</select>&nbsp;
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())-.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize -">-</button>
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +">+</button>
@@ -2898,7 +2952,7 @@ console.log("modeName ",modeName.replace("ace/mode/",""));
       e.preventDefault();
       ace.edit("editor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
      ace.edit("minimapeditor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
-
+     
     floatbuttons();
     });
 
@@ -2948,6 +3002,14 @@ $('.ace_search_field').on('keydown', function(e){
 });
 
 function markit() {
+var markercolor;
+    var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
+     console.log("dark or light ",darkorlight);
+     if(darkorlight=="Dark"){
+        markercolor="yellowborder";
+     }else{
+       markercolor="purpleborder";
+     }
  /*  // get keycode of current keypress event
     var code = (e.keyCode || e.which);
 
@@ -2985,8 +3047,8 @@ var text=document.querySelector(".ace_search_field").value;
             var start=editor.getSelection().ranges[i].start.column;
             var end=editor.getSelection().ranges[i].end.column;
   
-            emarker=editor.session.addMarker(new Range(line,start,line,end), "yellowborder", "text");    
-            emarkers=minimapeditor.session.addMarker(new Range(line,start,line,end), "yellowborder", "text"); 
+            emarker=editor.session.addMarker(new Range(line,start,line,end), markercolor, "text");    
+            emarkers=minimapeditor.session.addMarker(new Range(line,start,line,end), markercolor, "text"); 
       } 
 
 
