@@ -16,6 +16,14 @@ i think the minimapeditor is now more like  (could be made) plugin like, in the 
    i need that
  solution:
    https://plnkr.co/edit/mk9gQQ5bGFumm9ar?open=lib%2Fscript.js&preview  
+
+   ok i added yellow border markers to the search
+   but i need to remove the class yellowborder from html 
+   wich is a class css rule style??? 
+   from the marker layer after search to clear the marks
+     <div class="yellowborder ace_start ace_br15" style="height: 23px; width: 96.0312px; top: 437px; left: 184.059px;"></div>
+   search fo yellowborder in this code to see its use
+
 ??
 
 -->
@@ -191,7 +199,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   width: 6px;
 }
 
-.blue {
+.yellowborder {
   position: absolute;
   bbackground-color: rgba(255,0,255,0.10) ;
   border: 1px solid yellow;
@@ -2964,9 +2972,13 @@ function myFunction(){
 myFunction();
 
 var timeout;
-var marker;
-var markers;
+var emarker;
+var emarkers;
 $('.ace_search_field').on('keydown', function(e){
+
+
+//var element = document.querySelector("ace_marker-layer");
+  //element.classList.remove("blue");
 
    setTimeout(markit, 2000);
  
@@ -2989,8 +3001,9 @@ function markit() {
 var text=document.querySelector(".ace_search_field").value;
   //console.log("search",text);
 
- editor.session.removeMarker(marker);
- minimapeditor.session.removeMarker(markers);
+ editor.session.removeMarker(emarker);
+ minimapeditor.session.removeMarker(emarkers);
+
 
 
   //minimapeditor.find(text);
@@ -3010,8 +3023,8 @@ var text=document.querySelector(".ace_search_field").value;
             var start=editor.getSelection().ranges[i].start.column;
             var end=editor.getSelection().ranges[i].end.column;
   
-            marker=editor.session.addMarker(new Range(line,start,line,end), "blue", "text");    
-            markers=minimapeditor.session.addMarker(new Range(line,start,line,end), "blue", "text"); 
+            emarker=editor.session.addMarker(new Range(line,start,line,end), "yellowborder", "text");    
+            emarkers=minimapeditor.session.addMarker(new Range(line,start,line,end), "yellowborder", "text"); 
       } 
 
 
