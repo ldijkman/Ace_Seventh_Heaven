@@ -73,10 +73,12 @@ body {
 
 .ace_editor .ace_marker-layer .ace_selection {
   background-color: orange;
+  border:2px solid yellow;
 }
 
 .ace_editor .ace_marker-layer .ace_selected-word {
   background-color: orange;
+  border:2px solid yellow;
 }
 
 #minimapeditor {                   /*minimap*/
@@ -212,6 +214,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   bbackground-color: rgba(255,0,255,0.10) ;
   border: 2px solid yellow;
   z-index:100;
+  display:block;
 }
 
 .purpleborder {                           /*for bright themes*/
@@ -3002,6 +3005,10 @@ $('.ace_search_field').on('keydown', function(e){
 });
 
 function markit() {
+
+
+
+
 var markercolor;
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("dark or light ",darkorlight);
@@ -3025,19 +3032,21 @@ var markercolor;
 var text=document.querySelector(".ace_search_field").value;
   //console.log("search",text);
 
- editor.session.removeMarker(emarker);
- minimapeditor.session.removeMarker(emarkers);
+ //editor.session.removeMarker(emarker);
+ //minimapeditor.session.removeMarker(emarkers);
 
 
 
   //minimapeditor.find(text);
   //https://codepen.io/ldijkman/pen/gOZjGVL
             var range=editor.findAll(text);
+            minimapeditor.findAll(text);
          
-          console.log("findall <br>  found: ",range)
+          console.log("findall : ",range)
           //var selectarray=editor.getSelection().getAllRanges();
           //console.log("editor.getSelection().getAllRanges()",selectarray);
             //console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
+ /*    
       for (let i = 0; i < editor.getSelection().getAllRanges().length ; i=i+1) {
 
            // console.log("line",editor.getSelection().ranges[i].start.row);
@@ -3051,8 +3060,10 @@ var text=document.querySelector(".ace_search_field").value;
             emarkers=minimapeditor.session.addMarker(new Range(line,start,line,end), markercolor, "text"); 
       } 
 
-
-
+document.querySelectorAll(".yellowborder").forEach(function(el) {
+   el.style.border = "2px solid red";
+});
+ */
 }
 
 
@@ -3128,9 +3139,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 function doiteverysecond () {
- var element = document.session.querySelector("yellowborder");
- element.style.display = 'none';
-//element.classList.remove(yellowborder);
  
 }
 
