@@ -2668,72 +2668,31 @@ editor.session.setMode("ace/mode/html", function() {
 
 // click on URL link in editor
 editor.hoverLink.on("open", function() {
-  // alert("trying to open")
-  console.log("trying to open",editor.hoverLink.link.value);
+      // alert("trying to open")
+      console.log("trying to open",editor.hoverLink.link.value);
 
-  if(editor.hoverLink.isOpen){
-      window.open(editor.hoverLink.link.value);
- }
-  console.log("this.link",editor.hoverLink.isOpen);
+      if(editor.hoverLink.isOpen){
+          window.open(editor.hoverLink.link.value);
+      }
+      console.log("this.link",editor.hoverLink.isOpen);
 })
 
+
 editor.execCommand('find');         // create the search find replace popup
-                                    // https://jqueryui.com/draggable/
-                                    // maybe a little delay before make it draggable
+                                    // maybe a little delay 
+                                    // before make it draggable
                                     // think draggable wants to add code to div class="ace_search"
-Time_out_delay = setTimeout(function(){
-   $( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable
+setTimeout(function(){
+    // https://jqueryui.com/draggable/
+    $( ".ace_search" ).draggable();  // after an edit the search / replace popup is draggable
 }, 250);
 
-// https://jqueryui.com/draggable/
-//$( function() {
-//    $( ".ace_search" ).draggable();
-//} );
+
 
 
 
 
 		new AceScrollbars(editor);
-/*
-// i think next is not used
-		function indentCode() {
-			let p = editor.selection.getCursor()
-			beauty.beautify(editor.session)
-			editor.selection.moveToPosition(p)
-		}
-
-		function loadSource() {
-			editor.setValue(name)
-			beauty.beautify(editor.session)
-			editor.navigateFileStart()
-			editor.focus()
-		}
-
-		function saveSource() {
-			indentCode()
-			getSource()
-		}
-
-		function getSource() {
-			name = editor.getValue()
-		}
-*/
-// i think aboee is not used
-   // const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css;
-   // addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }");
-
-   // const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css;
-   // addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }");
-
-
-
-
-
-
-
-
-
-
 
 
 
