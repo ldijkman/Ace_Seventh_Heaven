@@ -2835,6 +2835,8 @@ editor.on("dblclick", function () {  //select on
         console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
         editor.findAll(editor.getSelectedText().split(/\r?\n/)[0]);
         minimapeditor.findAll(editor.getSelectedText().split(/\r?\n/)[0]);
+
+        document.querySelector(".ace_search_field").value=editor.getSelectedText().split(/\r?\n/)[0]; 
    
     }, 250);
 });
