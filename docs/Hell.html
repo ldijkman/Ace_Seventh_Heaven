@@ -74,11 +74,13 @@ body {
 .ace_editor .ace_marker-layer .ace_selection {
   background-color: orange;
   border:2px solid yellow;
+  z-index:10000;
 }
 
 .ace_editor .ace_marker-layer .ace_selected-word {
   background-color: orange;
   border:2px solid yellow;
+   z-index:10000;
 }
 
 #minimapeditor {                   /*minimap*/
@@ -86,7 +88,7 @@ body {
   right: 32px;
   top: 0%;
   width: 125px;
-  height: 98.5%;
+  height: 100%;
   background-color: ;
   border: 1px solid gray;
 }
@@ -104,7 +106,7 @@ body {
   position: absolute;
   top: 0;
   right: 1px;
-  bottom: 12px;
+  bottom: 10px;
   width: 30px;
   border: 1px solid gray;
 }
@@ -2812,7 +2814,7 @@ minimapeditor.on('mouseup', () => {       // var cursor = minimapeditor.getCurso
 editor.on('mousedown', () => {
      minimapeditor.selection.clearSelection();
      minimapeditor.selection.selectLine();
-});
+   });
 
 var marker; //gray select on minimap
 
@@ -2996,11 +2998,7 @@ var emarker;
 var emarkers;
 $('.ace_search_field').on('keydown', function(e){
 
-
-
-
    setTimeout(markit, 2000);
- 
 
 });
 
@@ -3039,10 +3037,14 @@ var text=document.querySelector(".ace_search_field").value;
 
   //minimapeditor.find(text);
   //https://codepen.io/ldijkman/pen/gOZjGVL
-            var range=editor.find(text);  // findAll finds more but clears the custom scrollbar 
-            minimapeditor.find(text); // findAll finds more but clears the custom scrollbar 
+            //var range= 
+            minimapeditor.findAll(text); // findAll finds more but clears the custom scrollbar 
          
-          console.log("findall : ",range)
+            editor.findAll(text);  // findAll finds more but clears the custom scrollbar 
+           
+           
+           
+          //console.log("findall : ",range)
           //var selectarray=editor.getSelection().getAllRanges();
           //console.log("editor.getSelection().getAllRanges()",selectarray);
             //console.log("editor.getSelection().getAllRanges().length",editor.getSelection().getAllRanges().length);
@@ -3113,6 +3115,7 @@ function css(element, style) {
 
 document.addEventListener("DOMContentLoaded", () => {
     editor.find("function");
+    // minimapeditor.find("function");
     // https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
     const note = document.querySelector('.ace_scrollbar.ace_scrollbar-v');
     css(note, {
@@ -3139,7 +3142,19 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 function doiteverysecond () {
- 
+ console.log("editor.getCopyText() ",editor.getCopyText() );
+
+//console.log("editor.$search ",editor.$search );
+
+    var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
+     console.log("Theme optgroup = ",darkorlight);
+     if(darkorlight=="Dark"){
+        
+     }else{
+       
+     }
+
+
 }
 
  setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
