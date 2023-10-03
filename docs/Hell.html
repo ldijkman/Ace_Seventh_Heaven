@@ -2856,8 +2856,9 @@ editor.session.on("changeScrollTop", function() {
     ace.edit("minimapeditor").moveCursorTo(m);
     ace.edit("minimapeditor").gotoLine(m);
 
- minimapeditor.session.removeMarker(marker);  // grau selection on minimap
+ minimapeditor.session.removeMarker(marker);  // gray selection on minimap
  marker=minimapeditor.session.addMarker(new Range(s, 0, e, 0), "ace_active-line", "fullLine");
+minimapeditor.findAll(editor.getSelectedText().split(/\r?\n/)[0]);
 })
 
 
