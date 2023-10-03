@@ -2821,6 +2821,18 @@ minimapeditor.on('mouseup', () => {       // var cursor = minimapeditor.getCurso
 
 });
 
+
+editor.on("dblclick", function () {  //select on 
+    setTimeout(() => {
+        // could return a string of all sellected words on a newline split into array
+        var selected_word = editor.getCopyText().split(/\r?\n/)[0];
+        //editor.getSelectedText().split(/\r?\n/)[0];
+        console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
+        console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
+        editor.findAll(editor.getSelectedText().split(/\r?\n/)[0]);
+    }, 250);
+});
+
 editor.on('mousedown', () => {
      minimapeditor.selection.clearSelection();
      minimapeditor.selection.selectLine();
@@ -3152,9 +3164,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 function doiteverysecond () {
- console.log("editor.getCopyText() ",editor.getCopyText() );
+        console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
+        console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
 
-//console.log("editor.$search ",editor.$search );
+
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
