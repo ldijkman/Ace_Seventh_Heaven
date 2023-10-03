@@ -3149,6 +3149,8 @@ function css(element, style) {
 document.addEventListener("DOMContentLoaded", () => {
     editor.findAll("function");
     minimapeditor.findAll("function");
+    document.querySelector(".ace_search_field").value="function"; 
+    
     // minimapeditor.find("function");
     // https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
     const note = document.querySelector('.ace_scrollbar.ace_scrollbar-v');
