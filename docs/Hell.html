@@ -83,7 +83,7 @@ body {
 
 .ace_editor .ace_marker-layer .ace_selection {
   //background-color: orange;
-  border:2px solid yellow;
+  border:2px solid orange;
   z-index:10000;
 }
 
@@ -142,7 +142,7 @@ body {
   pointer-events: none;
   right: 6px;
   width: 20px;
-  height: 2px;
+  height: 1px;
   background: cornflowerblue;
 }
 
@@ -3178,14 +3178,14 @@ function doiteverysecond () {
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
      if(darkorlight=="Dark"){
-        
+        // dark
      }else{
-       
+       // bright
      }
 
 
-}
 
+}
  setInterval(doiteverysecond, 10000); // Milliseconds  call function doiteverysecond() every second
 
 
