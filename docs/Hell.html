@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +">+</button>
 &nbsp;
-<button onclick="showhideminimap()">Show / Hide MiniMap</button>
+<input type="button" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap">
 &nbsp;
 <a href="https://plnkr.co/edit/Digj5Fw7D6hxaTU4?preview" target="Ace JumpScroll">[ Ace JumpScroll ]</a>
 
@@ -2901,8 +2901,10 @@ function showhideminimap() {
   var x = document.getElementById("minimapeditor");
   if (x.style.display === "none") {
     x.style.display = "block";
+    document.getElementById("minimapbutton").value="Hide MiniMap"
   } else {
     x.style.display = "none";
+    document.getElementById("minimapbutton").value="Show MiniMap"
   }
 }
 
