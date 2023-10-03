@@ -2825,6 +2825,7 @@ minimapeditor.on('mouseup', () => {       // var cursor = minimapeditor.getCurso
 });
 
 
+//https://stackoverflow.com/questions/63892312/ace-editor-get-selected-word-after-double-click
 editor.on("dblclick", function () {  //select on 
     setTimeout(() => {
         // could return a string of all sellected words on a newline split into array
@@ -3167,8 +3168,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 function doiteverysecond () {
-        console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
-        console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
+    //    console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
+    //    console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
 
 
 
@@ -3183,7 +3184,7 @@ function doiteverysecond () {
 
 }
 
- setInterval(doiteverysecond, 5000); // Milliseconds  call function doiteverysecond() every second
+ setInterval(doiteverysecond, 10000); // Milliseconds  call function doiteverysecond() every second
 
 
 
