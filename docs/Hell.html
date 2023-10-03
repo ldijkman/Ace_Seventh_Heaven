@@ -2790,7 +2790,7 @@ editor.container.insertAdjacentHTML("beforeend", "<div id=\"minimapeditor\" clas
   editor.setOption("showPrintMargin", false);
 
   minimapeditor.setValue(editor.getSession().getValue());
-  minimapeditor.selection.clearSelection();
+  //minimapeditor.selection.clearSelection();
   //minimapeditor.setOption(minimapeditor.$options.animatedScroll.name, true);
   //minimapeditor.setAutoScrollEditorIntoView(true)
 
@@ -2840,7 +2840,7 @@ editor.on("dblclick", function () {  //select on
 });
 
 editor.on('mousedown', () => {
-     minimapeditor.selection.clearSelection();
+     //minimapeditor.selection.clearSelection();
      minimapeditor.selection.selectLine();
    });
 
@@ -2870,7 +2870,7 @@ editor.getSession().on('change', function () {
     clearTimeout(myTimeout); // clear if new change
     myTimeout = setTimeout(function(){
         minimapeditor.setValue(editor.getSession().getValue());
-        minimapeditor.selection.clearSelection();
+       // minimapeditor.selection.clearSelection();
     }, 1000);
 
     ace.edit("editor").focus(); // To focus the ace editor
@@ -3143,6 +3143,7 @@ function css(element, style) {
 
 document.addEventListener("DOMContentLoaded", () => {
     editor.findAll("function");
+    minimapeditor.findAll("function");
     // minimapeditor.find("function");
     // https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
     const note = document.querySelector('.ace_scrollbar.ace_scrollbar-v');
