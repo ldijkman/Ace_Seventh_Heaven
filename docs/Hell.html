@@ -380,6 +380,13 @@ document.addEventListener('DOMContentLoaded', function () {
 <input type="button" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
 &nbsp;
 <input type="button" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
+ 
+ <input type="button" value="Settings" onClick='ace.edit("editor").execCommand("showSettingsMenu");' 
+ title="Show ACE Settings Menu"  onmouseover="this.focus()">
+
+<input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
+ title="Show F1 Better KeyBoard ShortCuts popup Menu&#010;if use F1 button, must have focus on Editor"  onmouseover="this.focus()">
+
 &nbsp;
 <a href="Http://paypal.me/LDijkman" target="Coffee">[ Fund This Project ]<img src="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Electra.jpg" width="20px" height="20px"></a>
 
