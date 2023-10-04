@@ -392,11 +392,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <div class="container">
-    <div id="editor" onmouseover='ace.edit("editor").focus();'>
-      <textarea><!--dutchorangexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-https://github.com/ldijkman/Ace-Scrollbars/blob/master/docs/Ace_editor_custom_scrollbar.html
+    <div id="editor" onmouseover='ace.edit("editor").focus();'><textarea><!--dutchorangexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-custom scrollbar show search / select highlight position in vertical scrollbar
+
+
 
 
  You can drag move the search/replace!
@@ -2869,7 +2868,8 @@ editor.getSession().on('change', function () {
 //$('.ace_scrollbar.ace_scrollbar-v').style.display = "none";
 //$(".ace_scrollbar.ace_scrollbar-v").eq(1).setAttribute('style', 'overscroll:hidden;');
 if(document.querySelector(".ace_search_field").value !=""){
-  //  ace.edit("editor").findAll(document.querySelector(".ace_search_field").value);
+    // preventScroll
+  // ace.edit("editor").findAll(document.querySelector(".ace_search_field").value);
 }
 
 });
