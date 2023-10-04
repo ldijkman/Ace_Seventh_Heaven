@@ -215,6 +215,15 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   z-index:100;
 }
 
+  .ace_editor .ace_marker-layer .ace_bracket {  /*better visible {} pair*/
+  
+   background: rgba(255,255,0,0.25);
+   border: 1px solid greenyellow;
+   //padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;
+   //border-collapse: 10px;
+    
+  }
+
 </style>
   
 
@@ -2705,6 +2714,7 @@ editor.session.setMode("ace/mode/html", function() {
 		editor.setOptions({
 			enableBasicAutocompletion: true,
 			enableLiveAutocompletion: true,
+      
 			enableSnippets: true,
 			//enableEmmet: true,                 // do not know what emmet is and does
 			fixedWidthGutter: true,
@@ -2718,7 +2728,7 @@ editor.session.setMode("ace/mode/html", function() {
 
  editor.setOption(editor.$options.animatedScroll.name, true);
  editor.setOption("enableEmmet", true);     // do not know what emmet is and does
-
+ editor.setBehavioursEnabled(true);
 
 
     HoverLink = require("hoverlink").HoverLink
