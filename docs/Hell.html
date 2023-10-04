@@ -223,6 +223,11 @@ a:-webkit-any-link {              /* change color link in topmenu*/
    //border-collapse: 10px;
     
   }
+  .ace_indent-guide{
+  color:red; 
+  background-color:red;
+  width:2px;
+  }
 
 </style>
   
@@ -2729,6 +2734,7 @@ editor.session.setMode("ace/mode/html", function() {
  editor.setOption(editor.$options.animatedScroll.name, true);
  editor.setOption("enableEmmet", true);     // do not know what emmet is and does
  editor.setBehavioursEnabled(true);
+ editor.setDisplayIndentGuides(true);
 
 
     HoverLink = require("hoverlink").HoverLink
