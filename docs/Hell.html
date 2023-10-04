@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <body>
 
 
-<input type="button" onclick="document.getElementById('openbton').click()" value="Open File">
+<input type="button" onclick="document.getElementById('openbton').click()" value="Open File" onmouseover="this.focus()">
 <input
         type="file"
         id="openbton"
@@ -307,19 +307,19 @@ document.addEventListener('DOMContentLoaded', function () {
         title="For PC load a file from Disk"
         hidden
       />
-<input class="text" value="7th_Heaven.html" size="15" title="FileName">
+<input class="text" value="7th_Heaven.html" size="15" title="FileName" onmouseover="this.focus()">
 
-<button onclick='save()' style="background-color:lightgreen;color:black;font-weight: bold;">DownLoad</button>
+<button onclick='save()' style="background-color:lightgreen;color:black;font-weight: bold;" onmouseover="this.focus()">DownLoad</button>
 &nbsp;
-<button class=text type="button" style="background-color:lightgreen;color:black;font-weight: bold;" title="if Framed DownLoad- if FullScreen maybe Save to Disk">Save to Disk?</button>
+<button class=text type="button" style="background-color:lightgreen;color:black;font-weight: bold;" title="if Framed DownLoad- if FullScreen maybe Save to Disk" onmouseover="this.focus()">Save to Disk?</button>
 &nbsp;
-<button onclick="toggleFullScreen()" title="Toggle FullScreen" style="background-color:lightblue;color:black;font-weight: bold;">FullScreen</button>
+<button onclick="toggleFullScreen()" title="Toggle FullScreen" style="background-color:lightblue;color:black;font-weight: bold;" onmouseover="this.focus()">FullScreen</button>
 &nbsp;
-      <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -">-</button>
-      <input type="number" id="fontSize" style="width: 2.2em;" value='20' oninput='ace.edit("editor").setFontSize(parseInt(this.value))'  title="FontSize">
-      <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())+1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize +">+</button>
+      <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -" onmouseover="this.focus()">-</button>
+      <input type="number" id="fontSize" style="width: 2.2em;" value='20' oninput='ace.edit("editor").setFontSize(parseInt(this.value))'  title="FontSize" onmouseover="this.focus()">
+      <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())+1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize +" onmouseover="this.focus()">+</button>
 &nbsp;
-          <select id="ace-mode" style="width: 75px;" title="select editor file type mode">
+          <select id="ace-mode" style="width: 75px;" title="select editor file type mode" onmouseover="this.focus()">
             <option value="css">CSS</option>
             <option value="html" selected>HTML</option>
             <option value="javascript">JavaScript</option>
@@ -373,13 +373,13 @@ document.addEventListener('DOMContentLoaded', function () {
     <option value="ace/theme/vibrant_ink" selected>Vibrant Ink</option>
   </optgroup>
 </select>&nbsp;
-<button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())-.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize -">-</button>
-<input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize">
-<button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +">+</button>
+<button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())-.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize -" onmouseover="this.focus()">-</button>
+<input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize" onmouseover="this.focus()">
+<button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +" onmouseover="this.focus()">+</button>
 &nbsp;
-<input type="button" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap">
+<input type="button" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
 &nbsp;
-<input type="button" onclick="showhidepreview()" id="previewbutton" value="Hide Preview">
+<input type="button" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
 &nbsp;
 <a href="Http://paypal.me/LDijkman" target="Coffee">[ Fund This Project ]<img src="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Electra%20(2).jpg" width="20px" height="20px"></a>
 
