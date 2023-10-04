@@ -2859,16 +2859,16 @@ editor.getSession().on('change', function () {
     clearTimeout(myTimeout); // clear if new change
     myTimeout = setTimeout(function(){
         minimapeditor.setValue(editor.getSession().getValue());
-       // minimapeditor.selection.clearSelection();
+        minimapeditor.selection.clearSelection();
     }, 1000);
 
     ace.edit("editor").focus(); // To focus the ace editor
     ace.edit("editor").renderer.$cursorLayer.showCursor();
 //$('.ace_scrollbar.ace_scrollbar-v').style.display = "none";
 //$(".ace_scrollbar.ace_scrollbar-v").eq(1).setAttribute('style', 'overscroll:hidden;');
-
-
-
+if(document.querySelector(".ace_search_field").value !=""){
+  //  ace.edit("editor").findAll(document.querySelector(".ace_search_field").value);
+}
 
 });
 
