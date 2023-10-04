@@ -2919,12 +2919,11 @@ function showhideminimap() {
 
 function showhidepreview() {
 
-  var x = id("minimapeditor");
-  if (x.style.display === "none") {
-    x.style.display = "block";
+  if (id("editor").style.width === "100%") {
+    id("editor").style.width = "75%";
     id("previewbutton").value="Hide Preview";
   } else {
-    x.style.display = "none";
+    id("editor").style.width = "100%";
     id("previewbutton").value="Show Preview";
   }
   
