@@ -2677,7 +2677,9 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 
 
 <script>
-
+function id(id) {
+  return document.getElementById(id);
+}
 
 var editor = ace.edit("editor")
 var beauty = ace.require("ace/ext/beautify")
@@ -2888,25 +2890,25 @@ if(document.querySelector(".ace_search_field").value !=""){
 
 // https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
 function showhideminimap() {
-  var x = document.getElementById("minimapeditor");
+  var x = id("minimapeditor");
   if (x.style.display === "none") {
     x.style.display = "block";
-    document.getElementById("minimapbutton").value="Hide MiniMap"
+    id("minimapbutton").value="Hide MiniMap"
   } else {
     x.style.display = "none";
-    document.getElementById("minimapbutton").value="Show MiniMap"
+    id("minimapbutton").value="Show MiniMap"
   }
 }
 
 function showhidepreview() {
 
-  var x = document.getElementById("minimapeditor");
+  var x = id("minimapeditor");
   if (x.style.display === "none") {
     x.style.display = "block";
-    document.getElementById("previewbutton").value="Hide Preview";
+    id("previewbutton").value="Hide Preview";
   } else {
     x.style.display = "none";
-    document.getElementById("previewbutton").value="Show Preview";
+    id("previewbutton").value="Show Preview";
   }
   
 }
@@ -2964,7 +2966,7 @@ function download(filename, text) {
         var modeName = modelist.getModeForPath(file.name).mode;
         editor.session.setMode(modeName);
         minimapeditor.session.setMode(modeName);
-        document.getElementById('ace-mode').value=modeName.replace("ace/mode/",""); // not correct mode select  blanks
+        id('ace-mode').value=modeName.replace("ace/mode/",""); // not correct mode select  blanks
 console.log("modeName ",modeName.replace("ace/mode/",""));
 
         console.log("file.name",file.name);
@@ -2984,20 +2986,20 @@ console.log("modeName ",modeName.replace("ace/mode/",""));
 
 
 
-    document.getElementById('ace-theme').addEventListener('change', function(e) {
-      console.log((document.getElementById('ace-theme').value).toLowerCase());
+    id('ace-theme').addEventListener('change', function(e) {
+      console.log((id('ace-theme').value).toLowerCase());
       e.preventDefault();
-      ace.edit("editor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
-     ace.edit("minimapeditor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
+      ace.edit("editor").setTheme('' + (id('ace-theme').value).toLowerCase());
+     ace.edit("minimapeditor").setTheme('' + (id('ace-theme').value).toLowerCase());
      
     floatbuttons();
     });
 
 
-    document.getElementById('ace-mode').addEventListener('change', function(e) {
-      console.log((document.getElementById('ace-mode').value).toLowerCase());
+    id('ace-mode').addEventListener('change', function(e) {
+      console.log((id('ace-mode').value).toLowerCase());
       e.preventDefault();
-      ace.edit("editor").getSession().setMode('ace/mode/' + (document.getElementById('ace-mode').value).toLowerCase());
+      ace.edit("editor").getSession().setMode('ace/mode/' + (id('ace-mode').value).toLowerCase());
     });
 
 
@@ -3010,7 +3012,7 @@ function myFunction(){
 	
 	var iframe = document.createElement('iframe');
 	
-	var preview = document.getElementById('preview');
+	var preview = id('preview');
 	var content = '<!doctype html>' + code;
 
 	preview.appendChild(iframe);
