@@ -50,6 +50,7 @@ dd#ace_settingsmenu,
 }
 .ace_optionsMenuEntry button[ace_selected_button="true"] {
   background: greenyellow;
+  color:black;
   box-shadow: 1px 0px 2px 0px #adadad inset;
   border-color: #adadad;
 }
