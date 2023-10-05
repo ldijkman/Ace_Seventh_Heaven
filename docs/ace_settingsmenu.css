@@ -20,7 +20,7 @@
   no_color: black;
 }
 .ace_optionsMenuEntry:hover {
-  background-color: rgba(100, 100, 100, 0.1);
+  nono_background-color: rgba(100, 100, 100, 0.1);
   transition: all 0.3s;
 }
 .ace_closeButton {
