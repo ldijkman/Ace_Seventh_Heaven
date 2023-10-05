@@ -1,3 +1,10 @@
+/*
+some field where not readable in Ace settings menu 
+because i used chromium dark style on the webpage
+
+Luberth
+*/
+
 #ace_settingsmenu,
 #kbshortcutmenu {
   background-color: #f7f7f7;
