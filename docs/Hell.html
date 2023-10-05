@@ -3262,9 +3262,11 @@ function doiteverysecond () {
      console.log("Theme optgroup = ",darkorlight);
      if(darkorlight=="Dark"){
         // dark
+        // https://github.com/ajaxorg/ace/issues/1199
         document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }else{
        // bright
+       // https://github.com/ajaxorg/ace/issues/1199
        document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }
 
