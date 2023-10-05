@@ -323,11 +323,11 @@ document.addEventListener('DOMContentLoaded', function () {
       />
 <input class="text" value="7th_Heaven.html" size="15" title="FileName" onmouseover="this.focus()">
 
-<button onclick='save()' style="<!--background-color:lightgreen;font-weight: bold;-->color:black;" onmouseover="this.focus()">DownLoad</button>
+<input type="button" onclick='save()' style="" onmouseover="this.focus()" value="DownLoad"  onmouseover="this.focus()">
 
-<button class=text type="button" style="<!--background-color:lightgreen;font-weight: bold;-->color:black;" title="if Framed DownLoad- if FullScreen maybe Save to Disk" onmouseover="this.focus()">Save to Disk?</button>
+<input type="button" class=text type="button" style="" title="if Framed DownLoad- if FullScreen maybe Save to Disk" onmouseover="this.focus()" value="Save to Disk?">
 
-<button onclick="toggleFullScreen()" title="Toggle FullScreen" style="<!--background-color:lightblue;font-weight: bold;-->color:black;" onmouseover="this.focus()">FullScreen</button>
+<input type="button" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
 
       <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -" onmouseover="this.focus()">-</button>
       <input type="number" id="fontSize" style="width: 2.2em;" value='20' oninput='ace.edit("editor").setFontSize(parseInt(this.value))'  title="FontSize" onmouseover="this.focus()">
