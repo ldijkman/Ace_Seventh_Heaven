@@ -9,7 +9,7 @@ Luberth
 
 #ace_settingsmenu,
 #kbshortcutmenu {
-  background-color: #f7f7f7;
+  background-color: #9D9C9C;
   color: black;
   box-shadow: -5px 4px 5px rgba(126, 126, 126, 0.55);
   padding: 1em 0.5em 2em 1em;
@@ -29,7 +29,7 @@ Luberth
   mono_color: black;
 }
 .ace_optionsMenuEntry:hover {
-  nono_background-color: rgba(100, 100, 100, 0.1);
+  background-color: rgba(100, 100, 100, 0.1);
   transition: all 0.3s;
 }
 .ace_closeButton {
@@ -46,7 +46,7 @@ Luberth
   background: red;
 }
 .ace_optionsMenuKey {
-  nononononoocolor: darkslateblue;
+  color: darkslateblue;
   font-weight: bold;
 }
 .ace_optionsMenuCommand {
