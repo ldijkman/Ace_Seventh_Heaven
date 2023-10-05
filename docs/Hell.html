@@ -3028,7 +3028,7 @@ console.log("modeName ",modeName.replace("ace/mode/",""));
     });
 
 
-function myFunction(){	
+function Update_HTML_Preview(){	
 	
   $("#preview").empty();
 	$("#status p").delay(500).fadeOut(2500);
@@ -3050,7 +3050,7 @@ function myFunction(){
 
 }
 
-myFunction();
+Update_HTML_Preview();
 
 var timeout;
 var emarker;
@@ -3150,7 +3150,7 @@ console.log("keyup");
 	}
 
 
-	timeout = setTimeout(myFunction, 2500)
+	timeout = setTimeout(Update_HTML_Preview, 2500)
 	
 });
 
