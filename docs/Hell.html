@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <input type="button" onclick='save()' style="" onmouseover="this.focus()" value="DownLoad"  onmouseover="this.focus()">
 
-<input type="button" class=text type="button" style="" title="if Framed DownLoad- if FullScreen maybe Save to Disk" onmouseover="this.focus()" value="Save to Disk?">
+<input type="button" class="savebutton" type="button" style="" title="if Framed DownLoad- if FullScreen maybe Save to Disk" onmouseover="this.focus()" value="Save to Disk?">
 
 <input type="button" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
 
@@ -3313,7 +3313,7 @@ console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroun
 
      var textarea = editor.getValue(),
       textInput = document.querySelector("input.text"),
-      textButton = document.querySelector("button.text"),
+      textButton = document.querySelector(".savebutton"),
       img = document.querySelector("img"),
       imgInput = document.querySelector("input.img"),
       imgButton = document.querySelector("button.img"),
