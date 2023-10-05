@@ -49,7 +49,7 @@ dd#ace_settingsmenu,
   vertical-align: middle;
 }
 .ace_optionsMenuEntry button[ace_selected_button="true"] {
-  background: black;
+  background: greenyellow;
   box-shadow: 1px 0px 2px 0px #adadad inset;
   border-color: #adadad;
 }
@@ -60,4 +60,5 @@ dd#ace_settingsmenu,
 }
 .ace_optionsMenuEntry button:hover {
   background: greenyellow;
+  color:black;
 }
