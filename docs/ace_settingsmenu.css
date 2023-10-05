@@ -1,4 +1,4 @@
-#ace_settingsmenu,
+dd#ace_settingsmenu,
 #kbshortcutmenu {
   background-color: #f7f7f7;
   color: black;
@@ -17,14 +17,14 @@
 .ace_dark #kbshortcutmenu {
   box-shadow: -20px 10px 25px rgba(126, 126, 126, 0.25);
   nono_background-color: rgba(255, 255, 255, 0.6);
-  no_color: black;
+  mono_color: black;
 }
 .ace_optionsMenuEntry:hover {
   nono_background-color: rgba(100, 100, 100, 0.1);
   transition: all 0.3s;
 }
 .ace_closeButton {
-  background: rgba(245, 146, 146, 0.5);
+  background: red;
   border: 1px solid #f48a8a;
   border-radius: 50%;
   padding: 7px;
@@ -34,10 +34,10 @@
   z-index: 100000;
 }
 .ace_closeButton {
-  background: rgba(245, 146, 146, 0.9);
+  background: red;
 }
 .ace_optionsMenuKey {
-  color: darkslateblue;
+  nononononoocolor: darkslateblue;
   font-weight: bold;
 }
 .ace_optionsMenuCommand {
