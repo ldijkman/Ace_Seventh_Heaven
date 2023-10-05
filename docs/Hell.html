@@ -456,11 +456,11 @@ document.addEventListener('DOMContentLoaded', function () {
 <a href="Http://paypal.me/LDijkman" target="Coffee">
 <img   src="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Electra.jpg" style="float:right;width:22px;height:22px;margin: 0px 15px 15px 0px;"  >
 </a>
-<input type="button"  id="Sticky" value=">>" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)" onmouseover="this.focus()">
-<input type="button"  id="Sticky" value=">>" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.NEGATIVE_INFINITY)"  onmouseover="this.focus()">
+<input type="button"  id="Sticky" value=">>" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)" onmouseover="this.focus()" title="scroll to Begin">
+<input type="button"  id="Sticky" value=">>" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.NEGATIVE_INFINITY)"  onmouseover="this.focus()" title="scroll to End">
 
-<input type="button"  id="Sticky" value=">" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.scrollPageDown();" onmouseover="editor.scrollPageDown();">
-<input type="button"  id="Sticky" value=">" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.scrollPageUp();" onmouseover="editor.scrollPageUp();">
+<input type="button"  id="Sticky" value=">" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.scrollPageDown();" onmouseover="editor.scrollPageDown();" title="scrollPageDown">
+<input type="button"  id="Sticky" value=">" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.scrollPageUp();" onmouseover="editor.scrollPageUp();" title="scrollPageUp">
 
 
 	<!--dutchorange////////////////////////////////////////////////////////////-->
