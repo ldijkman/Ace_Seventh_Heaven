@@ -3254,16 +3254,18 @@ function doiteverysecond () {
     //    console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
     //    console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
 
+// https://github.com/ajaxorg/ace/issues/1199
+//console.log("color",getComputedStyle(editor.renderer.scroller).backgroundColor);
 
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
      if(darkorlight=="Dark"){
         // dark
-        document.querySelector(".ace_scroll-v").style.backgroundColor="black"; 
+        document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }else{
        // bright
-       document.querySelector(".ace_scroll-v").style.backgroundColor="rgb(225,225,225)"; 
+       document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }
 
 
