@@ -258,14 +258,34 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 
 .ace_searchbtn.prev, .ace_searchbtn.next {
     padding: 0px 0.7em;
-    background: #a2a2a2;
+    background: #B0B0B0;
+    color:black;
 }
 .ace_searchbtn:last-child {
     border-radius: 0 3px 3px 0;
     border-right: 1px solid #cbcbcb;
-    background: #a2a2a2;
+    background: #B0B0B0;
 }
-
+.ace_searchbtn.prev:after, .ace_searchbtn.next:after {
+    content: "";
+    border: solid 2px #888;
+    width: 0.5em;
+    height: 0.5em;
+    border-width: 2px 0 0 2px;
+    display: inline-block;
+    transform: rotate(45deg);
+    color: black;
+}
+ .ace_searchbtn.next:after {
+    content: "";
+    border: solid 2px #888;
+    width: 0.5em;
+    height: 0.5em;
+    border-width: 2px 0 0 2px;
+    display: inline-block;
+    transform: rotate(225deg);
+    color: black;
+}
 </style>
   
 
