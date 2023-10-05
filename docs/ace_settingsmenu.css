@@ -49,15 +49,15 @@ dd#ace_settingsmenu,
   vertical-align: middle;
 }
 .ace_optionsMenuEntry button[ace_selected_button="true"] {
-  nono_background: #e7e7e7;
+  background: black;
   box-shadow: 1px 0px 2px 0px #adadad inset;
   border-color: #adadad;
 }
 .ace_optionsMenuEntry button {
-  nono_background: white;
+  background: gray;
   border: 1px solid lightgray;
   margin: 0px;
 }
 .ace_optionsMenuEntry button:hover {
-  nono_background: #f0f0f0;
+  background: greenyellow;
 }
