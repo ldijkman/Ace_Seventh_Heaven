@@ -3270,9 +3270,20 @@ console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroun
 console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
 console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
-console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
+console.log("errors/warnings on line ",
+editor.getSession().getAnnotations()[i].row,
+" type=",
+editor.getSession().getAnnotations()[i].type);
 
 }
+var annotations = editor.getSession().getAnnotations();
+for (var anno in annotations) {
+     // anno.row, anno.column, anno.text, anno.type
+     console.log(anno.row, anno.column, anno.text, anno.type);
+}
+
+
+
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
      if(darkorlight=="Dark"){
