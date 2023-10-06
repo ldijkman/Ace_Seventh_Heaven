@@ -3259,6 +3259,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
   
 var len="";
+
 function doiteverysecond () {
     //    console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
     //    console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
@@ -3272,16 +3273,18 @@ console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnota
 console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
 console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
-
-
-
-
 }*/
 
+
+
 if(len!=editor.getSession().getAnnotations().length){
-  resizeScroll();
+    resizeScroll(); // redraw vertical scrollbar on error changes
 }
 len=editor.getSession().getAnnotations().length;
+
+
+
+
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
