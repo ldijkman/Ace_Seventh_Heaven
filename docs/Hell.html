@@ -357,10 +357,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
    
   </script>
-<script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.js"></script>
-<!--
+<!--<script type="text/javascript" src="scrollbar.js"></script>
  <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.css" />
 -->
+<script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.js"></script>
+
 
 
 </head>
@@ -2749,7 +2750,7 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-ttps://ldijkman.github.io/Ace_Seventh_Heaven/
+
 
 <link rel="stylesheet" href="https://ldijkman.github.io/Ace_Seventh_Heaven/ace_settingsmenu.css" />
 
@@ -3257,7 +3258,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
   
-
+var len="";
 function doiteverysecond () {
     //    console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
     //    console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
@@ -3265,24 +3266,22 @@ function doiteverysecond () {
 // https://github.com/ajaxorg/ace/issues/1199
 //console.log("color",getComputedStyle(editor.renderer.scroller).backgroundColor);
 console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroundColor);
-
+/*
 //get warnings errors?
 console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
 console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
-console.log("errors/warnings on line ",
-editor.getSession().getAnnotations()[i].row,
-" type=",
-editor.getSession().getAnnotations()[i].type);
+console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
 
+
+
+
+}*/
+
+if(len!=editor.getSession().getAnnotations().length){
+  resizeScroll();
 }
-var annotations = editor.getSession().getAnnotations();
-for (var anno in annotations) {
-     // anno.row, anno.column, anno.text, anno.type
-     console.log(anno.row, anno.column, anno.text, anno.type);
-}
-
-
+len=editor.getSession().getAnnotations().length;
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
