@@ -3258,6 +3258,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
   
+
+
+var session = editor.getSession();
+session.on("changeAnnotation", function() {
+  //var annotations = session.getAnnotations()||[], i = len = annotations.length;
+  // while (i--) {
+  //   if(/doctype first\. Expected/.test(annotations[i].text)) {
+  //     annotations.splice(i, 1);
+  //  }
+  //}
+  // if(len>annotations.length) {
+  //  session.setAnnotations(annotations);
+  // }
+  resizeScroll(); // redraw vertical scrollbar on error changes
+});
+
+
 var len="";
 
 function doiteverysecond () {
@@ -3267,20 +3284,20 @@ function doiteverysecond () {
 // https://github.com/ajaxorg/ace/issues/1199
 //console.log("color",getComputedStyle(editor.renderer.scroller).backgroundColor);
 console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroundColor);
-/*
+
 //get warnings errors?
 console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
-console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
+/*console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
 console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
 }*/
 
 
 
-if(len!=editor.getSession().getAnnotations().length){
-    resizeScroll(); // redraw vertical scrollbar on error changes
-}
-len=editor.getSession().getAnnotations().length;
+//if(len!=editor.getSession().getAnnotations().length){
+ //   resizeScroll(); // redraw vertical scrollbar on error changes
+//}
+//len=editor.getSession().getAnnotations().length;
 
 
 
