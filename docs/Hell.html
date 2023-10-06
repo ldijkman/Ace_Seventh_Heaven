@@ -3266,7 +3266,13 @@ function doiteverysecond () {
 //console.log("color",getComputedStyle(editor.renderer.scroller).backgroundColor);
 console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroundColor);
 
+//get warnings errors?
+console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
+console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
+for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
+console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
 
+}
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
      if(darkorlight=="Dark"){
