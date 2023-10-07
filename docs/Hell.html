@@ -289,6 +289,12 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 #gearbutton{
   font-size:16px;
 }
+.errormarker {
+  position: absolute;
+  background-color: rgba(255,0,0,0.5);
+  border: 1px solid greenyellow;
+  z-index:2000;
+}
 </style>
   
 
@@ -2808,8 +2814,10 @@ editor.session.setMode("ace/mode/html", function() {
       useWorker: true,
       behavioursEnabled: true,          // boolean: true if enable custom behaviours
       wrapBehavioursEnabled: true,      // boolean
-      useSoftTabs: true                 // a new line starts on tab position of previous tabbed line i thnk
-		});
+      useSoftTabs: true,                 // a new line starts on tab position of previous tabbed line i thnk
+      scrollPastEnd: .5,
+
+  	});
 
 
 //https://codepen.io/zymawy/pen/XwbxoJ
@@ -3358,11 +3366,13 @@ editor.getSession().on("changeAnnotation", function() {
   // }
 
   var  errormessage="";
+  //var Range = ace.require("ace/range").Range;
   errormessage += " "+editor.getSession().getAnnotations().length+" Annotations\r\n"+"\r\n";
   //  resizeScroll(); // redraw vertical scrollbar on error changes
   for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
       //console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
       errormessage += " "+editor.getSession().getAnnotations()[i].row+1 +"  "+ editor.getSession().getAnnotations()[i].type +"  "+ editor.getSession().getAnnotations()[i].text+"\r\n";
+      //var mymarker=minimapeditor.addMarker(new Range((editor.getSession().getAnnotations()[i].row+1), 0, (editor.getSession().getAnnotations()[i].row+1), 60), "red", "text");
   }
   errorbutton.title=errormessage;
 });
@@ -3426,7 +3436,29 @@ if (editor.getSession().getAnnotations().length=="0") {
 //len=editor.getSession().getAnnotations().length;
 
 
+  var Range = ace.require("ace/range").Range;
+  const prevMarkers = editor.session.getMarkers();
+if (prevMarkers) {
+  const prevMarkersArr = Object.keys(prevMarkers);
+  for (let item of prevMarkersArr) {
+    editor.session.removeMarker(prevMarkers[item].id);
+  }
+}
+  const prevMarkerstwo = minimapeditor.session.getMarkers();
+if (prevMarkerstwo) {
+  const prevMarkersArr = Object.keys(prevMarkers);
+  for (let item of prevMarkersArr) {
+    editor.session.removeMarker(prevMarkerstwo[item].id);
+  }
+}
+  const minimapmarker=[];
+  const editormarker=[];
 
+  for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
+       
+       minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "text");
+       editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "text");
+    }
 
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
