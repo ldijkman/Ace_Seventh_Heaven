@@ -3442,13 +3442,14 @@ if (prevMarkers) {
   const prevMarkersArr = Object.keys(prevMarkers);
   for (let item of prevMarkersArr) {
     editor.session.removeMarker(prevMarkers[item].id);
+    
   }
 }
   const prevMarkerstwo = minimapeditor.session.getMarkers();
 if (prevMarkerstwo) {
   const prevMarkersArr = Object.keys(prevMarkerstwo);
   for (let item of prevMarkersArr) {
-    editor.session.removeMarker(prevMarkerstwo[item].id);
+    minimapeditor.session.removeMarker(prevMarkerstwo[item].id);
   }
 }
   const minimapmarker=[];
