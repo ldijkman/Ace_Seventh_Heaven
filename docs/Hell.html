@@ -3438,24 +3438,9 @@ if (editor.getSession().getAnnotations().length=="0") {
 
 
   var Range = ace.require("ace/range").Range;
-/*
-  const prevMarkers = editor.session.getMarkers();
-if (prevMarkers) {
-  const prevMarkersArr = Object.keys(prevMarkers);
-  for (let item of prevMarkersArr) {
-    editor.session.removeMarker(prevMarkers[item].id);
-    
-  }
-}
 
 
-
-*/  
-
-
-  
-
-for (let i = 0; i < minimapmarker.length; i=i+1) {
+for (let i = 0; i < editormarker.length; i=i+1) {
         minimapeditor.session.removeMarker(minimapmarker[i]);
         editor.session.removeMarker(editormarker[i]);
 }
