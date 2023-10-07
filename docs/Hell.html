@@ -3406,7 +3406,8 @@ function nexterror() {
 
 
 
-
+  const minimapmarker=[];
+  const editormarker=[];
 var len="";
 
 function doiteverysecond () {
@@ -3446,17 +3447,18 @@ if (prevMarkers) {
     
   }
 }
-  const prevMarkerstwo = minimapeditor.session.getMarkers();
-if (prevMarkerstwo) {
-  const prevMarkersArr = Object.keys(prevMarkerstwo);
-  for (let item of prevMarkersArr) {
-    minimapeditor.session.removeMarker(prevMarkerstwo[item].id);
-  }
-}
-*/
-  const minimapmarker=[];
-  const editormarker=[];
 
+
+
+*/  
+
+
+  
+
+for (let i = 0; i < minimapmarker.length; i=i+1) {
+        minimapeditor.session.removeMarker(minimapmarker[i]);
+        editor.session.removeMarker(editormarker[i]);
+}
   for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
        
        minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
