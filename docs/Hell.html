@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <img   src="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Electra.jpg" style="float:right;width:22px;height:22px;margin: 0px 15px 15px 0px;"  >
 </a>
 
-<input type="button"  id="Sticky" value=">" style="transform: rotate(90deg);color:red;  /*rotate >*/" onclick="nexterror();" onmouseover="this.focus()" title="next warning / error">
+<input type="button"  id="errorbutton" value=">" style="transform: rotate(90deg);color:red;  /*rotate >*/" onclick="nexterror();" onmouseover="this.focus()" title="next warning / error">
 
 
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)" onmouseover="this.focus()" title="scroll to Begin">
@@ -3276,8 +3276,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 // moved to ace scrollbar js
-//var session = editor.getSession();
-//session.on("changeAnnotation", function() {
+
+editor.getSession().on("changeAnnotation", function() {
   //var annotations = session.getAnnotations()||[], i = len = annotations.length;
   // while (i--) {
   //   if(/doctype first\. Expected/.test(annotations[i].text)) {
@@ -3287,8 +3287,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // if(len>annotations.length) {
   //  session.setAnnotations(annotations);
   // }
+
+var  errormessage="";
 //  resizeScroll(); // redraw vertical scrollbar on error changes
-//});
+for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
+//console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
+errormessage += editor.getSession().getAnnotations()[i].row +"  "+ editor.getSession().getAnnotations()[i].type +"  "+ editor.getSession().getAnnotations()[i].text+"\r\n";
+}
+errorbutton.title=errormessage;
+});
 
 
 
