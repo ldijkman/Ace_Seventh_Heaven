@@ -2737,6 +2737,8 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-spellcheck.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-emmet.min.js" integrity="sha512-3lADipRXib6VcyVdmfwWp6vIqvY7YY9tFtt8ynRTzNxZ38Or0xcrJpGaUzmR64UoV7Vf8Zvj0cu+nqytchBErw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <script src="https://ldijkman.github.io/Ace-Editor-Click-Link-window.open-URL/hoverlink.js"></script>
 <!--  https://github.com/ldijkman/Ace-Editor-Click-Link-window.open-URL/tree/main/docs 
@@ -2769,7 +2771,7 @@ var editor = ace.edit("editor")
 var beauty = ace.require("ace/ext/beautify")
 
 ace.require("ace/ext/language_tools")
-//ace.require("ace/ext/emmet")     // do not know what emmet is and does
+ace.require("ace/ext/emmet")     // do not know what emmet is and does
 editor.setTheme("ace/theme/vibrant_ink")
 editor.session.setMode("ace/mode/html", function() {
 	LoadColorPicker()
@@ -2790,7 +2792,7 @@ editor.session.setMode("ace/mode/html", function() {
 			enableLiveAutocompletion: true,
       
 			enableSnippets: true,
-			//enableEmmet: true,                 // do not know what emmet is and does
+			enableEmmet: true,                 // do not know what emmet is and does
 			fixedWidthGutter: true,
 			showFoldWidgets: false,
 			displayIndentGuides: false,
