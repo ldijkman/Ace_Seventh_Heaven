@@ -3259,9 +3259,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
   
 
-
-var session = editor.getSession();
-session.on("changeAnnotation", function() {
+// moved to ace scrollbar js
+//var session = editor.getSession();
+//session.on("changeAnnotation", function() {
   //var annotations = session.getAnnotations()||[], i = len = annotations.length;
   // while (i--) {
   //   if(/doctype first\. Expected/.test(annotations[i].text)) {
@@ -3271,8 +3271,8 @@ session.on("changeAnnotation", function() {
   // if(len>annotations.length) {
   //  session.setAnnotations(annotations);
   // }
-  resizeScroll(); // redraw vertical scrollbar on error changes
-});
+//  resizeScroll(); // redraw vertical scrollbar on error changes
+//});
 
 
 var len="";
