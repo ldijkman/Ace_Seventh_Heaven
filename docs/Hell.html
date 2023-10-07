@@ -3446,7 +3446,7 @@ if (prevMarkers) {
 }
   const prevMarkerstwo = minimapeditor.session.getMarkers();
 if (prevMarkerstwo) {
-  const prevMarkersArr = Object.keys(prevMarkers);
+  const prevMarkersArr = Object.keys(prevMarkerstwo);
   for (let item of prevMarkersArr) {
     editor.session.removeMarker(prevMarkerstwo[item].id);
   }
