@@ -457,6 +457,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <a href="Http://paypal.me/LDijkman" target="Coffee">
 <img   src="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Electra.jpg" style="float:right;width:22px;height:22px;margin: 0px 15px 15px 0px;"  >
 </a>
+
+<input type="button"  id="Sticky" value=">" style="transform: rotate(90deg);color:red;  /*rotate >*/" onclick="nexterror();" onmouseover="this.focus()" title="next warning / error">
+
+
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)" onmouseover="this.focus()" title="scroll to Begin">
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.NEGATIVE_INFINITY)"  onmouseover="this.focus()" title="scroll to End">
 
@@ -2913,6 +2917,10 @@ editor.on("dblclick", function () {  //select on
 editor.on('mousedown', () => {
      //minimapeditor.selection.clearSelection();
      minimapeditor.selection.selectLine();
+        //if (document.querySelector(".ace_search_field").value !=""){
+    //editor.findAll(document.querySelector(".ace_search_field").value);
+    //minimapeditor.findAll(document.querySelector(".ace_search_field").value);
+   //} 
    });
 
 var marker; //gray select on minimap
@@ -2956,6 +2964,12 @@ if(document.querySelector(".ace_search_field").value !=""){
   // ace.edit("editor").findAll(document.querySelector(".ace_search_field").value);
 }
 
+ 
+//   if (document.querySelector(".ace_search_field").value !=""){
+//    editor.findAll(document.querySelector(".ace_search_field").value);
+//    minimapeditor.findAll(document.querySelector(".ace_search_field").value);
+//   } 
+
 });
 
 
@@ -2968,7 +2982,7 @@ if(document.querySelector(".ace_search_field").value !=""){
 
 
 
-
+  
 
 // https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
 function showhideminimap() {
@@ -2981,7 +2995,7 @@ function showhideminimap() {
     id("minimapbutton").value="Show MiniMap"
   }
 }
-
+ 
 function showhidepreview() {
 
   if (id("editor").style.width === "100%") {
@@ -3273,6 +3287,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 //  resizeScroll(); // redraw vertical scrollbar on error changes
 //});
+
+
+
+
+
+
+
+var errorpointer=0;
+
+function nexterror() {
+
+    var len = editor.getSession().getAnnotations().length;
+    if (errorpointer >= len){
+        errorpointer=0;
+    }
+
+    editor.scrollToLine(editor.getSession().getAnnotations()[errorpointer].row+1, true, true, function () {});
+    editor.moveCursorTo(editor.getSession().getAnnotations()[errorpointer].row)+1;
+    editor.gotoLine(editor.getSession().getAnnotations()[errorpointer].row+1);
+
+    errorpointer++;
+
+}
+
+
+
+
+
+
 
 
 var len="";
