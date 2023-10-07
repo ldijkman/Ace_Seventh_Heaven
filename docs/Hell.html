@@ -485,7 +485,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <div id="editor" onmouseover='ace.edit("editor").focus();'><textarea><!--dutchorangexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
- 
+ have a problem with black minimap
+    after adding red marked error lines to editor and  minimap
+       cannot find it yet
+           
 
 
 
@@ -3451,7 +3454,8 @@ for (let i = 0; i < editormarker.length; i=i+1) {
        minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
        editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
     }
-
+   // minimapeditor.setValue(editor.getSession().getValue());
+//ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize()));
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
      console.log("Theme optgroup = ",darkorlight);
