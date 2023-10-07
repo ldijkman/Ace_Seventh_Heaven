@@ -286,6 +286,9 @@ a:-webkit-any-link {              /* change color link in topmenu*/
     transform: rotate(-135deg);  /*rotate >*/
     color: black;
 }
+#gearbutton{
+  font-size:16px;
+}
 </style>
   
 
@@ -449,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <input type="button" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
 <input type="button" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
  
- <input type="button" value="&#9881;" onClick='ace.edit("editor").execCommand("showSettingsMenu");' 
+ <input type="button"  id="gearbutton" value="&#9881;" onClick='ace.edit("editor").execCommand("showSettingsMenu");' 
  title="Show ACE Settings Menu"  onmouseover="this.focus()">
 
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
@@ -3345,7 +3348,11 @@ for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
 console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
 }*/
 
-
+if (editor.getSession().getAnnotations().length=="0") {
+  errorbutton.style.color="greenyellow";
+}else{
+  errorbutton.style.color="red";
+}
 
 //if(len!=editor.getSession().getAnnotations().length){
  //   resizeScroll(); // redraw vertical scrollbar on error changes
