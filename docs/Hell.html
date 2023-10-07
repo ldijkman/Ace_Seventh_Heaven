@@ -291,8 +291,8 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 }
 .errormarker {
   position: absolute;
-  background-color: rgba(255,0,0,0.5);
-  border: 1px solid greenyellow;
+  background-color: rgba(255,0,0,0.1);
+  border: 1px solid red;
   z-index:2000;
 }
 </style>
@@ -3457,8 +3457,8 @@ if (prevMarkerstwo) {
 
   for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
        
-       minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "text");
-       editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "text");
+       minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
+       editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
     }
 
 
