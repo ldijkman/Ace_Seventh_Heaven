@@ -11,6 +11,8 @@ Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
 
 BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
 
+https://ldijkman.github.io/Ace_Seventh_Heaven/shortcutkeys.html
+
 compare 2 text files
 Ace Diff: https://ldijkman.github.io/Ace_Seventh_Heaven/Ace-Diff.html
 
