@@ -476,7 +476,42 @@ document.addEventListener('DOMContentLoaded', function () {
 <input type="button"  id="Sticky" value=">" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.scrollPageDown();" onmouseover="this.focus()" title="scrollPageDown">
 <input type="button"  id="Sticky" value=">" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.scrollPageUp();" onmouseover="this.focus()" title="scrollPageUp">
 
-  
+   <body>
+    <script>
+function joinfunction() {
+   var myWindow = window.open("", "MsgWindow", "width=500,height=500");
+myWindow.document.write(`<html><head><title>hello</title></head><body>
+<style>
+.body{
+   font-size: 12pt;
+}
+kbd {
+    font-family: Monaco, Menlo, monospace;
+    font-size: 12pt;
+    text-transform: capitalize;
+    border: 1px solid #969896;
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #a3685a;
+    background-color: #ffffff;
+}
+
+user agent stylesheet
+kbd {
+    font-family: monospace;
+}
+</style>
+<body bgcolor="lightgray">
+<span class="nsoa"> Search / Find <kbd>ctrl</kbd> + <kbd>f</kbd></span><br>
+<span class="nsoa"> Undo <kbd>ctrl</kbd> + <kbd>z</kbd></span><br>
+<span class="nsoa"> Redo <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>z</kbd></span><br>
+<span class="nsoa"> Select All <kbd>ctrl</kbd> + <kbd>a</kbd></span><br>
+<span class="nsoa"> Paste <kbd>ctrl</kbd> + <kbd>v</kbd></span><br>
+</body>
+</html>`);
+}
+</script>
+<button  onclick="joinfunction()" type="button" class="btn btn-default subs-btn">test</button>
 	<!--dutchorange////////////////////////////////////////////////////////////-->
 
 
