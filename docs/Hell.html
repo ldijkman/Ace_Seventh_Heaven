@@ -519,6 +519,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <input type="button" class="dropbt" onclick="togglelinenumbers()" title="Toggle LineNumbers" style="" onmouseover="this.focus()" value="LineNumbers Gutter">
+  
   </div>
 </div>
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -3305,6 +3307,28 @@ function toggleFullScreen() {
     }
   }
 }
+
+ var onoff=1;
+function togglelinenumbers() {
+  if (onoff==1) {
+      editor.renderer.setShowGutter(false);
+  }else{
+      editor.renderer.setShowGutter(true);
+  }
+}
+      //editor.renderer.setOption('showLineNumbers', false);
+      //editor.renderer.showLineNumbers (false);
+
+//editor.renderer.$gutterLayer.setShowLineNumbers(hide);
+
+ // } 
+ //editor.renderer.setOption('showLineNumbers', false);
+  //editor.renderer.setshowLineNumbers (false);
+  //editor.renderer.setOption('showLineNumbers', false); 
+  //editor.renderer.setShowGutter(false);
+  //console.log("editor.renderer.getShowLineNumbers()",editor.renderer.getShowLineNumbers());
+
+
 
 
 
