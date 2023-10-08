@@ -3312,8 +3312,10 @@ function toggleFullScreen() {
 function togglelinenumbers() {
   if (onoff==1) {
       editor.renderer.setShowGutter(false);
+      onoff=0;
   }else{
       editor.renderer.setShowGutter(true);
+      onoff=1;
   }
 }
       //editor.renderer.setOption('showLineNumbers', false);
