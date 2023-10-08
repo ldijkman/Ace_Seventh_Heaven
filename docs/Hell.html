@@ -480,10 +480,15 @@ document.addEventListener('DOMContentLoaded', function () {
     <script>
 function joinfunction() {
    var myWindow = window.open("", "MsgWindow", "width=500,height=500");
-myWindow.document.write(`<html><head><title>hello</title></head><body>
+myWindow.document.write(`<html>
+  <head>
+    <title>hello</title>
+    
 <style>
-.body{
+body{
    font-size: 12pt;
+   margin: 20px;
+   padding: 20px;
 }
 kbd {
     font-family: Monaco, Menlo, monospace;
@@ -501,12 +506,48 @@ kbd {
     font-family: monospace;
 }
 </style>
+
+</head>
 <body bgcolor="lightgray">
-<span class="nsoa"> Search / Find <kbd>ctrl</kbd> + <kbd>f</kbd></span><br>
-<span class="nsoa"> Undo <kbd>ctrl</kbd> + <kbd>z</kbd></span><br>
-<span class="nsoa"> Redo <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>z</kbd></span><br>
-<span class="nsoa"> Select All <kbd>ctrl</kbd> + <kbd>a</kbd></span><br>
-<span class="nsoa"> Paste <kbd>ctrl</kbd> + <kbd>v</kbd></span><br>
+
+<table>
+<tbody>
+<tr>
+<td>Search / Find</td>
+<td><span class="nsoa"><kbd>ctrl</kbd> + <kbd>f</kbd></span></td>
+</tr>
+<tr>
+<td>Undo</td>
+<td><span class="nsoa"><kbd>ctrl</kbd> + <kbd>z</kbd></span></td>
+</tr>
+<tr>
+<td>Redo</td>
+<td><span class="nsoa"> <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>z</kbd></span></td>
+</tr>
+<tr>
+<td>Select All</td>
+<td><span class="nsoa"><kbd>ctrl</kbd> + <kbd>a</kbd></span></td>
+</tr>
+<tr>
+<td>Paste</td>
+<td><span class="nsoa"><kbd>ctrl</kbd> + <kbd>v</kbd></span></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<!-- DivTable.com -->
+
 </body>
 </html>`);
 }
