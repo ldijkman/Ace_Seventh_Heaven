@@ -294,6 +294,12 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   border: 1px solid red;
   z-index:3;
 }
+.warningmarker {
+  position: absolute;
+  background-color: rgba(255,255,0,0.75);
+  border: 1px solid yellow;
+  z-index:3;
+}
 </style>
   
 
@@ -3552,9 +3558,13 @@ for (let i = 0; i < editormarker.length; i=i+1) {
         editor.session.removeMarker(editormarker[i]);
 }
   for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
-       
-       minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
-       editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
+       if(editor.getSession().getAnnotations()[i].type=="error"){
+          minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
+          editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "errormarker", "fullLine");
+       }else{
+          minimapmarker[i]= minimapeditor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "warningmarker", "fullLine");
+          editormarker[i]=editor.session.addMarker(new Range(editor.getSession().getAnnotations()[i].row, 0, editor.getSession().getAnnotations()[i].row, 60), "warningmarker", "fullLine");
+       }
     }
    // minimapeditor.setValue(editor.getSession().getValue());
 //ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize()));
