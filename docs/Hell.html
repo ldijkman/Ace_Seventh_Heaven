@@ -63,13 +63,11 @@ body {
 .ace_editor .ace_marker-layer .ace_selection {
   //background-color: orange;
   border:2px solid orange;
-  z-index:10000;
 }
 
 .ace_editor .ace_marker-layer .ace_selected-word {
   //background-color: orange;
   border:2px solid yellow;
-   z-index:10000;
 }
 
 #minimapeditor {                   /*minimap*/
@@ -80,6 +78,7 @@ body {
   height: 100%;
   background-color: ;
   border: 1px solid gray;
+  z-index:1000;
 }
 
 #minimapeditor .ace_scrollbar-h {   /*do not show horizontal scrollbar on minmap*/
@@ -194,7 +193,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   padding: 0px 0;
   height: 55px;
   width: 100%;
-  z-index: 100000;
+ 
 }
 .ace_scrollbar-v {      /*make minimap vertical scrollbar a bit less wide*/
   width: 6px;
@@ -293,7 +292,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   position: absolute;
   background-color: rgba(255,0,0,0.1);
   border: 1px solid red;
-  z-index:2000;
+  z-index:3;
 }
 </style>
   
