@@ -340,6 +340,8 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   transition-delay: 250ms;
 }
 
+
+
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/
 
 
@@ -469,8 +471,13 @@ document.addEventListener('DOMContentLoaded', function () {
             <option value="text">Text</option>
             <option value="c_cpp">C and C++</option>
           </select>
-<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme" onmouseover="this.focus()">
-<optgroup label="Bright">
+
+
+
+       
+
+<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme" onmouseover='this.focus();' >
+<optgroup label="Bright" id="sel">
   <option value="ace/theme/chrome">Chrome</option>
   <option value="ace/theme/clouds">Clouds</option>
   <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -660,9 +667,12 @@ button idea from nsoa-console</a><br>
   <button class="dropbtn" onmouseover="this.focus()">Help</button>
   <div class="dropdown-content">
     <button class="dropbt" style="width:90px;" onclick="joinfunction()" type="button" onmouseover="this.focus()">Help page</button>
+     <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick='window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/issues","_Bugs")'>Bugs-issues</button>
     <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick='window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions","_github")'>Discussions</button>
     <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick='window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/3","_wishlist")'>WishList-</button>
-    <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick='window.open("https://facebook.com/luberth.dijkman","_FaceBook")'>FaceBook</button>  <button class="dropbt" style="width:90px;" onclick="XFunction()" onmouseover="this.focus()">X Twitter</button>
+    <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick='window.open("https://facebook.com/luberth.dijkman","_FaceBook")'>FaceBook</button>  
+    <button class="dropbt" style="width:90px;" onclick="XFunction()" onmouseover="this.focus()">X Twitter</button>
+    <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick=''>-</button>
     <button class="dropbt" style="width:90px;" onmouseover="this.focus()" onclick='window.open("http://paypal.me/LDijkman","_donations")'>Donations</button>
   </div>
 </div>
@@ -2877,7 +2887,7 @@ button.addEventListener('click', async () => {
 });
     </script>
 <br><br>it is Almost Time to Switch<!--it is Time to SWitch - SwitchTime--><br>
-    <img src="https://media.s-bol.com/N15Y8Y0kYB9p/D9BL5K/1200x1172.jpg" width="150px" height="150px">
+    <img src="https://media.s-bol.com/N15Y8Y0kYB9p/D9BL5K/1200x1172.jpg" width="150px" height="150px"><br>
 </body>
 </html>
 
