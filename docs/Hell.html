@@ -358,8 +358,12 @@ https://groups.google.com/g/ace-discuss/c/kwkpafRmIcw
 .select {
   
   position: absolute;
-width:150;
+  top:12px;
+width:110px;
 z-index:100000;
+}
+.optgroup{
+  width:250px;
 }
 
 </style>
@@ -485,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
        
 
 <select id="ace-theme" class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";' onMouseout='this.size="1";' >
-<optgroup style="width:200px;" label="Bright" id="sel">
+<optgroup class="optgroup" label="Bright" id="sel">
   <option value="ace/theme/chrome">Chrome</option>
   <option value="ace/theme/clouds">Clouds</option>
   <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -715,7 +719,7 @@ if menu buttons do not fit your screen width
         Beat that! VisualStudio Monaco ;-)
 
 </pre>
-<!-------------------------------->
+<!  --------------------------------  >
 <!--
 No M$, This is The Editor of the Web.
   Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
