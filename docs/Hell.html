@@ -3342,23 +3342,26 @@ function toggleFullScreen() {
   }
 }
 
- var onoff=1;
+var onoff=1;
 function togglelinenumbers() {
   if (onoff==1) {
       //editor.renderer.setOption('showLineNumbers', false);
       //editor.renderer.setShowGutter(false);
       const nodeList = document.querySelectorAll(".ace_gutter-cell");
-for (let i = 0; i < nodeList.length; i++) {
-  //nodeList[i].innerHTML = "";
-}
+      for (let i = 0; i < nodeList.length; i++) {
+          //nodeList[i].innerHTML = "" // removes linenumbes from gutter but cursor gets strange on typing
+          //nodeList[i].innerText = "";// removes linenumbes from gutter but cursor gets strange on typing
+      }
+      // cannot find how they turn off linenumbers in ace settings menu
+      document.querySelector(".ace_gutter").style.width = "20px";//hides linumbers, shows icons, but not folding thingy
       onoff=0;
   }else{
       //editor.renderer.setOption('showLineNumbers', false);
       //editor.renderer.setshowLineNumbers(false);
-      editor.renderer.setShowGutter(true);
-
+      //editor.renderer.setShowGutter(true);
+      //document.querySelector(".ace_gutter-cell ").innerhtml="";      
+      document.querySelector(".ace_gutter").style.width = "55px";
       onoff=1;
-      //document.querySelector(".ace_gutter-cell ").innerhtml="";
   }
 }
       
