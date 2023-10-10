@@ -353,7 +353,15 @@ https://groups.google.com/g/ace-discuss/c/kwkpafRmIcw
     .ace_gutter  {
         width: 20px !important;
     }
-*/    
+*/   
+
+.select {
+  
+  position: absolute;
+width:150;
+z-index:100000;
+}
+
 </style>
   
 
@@ -476,8 +484,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
        
 
-<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme" onmouseover='this.focus();' >
-<optgroup label="Bright" id="sel">
+<select id="ace-theme" class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";' onMouseout='this.size="1";' >
+<optgroup style="width:200px;" label="Bright" id="sel">
   <option value="ace/theme/chrome">Chrome</option>
   <option value="ace/theme/clouds">Clouds</option>
   <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -522,6 +530,8 @@ document.addEventListener('DOMContentLoaded', function () {
   <option value="ace/theme/github_dark">GitHub Dark</option>
 </optgroup>
 </select>
+    &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())-.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize -" onmouseover="this.focus()">-</button>
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize" onmouseover="this.focus()">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +" onmouseover="this.focus()">+</button>
@@ -3331,25 +3341,23 @@ function toggleFullScreen() {
  var onoff=1;
 function togglelinenumbers() {
   if (onoff==1) {
-      editor.renderer.setShowGutter(false);
+      //editor.renderer.setOption('showLineNumbers', false);
+      //editor.renderer.setShowGutter(false);
+      const nodeList = document.querySelectorAll(".ace_gutter-cell");
+for (let i = 0; i < nodeList.length; i++) {
+  //nodeList[i].innerHTML = "";
+}
       onoff=0;
   }else{
+      //editor.renderer.setOption('showLineNumbers', false);
+      //editor.renderer.setshowLineNumbers(false);
       editor.renderer.setShowGutter(true);
+
       onoff=1;
+      //document.querySelector(".ace_gutter-cell ").innerhtml="";
   }
 }
-      //editor.renderer.setOption('showLineNumbers', false);
-      //editor.renderer.showLineNumbers (false);
-
-//editor.renderer.$gutterLayer.setShowLineNumbers(hide);
-
- // } 
- //editor.renderer.setOption('showLineNumbers', false);
-  //editor.renderer.setshowLineNumbers (false);
-  //editor.renderer.setOption('showLineNumbers', false); 
-  //editor.renderer.setShowGutter(false);
-  //console.log("editor.renderer.getShowLineNumbers()",editor.renderer.getShowLineNumbers());
-
+      
 
 
 
