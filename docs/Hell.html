@@ -3353,14 +3353,18 @@ function togglelinenumbers() {
           //nodeList[i].innerText = "";// removes linenumbes from gutter but cursor gets strange on typing
       }
       // cannot find how they turn off linenumbers in ace settings menu
-      document.querySelector(".ace_gutter").style.width = "20px";//hides linumbers, shows icons, but not folding thingy
+      //document.querySelector(".ace_gutter").style.width = "20px";//hides linumbers, shows icons, but not folding thingy
+      editor.setOption('showLineNumbers', false);
       onoff=0;
   }else{
       //editor.renderer.setOption('showLineNumbers', false);
+      
       //editor.renderer.setshowLineNumbers(false);
       //editor.renderer.setShowGutter(true);
       //document.querySelector(".ace_gutter-cell ").innerhtml="";      
-      document.querySelector(".ace_gutter").style.width = "55px";
+      //document.querySelector(".ace_gutter").style.width = "55px";
+      //editor.renderer.setOption.showLineNumbers(false);
+       editor.setOption('showLineNumbers', true);
       onoff=1;
   }
 }
@@ -3729,6 +3733,7 @@ for (let i = 0; i < editormarker.length; i=i+1) {
        document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }
 
+console.log(" editor.version", editor.version);
 
 
 }
