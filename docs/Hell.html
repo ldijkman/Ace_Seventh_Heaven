@@ -356,15 +356,20 @@ https://groups.google.com/g/ace-discuss/c/kwkpafRmIcw
 */   
 
 .select {
-  
   position: absolute;
   top:12px;
-width:110px;
-z-index:100000;
+  width:120px;
+  z-index:100000;
 }
-.optgroup{
-  width:250px;
+.select :hover{
+   width:250px;  
 }
+.select option{
+   width:250px;  
+}
+.select optgroup{
+   width:250px;
+ }
 
 </style>
   
@@ -488,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
        
 
-<select id="ace-theme" class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";' onMouseout='this.size="1";' >
+<select id="ace-theme"  class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";' onMouseout='this.size="1";' >
 <optgroup class="optgroup" label="Bright" id="sel">
   <option value="ace/theme/chrome">Chrome</option>
   <option value="ace/theme/clouds">Clouds</option>
