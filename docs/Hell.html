@@ -697,8 +697,10 @@ function XFunction() {
   window.open("https://x.com/DLD52791488", "_blank");
 }
 </script>
-  
-  
+
+ <label id="version" style="color:lightgray;"></label> 
+
+
   <!--dutchorange////////////////////////////////////////////////////////////-->
 
 
@@ -3733,7 +3735,8 @@ for (let i = 0; i < editormarker.length; i=i+1) {
        document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }
 
-console.log(" editor.version", editor.version);
+document.getElementById("version").innerHTML = " Version: " + ace.version;
+
 
 
 }
