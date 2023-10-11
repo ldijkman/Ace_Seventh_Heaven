@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
-    <input type="button" class="dropbt" onclick="togglelinenumbers()" title="This toggle the gutter view&#013;i want Toggle LineNumbers&#013;settings gear icon does showgutter and hide linemunbers&#013;but i cannor find how it is done, i want the error icons" style="" onmouseover="this.focus()" value="LineNumbers Gutter">
+    <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
   
   </div>
 </div>
@@ -3359,24 +3359,25 @@ function togglelinenumbers() {
   if (onoff==1) {
       //editor.renderer.setOption('showLineNumbers', false);
       //editor.renderer.setShowGutter(false);
-      const nodeList = document.querySelectorAll(".ace_gutter-cell");
-      for (let i = 0; i < nodeList.length; i++) {
+      //const nodeList = document.querySelectorAll(".ace_gutter-cell");
+      //for (let i = 0; i < nodeList.length; i++) {
           //nodeList[i].innerHTML = "" // removes linenumbes from gutter but cursor gets strange on typing
           //nodeList[i].innerText = "";// removes linenumbes from gutter but cursor gets strange on typing
-      }
+      //}
       // cannot find how they turn off linenumbers in ace settings menu
       //document.querySelector(".ace_gutter").style.width = "20px";//hides linumbers, shows icons, but not folding thingy
       editor.setOption('showLineNumbers', false);
+      id("linenmbrsbutton").value="Show LineNumbers";
       onoff=0;
   }else{
       //editor.renderer.setOption('showLineNumbers', false);
-      
       //editor.renderer.setshowLineNumbers(false);
       //editor.renderer.setShowGutter(true);
       //document.querySelector(".ace_gutter-cell ").innerhtml="";      
       //document.querySelector(".ace_gutter").style.width = "55px";
       //editor.renderer.setOption.showLineNumbers(false);
        editor.setOption('showLineNumbers', true);
+       id("linenmbrsbutton").value="Hide LineNumbers";
       onoff=1;
   }
 }
