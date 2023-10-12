@@ -555,7 +555,9 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
+  <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
   
+ 
   </div>
 </div>
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -3382,7 +3384,18 @@ function togglelinenumbers() {
   }
 }
       
-
+var ionoff=1;
+function toggleinvisibles() {
+  if (ionoff==1) {
+      editor.setOption('showInvisibles', false);
+      id("invisiblesbutton").value="Show Invisibles";
+      ionoff=0;
+  }else{
+       editor.setOption('showInvisibles', true);
+       id("invisiblesbutton").value="Hide Invisibles";
+      ionoff=1;
+  }
+}
 
 
 
