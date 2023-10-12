@@ -310,7 +310,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: gray;
+  background-color: rgb(110,110,110);
   min-width: 90px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10000;
@@ -326,7 +326,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: rgb(120,120,120);
   transition-delay: 250ms;
 }
 
@@ -336,7 +336,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color: rgb(120,120,120);
   transition-delay: 250ms;
 }
 
@@ -554,8 +554,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
-    <input type="button" class="dropbt" onclick="togglelinenumbers()" title="This toggle the gutter view&#013;i want Toggle LineNumbers&#013;settings gear icon does showgutter and hide linemunbers&#013;but i cannor find how it is done, i want the error icons" style="" onmouseover="this.focus()" value="LineNumbers Gutter">
+    <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
+  <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
   
+ 
   </div>
 </div>
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -703,7 +705,7 @@ function XFunction() {
 }
 </script>
 
- <label id="version" style="color:lightgray;"></label> 
+ <label id="version" style="color:lightgray;font-size:14px;"></label> 
 
 
   <!--dutchorange////////////////////////////////////////////////////////////-->
@@ -2963,39 +2965,39 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 </div>    
   
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ace.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-keybinding_menu.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-prompt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-keybinding_menu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-prompt.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-language_tools.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-language_tools.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/mode-html.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/mode-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/mode-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/mode-html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/mode-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/mode-css.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/mode-c_cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/mode-c_cpp.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/snippets/html.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/snippets/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/snippets/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/snippets/html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/snippets/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/snippets/css.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/worker-html.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/worker-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/worker-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/worker-html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/worker-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/worker-css.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-searchbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-searchbox.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/worker-base.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/worker-base.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-beautify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-beautify.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-settings_menu.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-keybinding_menu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-settings_menu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-keybinding_menu.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-spellcheck.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-spellcheck.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.28.0/ext-emmet.min.js" integrity="sha512-3lADipRXib6VcyVdmfwWp6vIqvY7YY9tFtt8ynRTzNxZ38Or0xcrJpGaUzmR64UoV7Vf8Zvj0cu+nqytchBErw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.29.0/ext-emmet.min.js" integrity="sha512-3lADipRXib6VcyVdmfwWp6vIqvY7YY9tFtt8ynRTzNxZ38Or0xcrJpGaUzmR64UoV7Vf8Zvj0cu+nqytchBErw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script src="https://ldijkman.github.io/Ace-Editor-Click-Link-window.open-URL/hoverlink.js"></script>
@@ -3359,29 +3361,41 @@ function togglelinenumbers() {
   if (onoff==1) {
       //editor.renderer.setOption('showLineNumbers', false);
       //editor.renderer.setShowGutter(false);
-      const nodeList = document.querySelectorAll(".ace_gutter-cell");
-      for (let i = 0; i < nodeList.length; i++) {
+      //const nodeList = document.querySelectorAll(".ace_gutter-cell");
+      //for (let i = 0; i < nodeList.length; i++) {
           //nodeList[i].innerHTML = "" // removes linenumbes from gutter but cursor gets strange on typing
           //nodeList[i].innerText = "";// removes linenumbes from gutter but cursor gets strange on typing
-      }
+      //}
       // cannot find how they turn off linenumbers in ace settings menu
       //document.querySelector(".ace_gutter").style.width = "20px";//hides linumbers, shows icons, but not folding thingy
       editor.setOption('showLineNumbers', false);
+      id("linenmbrsbutton").value="Show LineNumbers";
       onoff=0;
   }else{
       //editor.renderer.setOption('showLineNumbers', false);
-      
       //editor.renderer.setshowLineNumbers(false);
       //editor.renderer.setShowGutter(true);
       //document.querySelector(".ace_gutter-cell ").innerhtml="";      
       //document.querySelector(".ace_gutter").style.width = "55px";
       //editor.renderer.setOption.showLineNumbers(false);
        editor.setOption('showLineNumbers', true);
+       id("linenmbrsbutton").value="Hide LineNumbers";
       onoff=1;
   }
 }
       
-
+var ionoff=1;
+function toggleinvisibles() {
+  if (ionoff==1) {
+      editor.setOption('showInvisibles', false);
+      id("invisiblesbutton").value="Show Invisibles";
+      ionoff=0;
+  }else{
+       editor.setOption('showInvisibles', true);
+       id("invisiblesbutton").value="Hide Invisibles";
+      ionoff=1;
+  }
+}
 
 
 
@@ -3745,7 +3759,7 @@ for (let i = 0; i < editormarker.length; i=i+1) {
        document.querySelector(".ace_scroll-v").style.backgroundColor=getComputedStyle(editor.renderer.scroller).backgroundColor; 
      }
 
-document.getElementById("version").innerHTML = '<a href="https://github.com/ajaxorg/ace" target="ace"> Ace Version: ' + ace.version+'</a>';
+document.getElementById("version").innerHTML = ' &nbsp;&nbsp;<a href="https://github.com/ajaxorg/ace" target="ace">Ace Version: ' + ace.version+'</a>';
 
 
 
