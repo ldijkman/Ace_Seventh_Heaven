@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <img   src="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Electra.jpg" style="float:right;width:22px;height:22px;margin: 0px 15px 15px 0px;"  >
 </a>
 
-<input type="button"  id="errorbutton" value=">" style="transform: rotate(90deg);color:red;  /*rotate >*/" onclick="nexterror();" onmouseover="this.focus()" title="next warning / error">
+<input type="button"  id="errorbutton" value="V" style="<!--transform: rotate(90deg);-->color:red;  /*rotate >*/" onclick="nexterror();" onmouseover="this.focus()" title="next warning / error">
 
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)" onmouseover="this.focus()" title="scroll to Begin">
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.NEGATIVE_INFINITY)"  onmouseover="this.focus()" title="scroll to End">
@@ -3661,6 +3661,7 @@ var errorpointer=0;
 function nexterror() {
 
     var len = editor.getSession().getAnnotations().length;
+    document.getElementById("errorbuttom"),value=len;
     if (errorpointer >= len){
         errorpointer=0;
     }
@@ -3703,6 +3704,9 @@ if (editor.getSession().getAnnotations().length=="0") {
 }else{
   errorbutton.style.color="red";
 }
+
+    var len = editor.getSession().getAnnotations().length;
+    document.getElementById("errorbutton").value="V "+len;
 
 //if(len!=editor.getSession().getAnnotations().length){
  //   resizeScroll(); // redraw vertical scrollbar on error changes
