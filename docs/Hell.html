@@ -454,7 +454,20 @@ document.addEventListener('DOMContentLoaded', function () {
 <body>
 
 
-<input type="button" onclick="document.getElementById('openbton').click()" value="Open File" onmouseover="this.focus()">
+ <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+ <div class="dropdown">
+  <button class="dropbtn" onmouseover="this.focus()">File</button>
+  <div class="dropdown-content">
+    <input type="button" class="dropbt" onclick="document.getElementById('openbton').click()" value="Open File" onmouseover="this.focus()">
+    <input type="button" class="dropbt" onclick='save()' style="" onmouseover="this.focus()" value="Save by DownLoad"  onmouseover="this.focus()">
+    <input type="button" class="savebutton dropbt" type="button" style="" title="if Framed DownLoad&#013;if FullScreen maybe Save to Disk" onmouseover="this.focus()" value="Save to Disk?">
+ </div>
+</div>
+<!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
+
+
+
 <input
         type="file"
         id="openbton"
@@ -465,16 +478,6 @@ document.addEventListener('DOMContentLoaded', function () {
         hidden
       />
 <input class="text" value="7th_Heaven.html" size="15" title="FileName" onmouseover="this.focus()">
-
- <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
- <div class="dropdown">
-  <button class="dropbtn" onmouseover="this.focus()">Save File</button>
-  <div class="dropdown-content">
-    <input type="button" class="dropbt" onclick='save()' style="" onmouseover="this.focus()" value="Save by DownLoad"  onmouseover="this.focus()">
-    <input type="button" class="savebutton dropbt" type="button" style="" title="if Framed DownLoad&#013;if FullScreen maybe Save to Disk" onmouseover="this.focus()" value="Save to Disk?">
- </div>
-</div>
-<!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
       <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -" onmouseover="this.focus()">-</button>
@@ -3066,7 +3069,7 @@ editor.session.setMode("ace/mode/html", function() {
       wrapBehavioursEnabled: true,      // boolean
       useSoftTabs: false,                 // spaces or tabs i think tabs is better softtabs uses spaces
       scrollPastEnd: .5,
-
+      dragEnabled: true, // boolean: enable dragging
   	});
 
 
