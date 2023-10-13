@@ -341,20 +341,6 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 }
 
 
-
-/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/
-
-
-/* next hides gutter linenumbers but shows error warning icons
-https://groups.google.com/g/ace-discuss/c/kwkpafRmIcw
-  .ace_gutter > .ace_layer {
-        width: 20px !important;
-    }
-    .ace_gutter  {
-        width: 20px !important;
-    }
-*/   
-
 .select {
   position: absolute;
   top:12px;
@@ -479,22 +465,18 @@ document.addEventListener('DOMContentLoaded', function () {
       />
 <input class="text" value="7th_Heaven.html" size="15" title="FileName" onmouseover="this.focus()">
 
+  <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -" onmouseover="this.focus()">-</button>
+  <input type="number" id="fontSize" style="width: 2.2em;" value='20' oninput='ace.edit("editor").setFontSize(parseInt(this.value))'  title="FontSize" onmouseover="this.focus()">
+  <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())+1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize +" onmouseover="this.focus()">+</button>
 
-      <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -" onmouseover="this.focus()">-</button>
-      <input type="number" id="fontSize" style="width: 2.2em;" value='20' oninput='ace.edit("editor").setFontSize(parseInt(this.value))'  title="FontSize" onmouseover="this.focus()">
-      <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())+1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize +" onmouseover="this.focus()">+</button>
-          <select id="ace-mode" style="width: 75px;" title="select editor file type mode" onmouseover="this.focus()">
-            <option value="css">CSS</option>
-            <option value="html" selected>HTML</option>
-            <option value="javascript">JavaScript</option>
-            <option value="json">JSON</option>
-            <option value="text">Text</option>
-            <option value="c_cpp">C and C++</option>
-          </select>
-
-
-
-       
+  <select id="ace-mode" style="width: 75px;" title="select editor file type mode" onmouseover="this.focus()">
+    <option value="css">CSS</option>
+    <option value="html" selected>HTML</option>
+    <option value="javascript">JavaScript</option>
+    <option value="json">JSON</option>
+    <option value="text">Text</option>
+    <option value="c_cpp">C and C++</option>
+  </select>
 
 <select id="ace-theme"  class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";' onMouseout='this.size="1";' >
 <optgroup class="optgroup" label="Bright" id="sel">
@@ -558,9 +540,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
-  <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
-  
- 
+    <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
   </div>
 </div>
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -577,14 +557,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <input type="button"  id="errorbutton" value=">" style="transform: rotate(90deg);color:red;  /*rotate >*/" onclick="nexterror();" onmouseover="this.focus()" title="next warning / error">
 
-
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.POSITIVE_INFINITY)" onmouseover="this.focus()" title="scroll to Begin">
 <input type="button"  id="Sticky" value=">>" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.renderer.scrollToLine(Number.NEGATIVE_INFINITY)"  onmouseover="this.focus()" title="scroll to End">
 
 <input type="button"  id="Sticky" value=">" style="transform: rotate(90deg);  /*rotate >*/" onclick="editor.scrollPageDown();" onmouseover="this.focus()" title="scrollPageDown">
 <input type="button"  id="Sticky" value=">" style="transform: rotate(-90deg);  /*rotate >*/" onclick="editor.scrollPageUp();" onmouseover="this.focus()" title="scrollPageUp">
 
-   <body>
+ 
     <script>
 function joinfunction() {
    var myWindow = window.open("https://ldijkman.github.io/Ace_Seventh_Heaven/shortcutkeys.html", "_child",  "left=200,top=100,width=640,height=600");
