@@ -550,10 +550,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
-  <button class="dropbtn" onmouseover="this.focus()">Options</button>
-  <div class="dropdown-content">
+  <button class="dropbtn" onmouseover="this.focus()">Options</button> 
+  <div class="dropdown-content"> 
+    <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> 
- <!-- tabSize: 2, editor.setOption('showInvisibles', true);
+ <!-- 
+   
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
@@ -564,8 +566,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
- <input type="button"  id="gearbutton" value="&#9881;" onClick='ace.edit("editor").execCommand("showSettingsMenu");' 
- title="Show ACE Settings Menu"  onmouseover="this.focus()">
+
 
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
  title="Show F1 Better KeyBoard ShortCuts popup Menu&#010;if use F1 button, must have focus on Editor"  onmouseover="this.focus()">
