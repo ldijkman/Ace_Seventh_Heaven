@@ -305,13 +305,13 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown {
   position: relative;
   display: inline-block;
-}
+} 
 
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: rgb(110,110,110);
-  mmmmmmmmmmmmmmmin-width: 90px;
+ 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10000;
   transition-delay: 250ms; /*i do not know*/
@@ -340,6 +340,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   transition-delay: 250ms;
   min-width:155px;
 }
+
 
 
 .select {
@@ -539,13 +540,12 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="dropdown-content">
     <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
-    <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <input type="button" class="dropbt" id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
     <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
   </div>
 </div>
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
-
 
 
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -555,7 +555,9 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> <br>
  
-<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">LiveAutovCompletion</button>
+<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">AutoCompletion</button>
+
+
 <script>
 function toggleliveautocompletion(){
   if(chcklac.checked){
@@ -580,6 +582,8 @@ function toggleliveautocompletion(){
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
+ <input type="button"  id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="&#x26F6;">
+   
 
 
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
@@ -746,12 +750,12 @@ if menu buttons do not fit your screen width
 <!  --------------------------------  >
 <!--
 No M$, This is The Editor of the Web.
+
 Heaven or Hell, That is the Question.
   Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 or
   Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
-  
-  Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
+
   
   Source:             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
   BlahBlah:           https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
@@ -3651,7 +3655,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-   toggleFullScreen();
+   fullscreenbutton.click();
 
       
 
