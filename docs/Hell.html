@@ -539,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="dropdown-content">
     <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
     <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
-    <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <input type="button" class="dropbt" id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
     <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
   </div>
@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> <br>
  
-<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">LiveAutovCompletion</button>
+<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">LiveAutoCompletion</button>
 <script>
 function toggleliveautocompletion(){
   if(chcklac.checked){
@@ -3651,7 +3651,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-   toggleFullScreen();
+   fullscreenbutton.click();
 
       
 
