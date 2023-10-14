@@ -305,13 +305,13 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown {
   position: relative;
   display: inline-block;
-}
+} 
 
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: rgb(110,110,110);
-  mmmmmmmmmmmmmmmin-width: 90px;
+ 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10000;
   transition-delay: 250ms; /*i do not know*/
@@ -340,6 +340,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   transition-delay: 250ms;
   min-width:155px;
 }
+
 
 
 .select {
@@ -547,7 +548,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
-
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Options</button> 
@@ -582,6 +582,8 @@ function toggleliveautocompletion(){
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
+ <input type="button"  id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="&#x26F6;">
+   
 
 
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
@@ -748,12 +750,12 @@ if menu buttons do not fit your screen width
 <!  --------------------------------  >
 <!--
 No M$, This is The Editor of the Web.
+
 Heaven or Hell, That is the Question.
   Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 or
   Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
-  
-  Demo HTML Preview:  https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
+
   
   Source:             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
   BlahBlah:           https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
