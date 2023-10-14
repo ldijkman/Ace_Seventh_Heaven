@@ -311,7 +311,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   display: none;
   position: absolute;
   background-color: rgb(110,110,110);
-  min-width: 90px;
+  mmmmmmmmmmmmmmmin-width: 90px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10000;
   transition-delay: 250ms; /*i do not know*/
@@ -338,7 +338,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown:hover .dropbtn {
   background-color: rgb(120,120,120);
   transition-delay: 250ms;
-  min-width: 125px;
+  min-width:155px;
 }
 
 
@@ -551,13 +551,27 @@ document.addEventListener('DOMContentLoaded', function () {
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Options</button> 
-  <div class="dropdown-content"> 
+  <div class="dropdown-content"style="width:200;" > 
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
-    <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> 
- <!-- 
-   
-    <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
-    <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> <br>
+ 
+<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">LiveAutovCompletion</button>
+<script>
+function toggleliveautocompletion(){
+  if(chcklac.checked){
+    	//editor.setOption('enableBasicAutocompletion', true);
+			editor.setOption('enableLiveAutocompletion', true);
+      console.log("check true enableLiveAutocompletion");
+  }else{
+     //editor.setOption('enableBasicAutocompletion', false);
+     editor.setOption('enableLiveAutocompletion', false);
+     console.log("check false enableLiveAutocompletion");
+  }
+}
+</script>
+
+
+  <!--   <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
     <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
 -->
