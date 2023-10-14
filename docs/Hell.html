@@ -555,9 +555,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> <br>
  
-<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">AutoCompletion</button>
-
-
+<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">AutoCompletion</button><br>
 <script>
 function toggleliveautocompletion(){
   if(chcklac.checked){
@@ -568,6 +566,21 @@ function toggleliveautocompletion(){
      //editor.setOption('enableBasicAutocompletion', false);
      editor.setOption('enableLiveAutocompletion', false);
      console.log("check false enableLiveAutocompletion");
+  }
+}
+</script>
+
+<input type="checkbox" id="tgglwrplnglns" onchange="toggleWraplonglines()" checked ><button class="dropbt" onclick="if(tgglwrplnglns.checked){tgglwrplnglns.checked=false;}else{tgglwrplnglns.checked=true;};toggleWraplonglines()" id="" value="" onmouseover="this.focus()">Wrap Long Lines</button>
+<script>
+function toggleWraplonglines(){
+  if(tgglwrplnglns.checked){
+    	//editor.setOption('enableBasicAutocompletion', true);
+			editor.setOption('wrap', true);
+      console.log("wrap true");
+  }else{
+     //editor.setOption('enableBasicAutocompletion', false);
+     editor.setOption('wrap', false);
+     console.log("wrap false");
   }
 }
 </script>
