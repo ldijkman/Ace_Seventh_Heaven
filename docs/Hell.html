@@ -555,7 +555,9 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> <br>
  
-<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">LiveAutoCompletion</button>
+<input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked ><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()">AutoCompletion</button>
+
+
 <script>
 function toggleliveautocompletion(){
   if(chcklac.checked){
