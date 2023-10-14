@@ -338,6 +338,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown:hover .dropbtn {
   background-color: rgb(120,120,120);
   transition-delay: 250ms;
+  min-width: 125px;
 }
 
 
@@ -541,6 +542,23 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
     <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
+  </div>
+</div>
+<!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
+
+
+ <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+ <div class="dropdown">
+  <button class="dropbtn" onmouseover="this.focus()">Options</button>
+  <div class="dropdown-content">
+    <button class="dropbt" onclick="" id=""  onmouseover="this.focus()">TabSize: <input type="number" step="1" class=""id="" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()"> </button> 
+ <!-- tabSize: 2, editor.setOption('showInvisibles', true);
+    <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
+    <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
+    <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Ivisibles" style="" onmouseover="this.focus()" value="Hide Ivisibles">
+-->
   </div>
 </div>
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -3243,8 +3261,8 @@ editor.session.on("changeScrollTop", function() {
     var m = s+((e-s)/2);    // center of editor
 
     minimapeditor.scrollToLine(m, true, true, function () {});
-    ace.edit("minimapeditor").moveCursorTo(m);
-    ace.edit("minimapeditor").gotoLine(m);
+    minimapeditor.moveCursorTo(m);
+    minimapeditor.gotoLine(m);
 
  minimapeditor.session.removeMarker(marker);  // gray selection on minimap
  marker=minimapeditor.session.addMarker(new Range(s, 0, e, 0), "ace_active-line", "fullLine");
@@ -3685,6 +3703,9 @@ function nexterror() {
 var len="";
 
 function doiteverysecond () {
+
+  //editor.findAll("luberth");
+
     //    console.log("editor.getSelectedText()",editor.getSelectedText().split(/\r?\n/)[0]); 
     //    console.log("editor.getCopyText()",editor.getCopyText().split(/\r?\n/)[0]);
 
@@ -3748,6 +3769,31 @@ for (let i = 0; i < editormarker.length; i=i+1) {
 document.getElementById("version").innerHTML = ' &nbsp;&nbsp;<a href="https://github.com/ajaxorg/ace" target="ace">Ace Version: ' + ace.version+'</a>';
 
 
+
+
+
+
+
+/*var roww = editor.getCursorPosition().row;
+var column=editor.getCursorPosition().column;
+//console.log("cursorpos",cursorpos);
+editor.setOption("enableMultiselect", false);
+var range = editor.findAll('ldijk',{
+    wrap: false,
+    caseSensitive: false, 
+    wholeWord: false,
+    regExp: false,
+    preventScroll: true // do not change selection
+})
+//range.start.column = 0
+//range.end.column = Number.MAX_VALUE
+//editor.session.replace(range, "x" + editor.session.getLine(range.start.row) + "x")
+//console.log("cursorpos",cursorpos);
+editor.selection.setRange(range);
+ 
+  editor.gotoLine(roww, column);  
+  editor.moveCursorTo(roww,column);
+*/
 
 }
  setInterval(doiteverysecond, 2500); // Milliseconds  call function doiteverysecond() every second
