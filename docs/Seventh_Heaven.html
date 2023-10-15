@@ -558,14 +558,14 @@ document.addEventListener('DOMContentLoaded', function () {
  <input type="checkbox" id="chcksofttabs" onchange="togglesofttabs()" 
  title='Atomic Soft Tabs&#013;   off Tab is a line in invisibles (maybe smaller faster code?) &#013;   on Tab is made of spaces, dots in invisibles'>
  <button class="dropbt" onclick="if(chcksofttabs.checked){chcksofttabs.checked=false;}else{chcksofttabs.checked=true;};togglesofttabs()" id="" value="" onmouseover="this.focus()" 
- title='Atomic Soft Tabs&#013;   off Tab is a line in invisibles (maybe smaller faster code?) &#013;   on Tab is made of spaces, dots in invisibles'>SoftTabs</button><br>
+ title='Atomic Soft Tabs&#013;   off Tab is a line in invisibles (maybe smaller faster code?) &#013;   on Tab is made of spaces, dots in invisibles'>Atomic Soft Tabs</button><br>
 <script>
 function togglesofttabs(){
   if(chcksofttabs.checked){
-			editor.setOption('behavioursEnabled', true);  
+			editor.setOption('useSoftTabs', true);  
       console.log("check true togglesofttabs");
   }else{
-     editor.setOption('behavioursEnabled', false); 
+     editor.setOption('useSoftTabs', false); 
      console.log("check false togglesofttabs");
   }
 }
