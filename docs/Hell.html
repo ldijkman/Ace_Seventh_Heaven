@@ -3815,7 +3815,7 @@ editor.getSession().on("changeAnnotation", function() {
 
   var  errormessage="";
   //var Range = ace.require("ace/range").Range;
-  errormessage += " "+editor.getSession().getAnnotations().length+" Annotations\r\n"+"\r\n";
+  errormessage += " "+editor.getSession().getAnnotations().length+" Annotations\r\n"+"Click to go to next Error or Warning in Editor\r\n\r\n";
   //  resizeScroll(); // redraw vertical scrollbar on error changes
   for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
       //console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
