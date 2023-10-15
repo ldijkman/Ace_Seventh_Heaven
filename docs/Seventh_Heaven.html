@@ -555,6 +555,24 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()" title="Tab is based on +this.value+ spaces">TabSize: <input type="number" step="1" class="" id="tabinput" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()" title="Tab is based on +this.value+ spaces"> </button> <br>
  
+ <input type="checkbox" id="chcklai" onchange="toggleautoindent()" checked  
+ title='Auto indent&#013;   off start a new line at begin&#013;   on start a new line at tabbed position of previous line'>
+ <button class="dropbt" onclick="if(chcklai.checked){chcklai.checked=false;}else{chcklai.checked=true;};toggleautoindent()" id="" value="" onmouseover="this.focus()" 
+ title='Auto indent&#013;   off start a new line at begin&#013;   on start a new line at tabbed position of previous line'>Auto indent</button><br>
+<script>
+function toggleautoindent(){
+  if(chcklai.checked){
+			//editor.setOption('behavioursEnabled', true);  // auto close (){}[] and maybe also <div> etc
+      editor.setOption('enableAutoIndent', true);
+      console.log("check true auto indent");
+  }else{
+     //editor.setOption('behavioursEnabled', false); // auto close (){}[] and maybe also <div> etc
+     editor.setOption('enableAutoIndent', false);
+     console.log("check false auto indent");
+  }
+}
+</script>
+
 <input type="checkbox" id="chcklac" onchange="toggleliveautocompletion()" checked  
 title='Live Auto Completion, Suggestion, Snippets, PopUp&#013;if off&#013;Swittch to Basic AutoCompletion&#013;CTRL+Space&#013;Shows the PopUp &#013;'><button class="dropbt" onclick="if(chcklac.checked){chcklac.checked=false;}else{chcklac.checked=true;};toggleliveautocompletion()" id="" value="" onmouseover="this.focus()" title='Live Auto Completion, Suggestion, Snippets, PopUp&#013;if off&#013;Swittch to Basic AutoCompletion&#013;CTRL+Space&#013;Shows the PopUp &#013;'>AutoCompletion</button><br>
 <script>
