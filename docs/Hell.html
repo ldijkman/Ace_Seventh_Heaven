@@ -604,6 +604,21 @@ function toggleWraplonglines(){
 }
 </script>
 
+ <input type="checkbox" id="chckbehaviours" onchange="togglebehaviours()" checked  
+ title='behavioursEnabled&#013;   off no auto close { [ ( <cemter> " &#013;   on auto close () [] {} <center></center> Etc.'>
+ <button class="dropbt" onclick="if(chckbehaviours.checked){chckbehaviours.checked=false;}else{chckbehaviours.checked=true;};togglebehaviours()" id="" value="" onmouseover="this.focus()" 
+ title='behavioursEnabled&#013;   off no auto close { [ ( <cemter> " &#013;   on auto close () [] {} <center></center> Etc.'>Behaviours</button><br>
+<script>
+function togglebehaviours(){
+  if(chckbehaviours.checked){
+			editor.setOption('behavioursEnabled', true);  // auto close (){}[] and maybe also <div> etc
+      console.log("check true behavioursEnabledt");
+  }else{
+     editor.setOption('behavioursEnabled', false); // auto close (){}[] and maybe also <div> etc
+     console.log("check false behavioursEnabled");
+  }
+}
+</script>
 
   <!--   <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
