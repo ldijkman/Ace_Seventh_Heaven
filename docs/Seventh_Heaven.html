@@ -532,7 +532,22 @@ document.addEventListener('DOMContentLoaded', function () {
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize" onmouseover="this.focus()">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +" onmouseover="this.focus()">+</button>
 
- 
+  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+ <div class="dropdown">
+  <button class="dropbtn" onmouseover="this.focus()">Edit</button>
+  <div class="dropdown-content">
+    <input type="button" class="dropbt" onclick="" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
+    title="Not Yet! &#013;  Convert Spaces to Tabs">
+  <!--
+    <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
+    <input type="button" class="dropbt" id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
+    <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Invisibles" style="" onmouseover="this.focus()" value="Hide Invisibles">
+  -->
+  </div>
+</div>
+<!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
 
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
