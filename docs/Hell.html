@@ -536,9 +536,20 @@ document.addEventListener('DOMContentLoaded', function () {
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Edit</button>
   <div class="dropdown-content">
-    <input type="button" class="dropbt" onclick="" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
+    <input type="button" class="dropbt" onclick="convertspacestotab();" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
     title="Not Yet! &#013;  Convert Spaces to Tabs"> 
-    
+<script>    
+  function convertspacestotab(){
+      //$(function(){mkTool("spaces-to-tabs",function(t){var a=$("#spaces-to-tabs-count").val(),e=new RegExp(" {"+a+"}","g");return t.replace(e,"	")})});
+      var text=editor.getValue();
+      var a = tabinput.value;  // menu option input number tabsize
+      // this gets atomic when atomic is checked ;-)
+      e = new RegExp(" {" + a + "}", "g");
+      var textt= text.replace(e, "	");
+      editor.getSession().setValue(textt);
+      minimapeditor.setValue(editor.getSession().getValue());
+  }
+ </script>   
     <input type="button" class="dropbt" onclick="" id="" value="Beautify / Prettify" onmouseover="this.focus()"
     title="Not Yet! &#013;  Beautify / Prettify&#013;  Format Code"> 
   
