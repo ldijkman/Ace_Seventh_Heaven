@@ -555,6 +555,25 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="button" class="dropbt" value="Ace Settings Menu" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="Show ACE Settings Menu"  onmouseover="this.focus()">
     <button class="dropbt" onclick="" id=""  onmouseover="this.focus()" title="Tab is based on +this.value+ spaces">TabSize: <input type="number" step="1" class="" id="tabinput" oninput="editor.setOption('tabSize', this.value);"  style="width:30px;"value="2" onmouseover="this.focus()" title="Tab is based on +this.value+ spaces"> </button> <br>
  
+ <input type="checkbox" id="chcksofttabs" onchange="togglesofttabs()" 
+ title='Atomic Soft Tabs&#013;   off Tab is a line in invisibles (maybe smaller faster code?) &#013;   on Tab is made of spaces, dots in invisibles'>
+ <button class="dropbt" onclick="if(chcksofttabs.checked){chcksofttabs.checked=false;}else{chcksofttabs.checked=true;};togglesofttabs()" id="" value="" onmouseover="this.focus()" 
+ title='Atomic Soft Tabs&#013;   off Tab is a line in invisibles (maybe smaller faster code?) &#013;   on Tab is made of spaces, dots in invisibles'>SoftTabs</button><br>
+<script>
+function togglesofttabs(){
+  if(chcksofttabs.checked){
+			editor.setOption('behavioursEnabled', true);  
+      console.log("check true togglesofttabs");
+  }else{
+     editor.setOption('behavioursEnabled', false); 
+     console.log("check false togglesofttabs");
+  }
+}
+</script>
+
+
+
+
  <input type="checkbox" id="chcklai" onchange="toggleautoindent()" checked  
  title='Auto indent&#013;   off start a new line at begin&#013;   on start a new line at tabbed position of previous line'>
  <button class="dropbt" onclick="if(chcklai.checked){chcklai.checked=false;}else{chcklai.checked=true;};toggleautoindent()" id="" value="" onmouseover="this.focus()" 
