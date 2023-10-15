@@ -536,6 +536,7 @@ document.addEventListener('DOMContentLoaded', function () {
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Edit</button>
   <div class="dropdown-content">
+
     <input type="button" class="dropbt" onclick="convertspacestotab();" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
     title="Convert Spaces to Tabs &#013;  number of space to tabs&#013;  is taken from menu option tab size&#013;&#013;see the dots change to lines on invisibles"> 
 <script>    
@@ -550,7 +551,22 @@ document.addEventListener('DOMContentLoaded', function () {
       editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
   }
+ </script>  
+
+    <input type="button" class="dropbt" onclick="converttabstospaces();" id="" value="Convert Tabs to Spaces" onmouseover="this.focus()" 
+    title="Convert Tabs to Spaces &#013;  number of space from tabs&#013;  is taken from menu option tab size&#013;&#013;see the tab lines change to dots on invisibles"> 
+<script>    
+  function converttabstospaces(){
+      // next from https://www.browserling.com/tools/spaces-to-tabs
+      //      $(function(){mkTool("tabs-to-spaces",function(o){for(var c=$("#tabs-to-spaces-count").val(),a="",t=1;t<=c;t++)a+=" ";return o.replace(/\t/g,a)})});
+      var text=editor.getValue();                               // get editor text                                
+      for (var c = tabinput.value, a = "", t = 1; t <= c; t++)a += " ";// c= menu option input number tabsize
+      var textt= text.replace(/\t/g, a);
+      editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
+      minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
+  }
  </script>   
+
     <input type="button" class="dropbt" onclick="" id="" value="Beautify / Prettify" onmouseover="this.focus()"
     title="Not Yet! &#013;  Beautify / Prettify&#013;  Format Code"> 
   
