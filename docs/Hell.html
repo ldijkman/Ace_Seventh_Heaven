@@ -540,14 +540,15 @@ document.addEventListener('DOMContentLoaded', function () {
     title="Not Yet! &#013;  Convert Spaces to Tabs"> 
 <script>    
   function convertspacestotab(){
-      //$(function(){mkTool("spaces-to-tabs",function(t){var a=$("#spaces-to-tabs-count").val(),e=new RegExp(" {"+a+"}","g");return t.replace(e,"	")})});
-      var text=editor.getValue();
-      var a = tabinput.value;  // menu option input number tabsize
+      // next from https://www.browserling.com/tools/spaces-to-tabs
+      //       $(function(){mkTool("spaces-to-tabs",function(t){var a=$("#spaces-to-tabs-count").val(),e=new RegExp(" {"+a+"}","g");return t.replace(e,"	")})});
+      var text=editor.getValue();                               // get editor text
+      var a = tabinput.value;                                   // menu option input number tabsize
       // this gets atomic when atomic is checked ;-)
       e = new RegExp(" {" + a + "}", "g");
       var textt= text.replace(e, "	");
-      editor.getSession().setValue(textt);
-      minimapeditor.setValue(editor.getSession().getValue());
+      editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
+      minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
   }
  </script>   
     <input type="button" class="dropbt" onclick="" id="" value="Beautify / Prettify" onmouseover="this.focus()"
