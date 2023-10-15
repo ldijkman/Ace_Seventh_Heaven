@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="dropdown-content">
 
     <input type="button" class="dropbt" onclick="convertspacestotab();" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
-    title="Convert Spaces to Tabs &#013;  number of space to tabs&#013;  is taken from menu option tab size&#013;&#013;see the dots change to lines on invisibles"> 
+    title="Convert Spaces to Tabs &#013;  number of space to tabs&#013;  is taken from menu option tab size&#013;&#013;see the dots change to lines on invisibles&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs key"> 
 <script>    
   function convertspacestotab(){
       // next from https://www.browserling.com/tools/spaces-to-tabs
@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function () {
  </script>  
 
     <input type="button" class="dropbt" onclick="converttabstospaces();" id="" value="Convert Tabs to Spaces" onmouseover="this.focus()" 
-    title="Convert Tabs to Spaces &#013;  number of space from tabs&#013;  is taken from menu option tab size&#013;&#013;see the tab lines change to dots on invisibles"> 
+    title="Convert Tabs to Spaces &#013;  number of space from tabs&#013;  is taken from menu option tab size&#013;&#013;see the tab lines change to dots on invisible&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs keys"> 
 <script>    
   function converttabstospaces(){
       // next from https://www.browserling.com/tools/spaces-to-tabs
@@ -3880,11 +3880,11 @@ console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].r
 if (editor.getSession().getAnnotations().length=="0") {
   errorbutton.style.color="greenyellow";
 }else{
-  errorbutton.style.color="red";
+  errorbutton.style.color="rgb(255,40,0)";
 }
 
     var len = editor.getSession().getAnnotations().length;
-    document.getElementById("errorbutton").value="V "+len;
+    document.getElementById("errorbutton").value=""+len;
 
 //if(len!=editor.getSession().getAnnotations().length){
  //   resizeScroll(); // redraw vertical scrollbar on error changes
