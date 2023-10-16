@@ -575,6 +575,18 @@ document.addEventListener('DOMContentLoaded', function () {
   }
  </script>   
 
+
+     <input type="button" class="dropbt" onclick="removetail();" id="" value="Remove Tail" onmouseover="this.focus()" 
+    title="Remove Tail  &#013; remove spaces and tabs from end of line&#013;&#013;not working yet&#013;only works on end of file "> 
+<script>    
+  function removetail(){
+      var text=editor.getValue();                               // get editor text   
+      var textt=text.trimEnd();
+      editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
+      minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
+  }
+ </script>  
+
     <input type="button" class="dropbt" onclick="" id="" value="Beautify / Prettify" onmouseover="this.focus()"
     title="Not Yet! &#013;  Beautify / Prettify&#013;  Format Code"> 
   
