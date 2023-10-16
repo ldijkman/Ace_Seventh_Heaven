@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var text=editor.getValue();                               // get editor text                                
       for (var c = tabinput.value, a = "", t = 1; t <= c; t++)a += " ";// c= menu options input number tabsize https://www.browserling.com/tools
       var textt= text.replace(/\t/g, a);
-      editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
+      editor.getSession().setValue(textt);                      // set editor text now dots invisibles
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
   }
  </script>   
@@ -582,6 +582,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function removetail(){
       // get max lines of file
       //   console.log("editor.session.getLength()",editor.session.getLength());
+      // https://stackoverflow.com/questions/24695377/replace-content-of-the-line-in-ace-editor-and-overwrite-it
      var result = "";
      for (let i = 0; i < editor.session.getLength(); i++) {
         var temp=editor.session.getLine(i);       // get the text of line i
@@ -589,7 +590,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var Range = require("ace/range").Range
         editor.session.replace(new Range(i, 0, i, Number.MAX_VALUE), result);  // replace the line i trimmed
      }  
-      //editor.getSession().setValue(result);                    // set editor text now tabs invisibles
+      //editor.getSession().setValue(result);                    // set editor text 
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
   }
  </script>  
