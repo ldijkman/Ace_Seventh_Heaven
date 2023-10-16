@@ -311,10 +311,11 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   display: none;
   position: absolute;
   background-color: rgb(110,110,110);
- 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10000;
-  transition-delay: 250ms; /*i do not know*/
+  transition-property: height;/*i do not know*/
+  transition-duration: 1s;
+  transition-delay: 1ms;
 }
 
 .dropdown-content after{
@@ -322,30 +323,31 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-  transition-delay: 250ms;
 }
 
 .dropdown-content a:hover {
-  background-color: rgb(120,120,120);
-  transition-delay: 250ms;
+  background-color: rgb(12,120,12);
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
-  transition-delay: 250ms;
+  transition-property: height;/*i do not know*/
+  transition-duration: 1s;
+  transition-delay: 1ms;
 }
 
 .dropdown:hover {
   background-color: rgb(120,120,120);
-  transition-delay: 250ms;
   min-width:155px;
 }
 
 .dropbtn{
-max-width: 60px;
+ 
+  max-width: 60px;
 }
 
-.dropbtn:hover{
+.dropbtn:hover{ 
+  no-background-color: rgb(120,255,120);
   max-width: 60px;
 }
 
@@ -544,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="dropdown-content">
 
     <input type="button" class="dropbt" onclick="convertspacestotab();" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
-    title="Convert Spaces to Tabs &#013;  number of space to tabs&#013;  is taken from menu option tab size&#013;&#013;see the dots change to lines on invisibles&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs key"> 
+    title="Convert Spaces to Tabs &#013;  number of space to tabs&#013;  is taken from menu option tab size&#013;&#013;see the dots change to lines on invisibles&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs key&#013; https://www.browserling.com/tools"> 
 <script>    
   function convertspacestotab(){
       // next from https://www.browserling.com/tools/spaces-to-tabs
@@ -552,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var text=editor.getValue();                               // get editor text
       var a = tabinput.value;                                   // menu option input number tabsize
       // this gets atomic when atomic is checked ;-)
-      e = new RegExp(" {" + a + "}", "g");
+      e = new RegExp(" {" + a + "}", "g");                      // https://www.browserling.com/tools
       var textt= text.replace(e, "	");
       editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
@@ -560,13 +562,13 @@ document.addEventListener('DOMContentLoaded', function () {
  </script>  
 
     <input type="button" class="dropbt" onclick="converttabstospaces();" id="" value="Convert Tabs to Spaces" onmouseover="this.focus()" 
-    title="Convert Tabs to Spaces &#013;  number of space from tabs&#013;  is taken from menu option tab size&#013;&#013;see the tab lines change to dots on invisible&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs keys"> 
+    title="Convert Tabs to Spaces &#013;  number of space from tabs&#013;  is taken from menu option tab size&#013;&#013;see the tab lines change to dots on invisible&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs keys&#013; https://www.browserling.com/tools"> 
 <script>    
   function converttabstospaces(){
       // next from https://www.browserling.com/tools/spaces-to-tabs
       //      $(function(){mkTool("tabs-to-spaces",function(o){for(var c=$("#tabs-to-spaces-count").val(),a="",t=1;t<=c;t++)a+=" ";return o.replace(/\t/g,a)})});
       var text=editor.getValue();                               // get editor text                                
-      for (var c = tabinput.value, a = "", t = 1; t <= c; t++)a += " ";// c= menu option input number tabsize
+      for (var c = tabinput.value, a = "", t = 1; t <= c; t++)a += " ";// c= menu options input number tabsize https://www.browserling.com/tools
       var textt= text.replace(/\t/g, a);
       editor.getSession().setValue(textt);                      // set editor text now tabs invisibles
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
