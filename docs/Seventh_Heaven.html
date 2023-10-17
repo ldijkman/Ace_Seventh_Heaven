@@ -583,13 +583,19 @@ document.addEventListener('DOMContentLoaded', function () {
       // get max lines of file
       //   console.log("editor.session.getLength()",editor.session.getLength());
       // https://stackoverflow.com/questions/24695377/replace-content-of-the-line-in-ace-editor-and-overwrite-it
-     var result = "";
-     for (let i = 0; i < editor.session.getLength(); i++) {
-        var temp=editor.session.getLine(i);       // get the text of line i
-        result=temp.trimEnd();                    // trimend line of line i
-        var Range = require("ace/range").Range
-        editor.session.replace(new Range(i, 0, i, Number.MAX_VALUE), result);  // replace the line i trimmed
-     }  
+     var r = "";
+     var t="";
+     var temp = "";
+     let n=editor.session.getLength();
+     var Range = require("ace/range").Range
+     // for (let i = 0; i < n; i++){
+     //     t=editor.session.getLine(i);
+     //     r=t.trimEnd();
+     //     editor.session.replace(new Range(i,0,i,Number.MAX_VALUE),r);
+     // }  
+//same for loop as above but now minimized for speed?
+for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace(new Range(i,0,i,Number.MAX_VALUE),r);     
+ 
       //editor.getSession().setValue(result);                    // set editor text 
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
   }
