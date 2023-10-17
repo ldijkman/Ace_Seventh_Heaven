@@ -368,7 +368,10 @@ a:-webkit-any-link {              /* change color link in topmenu*/
  }
 
 </style>
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-css.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.js"></script>
+
 
 <script>
    
@@ -601,10 +604,17 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
   }
  </script>  
 
-    <input type="button" class="dropbt" onclick="" id="" value="Beautify / Prettify" onmouseover="this.focus()"
-    title="Not Yet! &#013;  Beautify / Prettify&#013;  Format Code"> 
-  
+    <input type="button" class="dropbt" onclick="pretty()" id="" value="Beautify / Prettify" onmouseover="this.focus()"
+    title="Beautify / Prettify&#013;  Format HTML Code&#013&#013Sory NO UnDo&#013&#013https://github.com/beautify-web/js-beautify"> 
  
+ <script>
+   function pretty(){
+      var text=editor.getValue();
+       var pretty=html_beautify(text);
+       editor.getSession().setValue(pretty);                      // set editor 
+       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
+   }
+   </script>
    <!--  
       <input type="button" class="dropbt" id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
@@ -911,7 +921,8 @@ NEW! menu edit
        tabs to spaces                                                 
        spaces to tabs                                   
        remove tailing spaces or tabs                                  
-                                                                    
+       maybe does beautify / prettify now (BUT NO UNDO)   
+
  You can drag move the search/replace!                                       
     to a desired position on the screen                                        
         Beat that! VisualStudio Monaco ;-)               
