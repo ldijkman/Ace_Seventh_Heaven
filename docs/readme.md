@@ -5,8 +5,6 @@ Demo HTML Preview: https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 
 Demo: https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
-Edit_Hell: https://ldijkman.github.io/Ace_Seventh_Heaven/Edit_Hell.html
-
 Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
 
 BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
