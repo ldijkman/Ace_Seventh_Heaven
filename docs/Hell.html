@@ -609,6 +609,8 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
  <script>
    function pretty(){
        var text=editor.getValue();
+       // ace beautify does not work nice
+       // use another
        // https://github.com/beautify-web/js-beautify
        var pretty=html_beautify(text);
        editor.getSession().setValue(pretty);                      // set editor 
