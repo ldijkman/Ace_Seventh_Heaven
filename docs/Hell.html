@@ -469,8 +469,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <option value="c_cpp">C and C++</option>
   </select>
 
-<select id="ace-theme"  class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";' onMouseout='this.size="1";' >
-<optgroup class="optgroup" label="Bright" id="sel">
+<select id="ace-theme"  class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";this.style.width="175px";' onMouseout='this.size="1";this.style.width="";' >
+<optgroup class="optgroup" label="Bright" id="sel" style="min-width: 250px;">
   <option value="ace/theme/chrome">Chrome</option>
   <option value="ace/theme/clouds">Clouds</option>
   <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <option value="ace/theme/katzenmilch">KatzenMilch</option>
   <option value="ace/theme/sqlserver">SQL Server</option>
 </optgroup>
-<optgroup label="Dark">
+<optgroup label="Dark" style="min-width: 250px;">
   <option value="ace/theme/ambiance">Ambiance</option>
   <option value="ace/theme/chaos">Chaos</option>
   <option value="ace/theme/clouds_midnight">Clouds Midnight</option>
