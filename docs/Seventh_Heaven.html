@@ -305,51 +305,29 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown {
   position: relative;
   display: inline-block;
-} 
+}
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgb(110,110,110);
+  background-color: #666;
+  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 10000;
-  transition-property: height;/*i do not know*/
-  transition-duration: 1s;
-  transition-delay: 1ms;
+  z-index: 11000;
 }
 
-.dropdown-content after{
+.dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content a:hover {
-  background-color: rgb(12,120,12);
-}
+.dropdown-content a:hover {background-color: #ddd;}
 
-.dropdown:hover .dropdown-content {
-  display: block;
-  transition-property: height;/*i do not know*/
-  transition-duration: 1s;
-  transition-delay: 1ms;
-}
+.dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover {
-  background-color: rgb(120,120,120);
-  min-width:155px;
-}
-
-.dropbtn{
- 
-  max-width: 60px;
-}
-
-.dropbtn:hover{ 
-  no-background-color: rgb(120,255,120);
-  max-width: 60px;
-}
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 .select {
   position: absolute;
