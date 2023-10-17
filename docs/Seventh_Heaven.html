@@ -469,8 +469,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <option value="c_cpp">C and C++</option>
   </select>
 
-<select id="ace-theme"  class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";this.style.width="175px";' onMouseout='this.size="1";this.style.width="";' >
-<optgroup class="optgroup" label="Bright" id="sel" style="min-width: 250px;">
+<select id="ace-theme"  class="select" size="1" style="width: 100px;" title="select a theme colorscheme" onMouseOver='this.focus();this.size="43";this.style.width="175px";this.style.top="+35px";' onMouseout='this.size="1";this.style.width="";this.style.top="";' >
+<optgroup class="optgroup" label="Bright" id="sel">
   <option value="ace/theme/chrome">Chrome</option>
   <option value="ace/theme/clouds">Clouds</option>
   <option value="ace/theme/crimson_editor">Crimson Editor</option>
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </optgroup>
 </select>
     &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())-.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize -" onmouseover="this.focus()">-</button>
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize" onmouseover="this.focus()">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +" onmouseover="this.focus()">+</button>
