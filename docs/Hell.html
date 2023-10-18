@@ -583,14 +583,33 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
  </script>  
 
     <input type="button" class="dropbt" onclick="pretty()" id="" value="Beautify / Prettify" onmouseover="this.focus()"
-    title="Beautify / Prettify&#013;  Format HTML Code&#013;&#013;Sorry NO UnDo&#013&#013;https://github.com/beautify-web/js-beautify">
+    title="Beautify / Prettify&#013;  Format HTML Code&#013;&#013;Sorry NO UnDo&#013&#013;https://github.com/beautify-web/js-beautify&#013;https://beautifier.io/">
  <script>
    function pretty(){
        var text=editor.getValue();
        // ace beautify does not work nice
        // use another
        // https://github.com/beautify-web/js-beautify
-       var pretty=html_beautify(text);
+       // https://beautifier.io/
+       var pretty=html_beautify(text,{
+  "indent_size": "2",
+  "indent_char": " ",
+  "max_preserve_newlines": "5",
+  "preserve_newlines": true,
+  "keep_array_indentation": false,
+  "break_chained_methods": false,
+  "indent_scripts": "keep",
+  "brace_style": "collapse",
+  "space_before_conditional": true,
+  "unescape_strings": false,
+  "jslint_happy": true,
+  "end_with_newline": true,
+  "wrap_line_length": "0",
+  "indent_inner_html": false,
+  "comma_first": false,
+  "e4x": false,
+  "indent_empty_lines": false
+});
        editor.getSession().setValue(pretty);                      // set editor 
        minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
    }
