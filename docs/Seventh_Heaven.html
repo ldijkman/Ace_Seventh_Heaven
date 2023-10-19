@@ -4099,8 +4099,8 @@ editor.selection.setRange(range);
           <!--<button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>-->
           <script>
             setInterval(function () {
-              const d = new Date();
-              document.getElementById("time").innerHTML = d;
+              const event = new Date();
+              document.getElementById("time").innerHTML = (event.toLocaleString());
             }, 1000);
 
           </script>
