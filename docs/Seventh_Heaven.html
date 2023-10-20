@@ -353,6 +353,8 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-css.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/source-map@0.7.3/dist/source-map.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
 
 <script>
    
@@ -622,8 +624,21 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
    <input type="button" class="dropbt" id="" onclick="" title="" style="" onmouseover="this.focus()" value="-----">
    <br>
     <input type="button" class="dropbt" id="" onclick="" title="" style="" onmouseover="this.focus()" value="- not yet!-">
-    <input type="button" class="dropbt" id="" onclick="" title="terser? &#013; https://terser.org/ &#013; https://github.com/terser/terser" style="" onmouseover="this.focus()" value="4 Javascript Mnify">
-    
+    <input type="button" class="dropbt" id="" onclick="terserall();" title="terser? &#013; https://terser.org/ &#013; https://github.com/terser/terser" style="" onmouseover="this.focus()" value="4 Javascript Mnify">
+    <script>
+      function terserall(){
+        
+        var text=editor.getValue();
+       var code = "function add(first, second) { return first + second; }";
+        var result = await minify(code, { sourceMap: true });
+         //console.log(result.code);  // minified output: function add(n,d){return n+d}
+        //console.log(result.map);  // source map
+      editor.getSession().setValue(result.code);                      // set editor text now dots invisibles
+      minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
+      }
+</script>
+
+
     <!--   <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Invisibles" style="" onmouseover="this.focus()" value="Hide Invisibles">
   -->
   </div>
