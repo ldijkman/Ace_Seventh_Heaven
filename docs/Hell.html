@@ -941,6 +941,14 @@ NEW! menu edit
     CTRL+Space
        Shows the Suggestions PopUp
 
+
+at the moment looking at
+    Terser js minify:
+      https://github.com/terser
+      https://terser.org/html-minifier-terser
+      https://minify-js.com/
+      https://www.digitalocean.com/community/tools/minify
+      https://www.google.com/search?q=terser+js+minify
 </pre>                                                   
 <!  --------------------------------  >
 <!--
@@ -4100,6 +4108,15 @@ editor.selection.setRange(range);
           <!--<button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>-->
           <script>
             setInterval(function () {
+
+<script>
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const d = new Date();
+let month = months[d.getMonth()];
+let day = days[d.getDay()];
+//document.getElementById("demo").innerHTML = day;
+
               const event = new Date();
               document.getElementById("time").innerHTML = (event.toLocaleString());
             }, 1000);
