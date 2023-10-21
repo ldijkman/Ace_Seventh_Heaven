@@ -656,6 +656,23 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
   }
  </script>  
 
+
+      <input type="button" class="dropbt" onclick="removeempty();" id="" value="Remove empty lines" onmouseover="this.focus()" 
+    title="Remove Empty  &#013; Remove empty lines &#013;"> 
+    <br>
+<script>    
+  function removeempty(){
+      // get max lines of file
+      //   console.log("editor.session.getLength()",editor.session.getLength());
+      // https://stackoverflow.com/questions/24695377/replace-content-of-the-line-in-ace-editor-and-overwrite-it
+
+
+
+   // not done yet
+
+  }
+ </script> 
+
     <input type="button" class="dropbt" onclick="pretty()" id="" value="Beautify / Prettify" onmouseover="this.focus()"
     title="Beautify / Prettify&#013;  Format HTML Code&#013;&#013;Sorry NO UnDo&#013&#013;https://github.com/beautify-web/js-beautify&#013;https://beautifier.io/&#013;   make an options menu?">
  <script>
@@ -1025,8 +1042,9 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
 
     </form>
 </div><span>Select:</span>
-  <a href="#" @click.prevent="selectAllOptions(true)">All</a><a href="#" @click.prevent="selectAllOptions(false)">None</a><a href="#" @click.prevent="resetOptions()">Reset</a>
-
+  <input type="button" onclick="selectAllOptions(true)" value="All">
+  <input type="button" onclick="selectAllOptions(false)" value="None">
+  <input type="button" onclick="resetOptions()" value="Reset">
   <a href="https://terser.org/html-minifier-terser/" target="ugly">https://terser.org/html-minifier-terser/</a>
               </font></div> </div></div>
                  </div>
@@ -4402,9 +4420,12 @@ for (let i = 0; i < editormarker.length; i=i+1) {
 document.getElementById("version").innerHTML = ' &nbsp;&nbsp;<a href="https://github.com/ajaxorg/ace" target="ace">Ace Version: ' + ace.version+'</a>';
 
 
-
-
-
+// beautify options
+console.log("tabsize",document.getElementById("tabsize").value);
+console.log("max-preserve-newlines",document.getElementById("max-preserve-newlines").value);
+console.log("wrap-line-length",document.getElementById("wrap-line-length").value);
+console.log("brace-style",document.getElementById("brace-style").value);
+console.log("indent-scripts",document.getElementById("indent-scripts").value);
 
 
 /*var roww = editor.getCursorPosition().row;
