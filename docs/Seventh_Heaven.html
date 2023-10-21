@@ -667,7 +667,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
       // https://stackoverflow.com/questions/24695377/replace-content-of-the-line-in-ace-editor-and-overwrite-it
 
 
-
+      play();
    // not done yet
 
   }
@@ -858,7 +858,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
     
     <script>
       function terserall(){
-        
+        play();
         var text=editor.getValue();
        var code = text;
         var result = Terser.minify(code);
@@ -4454,7 +4454,10 @@ editor.selection.setRange(range);
 
 
 
-
+function play() { 
+		var beepsound = new Audio( 'https://www.myinstants.com/media/sounds/wuh-oh.mp3'); 
+		beepsound.play(); 
+	} 
 
 
 </script>
