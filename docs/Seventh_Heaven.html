@@ -833,83 +833,1142 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                   
 <font color="lightgray">
 
-          <select name="tabsize" id="tabsize">
-            <option value="1">Indent with a tab character</option>
-            <option value="2">Indent with 2 spaces</option>
-            <option value="3">Indent with 3 spaces</option>
-            <option value="4">Indent with 4 spaces</option>
-            <option value="8">Indent with 8 spaces</option>
-          </select>
-          <select name="max-preserve-newlines" id="max-preserve-newlines">
-            <option value="-1">Remove all extra newlines</option>
-            <option value="1">Allow 1 newline between tokens</option>
-            <option value="2">Allow 2 newlines between tokens</option>
-            <option value="5">Allow 5 newlines between tokens</option>
-            <option value="10">Allow 10 newlines between tokens</option>
-            <option value="0">Allow unlimited newlines between tokens</option>
-          </select>
-          <select name="wrap-line-length" id="wrap-line-length">
-            <option value="0">Do not wrap lines</option>
-            <option value="40">Wrap lines near 40 characters</option>
-            <option value="70">Wrap lines near 70 characters</option>
-            <option value="80">Wrap lines near 80 characters</option>
-            <option value="110">Wrap lines near 110 characters</option>
-            <option value="120">Wrap lines near 120 characters</option>
-            <option value="160">Wrap lines near 160 characters</option>
-          </select>
-          <select id="brace-style">
-            <option value="collapse">Braces with control statement</option>
-            <option value="expand">Braces on own line</option>
-            <option value="end-expand">End braces on own line</option>
-            <option value="none">Attempt to keep braces where they are</option>
-          </select>
-        
-            <p style="margin:6px 0 0 0">HTML &lt;style&gt;, &lt;script&gt; formatting:</p>
-            <select id="indent-scripts">
-              <option value="keep">Keep indent level of the tag</option>
-              <option value="normal">Add one indent level</option>
-              <option value="separate">Separate indentation</option>
-            </select>
-        
-<br><br>
-
-           <input class="checkbox" type="checkbox" id="end-with-newline">
-          <label for="end-with-newline" onmouseover="" title="Title Test">End script and style with newline?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="e4x">
-          <label for="e4x" title="Title Test">Support e4x/jsx syntax</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="comma-first">
-          <label for="comma-first" title="Title Test">Use comma-first list style?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="detect-packers">
-          <label for="detect-packers" title="Title Test">Detect packers and obfuscators?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="brace-preserve-inline">
-          <label for="brace-preserve-inline" title="Title Test">Preserve inline braces/code blocks?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="keep-array-indentation">
-          <label for="keep-array-indentation" title="Title Test">Keep array indentation?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="break-chained-methods">
-          <label for="break-chained-methods" title="Title Test">Break lines on chained methods?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="space-before-conditional">
-          <label for="space-before-conditional" title="Title Test">Space before conditional: "if(x)" / "if (x)"</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="unescape-strings">
-          <label for="unescape-strings" title="Title Test">Unescape printable chars encoded as \xNN or \uNNNN?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="jslint-happy">
-          <label for="jslint-happy" title="Title Test">Use JSLint-happy formatting tweaks?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="indent-inner-html">
-          <label for="indent-inner-html" title="Title Test">Indent &lt;head&gt; and &lt;body&gt; sections?</label>
-          <br>
-          <input class="checkbox" type="checkbox" id="indent-empty-lines">
-          <label for="indent-empty-lines" title="Title Test">Keep indentation on empty lines?</label>
-         
-                    <a href="https://beautifier.io/?without-codemirror" target="beauty">https://beautifier.io/?without-codemirror</a>
+          <div class="options">
+        <form class="mr-1">
+          <template x-for="option in options">
+            <div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </template><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="caseSensitive" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="caseSensitive" class="">Case-sensitive</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Treat attributes in case sensitive manner (useful for custom HTML tags)</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="collapseBooleanAttributes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseBooleanAttributes" class="">Collapse boolean attributes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Omit attribute values from boolean attributes</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="collapseInlineTagWhitespace" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseInlineTagWhitespace" class="unsafe">Collapse inline tag whitespace</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Don't leave any spaces between <code>display:inline;</code> elements when collapsing.
+    Must be used in conjunction with <code>collapseWhitespace=true</code></span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="collapseWhitespace">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseWhitespace" class="">Collapse whitespace</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Collapse white space that contributes to text nodes in a document tree</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="conservativeCollapse" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="conservativeCollapse" class="">Conservative collapse</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Always collapse to 1 space (never remove it entirely).
+    Must be used in conjunction with <code>collapseWhitespace=true</code></span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="decodeEntities">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="decodeEntities" class="">Decode Entity Characters</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Use direct Unicode characters whenever possible</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="html5">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="html5" class="">HTML5</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Parse input according to HTML5 specifications</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="includeAutoGeneratedTags" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="includeAutoGeneratedTags" class="">Include auto-generated tags</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Insert tags generated by HTML parser</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="keepClosingSlash" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="keepClosingSlash" class="">Keep closing slash</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Keep the trailing slash on singleton elements</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="maxLineLength" class="">Max. line length</label>
+                  <input type="number" :id="option.id" x-model="option.value" id="maxLineLength">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Specify a maximum line length. Compressed output will be split by newlines at valid HTML split-points</span>
+                </div>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="minifyCSS">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyCSS" class="">Minify CSS</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Minify CSS in style elements and style attributes (uses <code>clean-css</code>)</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="minifyJS">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyJS" class="">Minify JavaScript</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Minify JavaScript in script elements and event attributes (uses <code>Terser</code>)</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="minifyURLs" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyURLs" class="">Minify URLs</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Minify URLs in various attributes (uses <code>relateurl</code>)</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="noNewlinesBeforeTagClose" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="noNewlinesBeforeTagClose" class="">No newline before Tag Close</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Never add a newline before a tag that closes an element</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="preserveLineBreaks" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="preserveLineBreaks" class="">Preserve line-breaks</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Always collapse to 1 line break (never remove it entirely) when whitespace between tags include a line break.
+    Must be used in conjunction with <code>collapseWhitespace=true</code></span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="preventAttributesEscaping" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="preventAttributesEscaping" class="unsafe">Prevent attributes escaping</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Prevents the escaping of the values of attributes</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="processConditionalComments">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="processConditionalComments" class="">Process conditional comments</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Process contents of conditional comments through minifier</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="processScripts" class="">Process scripts</label>
+                  <input type="text" :id="option.id" x-model="option.value" id="processScripts">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Comma-delimited string corresponding to types of script elements to process through minifier (e.g. <code>text/ng-template, text/x-handlebars-template</code>)</span>
+                </div>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="quoteCharacter" class="">Quote character</label>
+                  <input type="text" :id="option.id" x-model="option.value" id="quoteCharacter">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Type of quote to use for attribute values (<code>'</code> or <code>"</code>)</span>
+                </div>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeAttributeQuotes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeAttributeQuotes" class="">Remove attribute quotes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove quotes around attributes when possible</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeComments">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeComments" class="">Remove comments</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Strip HTML comments</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeEmptyAttributes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeEmptyAttributes" class="">Remove empty attributes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove all attributes with whitespace-only values</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeEmptyElements" value="">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeEmptyElements" class="unsafe">Remove empty elements</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove all elements with empty contents</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeOptionalTags">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeOptionalTags" class="">Remove optional tags</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeRedundantAttributes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeRedundantAttributes" class="">Remove redundant attributes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove attributes when value matches default.</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeScriptTypeAttributes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeScriptTypeAttributes" class="">Remove script type attributes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove <code>type="text/javascript"</code> from <code>script</code> tags.
+    Other <code>type</code> attribute values are left intact</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeStyleLinkTypeAttributes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeStyleLinkTypeAttributes" class="">Remove style link type attributes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove <code>type="text/css"</code> from <code>style</code> and <code>link</code> tags.
+    Other <code>type</code> attribute values are left intact</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="removeTagWhitespace">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="removeTagWhitespace" class="unsafe">Remove tag whitespace</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Remove space between attributes whenever possible.
+    <em>Note that this will result in invalid HTML!</em></span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="sortAttributes">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="sortAttributes" class="unsafe">Sort attributes</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Sort attributes by frequency</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="sortClassName">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="sortClassName" class="unsafe">Sort class name</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Sort style classes by frequency</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="trimCustomFragments">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="trimCustomFragments" class="">Trim white space around custom fragments</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Trim white space around <code>ignoreCustomFragments</code>.</span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div><div>
+              <template x-if="option.type === 'checkbox'">
+                <div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template><div class="form-group">
+                  <input type="checkbox" :id="option.id" x-model="option.checked" id="useShortDoctype">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="useShortDoctype" class="">Use short doctype</label>
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template><span class="quiet short" x-html="option.helpText">Replaces the <code>doctype</code> with the short (HTML5) <code>doctype</code></span>
+                </div>
+              <template x-if="option.type === 'text'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="text" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+              <template x-if="option.type === 'number'">
+                <div class="form-group">
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''"></label>
+                  <input type="number" :id="option.id" x-model="option.value">
+                  <template x-if="option.helpText">
+                    <span class="quiet short" x-html="option.helpText"></span>
+                  </template>
+                </div>
+              </template>
+            </div>
+        </form>
+        <div>
+          <span>Select:</span>
+          <a href="#" @click.prevent="selectAllOptions(true)">All</a>,
+          <a href="#" @click.prevent="selectAllOptions(false)">None</a>,
+          <a href="#" @click.prevent="resetOptions()">Reset</a>
+        </div>
+      </div>
+                    <a href="https://terser.org/html-minifier-terser/" target="ugly">https://terser.org/html-minifier-terser/</a>
               </font>
                  </div>
               </div>
