@@ -344,7 +344,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   position: absolute;
   background-color: #666;
   min-width: 160px;
-  top:-30px;
+  top:-20px;
   left:100px;
   border: 1px solid greenyellow;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -662,14 +662,31 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
        minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
    }
    </script>
+
+<br>
+   <input type="button" class="dropbt" id="" onclick="" title="" style="" onmouseover="this.focus()" value="-----">
+   
 <br>
               <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
               <div class="dropdowntwo">
-              <button class="dropbtntwo" onmouseover="this.focus()">Test sub menu? </button>
+              <button class="dropbtntwo" onmouseover="this.focus()">Test sub menu 1? </button>
                 <div class="dropdowntwo-content">
                     <input type="button" class="dropbttwo" onclick="" style="" title="" value="--- 1 test sub menu 1 ---" onmouseover="this.focus()"><br>
+                    <input type="button" class="dropbttwo" onclick='' style="" title="" value="--- 1 test sub menu 2 ---"  onmouseover="this.focus()"><br>
+                    <input type="button" class="dropbttwo" onclick='' style="" title="" value="--- 1 test sub menu 3 ---" onmouseover="this.focus()"><br>
+                </div>
+              </div>
+              <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
+
+   <br>
+                 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+              <div class="dropdowntwo">
+              <button class="dropbtntwo" onmouseover="this.focus()">Test sub menu 2? </button>
+                <div class="dropdowntwo-content">
+                    <input type="button" class="dropbttwo" onclick="" style="" title="" value="--- 2 test sub menu 1 ---" onmouseover="this.focus()"><br>
                     <input type="button" class="dropbttwo" onclick='' style="" title="" value="--- 2 test sub menu 2 ---"  onmouseover="this.focus()"><br>
-                    <input type="button" class="dropbttwo" onclick='' style="" title="" value="--- 3 test sub menu 3 ---" onmouseover="this.focus()"><br>
+                    <input type="button" class="dropbttwo" onclick='' style="" title="" value="--- 2 test sub menu 3 ---" onmouseover="this.focus()"><br>
                 </div>
               </div>
               <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
@@ -4176,13 +4193,12 @@ editor.selection.setRange(range);
           <script>
             setInterval(function () {
 
-<script>
-const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const d = new Date();
-let month = months[d.getMonth()];
-let day = days[d.getDay()];
-//document.getElementById("demo").innerHTML = day;
+             const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+             const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+              const d = new Date();
+              let month = months[d.getMonth()];
+              let day = days[d.getDay()];
+              //document.getElementById("demo").innerHTML = day;
 
               const event = new Date();
               document.getElementById("time").innerHTML = (event.toLocaleString());
