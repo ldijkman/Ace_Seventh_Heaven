@@ -665,7 +665,12 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
 <script>    
   function removeempty(){
       var text = editor.getSession().getValue();
-      editor.getSession().setValue(text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, ""));  
+      // https://stackoverflow.com/questions/16369642/javascript-how-to-use-a-regular-expression-to-remove-blank-lines-from-a-string
+      // text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, ""); // this removes also leading and tailing
+      text=text.replace(/(\r?\n)\s*\1+/g, '$1');
+      editor.getSession().setValue(text);  
+      
+      
       play();
   }
  </script> 
