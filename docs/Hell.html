@@ -668,7 +668,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
               <button class="dropbtntwo" title="Test sub menu 2?" onmouseover="this.focus()">Options</button>
                 <div class="dropdowntwo-content" style="left:50px;max-width:400px;width:400px;margin:10px;padding:10px;">
                   
-
+<font color="lightgray">
 
           <select name="tabsize" id="tabsize">
             <option value="1">Indent with a tab character</option>
@@ -710,7 +710,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
         
 <br><br>
 
-
+<!--
                     <input type="checkbox"><input type="button" class="dropbttwo" onclick="" style="" title="" value="End script and style with newline?" onmouseover="this.focus()"><br>
                     <input type="checkbox"><input type="button" class="dropbttwo" onclick='' style="" title="" value="Support e4x/jsx syntax"  onmouseover="this.focus()"><br>
                     <input type="checkbox"><input type="button" class="dropbttwo" onclick='' style="" title="" value="Use comma-first list style?" onmouseover="this.focus()"><br>
@@ -723,8 +723,46 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                     <input type="checkbox"><input type="button" class="dropbttwo" onclick='' style="" title="" value="Use JSLint-happy formatting tweaks?" onmouseover="this.focus()"><br>
                     <input type="checkbox"><input type="button" class="dropbttwo" onclick='' style="" title="" value="Indent <head> and <body> sections?" onmouseover="this.focus()"><br>
                     <input type="checkbox"><input type="button" class="dropbttwo" onclick='' style="" title="" value="Keep indentation on empty lines?" onmouseover="this.focus()"><br>                
+ -->
+           <input class="checkbox" type="checkbox" id="end-with-newline">
+          <label for="end-with-newline" onmouseover="">End script and style with newline?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="e4x">
+          <label for="e4x">Support e4x/jsx syntax</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="comma-first">
+          <label for="comma-first">Use comma-first list style?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="detect-packers">
+          <label for="detect-packers">Detect packers and obfuscators?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="brace-preserve-inline">
+          <label for="brace-preserve-inline">Preserve inline braces/code blocks?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="keep-array-indentation">
+          <label for="keep-array-indentation">Keep array indentation?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="break-chained-methods">
+          <label for="break-chained-methods">Break lines on chained methods?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="space-before-conditional">
+          <label for="space-before-conditional">Space before conditional: "if(x)" / "if (x)"</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="unescape-strings">
+          <label for="unescape-strings">Unescape printable chars encoded as \xNN or \uNNNN?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="jslint-happy">
+          <label for="jslint-happy">Use JSLint-happy formatting tweaks?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="indent-inner-html">
+          <label for="indent-inner-html">Indent &lt;head&gt; and &lt;body&gt; sections?</label>
+          <br>
+          <input class="checkbox" type="checkbox" id="indent-empty-lines">
+          <label for="indent-empty-lines">Keep indentation on empty lines?</label>
+         
                     <a href="https://beautifier.io/?without-codemirror" target="beauty">https://beautifier.io/?without-codemirror</a>
-                </div>
+              </font>
+                 </div>
               </div>
               <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
