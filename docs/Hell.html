@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Edit</button>
-  <div class="dropdown-content" style="width:200px;">
+  <div class="dropdown-content" style="width:200px;padding:5px;">
    <input type="button" class="dropbt" id="" onclick="" title="Warning Maybe no UnDo on next buttons &#013; use ctrl+a, ctrl+c &#013; to save a copy to yuor clipboard"  style="color:yellow" onmouseover="this.focus()" value="Warning Maybe no UnDo">
    <br>
     <input type="button" class="dropbt" onclick="convertspacestotab();" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
@@ -804,7 +804,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
    <br>
     <input type="button" class="dropbt" id="" onclick="" title="" style="" onmouseover="this.focus()" value="- not yet!-">
    <br>
-    <input type="button" class="dropbt" id="" onclick="terserall();" title="Yep thats minify terser? &#013; https://terser.org/ &#013; https://github.com/terser/terser" style="" onmouseover="this.focus()" value="Minify / Uglify">
+    <input type="button" class="dropbt" id="" onclick="terserall();" title="Yep thats minify ;-) &#013; Warned you &#013; Terser? &#013; https://terser.org/ &#013; https://github.com/terser/terser" style="" onmouseover="this.focus()" value="Minify / Uglify">
     
 <!--
 <script src="https://cdn.jsdelivr.net/npm/source-map@0.7.3/dist/source-map.js"></script>
@@ -876,10 +876,10 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="caseSensitive" value="">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="caseSensitive" class="">Case-sensitive</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="caseSensitive" class="" title="Treat attributes in case sensitive manner (useful for custom HTML tags)">Case-sensitive</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Treat attributes in case sensitive manner (useful for custom HTML tags)</span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
@@ -910,10 +910,10 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="collapseBooleanAttributes">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseBooleanAttributes" class="">Collapse boolean attributes</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseBooleanAttributes" class="" title="Omit attribute values from boolean attributes">Collapse boolean attributes</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Omit attribute values from boolean attributes</span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
@@ -944,11 +944,11 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="collapseInlineTagWhitespace" value="">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseInlineTagWhitespace" class="unsafe">Collapse inline tag whitespace</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="collapseInlineTagWhitespace" class="unsafe" title="Don't leave any spaces between <code>display:inline;</code> elements when collapsing.
+    Must be used in conjunction with <code>collapseWhitespace=true">Collapse inline tag whitespace</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Don't leave any spaces between <code>display:inline;</code> elements when collapsing.
-    Must be used in conjunction with <code>collapseWhitespace=true</code></span>
+                  </template><span class="quiet short" x-html="option.helpText"></code></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
