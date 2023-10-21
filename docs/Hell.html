@@ -630,6 +630,32 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
   }
  </script>  
 
+      <input type="button" class="dropbt" onclick="removelead();" id="" value="Remove Leading" onmouseover="this.focus()" 
+    title="Remove Lead  &#013; Remove spaces and tabs from begin of line&#013;"> 
+    <br>
+<script>    
+  function removelead(){
+      // get max lines of file
+      //   console.log("editor.session.getLength()",editor.session.getLength());
+      // https://stackoverflow.com/questions/24695377/replace-content-of-the-line-in-ace-editor-and-overwrite-it
+     var r = "";
+     var t="";
+     var temp = "";
+     let n=editor.session.getLength();
+     var Range = require("ace/range").Range
+     // for (let i = 0; i < n; i++){
+     //     t=editor.session.getLine(i);
+     //     r=t.trimEnd();
+     //     editor.session.replace(new Range(i,0,i,Number.MAX_VALUE),r);
+     // }  
+//same for loop as above but now minimized for speed?
+for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.replace(new Range(i,0,i,Number.MAX_VALUE),r);     
+ 
+      //editor.getSession().setValue(result);                    // set editor text 
+      minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
+  }
+ </script>  
+
     <input type="button" class="dropbt" onclick="pretty()" id="" value="Beautify / Prettify" onmouseover="this.focus()"
     title="Beautify / Prettify&#013;  Format HTML Code&#013;&#013;Sorry NO UnDo&#013&#013;https://github.com/beautify-web/js-beautify&#013;https://beautifier.io/&#013;   make an options menu?">
  <script>
