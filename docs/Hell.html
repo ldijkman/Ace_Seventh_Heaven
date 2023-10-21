@@ -829,7 +829,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 <!-- start submenu /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
               <div class="dropdowntwo">
               <button class="dropbtntwo" title="Test sub menu 2?" onmouseover="this.focus()">Options</button>
-                <div class="dropdowntwo-content" style="top:-199px;left:50px;max-width:400px;width:400px;margin:10px;padding:10px;">
+                <div class="dropdowntwo-content" style="top:-250px;left:50px;max-width:400px;width:400px;margin:10px;padding:10px;">
                   
 <font color="lightgray">
 
@@ -1013,11 +1013,10 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="conservativeCollapse" value="">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="conservativeCollapse" class="">Conservative collapse</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="conservativeCollapse" class="" title='Always collapse to 1 space (never remove it entirely).Must be used in conjunction with <code>collapseWhitespace=true</code>'>Conservative collapse</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Always collapse to 1 space (never remove it entirely).
-    Must be used in conjunction with <code>collapseWhitespace=true</code></span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
@@ -1201,11 +1200,11 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                   </template>
                 </div>
               </template><div class="form-group">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="maxLineLength" class="">Max. line length</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="maxLineLength" class="" title="Specify a maximum line length. Compressed output will be split by newlines at valid HTML split-points">Max. line length</label>
                   <input type="number" :id="option.id" x-model="option.value" id="maxLineLength">
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Specify a maximum line length. Compressed output will be split by newlines at valid HTML split-points</span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
             </div><div>
               <template x-if="option.type === 'checkbox'">
@@ -1218,10 +1217,10 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="minifyCSS">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyCSS" class="">Minify CSS</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyCSS" class="" title="Minify CSS in style elements and style attributes (uses <code>clean-css</code>)">Minify CSS</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Minify CSS in style elements and style attributes (uses <code>clean-css</code>)</span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
@@ -1252,10 +1251,10 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="minifyJS">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyJS" class="">Minify JavaScript</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="minifyJS" class="" title="Minify JavaScript in script elements and event attributes (uses <code>Terser</code>)">Minify JavaScript</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Minify JavaScript in script elements and event attributes (uses <code>Terser</code>)</span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
@@ -1354,11 +1353,11 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                 </div>
               </template><div class="form-group">
                   <input type="checkbox" :id="option.id" x-model="option.checked" id="preserveLineBreaks" value="">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="preserveLineBreaks" class="">Preserve line-breaks</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="preserveLineBreaks" class="" title="Always collapse to 1 line break (never remove it entirely) when whitespace between tags include a line break.
+    Must be used in conjunction with <code>collapseWhitespace=true</code>">Preserve line-breaks</label>
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Always collapse to 1 line break (never remove it entirely) when whitespace between tags include a line break.
-    Must be used in conjunction with <code>collapseWhitespace=true</code></span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'text'">
                 <div class="form-group">
@@ -1465,11 +1464,11 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
                   </template>
                 </div>
               </template><div class="form-group">
-                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="processScripts" class="">Process scripts</label>
+                  <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="processScripts" class="" title='Comma-delimited string corresponding to types of script elements to process through minifier (e.g. <code>text/ng-template, text/x-handlebars-template</code>)'>Process scripts</label>
                   <input type="text" :id="option.id" x-model="option.value" id="processScripts">
                   <template x-if="option.helpText">
                     <span class="quiet short" x-html="option.helpText"></span>
-                  </template><span class="quiet short" x-html="option.helpText">Comma-delimited string corresponding to types of script elements to process through minifier (e.g. <code>text/ng-template, text/x-handlebars-template</code>)</span>
+                  </template><span class="quiet short" x-html="option.helpText"></span>
                 </div>
               <template x-if="option.type === 'number'">
                 <div class="form-group">
