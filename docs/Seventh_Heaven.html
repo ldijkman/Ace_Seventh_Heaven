@@ -926,7 +926,7 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
 
     <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="maxLineLength" class="" 
     title="Specify a maximum line length. Compressed output will be split by newlines at valid HTML split-points">
-    Max. line length</label><br>
+    Max. line length</label>
     <input type="number" :id="option.id" x-model="option.value" id="maxLineLength"><br>
 
     <input type="checkbox" :id="option.id" x-model="option.checked" id="minifyCSS">
@@ -966,12 +966,12 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
 
     <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="processScripts" class="" 
     title='Comma-delimited string corresponding to types of script elements to process through minifier (e.g. <code>text/ng-template, text/x-handlebars-template</code>)'>
-    Process scripts</label><br>
+    Process scripts</label>
     <input type="text" :id="option.id" x-model="option.value" id="processScripts"><br>
 
     <label :for="option.id" x-text="option.label" :class="option.unsafe ? 'unsafe' : ''" for="quoteCharacter" class="" 
     title='Type of quote to use for attribute values \' '>
-    Quote character</label><br>
+    Quote character</label>
     <input type="text" :id="option.id" x-model="option.value" id="quoteCharacter"><br>
 
 
