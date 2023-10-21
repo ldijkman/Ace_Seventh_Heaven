@@ -662,14 +662,9 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
     <br>
 <script>    
   function removeempty(){
-      // get max lines of file
-      //   console.log("editor.session.getLength()",editor.session.getLength());
-      // https://stackoverflow.com/questions/24695377/replace-content-of-the-line-in-ace-editor-and-overwrite-it
-
-
+      var text = editor.getSession().getValue();
+      editor.getSession().setValue(text.replace(/^(?=\n)$|^\s*|\s*$|\n\n+/gm, ""));  
       play();
-   // not done yet
-
   }
  </script> 
 
