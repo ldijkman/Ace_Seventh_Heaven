@@ -332,6 +332,41 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/
+.dropdowntwo {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdowntwo-content {
+  display: none;
+  position: absolute;
+  background-color: #666;
+  min-width: 160px;
+  top:-30px;
+  left:80px;
+  border: 1px solid red;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 11000;
+}
+
+.dropdowntwo-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdowntwo-content a:hover {background-color: #ddd;}
+
+.dropdowntwo:hover .dropdowntwo-content {display: block;}
+
+.dropdowntwo:hover .dropbtntwo {background-color: #3e8e41;}
+
+
+
+
 .select {
   position: absolute;
   top:12px;
@@ -349,12 +384,19 @@ a:-webkit-any-link {              /* change color link in topmenu*/
  }
 
 </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/source-map@0.7.3/dist/source-map.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-css.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/source-map@0.7.3/dist/source-map.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/terser/dist/bundle.min.js"></script>
+
 
 <script>
    
@@ -620,6 +662,19 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
        minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
    }
    </script>
+<br>
+              <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+              <div class="dropdowntwo">
+              <button class="dropbtntwo" onmouseover="this.focus()">Test sub menu? </button>
+                <div class="dropdowntwo-content">
+                    <input type="button" class="dropbttwo" onclick="" style="" title="" value="-2 test sub menu 2-" onmouseover="this.focus()"><br>
+                    <input type="button" class="dropbttwo" onclick='' style="" title="" value="--2 test sub menu 2--"  onmouseover="this.focus()"><br>
+                    <input type="button" class="dropbttwo" onclick='' style="" title="" value="---3 test sub menu 3---" onmouseover="this.focus()"><br>
+                </div>
+              </div>
+              <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
+
    <br>
    <input type="button" class="dropbt" id="" onclick="" title="" style="" onmouseover="this.focus()" value="-----">
    <br>
@@ -629,10 +684,10 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimEnd(),editor.session.replace
       function terserall(){
         
         var text=editor.getValue();
-       var code = "function add(first, second) { return first + second; }";
-        var result = await minify(code, { sourceMap: true });
-         //console.log(result.code);  // minified output: function add(n,d){return n+d}
-        //console.log(result.map);  // source map
+       var code = text;
+        var result = await Terser.minify(code, { sourceMap: true });
+         console.log(result.code);  // minified output: function add(n,d){return n+d}
+        console.log(result.map);  // source map
       editor.getSession().setValue(result.code);                      // set editor text now dots invisibles
       minimapeditor.setValue(editor.getSession().getValue());   // set minimap text
       }
@@ -3249,9 +3304,6 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 
 <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
 
-
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 
 
