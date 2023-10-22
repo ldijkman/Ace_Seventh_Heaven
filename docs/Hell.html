@@ -63,6 +63,7 @@ body {
   display: flex;
 }
 
+
 .ace_editor .ace_marker-layer .ace_selection {
   //background-color: orange;
   border:2px solid orange;
@@ -351,7 +352,9 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   border: 1px solid greenyellow;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 11000;
-  padding:5px;
+  padding:5px;  
+  overflow-x: hidden;
+  overflow-y: auto;
   margin:-5px;
 }
 
@@ -360,6 +363,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+
 }
 
 .dropdowntwo-content a:hover {background-color: #ddd;}
@@ -464,7 +468,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
    
    
-
+var backup="";
+ var tooltipval=1;
    
   </script>
 <!--<script type="text/javascript" src="scrollbar.js"></script>
@@ -569,12 +574,28 @@ document.addEventListener('DOMContentLoaded', function () {
 <input type="number" id="minimapfontSize" style="width: 2.2em;" value='3' step="0.1" oninput='ace.edit("minimapeditor").setFontSize(parseFloat(this.value))'  title="MiniMap FontSize" onmouseover="this.focus()">
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +" onmouseover="this.focus()">+</button>
 
+
+<!--
+///////////////////////////
+// menu button Edit
+/////////////////////////// 
+-->
   <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Edit</button>
   <div class="dropdown-content" style="width:200px;padding:5px;">
    <input type="button" class="dropbt" id="" onclick="" title="Warning Maybe no UnDo on next buttons &#013; use ctrl+a, ctrl+c &#013; to save a copy to yuor clipboard"  style="color:yellow" onmouseover="this.focus()" value="Warning Maybe no UnDo">
    <br>
+              <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+              <div class="dropdowntwo">
+              <button class="dropbtntwo" title="Test sub menu 1?" onmouseover="this.focus()" >make a backup copy </button>
+                <div class="dropdowntwo-content" style="top:5px;">
+                    <input type="button" class="dropbttwo" onclick="backup=editor.getValue();" style="" title="copy text" value="save content" onmouseover="this.focus()"><br>
+                    <input type="button" class="dropbttwo" onclick='if(backup!=""){editor.setValue(backup);}' style="" title="restore backup" value="restore content"  onmouseover="this.focus()"><br>
+                </div>
+              </div>
+              <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
     <input type="button" class="dropbt" onclick="convertspacestotab();" id="" value="Convert Spaces to Tabs" onmouseover="this.focus()" 
     title="Convert Spaces to Tabs &#013;  number of space to tabs&#013;  is taken from menu option tab size&#013;&#013;see the dots change to lines on invisibles&#013;Note: menu option Atomic Soft Tabs makes spaces from tabs key&#013; https://www.browserling.com/tools"> 
 <script>    
@@ -1067,6 +1088,11 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
+<!--
+///////////////////////////
+// menu button view 
+/////////////////////////// 
+-->
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">View</button>
@@ -1081,6 +1107,12 @@ for(i=0;i<n;i++)r=(t=editor.session.getLine(i)).trimStart(),editor.session.repla
 <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
 
 
+
+<!--
+///////////////////////////
+// menu button Options
+/////////////////////////// 
+-->
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Options</button> 
@@ -1161,7 +1193,7 @@ function toggleWraplonglines(){
 }
 </script>
 <!-- toggleWraplonglines  -->
-
+<br>
  <input type="checkbox" id="chckbehaviours" onchange="togglebehaviours()" checked  
  title='behavioursEnabled&#013;   off no auto close { [ ( <cemter> " &#013;   on auto close () [] {} <center></center> Etc.'>
  <button class="dropbt" onclick="if(chckbehaviours.checked){chckbehaviours.checked=false;}else{chckbehaviours.checked=true;};togglebehaviours()" id="" value="" onmouseover="this.focus()" 
@@ -1178,8 +1210,27 @@ function togglebehaviours(){
 }
 </script>
 
-  <!--   <input type="button" class="dropbt" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
-    <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
+<input type="button" class="dropbt" id="tooltipbutton" onclick="toggletooltip()" title="Toggle menu Tooltip Popup info on / off" style="" onmouseover="this.focus()" value="Hide menu ToolTip popup">
+  <script>
+   
+    function toggletooltip(){
+      play();
+      if (tooltipval==1){
+          tooltipbutton.value="Show menu ToolTip popup";
+          $( document ).tooltip({
+              disabled: true
+          });
+          tooltipval=0;
+      }else{  
+          tooltipbutton.value="Hide menu ToolTip popup";
+          $( document ).tooltip({
+              disabled: false
+          });     // does not show again? https://api.jqueryui.com/tooltip/#option-disabled
+          tooltipval=1;
+      }    
+    }
+    </script>
+  <!--     <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
     <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Invisibles" style="" onmouseover="this.focus()" value="Hide Invisibles">
 -->
   </div>
@@ -1317,7 +1368,11 @@ button idea from nsoa-console</a><br>
 
 </script>
 
-
+<!--
+///////////////////////////
+// menu button Help
+/////////////////////////// 
+-->
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">Help</button>
@@ -4464,6 +4519,7 @@ editor.selection.setRange(range);
 function play() { 
 		var beepsound = new Audio( 'https://www.myinstants.com/media/sounds/wuh-oh.mp3'); 
 		beepsound.play(); 
+   
 	} 
 
 
