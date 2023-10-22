@@ -494,7 +494,6 @@ var backup="";
 
 <body>
 
-
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">File</button>
@@ -1438,7 +1437,11 @@ if menu buttons do not fit your screen width
     or CTRL + - or CTRL + = to zoom in/out    
 
 EDIT THIS EDITOR! 
-    https://plnkr.co/edit/5m0Aa8vqmntFDekn                        
+    https://plnkr.co/edit/5m0Aa8vqmntFDekn   
+
+localstorage
+  sessionstorage
+    https://plnkr.co/edit/TMDzQALQgACruCYz
 
 NEW! menu edit
        tabs to spaces                                                 
@@ -1460,12 +1463,9 @@ NEW! menu edit
 
 
 at the moment looking at
-    Terser js minify:
+    Terser js minify Uglification:
       https://github.com/terser
-      https://terser.org/html-minifier-terser
-      https://minify-js.com/
-      https://www.digitalocean.com/community/tools/minify
-      https://www.google.com/search?q=terser+js+minify
+     
 </pre>                                                   
 <!  --------------------------------  >
 <!--
@@ -4539,10 +4539,13 @@ editor.selection.setRange(range);
 
 
 
+
 function play() { 
 		var beepsound = new Audio( 'https://www.myinstants.com/media/sounds/wuh-oh.mp3'); 
-		beepsound.play(); 
-   
+
+    beepsound.addEventListener("canplaythrough", (event) => {
+        beepsound.play()
+    });
 	} 
 
 
