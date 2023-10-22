@@ -410,6 +410,7 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 	position: absolute;
 	z-index: 100000;
 	max-width: 300px;
+  pointer-events:none;
 }
 
 </style>
@@ -1247,7 +1248,7 @@ function togglebehaviours(){
 //});
        
 $( document ).tooltip({
-  position: { my: "left+250 top+15", at: "left+250 bottom", collision: "flipfit" }
+  position: { my: "left-400 top+15", at: "left bottom", collision: "flipfit" }
 });
       }    
     }
