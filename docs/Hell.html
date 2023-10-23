@@ -504,7 +504,14 @@ var backup="";
               <div class="dropdowntwo">
               <button class="dropbtntwo" title="oes not always work CORS policy" onmouseover="this.focus()" >Open File From URL </button>
                 <div class="dropdowntwo-content" style="left:140px;top:-15px;width:300px;padding:20px;">
-                       <input type="text" class="dropbttwo" id="urlinput" onclick='' style="width:300px;" title="does not always work CORS policy" value="https://run.plnkr.co/plunks/TMDzQALQgACruCYz/"  onmouseover="this.focus()"><br>
+                       <input type="text" class="dropbttwo" id="urlinput" onclick='' style="width:300px;" title="does not always work CORS policy" value="https://run.plnkr.co/plunks/TMDzQALQgACruCYz/" onmouseover="this.focus()" list="nope_url"><br>
+                         <datalist id="url">
+                           <option value="https://run.plnkr.co/plunks/TMDzQALQgACruCYz/">
+                            <option value="https://run.plnkr.co/plunks/5m0Aa8vqmntFDekn/">
+                            <option value="https://raw.githubusercontent.com/ldijkman/Ace_Seventh_Heaven/main/docs/Hell.html">
+                            <option value="empty">
+                          </datalist>
+                    
                     <center><br>
                       <input type="button" class="dropbttwo" onclick="download_to_textbox(urlinput.value);Update_HTML_Preview();" style="border: 1px solid white;" title="does not always work CORS policy" value="open from URL" onmouseover="this.focus()">
                       </center>
@@ -4657,7 +4664,7 @@ function play() {
             
             
             
-        <div id="time" style="position: fixed; bottom: 1em; right: 1em;background:lightgray;">  
+        <div id="time" style="position: fixed; bottom: 1em; right: 1em;background:lightgray;z-index:11000;">  
           <!--<button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>-->
           <script>
             setInterval(function () {
