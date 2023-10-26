@@ -4855,6 +4855,9 @@ function play() {
           if (etype == "errorr") {
             nodeList[0].style.color = "red";
           }
+          if (etype == "exception") {
+            nodeList[0].style.color = "red";
+          }
 
 
           // }, 5);
@@ -4941,6 +4944,7 @@ function play() {
         };
 
         window.addEventListener('error', function (err) {
+           etype="exception";
           printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
         });
 
