@@ -4538,10 +4538,12 @@ function doiteverysecond () {
 
 // https://github.com/ajaxorg/ace/issues/1199
 //console.log("color",getComputedStyle(editor.renderer.scroller).backgroundColor);
-console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroundColor);
+//console.log("guttercolor ",document.querySelector(".ace_gutter").style.backgroundColor);
 
 //get warnings errors?
-console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
+//console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
+
+
 /*console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 for (let i = 0; i < editor.getSession().getAnnotations().length; i=i+1) {
 console.log("errors/warnings on line ",editor.getSession().getAnnotations()[i].row);
@@ -4582,7 +4584,7 @@ for (let i = 0; i < editormarker.length; i=i+1) {
 //ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize()));
 
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
-     console.log("Theme optgroup = ",darkorlight);
+     //console.log("Theme optgroup = ",darkorlight);
      if(darkorlight=="Dark"){
         // dark
         // https://github.com/ajaxorg/ace/issues/1199
@@ -4597,11 +4599,11 @@ document.getElementById("version").innerHTML = ' &nbsp;&nbsp;<a href="https://gi
 
 
 // beautify options
-console.log("tabsize",document.getElementById("tabsize").value);
-console.log("max-preserve-newlines",document.getElementById("max-preserve-newlines").value);
-console.log("wrap-line-length",document.getElementById("wrap-line-length").value);
-console.log("brace-style",document.getElementById("brace-style").value);
-console.log("indent-scripts",document.getElementById("indent-scripts").value);
+//console.log("tabsize",document.getElementById("tabsize").value);
+//console.log("max-preserve-newlines",document.getElementById("max-preserve-newlines").value);
+//console.log("wrap-line-length",document.getElementById("wrap-line-length").value);
+//console.log("brace-style",document.getElementById("brace-style").value);
+//console.log("indent-scripts",document.getElementById("indent-scripts").value);
 
 
 /*var roww = editor.getCursorPosition().row;
