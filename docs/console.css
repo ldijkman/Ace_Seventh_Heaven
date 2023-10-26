@@ -13,6 +13,7 @@
 */
     /* Make the whole thing smaller with transform: scale(70%) */
     #console-log-div {
+          position: absolute;
       min-height: 55px;
       max-height: 200px;
       width: 600px;
