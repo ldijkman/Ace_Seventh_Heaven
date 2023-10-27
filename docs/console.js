@@ -220,7 +220,7 @@ function proceed () {
       
       
 }
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener('DOMContentLoaded', function() { 
  setTimeout(function () {
           // https://jqueryui.com/draggable/
           $("#console-log-div").draggable(); // after an edit the search / replace popup is draggable
