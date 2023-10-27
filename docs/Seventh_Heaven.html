@@ -1742,6 +1742,8 @@ ml> <!--trigger an Error should be <html> see vertical scrollbar red line-->
    <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/suncalc.js"></script>
 
 
+<link rel="stylesheet" href="https://ldijkman.github.io/Ace_Seventh_Heaven/console.css">
+<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
 
 
 <style>
@@ -4308,12 +4310,12 @@ function Update_HTML_Preview(){
 	var iframe = document.createElement('iframe');
 	
 	var preview = id('preview');
-	var content = code+`
+	var content = code+`<!--
 <script src="https://code.jquery.com/jquery-3.6.0.js"><\/script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"><\/script>
 <link rel="stylesheet" href="https://ldijkman.github.io/Ace_Seventh_Heaven/console.css">
 <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"><\/script>
-` ;
+-->` ;
 
 	preview.appendChild(iframe);
 
