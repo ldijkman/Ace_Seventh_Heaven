@@ -1,7 +1,7 @@
 var jq = document.createElement("script");
 
 jq.addEventListener("load", proceed); // pass my hoisted function
-jq.src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js";
+jq.src = "//code.jquery.com/jquery-3.6.0.js";
 document.querySelector("head").appendChild(jq);
 
 function proceed () {                                                   
