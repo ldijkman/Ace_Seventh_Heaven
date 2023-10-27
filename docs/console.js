@@ -220,8 +220,10 @@ function proceed () {
       
       
 }
+document.addEventListener("DOMContentLoaded", (event) => {
  setTimeout(function () {
           // https://jqueryui.com/draggable/
           $("#console-log-div").draggable(); // after an edit the search / replace popup is draggable
-        }, 5000);
+        }, 500);
+}
   
