@@ -220,7 +220,7 @@ function proceed () {
  setTimeout(function () {
           // https://jqueryui.com/draggable/
           document.getElementById("console-log-div").draggable(); // after an edit the search / replace popup is draggable
-        }, 500);
+        }, 15000);
 //}
       
       
