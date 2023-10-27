@@ -217,10 +217,11 @@ function proceed () {
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
 
  
-       setTimeout(function () {
+      
+      
+}
+ setTimeout(function () {
           // https://jqueryui.com/draggable/
           $("#console-log-div").draggable(); // after an edit the search / replace popup is draggable
         }, 5000);
   
-      
-}
