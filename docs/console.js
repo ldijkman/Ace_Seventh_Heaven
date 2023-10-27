@@ -1,3 +1,7 @@
+
+var date = new Date().getTime();
+document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
+
 var jq = document.createElement("script");
 
 jq.addEventListener("load", proceed); // pass my hoisted function
