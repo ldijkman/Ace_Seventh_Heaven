@@ -5,7 +5,7 @@ document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijk
 var jq = document.createElement("script");
 
 jq.addEventListener("load", proceed); // pass my hoisted function
-jq.src = "//code.jquery.com/jquery-3.6.0.js";
+jq.src = "//code.jquery.com/jquery-3.7.1.min.js";
 document.querySelector("head").appendChild(jq);
 
 function proceed () {                                                   
