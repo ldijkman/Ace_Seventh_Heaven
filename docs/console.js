@@ -1,3 +1,13 @@
+var jq = document.createElement("script");
+
+jq.addEventListener("load", proceed); // pass my hoisted function
+jq.src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js";
+document.querySelector("head").appendChild(jq);
+
+function proceed () {                                                   
+    // jQuery load complete, do your magic                  //https://stackoverflow.com/questions/7496789/how-to-include-jquery-in-another-javascript-file
+
+
 
 
       // https://codepen.io/louisr/pen/xZwJLx
@@ -206,3 +216,4 @@
           // https://jqueryui.com/draggable/
           $("#console-log-div").draggable(); // after an edit the search / replace popup is draggable
         }, 250);
+}
