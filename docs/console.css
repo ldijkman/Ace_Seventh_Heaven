@@ -33,7 +33,7 @@
       overscroll-behavior-y: auto;
       transform: scale(100%);
       z-index:50000;
-      overflow: auto;
+     
       resize: both;
       user-select: text;
       
@@ -49,8 +49,11 @@
       user-select: text;   
     }
 
-.log-row {
+    .log-row {
       margin-left: 10px;    
+    }
+    .console-log-text{
+      overflow: auto;
     }
 
     #console-log-div #legend {
