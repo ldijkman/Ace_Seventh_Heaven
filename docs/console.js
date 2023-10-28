@@ -305,8 +305,8 @@ function dragElement(elmnt) {
 
 
    document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
-    //dragElement(document.getElementById("#console-log-div"));            // make editpopup draggable by mouse and touch
-  dragElement(document.getElementById("#legend"));
+    //consoledragElement(document.getElementById("#console-log-div"));            // make editpopup draggable by mouse and touch
+  consoledragElement(document.getElementById("#legend"));
 }, false);
 
 /////////////////////////////////////////////////////////////////////
@@ -316,13 +316,13 @@ function dragElement(elmnt) {
 // https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
 // https://codepen.io/ldijkman/pen/abQxbdM
 //////////////////////////////////////////////////////////////////////
-function dragElement(elmnt) {
+function consoledragElement(elmnt) {
   let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
       pos4 = 0;
 
-  let dragHandle = dragElement(document.getElementById("#legend"));
+  let dragHandle = elmnt;    //dragElement(document.getElementById("#legend"));
 
   if (dragHandle !== undefined) {
     // if present, the header is where you move the DIV from:
