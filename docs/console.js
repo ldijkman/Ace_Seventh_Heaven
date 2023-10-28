@@ -184,7 +184,7 @@ function dragElement(elmnt) {
             nodeList[0].style.color = "red";
           }
           if (etype == "info") {
-            nodeList[0].style.color = "blie";
+            nodeList[0].style.color = "blue";
           }
 
 
