@@ -146,7 +146,7 @@ function dragElement(elmnt) {
           legend.appendChild(caption);
           outer.appendChild(legend);
 
-          document.getElementById("legend").innerHTML = 'Console Drag Here.............<input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="Cleared Console";\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!">';
+          document.getElementById("legend").innerHTML = 'Console Drag Here.............<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank">7th-Heaven.</a><input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="Cleared Console";\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!">';
 
           var div = document.createElement('div');
           div.id = 'console-log-text';
