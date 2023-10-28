@@ -3794,7 +3794,6 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
    <div class="resizer" id="dragMe"></div>
     <div class="container__right">
             <div id="preview">
-              <div id="status">	<p><i class="fa fa-spinner fa-spin fa-fw"></i> generating preview</p></div>
             </div>
   </div> 
 </div>    
@@ -4287,9 +4286,7 @@ console.log("modeName ",modeName.replace("ace/mode/",""));
       console.log((id('ace-theme').value).toLowerCase());
       e.preventDefault();
       ace.edit("editor").setTheme('' + (id('ace-theme').value).toLowerCase());
-     ace.edit("minimapeditor").setTheme('' + (id('ace-theme').value).toLowerCase());
-     
-    floatbuttons();
+      ace.edit("minimapeditor").setTheme('' + (id('ace-theme').value).toLowerCase());
     });
 
 
@@ -4303,7 +4300,7 @@ console.log("modeName ",modeName.replace("ace/mode/",""));
 function Update_HTML_Preview(){	
 	
   $("#preview").empty();
-	$("#status p").delay(500).fadeOut(2500);
+
 	
 	var code = editor.getValue();
 	
@@ -4330,15 +4327,11 @@ var timeout;
 var emarker;
 var emarkers;
 $('.ace_search_field').on('keydown', function(e){
-
    setTimeout(markit, 2000);
-
 });
 
+
 function markit() {
-
-
-
 
 var markercolor;
     var darkorlight=document.querySelector('#ace-theme option:checked').parentElement.label;
@@ -4408,21 +4401,19 @@ $("#editor").on('keyup', function(e) {
  
 console.log("keyup");
 
-	    var code = (e.keyCode || e.which);
+	  var code = (e.keyCode || e.which);
 
     // do nothing if it's an arrow key
     if(code == 37 || code == 38 || code == 39 || code == 40) {
         return;
     }
-	$("#status p").fadeIn(2000);
-	
-	console.log("yea");
+
+	//console.log("yea");
 
 	if(timeout) {
 		clearTimeout(timeout);
 		timeout = null;
 	}
-
 
 	timeout = setTimeout(Update_HTML_Preview, 2500)
 	
@@ -4468,12 +4459,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //overflow:'hidden'      // remove the verticalscrollbar from behind the custom scrollbar
     }); 
 
-
-
-   fullscreenbutton.click();
-
-      
-
+  toggleFullScreen();
 });
   
 
@@ -4833,7 +4819,7 @@ function play() {
           legend.appendChild(caption);
           outer.appendChild(legend);
 
-          document.getElementById("legend").innerHTML = 'Console test hmm only shows editor log, Drag Me. <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="Cleared Console";\' value="Clear" title="Empty Console!"> <input type="button" value="hide" title="Not yet!">';
+          document.getElementById("legend").innerHTML = 'Console Editor log, Drag Me. <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="Cleared Console";\' value="Clear" title="Empty Console!"> <input type="button" value="hide" title="Not yet!">';
 
           var div = document.createElement('div');
           div.id = 'console-log-text';
