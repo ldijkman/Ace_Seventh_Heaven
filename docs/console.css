@@ -65,7 +65,8 @@ copyright dirk luberh dijkman
       margin-left: 10px;    
     }
     #console-log-text{
-      overflow: auto;
+     max-height 160px;
+     overflow: auto;
      overscroll-behavior-y: auto;
     }
 
