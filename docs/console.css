@@ -35,7 +35,7 @@
       z-index:50000;
       overflow: auto;
       resize: both;
-      user-select: auto;
+      user-select: all;
       
 
     }
@@ -46,7 +46,7 @@
       padding: 1px 0 8px 0;
       text-indent: 1px;
        z-index:50000;
-        user-select: auto;
+        user-select: all;
            
     }
 
