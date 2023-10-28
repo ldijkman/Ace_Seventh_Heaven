@@ -52,7 +52,7 @@
     .log-row {
       margin-left: 10px;    
     }
-    .console-log-text{
+    #console-log-text{
       overflow: auto;
     }
 
