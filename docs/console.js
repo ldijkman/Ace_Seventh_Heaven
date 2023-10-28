@@ -121,6 +121,7 @@ function dragElement(elmnt) {
         var log = console.log.bind(console);
         var error = console.error.bind(console);
         var warn = console.warn.bind(console);
+        var info = console.info.bind(console);
         var table = console.table ? console.table.bind(console) : null;
         var consoleId = 'console-log-div';
 
