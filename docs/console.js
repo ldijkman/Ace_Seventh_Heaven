@@ -1,4 +1,4 @@
-// copyright dirk luberh dijkman
+// copyright dirk luberth dijkman
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
@@ -293,7 +293,7 @@ function dragElement(elmnt) {
       //      changes Luberth https://plnkr.co/edit/AufqNkQe4InMuU8v
       //      test for https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html 
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
-      // copyright dirk luberh dijkman
+      // copyright dirk luberth dijkman
 
 
 
