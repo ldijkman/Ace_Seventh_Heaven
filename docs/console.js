@@ -1,11 +1,24 @@
 
+// https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
+// https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
-
-
+// load style seet css for console
 var date = new Date().getTime();
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
 //document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
+/*
+creates a console like next
+
+<div id="console-log-div" style="color: rgba(0, 0, 0, 0.61);">
+  <div id="legend">Console, Drag Me. <input type="button" onclick="document.getElementById(&quot;console-log-text&quot;).innerHTML=&quot;Cleared Console&quot;;" value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"></div>
+  <div id="console-log-text">
+    <div class="log-row" style="color: red;">message</div>
+    <div class="log-row" style="color: gray;">message</div>
+    
+  </div>
+</div>
+*/
 
 
 function hideconsole() {
