@@ -1,4 +1,4 @@
-
+// copyright dirk luberh dijkman
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
