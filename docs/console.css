@@ -35,6 +35,7 @@
       z-index:50000;
       overflow: auto;
       resize: both;
+      user-select: auto;
       
 
     }
