@@ -1,14 +1,20 @@
 
+
+
+
 var date = new Date().getTime();
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
+//document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
-var jq = document.createElement("script");
 
-jq.addEventListener("load", proceed); // pass my hoisted function
-jq.src = "//code.jquery.com/jquery-3.7.1.min.js";
-document.querySelector("head").appendChild(jq);
 
-function proceed () {                                                   
+function hideconsole() {
+  document.getElementById("console-log-div").style.display = "none";
+}
+function showconsole() {
+  document.getElementById("console-log-div").style.display = "block";
+}
+                                                   
     // jQuery load complete, do your magic                  //https://stackoverflow.com/questions/7496789/how-to-include-jquery-in-another-javascript-file
 
 
@@ -47,7 +53,8 @@ function proceed () {
         function createOuterElement(id) {
           var outer = document.getElementById(id);
           if (!outer) {
-            outer = document.createElement('fieldset');
+            //outer = document.createElement('fieldset');
+            outer = document.createElement('div');
             outer.id = id;
             document.body.appendChild(outer);
           }
@@ -64,7 +71,7 @@ function proceed () {
           legend.appendChild(caption);
           outer.appendChild(legend);
 
-          document.getElementById("legend").innerHTML = 'Console test , Drag Me. <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="Cleared Console";\' value="Clear" title="Empty Console!"> <input type="button" value="hide" title="Not yet!">';
+          document.getElementById("legend").innerHTML = 'Console, Drag Me. <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="Cleared Console";\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!">';
 
           var div = document.createElement('div');
           div.id = 'console-log-text';
@@ -216,14 +223,135 @@ function proceed () {
       //      test for https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html 
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
 
- //document.addEventListener('DOMContentLoaded', function() { 
- setTimeout(function () {
-          // https://jqueryui.com/draggable/
-          document.getElementById("console-log-div").draggable(); // after an edit the search / replace popup is draggable
-        }, 15000);
-//}
+
+
       
-      
-}
+/*
+
+
+   document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
+    //dragElement(document.getElementById("#console-log-div"));            // make editpopup draggable by mouse and touch
+  dragElement(document.getElementById("#legend"));
+}, false);
+
+/////////////////////////////////////////////////////////////////////
+// Make the DIV add or edit popup element draggable:
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
+// touch should be added == think it works , touch me
+// https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
+// https://codepen.io/ldijkman/pen/abQxbdM
+//////////////////////////////////////////////////////////////////////
+function dragElement(elmnt) {
+  let pos1 = 0,
+      pos2 = 0,
+      pos3 = 0,
+      pos4 = 0;
+
+  let dragHandle = dragElement(document.getElementById("#legend"));
+
+  if (dragHandle !== undefined) {
+    // if present, the header is where you move the DIV from:
+    dragHandle.onmousedown = dragMouseDown;
+    dragHandle.ontouchstart = dragMouseDown; //added touch event
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+    elmnt.ontouchstart = dragMouseDown; //added touch event
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    //Get touch or click position
+    //https://stackoverflow.com/a/41993300/5078983
+    if (
+      e.type == "touchstart" ||
+      e.type == "touchmove" ||
+      e.type == "touchend" ||
+      e.type == "touchcancel"
+    ) {
+      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
+      let touch = evt.touches[0] || evt.changedTouches[0];
+      x = touch.pageX;
+      y = touch.pageY;
+    } else if (
+      e.type == "mousedown" ||
+      e.type == "mouseup" ||
+      e.type == "mousemove" ||
+      e.type == "mouseover" ||
+      e.type == "mouseout" ||
+      e.type == "mouseenter" ||
+      e.type == "mouseleave"
+    ) {
+      x = e.clientX;
+      y = e.clientY;
+    }
+
+    console.log("drag start x: " + x + " y:" + y);
+
+    // get the mouse cursor position at startup:
+    pos3 = x;
+    pos4 = y;
+    document.onmouseup = closeDragElement;
+    document.ontouchend = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+    document.ontouchmove = elementDrag;
+  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    //Get touch or click position
+    //https://stackoverflow.com/a/41993300/5078983
+    if (
+      e.type == "touchstart" ||
+      e.type == "touchmove" ||
+      e.type == "touchend" ||
+      e.type == "touchcancel"
+    ) {
+      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
+      let touch = evt.touches[0] || evt.changedTouches[0];
+      x = touch.pageX;
+      y = touch.pageY;
+    } else if (
+      e.type == "mousedown" ||
+      e.type == "mouseup" ||
+      e.type == "mousemove" ||
+      e.type == "mouseover" ||
+      e.type == "mouseout" ||
+      e.type == "mouseenter" ||
+      e.type == "mouseleave"
+    ) {
+      x = e.clientX;
+      y = e.clientY;
+    }
+
+    // calculate the new cursor position:
+    pos1 = pos3 - x;
+    pos2 = pos4 - y;
+    pos3 = x;
+    pos4 = y;
+    // set the element's new position:
+    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+  }
+
+  function closeDragElement() {
+    console.log("drag end x: " + pos3 + " y:" + pos4);
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.ontouchcancel = null;                      // added touch event
+    document.ontouchend = null;                         // added touch event
+    document.onmousemove = null;
+    document.ontouchmove = null;                        // added touch event
+
+    selected_highlight=-1;                              // erase edit timeslot highlight
+  }
+} // end function dragMouseDown(e) {
+
+*/
+
 
   
