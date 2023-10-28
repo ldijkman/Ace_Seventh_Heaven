@@ -45,13 +45,13 @@
     #console-log-div td {
       padding: 1px 0 8px 0;
       text-indent: 1px;
-       z-index:50000;
-        user-select: text;
-           
+      z-index:50000;
+      user-select: text;
+      margin-left: 10px;    
     }
 
     #console-log-div #legend {
-      pposition: absulute;
+      pppppppppppppppposition: absulute;
       display: inline-block;
       top:-10px;
       padding-bottom: 12px;
@@ -60,12 +60,12 @@
       z-index:50000;
     }
 
- #legend {
-   width:100%;
+    #legend {
+      width:100%;
     }
 
     #console-log-div .log-row:nth-child(odd) {
-      background: rgba(0, 0, 0, .1);
+       background: rgba(0, 0, 0, .1);
        z-index:50000;
     }
 
