@@ -183,6 +183,9 @@ function dragElement(elmnt) {
           if (etype == "exception") {
             nodeList[0].style.color = "red";
           }
+          if (etype == "info") {
+            nodeList[0].style.color = "blie";
+          }
 
 
           // }, 5);
@@ -214,6 +217,14 @@ function dragElement(elmnt) {
           var args = Array.prototype.slice.call(arguments, 0);
           args.unshift('WARNING:');
           etype = "warn";
+          printToDiv.apply(null, args);
+        };
+
+        console.info = function loginfo() {
+          info.apply(null, arguments);
+          var args = Array.prototype.slice.call(arguments, 0);
+          args.unshift('INFO:');
+          etype = "info";
           printToDiv.apply(null, args);
         };
 
