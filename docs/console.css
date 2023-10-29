@@ -58,7 +58,8 @@ copyright dirk luberh dijkman
       padding: 1px 0 8px 0;
       text-indent: 1px;
       z-index:50000;
-      user-select: text;   
+      user-select: text;
+      resize: both;
     }
 
     .log-row {
@@ -68,7 +69,6 @@ copyright dirk luberh dijkman
      height: 160px;
      overflow: auto;
      overscroll-behavior-y: auto;
-     resize: both;
     }
 
     #console-log-div #legend {
