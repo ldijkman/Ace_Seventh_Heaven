@@ -30,7 +30,7 @@ document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijk
 // wait for the page loaded, and make console draggable 
 document.addEventListener("DOMContentLoaded",
 function (event) {
-    dragElement(document.getElementById("console-log-div")); //https://www.w3schools.com/howto/howto_js_draggable.asp
+    dragElement(document.getElementById("console-log-div")); // https://www.w3schools.com/howto/howto_js_draggable.asp
 });
 
 function hideconsole() {
