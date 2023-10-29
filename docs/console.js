@@ -14,13 +14,13 @@ add next to a HTML webpage to get an Console
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
 // load style sheet css for console,    should be better
-var date = new Date().getTime();
-document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
+//var date = new Date().getTime();
+//document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
 //document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
         
-//const stylesheet = '#console-log-div{min-height:55px;max-height:200px;width:600px;top:200px;left:100px;margin:1px;padding:1px 0 0;font-family:"Input Mono",monospace;font-weight:400;font-size:.8em;line-height:1em;color:rgba(0,0,0,.61);box-shadow:inset 0 0 2px rgba(0,0,0,.1);background-color:#ebebeb;overflow:auto;overscroll-behavior-y:auto;transform:scale(100%);z-index:50000}#console-log-div #legend,#console-log-div .log-row,#console-log-div td{padding:1px 0 8px;text-indent:1px;z-index:50000}#console-log-div #legend{padding-bottom:12px;font-size:1.2em;cursor:move;z-index:50000}#console-log-div .log-row:nth-child(odd){background:rgba(0,0,0,.1);z-index:50000}#console-log-div thead{background:rgba(0,0,0,.2)}';
-//document.adoptedStyleSheets = [stylesheet];
+const stylesheet = `#console-log-div{position:fixed;min-height:55px;max-height:200px;width:600px;bottom:20px;left:100px;margin:1px;padding:1px 0 0;font-family:"Input Mono",monospace;font-weight:400;font-size:.8em;line-height:1em;color:rgba(0,0,0,.61);box-shadow:inset 0 0 2px rgba(0,0,0,.1);background-color:#ebebeb;border-radius:4px;transform:scale(100%);z-index:50000;resize:both;user-select:text}#console-log-div #legend,#console-log-div .log-row,#console-log-div td{padding:1px 0 8px;text-indent:1px;z-index:50000;user-select:text;resize:both;border-radius:4px}.log-row{margin-left:10px}#console-log-text{height:160px;overflow:auto;overscroll-behavior-y:auto}#console-log-div #legend{pppppppppppppppposition:absulute;display:inline-block;top:-10px;padding-bottom:12px;font-size:1.2em;cursor:move;z-index:50000}#legend{width:100%;background:#cecece}#console-log-#div legend #console-log-text{resize:both}#console-log-div thead{background:rgba(0,0,0,.2)}#console-log-div{border:solid 1px gray}#console-log-text{border-top:solid 1px gray}`;
+document.adoptedStyleSheets = [stylesheet];
 
 
 /*Creates a console like next
