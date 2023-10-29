@@ -227,9 +227,9 @@ var errorNR=0;
           if (messageNR % 2){
             nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
-          const nodeList = document.querySelectorAll(".linenr");
+          const nodList = document.querySelectorAll(".linenr");
           if (messageNR % 2){
-            nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
+            nodList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
            
           
