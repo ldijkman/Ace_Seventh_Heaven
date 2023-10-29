@@ -63,6 +63,7 @@ color: lightgray;
   height: 160px;
   overflow: auto;
   overscroll-behavior-y: auto;
+  scroll-behavior: smooth;
 }
 #console-log-div #legend {
   pppppppppppppppposition: absulute;
