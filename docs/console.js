@@ -1,4 +1,5 @@
 // copyright dirk luberth dijkman
+// https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
@@ -91,6 +92,7 @@ function dragElement(elmnt) {
       //      changes Luberth https://plnkr.co/edit/AufqNkQe4InMuU8v
       //      test for https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html 
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
+      // https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
 
         //const stylesheet = '#console-log-div{min-height:55px;max-height:200px;width:600px;top:200px;left:100px;margin:1px;padding:1px 0 0;font-family:"Input Mono",monospace;font-weight:400;font-size:.8em;line-height:1em;color:rgba(0,0,0,.61);box-shadow:inset 0 0 2px rgba(0,0,0,.1);background-color:#ebebeb;overflow:auto;overscroll-behavior-y:auto;transform:scale(100%);z-index:50000}#console-log-div #legend,#console-log-div .log-row,#console-log-div td{padding:1px 0 8px;text-indent:1px;z-index:50000}#console-log-div #legend{padding-bottom:12px;font-size:1.2em;cursor:move;z-index:50000}#console-log-div .log-row:nth-child(odd){background:rgba(0,0,0,.1);z-index:50000}#console-log-div thead{background:rgba(0,0,0,.2)}';
         //document.adoptedStyleSheets = [stylesheet];
@@ -158,10 +160,8 @@ function dragElement(elmnt) {
           item.textContent = msg;
 
           //logTo.appendChild(item);               // new logs on bottom
-          logTo.prepend(item);                    // i want new logs on top
+          logTo.prepend(item);                     // i want new logs on top
           
-                              // wait for element creation
-          //setTimeout(function () {
           const nodeList = document.querySelectorAll(".log-row");
           if (etype == "log") {                        // change text color
             nodeList[0].style.color = "gray";
@@ -179,8 +179,6 @@ function dragElement(elmnt) {
             nodeList[0].style.color = "blue";
           }
 
-
-          // }, 5);
         }
 
         function logWithCopy() {
@@ -302,6 +300,7 @@ function dragElement(elmnt) {
       //      changes Luberth https://plnkr.co/edit/AufqNkQe4InMuU8v
       //      test for https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html 
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
+      // https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
       // copyright dirk luberth dijkman
 
 
