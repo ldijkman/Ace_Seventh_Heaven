@@ -84,12 +84,12 @@ console-log-div legend console-log-tex
     #legend {
       width:100%;
     }
-
+/* change color in code by messageNR % 2
     #console-log-div .log-row:nth-child(odd) {
        background: rgba(0, 0, 0, .1);
        z-index:50000;
     }
-
+*/
 #console-log-#div legend #console-log-text{
    resize: both;
 }
