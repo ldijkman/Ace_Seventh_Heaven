@@ -42,7 +42,7 @@ function toggleconsole() {
   } 
 }
 
-// https://www.w3schools.com/howto/howto_js_draggable.asp
+// start drag https://www.w3schools.com/howto/howto_js_draggable.asp
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 //  if (document.getElementById(elmnt.id + "header"))
@@ -83,7 +83,7 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
-//https://www.w3schools.com/howto/howto_js_draggable.asp
+// end drag https://www.w3schools.com/howto/howto_js_draggable.asp
 
 
 
