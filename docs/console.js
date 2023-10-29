@@ -188,11 +188,6 @@ var errorNR=0;
 
         
         function printToDiv() {
-          var ele = document.createElement('div');
-          ele.classList.add('linenr');
-          ele.textContent = messageNR;
-          ele.textContent += " ";
-          document.getElementById("console-log-text").prepend(ele);
           
           var msg = Array.prototype.slice.call(arguments, 0)
             .map(toString)
@@ -206,6 +201,15 @@ var errorNR=0;
 
           //logTo.appendChild(item);               // new logs on bottom
           logTo.prepend(item);                     // i want new logs on top
+
+
+          var ele = document.createElement('div');
+          ele.classList.add('linenr');
+          ele.textContent = messageNR;
+          ele.textContent += " ";
+          document.getElementById("console-log-text").prepend(ele);
+
+          
           
           const nodeList = document.querySelectorAll(".log-row");
           if (etype == "log") {                        // change text color
