@@ -46,9 +46,11 @@ color: lightgray;
   resize: both;
   user-select: text;
 }
-#console-log-div #legend,
-#console-log-div .log-row,
-#console-log-div td {
+
+  #console-log-div #legend,
+  #console-log-div .log-row,
+  .linenr, 
+  #console-log-div td {
   padding: 1px 0 8px 0;
   text-indent: 1px;
   z-index: 50000;
