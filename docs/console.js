@@ -222,7 +222,11 @@ var errorNR=0;
             nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
            document.getElementById('nr').innerHTML="  "+messageNR+'<font style="color:red;">  '+errorNR+'<\/font>';
-          messageNR++;
+           messageNR++;
+          
+          if(messageNR >= 2500){      // erase console if 2500 messages
+              document.getElementById("console-log-text").innerHTML=""
+          }
         }
 
         function logWithCopy() {
