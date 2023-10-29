@@ -31,7 +31,7 @@ function showconsole() {
   document.getElementById("console-log-div").style.display = "block";
 }
 function toggleconsole() {
-  if(document.getElementById("console-log-div").style.display == "none";){
+  if(document.getElementById("console-log-div").style.display == "none"){
     document.getElementById("console-log-div").style.display = "block";
   }else{
   document.getElementById("console-log-div").style.display = "none";
