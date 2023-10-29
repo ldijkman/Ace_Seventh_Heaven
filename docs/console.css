@@ -9,7 +9,7 @@ copyright dirk luberh dijkman
     
   </div>
 </div>
-
+console-log-div legend console-log-tex
 */
    
    /*
@@ -89,6 +89,10 @@ copyright dirk luberh dijkman
        background: rgba(0, 0, 0, .1);
        z-index:50000;
     }
+
+#console-log-#div legend #console-log-text{
+   resize: both;
+}
 
     #console-log-div thead {
       background: rgba(0, 0, 0, .2);
