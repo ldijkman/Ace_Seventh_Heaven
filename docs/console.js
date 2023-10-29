@@ -188,14 +188,19 @@ var errorNR=0;
 
         
         function printToDiv() {
+          var ele = document.createElement('div');
+          ele.classList.add('linenr');
+          ele.textContent = messageNR;
+          document.getElementById("console-log-text").prepend(ele);
+          
           var msg = Array.prototype.slice.call(arguments, 0)
             .map(toString)
             .join(' ');
           var item = document.createElement('div');
           item.classList.add('log-row');
-          //item.textContent = '<font style="color:gray;">'+messageNR+'</font>';
-          item.textContent = messageNR;
-          item.textContent += " ";
+          // item.textContent = '<font style="color:gray;">'+messageNR+'</font>';
+          // item.textContent = messageNR;
+          // item.textContent += " ";
           item.textContent += msg;
 
           //logTo.appendChild(item);               // new logs on bottom
