@@ -145,7 +145,7 @@ var messageNR=0;
           legend.appendChild(caption);
           outer.appendChild(legend);
 
-          document.getElementById("legend").innerHTML = 'Console Drag Here.<label id="nr">nr</label> <div style="float:right;"><a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank" style="color:gray;"><small>7th-Heaven. </small></a> <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="";messageNR=0;console.info("Cleared Console ",new Date())\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"> <input type="button" value="?" onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'></div>';
+          document.getElementById("legend").innerHTML = 'Console Drag Here.<label id="nr">nr</label> <div style="float:right;"><a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank" style="color:gray;"><small>7th-Heaven. </small></a> <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="";console.info("Cleared Console ",new Date())\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"> <input type="button" value="?" onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'></div>';
           
    
 
@@ -164,7 +164,9 @@ var messageNR=0;
             .join(' ');
           var item = document.createElement('div');
           item.classList.add('log-row');
-          item.textContent = msg;
+          item.textContent = messageNR;
+          item.textContent += " ";
+          item.textContent += msg;
 
           //logTo.appendChild(item);               // new logs on bottom
           logTo.prepend(item);                     // i want new logs on top
