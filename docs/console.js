@@ -41,6 +41,7 @@ document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijk
 document.addEventListener("DOMContentLoaded",
 function (event) {
     dragElement(document.getElementById("console-log-div")); // https://www.w3schools.com/howto/howto_js_draggable.asp
+    console.info("console.js, Running");
 });
 
 function hideconsole() {
