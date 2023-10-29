@@ -93,6 +93,7 @@ z-index:50000;
 #console-log-div {
   border: solid 1px gray;
 }
+.linenr{ float: left;}
 #console-log-text {
   border-top: solid 1px gray;
 }
