@@ -30,7 +30,13 @@ function hideconsole() {
 function showconsole() {
   document.getElementById("console-log-div").style.display = "block";
 }
-
+function toggleconsole() {
+  if(document.getElementById("console-log-div").style.display == "none";){
+    document.getElementById("console-log-div").style.display = "block";
+  }else{
+  document.getElementById("console-log-div").style.display = "none";
+  } 
+}
 
 // https://www.w3schools.com/howto/howto_js_draggable.asp
 function dragElement(elmnt) {
