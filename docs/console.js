@@ -7,29 +7,32 @@ var date = new Date().getTime();
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
 //document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
-/*
-creates a console like next
+/*Ccreates a console like next
 
 <div id="console-log-div" style="color: rgba(0, 0, 0, 0.61);">
-  <div id="legend">Console, Drag not working. <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank">7th-Heaven.</a><input type="button" onclick="document.getElementById(&quot;console-log-text&quot;).innerHTML=&quot;Cleared Console&quot;;" value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"></div>
+  <div id="legend">Console, Drag here. <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank">7th-Heaven.</a><input type="button" onclick="document.getElementById(&quot;console-log-text&quot;).innerHTML=&quot;Cleared Console&quot;;" value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"></div>
   <div id="console-log-text">
-    <div class="log-row" style="color: red;">message</div>
-    <div class="log-row" style="color: gray;">message</div>
+    <div class="log-row" style="color: red;">log message</div>
+    <div class="log-row" style="color: gray;">log message</div>
     
   </div>
 </div>
 */
-    document.addEventListener("DOMContentLoaded",
-      function (event) {
-            dragElement(document.getElementById("console-log-div")); //https://www.w3schools.com/howto/howto_js_draggable.asp
-    });
+
+// wait for the page loaded, and make console draggable 
+document.addEventListener("DOMContentLoaded",
+function (event) {
+    dragElement(document.getElementById("console-log-div")); //https://www.w3schools.com/howto/howto_js_draggable.asp
+});
 
 function hideconsole() {
   document.getElementById("console-log-div").style.display = "none";
 }
+
 function showconsole() {
   document.getElementById("console-log-div").style.display = "block";
 }
+
 function toggleconsole() {
   if(document.getElementById("console-log-div").style.display == "none"){
     document.getElementById("console-log-div").style.display = "block";
@@ -41,11 +44,11 @@ function toggleconsole() {
 // https://www.w3schools.com/howto/howto_js_draggable.asp
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-//  if (document.getElementById(elmnt.id + "header")) {
-    /* if present, the header is where you move the DIV from:*/
+//  if (document.getElementById(elmnt.id + "header"))
+//  if present, the header is where you move the DIV from:
 //     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
 //   } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
+//   otherwise, move the DIV from anywhere inside the DIV:
     document.getElementById("legend").onmousedown = dragMouseDown;
  
 
