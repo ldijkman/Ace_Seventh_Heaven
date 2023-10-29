@@ -97,7 +97,7 @@ z-index:50000;
 }
 .linenr{ 
   float: left;
-  color:rgb(200, 200, 200);
+  color:rgb(190, 190, 190);
 }
 #console-log-text {
   border-top: solid 1px gray;
