@@ -2,7 +2,7 @@
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
-// load style seet css for console
+// load style sheet css for console,    should be better
 var date = new Date().getTime();
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
 //document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
