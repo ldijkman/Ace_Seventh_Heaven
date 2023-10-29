@@ -83,7 +83,7 @@ console-log-div legend console-log-tex
 
     #legend {
       width:100%;
-      background: #cee8ce;
+      background: #cecece;
     }
 /* change color in code by messageNR % 2
     #console-log-div .log-row:nth-child(odd) {
