@@ -14,11 +14,17 @@ add next to a HTML webpage to get an Console
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
 // load style sheet css for console,    should be better
-//var date = new Date().getTime();
-//document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
-//document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
+//  var date = new Date().getTime();
+// document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
+// document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
   // https://www.geeksforgeeks.org/how-to-load-css-files-using-javascript/
+  // next adds a stylesheet link to the page 
+  // but i find it strange will it be always loaded
+  // <head> 
+  //       <title>Add Console to HTML WebPage, OneLiner </title>
+  //       <link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css">
+  // </head>
         // Create new link Element
         let link = document.createElement('link');
          
