@@ -191,6 +191,7 @@ var errorNR=0;
           var ele = document.createElement('div');
           ele.classList.add('linenr');
           ele.textContent = messageNR;
+          ele.textContent += " ";
           document.getElementById("console-log-text").prepend(ele);
           
           var msg = Array.prototype.slice.call(arguments, 0)
@@ -226,7 +227,13 @@ var errorNR=0;
           if (messageNR % 2){
             nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
-           document.getElementById('nr').innerHTML="  "+messageNR+'<font style="color:red;">  '+errorNR+'<\/font>';
+          const nodeList = document.querySelectorAll(".linenr");
+          if (messageNR % 2){
+            nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
+          }
+           
+          
+          document.getElementById('nr').innerHTML="  "+messageNR+'<font style="color:red;">  '+errorNR+'<\/font>';
            messageNR++;
           
           if(messageNR >= 2500){      // erase console if 2500 messages
