@@ -1,3 +1,13 @@
+// https://github.com/ldijkman/Ace_Seventh_Heaven/blob/main/docs/console.js
+
+/*
+add next to a HTML webpage te get an Console
+  <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
+  <input type="button" value="Show Console" onclick="showconsole();" title="Show Console again if hidden">
+  <input type="button" value="Hide Console" onclick="hideconsole();" title="Hide Console">
+  <input type="button" value="Toggle Console" onclick="toggleconsole();"title="Toggle Show or Hide Console"><br>
+*/
+
 // copyright dirk luberth dijkman
 // https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
