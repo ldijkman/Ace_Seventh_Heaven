@@ -14,7 +14,7 @@ add next to a HTML webpage to get an Console
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
 // load style sheet css for console,    should be better
-//var date = new Date().getTime();
+var date = new Date().getTime();
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
 //document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
