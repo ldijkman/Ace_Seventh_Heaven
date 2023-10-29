@@ -1,31 +1,27 @@
 /* console
- copyright dirk luberh dijkman
-
- // EASY PLAY WITH CODEPEN CODE
- // https://codepen.io/ldijkman/pen/abXdROX
-
- <div id="console-log-div" style="color: rgba(0, 0, 0, 0.61);">
-   <div id="legend">Console, Drag not working. <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank">7th-Heaven.</a><input type="button" onclick="document.getElementById(&quot;console-log-text&quot;).innerHTML=&quot;Cleared Console&quot;;" value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"></div>
-   <div id="console-log-text">
-     <div class="log-row" style="color: red;">message</div>
-     <div class="log-row" style="color: gray;">message</div>
-
-   </div>
- </div>
- console-log-div legend console-log-tex
- */
-
+copyright dirk luberh dijkman
+// EASY PLAY WITH CODEPEN CODE
+// https://codepen.io/ldijkman/pen/abXdROX
+<div id="console-log-div" style="color: rgba(0, 0, 0, 0.61);">
+<div id="legend">Console, Drag not working. <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank">7th-Heaven.</a><input type="button" onclick="document.getElementById(&quot;console-log-text&quot;).innerHTML=&quot;Cleared Console&quot;;" value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"></div>
+<div id="console-log-text">
+<div class="log-row" style="color: red;">message</div>
+<div class="log-row" style="color: gray;">message</div>
+</div>
+</div>
+console-log-div legend console-log-tex
+*/
 /*
- body {
- color-scheme: dark;
- background-color: black;
- overscroll-behavior: none;
- overflow: hidden;
- width: 100%;
- height: 100%;
- color: lightgray;
- }
- */
+body {
+color-scheme: dark;
+background-color: black;
+overscroll-behavior: none;
+overflow: hidden;
+width: 100%;
+height: 100%;
+color: lightgray;
+}
+*/
 /* Make the whole thing smaller with transform: scale(70%) */
 #console-log-div {
   position: fixed;
@@ -45,14 +41,11 @@
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
   background-color: #ebebeb;
   border-radius: 4px;
-
   transform: scale(100%);
   z-index: 50000;
-
   resize: both;
   user-select: text;
 }
-
 #console-log-div #legend,
 #console-log-div .log-row,
 #console-log-div td {
@@ -63,7 +56,6 @@
   resize: both;
   border-radius: 4px;
 }
-
 .log-row {
   margin-left: 10px;
 }
@@ -72,7 +64,6 @@
   overflow: auto;
   overscroll-behavior-y: auto;
 }
-
 #console-log-div #legend {
   pppppppppppppppposition: absulute;
   display: inline-block;
@@ -82,21 +73,19 @@
   cursor: move;
   z-index: 50000;
 }
-
 #legend {
   width: 100%;
   background: #cecece;
 }
 /* change color in code by messageNR % 2
- #console-log-div .log-row:nth-child(odd) {
- background: rgba(0, 0, 0, .1);
- z-index:50000;
- }
- */
+#console-log-div .log-row:nth-child(odd) {
+background: rgba(0, 0, 0, .1);
+z-index:50000;
+}
+*/
 #console-log-#div legend #console-log-text {
   resize: both;
 }
-
 #console-log-div thead {
   background: rgba(0, 0, 0, 0.2);
 }
