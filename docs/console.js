@@ -225,7 +225,9 @@ var errorNR=0;
            messageNR++;
           
           if(messageNR >= 2500){      // erase console if 2500 messages
-              document.getElementById("console-log-text").innerHTML=""
+              document.getElementById("console-log-text").innerHTML="";
+            messageNR=0;
+            errorNR=0;
           }
         }
 
