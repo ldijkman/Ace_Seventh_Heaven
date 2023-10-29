@@ -5,7 +5,7 @@
 
 // load style sheet css for console,    should be better
 var date = new Date().getTime();
-document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
+//document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
 //document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="console.css?='+date+'">';
 
         
@@ -100,7 +100,7 @@ function dragElement(elmnt) {
       //      test for https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html 
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
       // https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
-
+var messageNR=0;
 
       var etype = "log";
 
@@ -155,7 +155,9 @@ function dragElement(elmnt) {
           outer.appendChild(div);
           return div;
         }());
+        
 
+        
         function printToDiv() {
           var msg = Array.prototype.slice.call(arguments, 0)
             .map(toString)
@@ -184,6 +186,10 @@ function dragElement(elmnt) {
             nodeList[0].style.color = "blue";
           }
 
+          if (messageNR % 2){
+            nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
+          }
+          messageNR++;
         }
 
         function logWithCopy() {
