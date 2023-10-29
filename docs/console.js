@@ -189,7 +189,7 @@ var messageNR=0;
           if (messageNR % 2){
             nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
-          document.getElementById("nr").innerHTML = messageNR;
+          document.getElementById("nr").innerText = messageNR;
           messageNR++;
           
         }
