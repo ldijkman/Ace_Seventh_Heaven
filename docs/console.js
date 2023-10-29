@@ -297,7 +297,8 @@ var errorNR=0;
         };
 
         window.addEventListener('error', function (err) {
-           etype="exception";
+          etype="exception";
+          errorNR++;
           printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
         });
 
