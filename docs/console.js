@@ -13,9 +13,6 @@ add next to a HTML webpage to get an Console
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 // https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 
-// EASY PLAY WITH CODEPEN CODE
-//           https://codepen.io/ldijkman/pen/abXdROX
-
 // load style sheet css for console,    should be better
 var date = new Date().getTime();
 document.head.innerHTML += '<link rel="stylesheet" type="text/css" href="//ldijkman.github.io/Ace_Seventh_Heaven/console.css?='+date+'">';
@@ -114,6 +111,7 @@ function dragElement(elmnt) {
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
       // https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
 var messageNR=0;
+var errorNR=0;
 
       var etype = "log";
 
@@ -177,6 +175,7 @@ var messageNR=0;
             .join(' ');
           var item = document.createElement('div');
           item.classList.add('log-row');
+          //item.textContent = '<font style="color:gray;">'+messageNR+'</font>';
           item.textContent = messageNR;
           item.textContent += " ";
           item.textContent += msg;
@@ -204,7 +203,7 @@ var messageNR=0;
           if (messageNR % 2){
             nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
-           document.getElementById('nr').innerHTML="  "+messageNR;
+           document.getElementById('nr').innerHTML="  "+messageNR+'<font style="color:red;">  '+errorNR+'<\/font>';
           messageNR++;
         }
 
@@ -226,6 +225,7 @@ var messageNR=0;
           var args = Array.prototype.slice.call(arguments, 0);
           args.unshift('ERROR:');
           etype = "errorr";
+          errorNR++;
           printToDiv.apply(null, args);
         };
 
