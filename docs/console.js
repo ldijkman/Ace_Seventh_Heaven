@@ -145,7 +145,7 @@ var messageNR=0;
           legend.appendChild(caption);
           outer.appendChild(legend);
 
-          document.getElementById("legend").innerHTML = 'Console Drag Here. <div id="nr"></div><div style="float:right;"><a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank" style="color:gray;"><small>7th-Heaven. </small></a> <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="";console.info("Cleared Console ",new Date())\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"> <input type="button" value="?" onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'></div>';
+          document.getElementById("legend").innerHTML = 'Console Drag Here.<label id="nr">nr</label> <div style="float:right;"><a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank" style="color:gray;"><small>7th-Heaven. </small></a> <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="";console.info("Cleared Console ",new Date())\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"> <input type="button" value="?" onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'></div>';
           
    
 
@@ -189,9 +189,8 @@ var messageNR=0;
           if (messageNR % 2){
             nodeList[0].style.background= "rgba(0,0, 0, .1)"; // make bg color stick to messageline
           }
-          document.getElementById("nr").innerText = messageNR;
+           document.getElementById('nr').innerHTML="  "+messageNR;
           messageNR++;
-          
         }
 
         function logWithCopy() {
