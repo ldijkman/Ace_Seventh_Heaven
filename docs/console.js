@@ -1,7 +1,7 @@
 // https://github.com/ldijkman/Ace_Seventh_Heaven/blob/main/docs/console.js
 
 /*
-add next to a HTML webpage te get an Console
+add next to a HTML webpage to get an Console
   <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
   <input type="button" value="Show Console" onclick="showconsole();" title="Show Console again if hidden">
   <input type="button" value="Hide Console" onclick="hideconsole();" title="Hide Console">
