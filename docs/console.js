@@ -35,7 +35,10 @@ add next to a HTML webpage to get an Console
          
         // Get HTML head element to append
         // link element to it
-        document.getElementsByTagName('HEAD')[0].appendChild(link);
+ ////////////////////////////////////////////////////////////////////////
+// turned off for codepen use codpen css
+   document.getElementsByTagName('HEAD')[0].appendChild(link);
+/////////////////////////////////////////////////////////////////////////
 // https://www.geeksforgeeks.org/how-to-load-css-files-using-javascript/
 
 /*Creates a console like next
@@ -131,8 +134,11 @@ function dragElement(elmnt) {
       //      test for https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html 
       //    more? https://stackoverflow.com/questions/13815640/a-proper-wrapper-for-console-log-with-correct-line-number
       // https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5
-var messageNR=0;
-var errorNR=0;
+
+
+var messageNR = 0;
+var errorNR = 0;
+var maxerror = 2500;  // erase console if 2500 messages
 
       var etype = "log";
 
@@ -152,6 +158,7 @@ var errorNR=0;
         var error = console.error.bind(console);
         var warn = console.warn.bind(console);
         var info = console.info.bind(console);
+        var clear = console.clear.bind(console);
         var table = console.table ? console.table.bind(console) : null;
         var consoleId = 'console-log-div';
 
@@ -177,7 +184,27 @@ var errorNR=0;
           legend.appendChild(caption);
           outer.appendChild(legend);
 
-          document.getElementById("legend").innerHTML = 'Console.<label id="nr">nr</label> <div style="float:right;"><a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" target="_blank" style="color:gray;"><small>7th-Heaven. </small></a> <input type="button" onclick=\'document.getElementById("console-log-text").innerHTML="";messageNR=0;errorNR=0;console.info("Cleared Console ",new Date())\' value="Clear" title="Empty Console!"> <input type="button" value="hide" onclick="hideconsole()" title="Hide Console!"> <input type="button" value="?" onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'></div>';
+document.getElementById("legend").innerHTML = 
+`Console.<label id="nr" title="messagecounter"> >nr</label> 
+<div style="float:right;">
+<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" 
+target="_blank" style="color:gray;">
+<small>7th-Heaven. </small></a> 
+<input type="button" 
+onclick=\'document.getElementById("console-log-text").innerHTML="";
+messageNR=0;
+errorNR=0;
+console.info("Cleared Console ",new Date())\' 
+value="Clear" 
+title="Empty Console!"> 
+<input type="button" 
+value="hide" 
+onclick="hideconsole()" 
+title="Hide Console!"> 
+<input type="button" 
+value="?" 
+onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'>
+</div>`;
           
    
 
@@ -191,6 +218,12 @@ var errorNR=0;
 
         
         function printToDiv() {
+          
+          //var ele = document.createElement('div');
+          //ele.classList.add('linenr');
+          //ele.textContent = messageNR;
+          //ele.textContent += " ";
+          //document.getElementById("console-log-text").appendChild(ele);
           
           var msg = Array.prototype.slice.call(arguments, 0)
             .map(toString)
@@ -206,7 +239,7 @@ var errorNR=0;
           logTo.prepend(item);                     // i want new logs on top
 
 
-          var ele = document.createElement('div');
+          var ele = document.createElement('div'); // dont know i wat it before
           ele.classList.add('linenr');
           ele.textContent = messageNR;
           ele.textContent += " ";
@@ -230,6 +263,9 @@ var errorNR=0;
           if (etype == "info") {
             nodeList[0].style.color = "blue";
           }
+          if (etype == "clear") {
+            nodeList[0].style.color = "purple";
+          }
 
           if (messageNR % 2){
             nodeList[0].style.background= "rgb(225,225,225)"; // make bg color stick to messageline
@@ -243,7 +279,7 @@ var errorNR=0;
           document.getElementById('nr').innerHTML="  "+messageNR+'<font style="color:red;">  '+errorNR+'<\/font>';
           messageNR++;
           
-          if(messageNR >= 2500){      // erase console if 2500 messages
+          if(messageNR >= maxerror){      // erase console if 2500 messages
               document.getElementById("console-log-text").innerHTML="";
               messageNR=0;
               errorNR=0;
@@ -261,7 +297,16 @@ var errorNR=0;
         console.log = logWithCopy;
         console.log.toDiv = true;
 
-
+        console.clear = function consoleclear() {
+          clear.apply(null, arguments);
+          var args = Array.prototype.slice.call(arguments, 0);
+          args.unshift('CLEAR:');
+          etype="clear";
+          messageNR=0;
+          errorNR=0;
+          document.getElementById("console-log-text").innerHTML="";                       printToDiv.apply(null, args);
+          console.info("code console.clear(); ",new Date())
+        };
 
         console.error = function errorWithCopy() {
           error.apply(null, arguments);
