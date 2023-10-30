@@ -59,8 +59,8 @@ add next to a HTML webpage to get an Console
 // wait for the page loaded, and make console draggable 
 document.addEventListener("DOMContentLoaded",
 function (event) {
+    console.info("console.js, Running, Making it Draggable.");
     dragElement(document.getElementById("console-log-div")); // https://www.w3schools.com/howto/howto_js_draggable.asp
-    console.info("console.js, Running");
 });
 
 function hideconsole() {
@@ -75,7 +75,7 @@ function toggleconsole() {
   if(document.getElementById("console-log-div").style.display == "none"){
     document.getElementById("console-log-div").style.display = "block";
   }else{
-  document.getElementById("console-log-div").style.display = "none";
+    document.getElementById("console-log-div").style.display = "none";
   } 
 }
 
@@ -240,12 +240,12 @@ var errorNR=0;
            
           
           document.getElementById('nr').innerHTML="  "+messageNR+'<font style="color:red;">  '+errorNR+'<\/font>';
-           messageNR++;
+          messageNR++;
           
           if(messageNR >= 2500){      // erase console if 2500 messages
               document.getElementById("console-log-text").innerHTML="";
-            messageNR=0;
-            errorNR=0;
+              messageNR=0;
+              errorNR=0;
           }
         }
 
