@@ -29,10 +29,8 @@ add next to a HTML webpage to get an Console
         let link = document.createElement('link');
          
         // set the attributes for link element
-        link.rel = 'stylesheet';
-             
+        link.rel = 'stylesheet';    
         link.type = 'text/css';
-             
         link.href = '//ldijkman.github.io/Ace_Seventh_Heaven/console.css';
          
         // Get HTML head element to append
@@ -48,8 +46,12 @@ add next to a HTML webpage to get an Console
 
      <!--new messages will be inserted at top here-->
   
-    <div class="log-row" style="color: red;">log message</div>
-    <div class="log-row" style="color: gray;">log message</div>
+                            <div class="log-row" style="color: gray; background: rgb(225, 225, 225);">      text          </div>
+    <div class="linenr">2 </div>
+                            <div class="log-row" style="color: gray;">        text          </div>
+    <div class="linenr" style="background: rgb(225, 225, 225);">1 </div>
+                             <div class="log-row" style="color: gray; background: rgb(225, 225, 225);">      text          </div>
+    <div class="linenr">0 </div><div class="log-row" style="color: gray;">     text        </div>
   </div>
 </div>
 */
