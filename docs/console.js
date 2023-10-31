@@ -65,6 +65,7 @@ function (event) {
     console.info("console.js, Running, Making it Draggable.");
     dragElement(document.getElementById("console-log-div")); // https://www.w3schools.com/howto/howto_js_draggable.asp
     console.info("Ok, You can Drag Me now!.");
+    console.info("Resize, bottom right corner!.");
 });
 
 function hideconsole() {
