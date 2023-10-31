@@ -26,7 +26,7 @@ color: lightgray;
 #console-log-div {
   position: fixed;
   min-height: 55px;
-  max-height: 200px;
+  max-height: 500px;
   width: 600px;
   /*max-width: fit-content;*/
   bottom: 20px;
@@ -63,7 +63,7 @@ color: lightgray;
   margin-left: 10px;
 }
 #console-log-text {
-  height: 160px;
+  height: auto;
   overflow: auto;
   overscroll-behavior-y: auto;
   scroll-behavior: smooth;
