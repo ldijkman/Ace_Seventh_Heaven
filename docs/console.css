@@ -43,7 +43,8 @@ color: lightgray;
   border-radius: 4px;
   transform: scale(100%);
   z-index: 50000;
-  resize: both;
+    resize: both;
+  overflow: auto;
   user-select: text;
 }
 
@@ -55,7 +56,7 @@ color: lightgray;
   text-indent: 1px;
   z-index: 50000;
   user-select: text;
-  resize: both;
+
   border-radius: 4px;
 }
 .log-row {
