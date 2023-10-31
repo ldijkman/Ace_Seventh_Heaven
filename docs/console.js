@@ -157,6 +157,7 @@ var maxerror = 2500;  // erase console if 2500 messages
 
         var log = console.log.bind(console);
         var error = console.error.bind(console);
+        var debug = console.debug.bind(console);
         var warn = console.warn.bind(console);
         var info = console.info.bind(console);
         var clear = console.clear.bind(console);
@@ -267,6 +268,9 @@ onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ac
           if (etype == "clear") {
             nodeList[0].style.color = "purple";
           }
+          if (etype == "debug") {
+            nodeList[0].style.color = "brown";
+          }
 
           if (messageNR % 2){
             nodeList[0].style.background= "rgb(225,225,225)"; // make bg color stick to messageline
@@ -315,6 +319,14 @@ onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ac
           args.unshift('ERROR:');
           etype = "errorr";
           errorNR++;
+          printToDiv.apply(null, args);
+        };
+
+        console.debug = function debugWarning() {
+          debug.apply(null, arguments);
+          var args = Array.prototype.slice.call(arguments, 0);
+          args.unshift('DEBUG:');
+          etype = "debug";
           printToDiv.apply(null, args);
         };
 
