@@ -401,7 +401,8 @@ onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ac
         window.addEventListener('error', function (err) {
           etype="exception";
           errorNR++;
-            printToDiv('EXCEPTION:', err.message + '\n  <a href=\"' + err.filename + '">' + err.filename + '</a>'+ err.lineno + ':' + err.colno);
+            printToDiv('EXCEPTION:', err.message + '\n' + err.filename +'\n line '+ err.lineno + ':col: ' + err.colno);
+            document.querySelector(".log-row").innerHTML+='\n  <a href="' + err.filename + '" target="errorlink">' + err.filename + '</a>';
         });
 
         //   Detect dark or light colors.
