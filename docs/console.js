@@ -403,7 +403,7 @@ onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ac
           errorNR++;
           // printToDiv('EXCEPTION:', err.message + '\r\n' + err.filename +'\r\n line '+ err.lineno + ':col: ' + err.colno);
           printToDiv('EXCEPTION:', err.message );
-          var text='<br><a href="' + err.filename + '" target="errorlink" style="color:darkred;">' + err.filename + '</a><br> line '+ err.lineno + ' column: ' + err.colno;
+          var text='<br><a href="view-source:' + err.filename + '" target="errorlink" style="color:darkred;">' + err.filename + '</a><br> line '+ err.lineno + ' column: ' + err.colno;
           document.querySelector(".log-row").innerHTML+=text;
         });
 
