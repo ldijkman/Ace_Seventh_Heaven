@@ -66,6 +66,7 @@ function (event) {
     dragElement(document.getElementById("console-log-div")); // https://www.w3schools.com/howto/howto_js_draggable.asp
     console.info("Ok, You can Drag Me now!.");
     console.info("Resize, bottom right corner!.");
+     console.debug('This Bug is RosyBrown');
 });
 
 function hideconsole() {
@@ -269,7 +270,7 @@ onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ac
             nodeList[0].style.color = "purple";
           }
           if (etype == "debug") {
-            nodeList[0].style.color = "brown";
+            nodeList[0].style.color = "rosybrown";
           }
 
           if (messageNR % 2){
