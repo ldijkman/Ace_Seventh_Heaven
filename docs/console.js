@@ -194,9 +194,11 @@ var maxerror = 2500;  // erase console if 2500 messages
 
 document.getElementById("legend").innerHTML = 
 `Console.<label id="nr" title="messagecounter"> >nr</label>
-  <input type="text" value='console.info("Hello World",maxerror--);' id="textt" onmouseover="this.focus()" onkeypress="keyp(event);">
+<div id="test">
+  <input type="text" size="60" value='console.info("Hello World",maxerror--);' id="textt" onmouseover="this.focus()" onkeypress="keyp(event);">
    
 <input type="button" value="run" onclick="eval(textt.value);">
+</div>
 
 <div style="float:right;">
 <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" 
