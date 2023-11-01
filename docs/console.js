@@ -317,9 +317,7 @@ document.getElementById("legend").innerHTML =
 `Console.<label id="nr" title="messagecounter"> >nr</label>
 <div id="test">
   <input type="text" size="60" value='console.info("Hello World",messageNR,"----------",new Date());' id="textt" onmouseover="this.focus()" onkeypress="keyp(event);">
-    
-    
-<input type="button" value="run" onclick="eval(textt.value);">
+  <input type="button" value="run" onclick="eval(textt.value);">
 </div>
 
 <div style="float:right;">
