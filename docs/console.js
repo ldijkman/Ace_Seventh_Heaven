@@ -128,7 +128,12 @@ function dragElement(elmnt) {
 }
 // end drag https://www.w3schools.com/howto/howto_js_draggable.asp
 
-
+  function keyp(event){
+    if (event.keyCode == 13) {
+        // Enter was pressed
+        eval(document.getElementById("textt").value);
+    }
+  }
 
       // https://codepen.io/louisr/pen/xZwJLx
       // https://github.com/bahmutov/console-log-div 
@@ -189,8 +194,10 @@ var maxerror = 2500;  // erase console if 2500 messages
 
 document.getElementById("legend").innerHTML = 
 `Console.<label id="nr" title="messagecounter"> >nr</label>
-<input type="text" value='console.info("Hello World");' id="textt" onmouseover="this.focus()">
-<input type="button" value="run" onclick='eval(document.getElementById("textt").value);'>
+  <input type="text" value='console.info("Hello World",maxerror--);' id="textt" onmouseover="this.focus()" onkeypress="keyp(event);">
+   
+<input type="button" value="run" onclick="eval(textt.value);">
+
 <div style="float:right;">
 <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" 
 target="_blank" style="color:gray;">
