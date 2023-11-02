@@ -309,16 +309,28 @@ var maxerror = 2500;  // erase console if 2500 messages
           var outer = createOuterElement(consoleId);
           var caption = document.createTextNode('Console Output');
           var legend = document.createElement('div');
+          
+          
           legend.id = "legend";
           legend.appendChild(caption);
           outer.appendChild(legend);
+          
+          var footer = document.createElement('div');
+          var ccaption = document.createTextNode('footer');
+          footer.id = "footer";
+          footer.append(ccaption);
+          outer.append(footer);
+          
+          document.getElementById("footer").innerHTML = 
+`
+<div id="test">
+  <input type="text" size="60" value='console.info("Hello World",messageNR,"----------",new Date());' id="myinputt" onmouseover="this.focus()" onkeypress="keyp(event);">
+  <input type="button" value="run" onclick="eval(myinput.value);">
+</div>`;
 
 document.getElementById("legend").innerHTML = 
 `Console.<label id="nr" title="messagecounter"> >nr</label>
-<div id="test">
-  <input type="text" size="60" value='console.info("Hello World",messageNR,"----------",new Date());' id="textt" onmouseover="this.focus()" onkeypress="keyp(event);">
-  <input type="button" value="run" onclick="eval(textt.value);">
-</div>
+
 
 <div style="float:right;">
 <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html" 
@@ -339,6 +351,7 @@ title="Hide Console!">
 value="?" 
 onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'>
 </div>`;
+          
           
    
 
