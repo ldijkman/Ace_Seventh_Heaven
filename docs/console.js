@@ -324,7 +324,7 @@ var maxerror = 2500;  // erase console if 2500 messages
           document.getElementById("footer").innerHTML = 
 `
 <div id="test">
-  <input type="text" size="60" value='console.info("Hello World",messageNR,"----------",new Date());' id="myinputt" onmouseover="this.focus()" onkeypress="keyp(event);">
+  <input type="text" size="60" value='console.info("Hello World",messageNR,"----------",new Date());' id="myinput" onmouseover="this.focus()" onkeypress="keyp(event);">
   <input type="button" value="run" onclick="eval(myinput.value);">
 </div>`;
 
