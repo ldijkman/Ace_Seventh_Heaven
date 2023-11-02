@@ -131,7 +131,7 @@ function dragElement(elmnt) {
   function keyp(event){
     if (event.keyCode == 13) {
         // Enter was pressed
-        eval(document.getElementById("textt").value);
+        eval(document.getElementById("myinput").value);
     }
   }
 
