@@ -71,17 +71,21 @@ function (event) {
 
 function hideconsole() {
   document.getElementById("console-log-div").style.display = "none";
+  console.debug('hideconsole() from code ',new Date());
 }
 
 function showconsole() {
   document.getElementById("console-log-div").style.display = "block";
+  console.debug('showconsole() from code ',new Date());
 }
 
 function toggleconsole() {
   if(document.getElementById("console-log-div").style.display == "none"){
     document.getElementById("console-log-div").style.display = "block";
+    console.debug('toggleconsole() from code, display = block ',new Date());
   }else{
     document.getElementById("console-log-div").style.display = "none";
+    console.debug('toggleconsole() from code, display= none ',new Date());
   } 
 }
 
