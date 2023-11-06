@@ -3882,6 +3882,248 @@ editor.session.setMode("ace/mode/html", function() {
 	  ace.require("ace/ext/emmet");          // do not know what emmet is and does
 
 
+// fetch ace's language tools module:
+var langTools = ace.require('ace/ext/language_tools');
+
+// data stub:
+var javascript = [
+{name:'setInterval(function(){},10);'},
+{name:'setTimeout(function(){},10);'},
+{name:'clearInterval(id);'},
+{name:'clearTimeout(id);'},
+
+{name:'document.getElementById()'},
+{name:'document.getElementByClassName()'},
+{name:'document.getElementsByTagName()'},
+
+{name:'document.querySelector()'},
+{name:'document.querySelectorAll()'},
+
+{name:'console.info("HelloWorld",messageNR,"----------",newDate());'},
+{name:'console.'},
+{name:'console.info("test",testval);'},
+{name:'log("",)'},
+{name:'error("",)'},
+{name:'info("",)'},
+{name:'warn("",)'},
+{name:'debug("",)'},
+{name:'clear("clear")'},
+{name:'newDate()'},
+{name:'Math.PI'},
+{name:'Math.abs()'},
+{name:'Math.acos()'},
+{name:'Math.acosh()'},
+{name:'Math.asin()'},
+{name:'Math.asinh()'},
+{name:'Math.atan()'},
+{name:'Math.atan2()'},
+{name:'Math.atanh()'},
+{name:'Math.cbrt()'},
+{name:'Math.ceil()'},
+{name:'Math.clz32()'},
+{name:'Math.cos()'},
+{name:'Math.cosh()'},
+{name:'Math.exp()'},
+{name:'Math.expml()'},
+{name:'Math.floor()'},
+{name:'Math.fround()'},
+{name:'Math.hypot()'},
+{name:'Math.imul()'},
+{name:'Math.log()'},
+{name:'Math.log10()'},
+{name:'Math.log1p()'},
+{name:'Math.log2()'},
+{name:'Math.max()'},
+{name:'Math.min()'},
+{name:'Math.pow()'},
+{name:'Math.random()'},
+{name:'Math.round()'},
+{name:'Math.sign()'},
+{name:'Math.sin()'},
+{name:'Math.sinh()'},
+{name:'Math.sqrt()'},
+{name:'Math.tan()'},
+{name:'Math.tanh()'},
+{name:'Math.trunc()'},
+{name:'toggleconsole()'},
+{name:'hideconsole()'},
+{name:'showconsole()'},
+{name:'console.clear("console.clear()")'},
+{name:'var a=eval("(1000-778)*3");console.log("The Number is",a)'},
+{name:'let a=3;let b=a**2;console.log("let a=3;let b=a**2;The result b is",b)'},
+{name:'var a=eval("(1000-778)*3");console.log("TheNumberis",a)'},
+{name:'console.info("header#legend.innerHTML=",document.getElementById("legend").innerHTML);'},
+{name:'var mytimer=setInterval(function(){console.debug("setIntervaltostopdoclearInterval(nextnumber);",mytimer)},500);'},
+{name:'setInterval(function(){},10);'},
+{name:'document.querySelector("#legend").innerHTML+="HelloWorld!";'},
+
+{name:`const nodeList=document.querySelectorAll('*');
+for(let i=0;i<nodeList.length;i++){
+nodeList[i].style.backgroundColor="pink";
+}`},
+
+{name: `const intervalID = setInterval(myCallback, 500, "Parameter 1", "Parameter 2");
+function myCallback(a, b) {
+  console.log(a);
+  console.log(b);
+}
+setTimeout(function(){clearInterval(intervalID);},20000);
+`},
+
+{name: `var ChatGTPlistallfunctions; 
+const javascriptFunctions = Object.getOwnPropertyNames(window)
+  .filter((prop) => typeof window[prop] === 'function');
+
+console.log(javascriptFunctions);
+for(let i=0;i<javascriptFunctions.length;i++){
+  console.info(javascriptFunctions[i]);
+}
+`},
+
+{name: `
+const value = 42;
+
+// if statement
+if (value === 42) {
+  console.log('if statement: Value is 42');
+}
+
+// if...else statement
+if (value === 42) {
+  console.log('if...else statement: Value is 42');
+} else {
+  console.log('if...else statement: Value is not 42');
+}
+
+// if...else if...else statement
+if (value === 42) {
+  console.log('if...else if...else statement: Value is 42');
+} else if (value === 24) {
+  console.log('if...else if...else statement: Value is 24');
+} else {
+  console.log('if...else if...else statement: Value is neither 42 nor 24');
+}
+
+// Ternary (conditional) operator
+const message = value === 42 ? 'Ternary operator: Value is 42' : 'Ternary operator: Value is not 42';
+console.log(message);
+
+// switch statement
+switch (value) {
+  case 42:
+    console.log('switch statement: Value is 42');
+    break;
+  case 24:
+    console.log('switch statement: Value is 24');
+    break;
+  default:
+    console.log('switch statement: Value is neither 42 nor 24');
+}
+`},
+
+{name: `const stringMethods = [
+  "charAt",
+  "charCodeAt",
+  "concat",
+  "endsWith",
+  "fromCharCode",
+  "includes",
+  "indexOf",
+  "lastIndexOf",
+  "localeCompare",
+  "match",
+  "normalize",
+  "padEnd",
+  "padStart",
+  "repeat",
+  "replace",
+  "search",
+  "slice",
+  "split",
+  "startsWith",
+  "substr",
+  "substring",
+  "toLowerCase",
+  "toString",
+  "toUpperCase",
+  "trim",
+  "trimEnd",
+  "trimLeft",
+  "trimRight",
+  "trimStart",
+  "valueOf",
+];`},
+
+
+{name: `for (let i = 0; i < 1000; i++) {
+    // Your code to be executed in each iteration goes here
+    console.log("Iteration \${i}",i);
+}`},
+
+{name: `let i = 0;
+while (i < 10) {
+  console.log("i=",i);
+  i++
+}`},
+
+{name: `// or Logical OR (||)
+const a = 3;
+const b = -2;
+console.log(a > 0 || b > 0); // Expected output: true`},
+{name:`Copyright Dirk Luberth Dijkman Bangert Andijk`},
+
+{name: `<script> <\/script>`},
+{name: `<script src=" "><\/script>`},
+{name: `<style> <\/style>`},
+{name: `|| /*(Logical OR)*/`}
+
+];
+
+// create a completer object with a required callback function:
+var javascriptCompleter = {
+  getCompletions: function(editor, session, pos, prefix, callback) {
+    callback(null, javascript.map(function(console) {
+      return {
+        caption: console.name,
+	      value: console.name,
+      	meta: "Heaven",
+      };
+    }));	
+  },
+   getDocTooltip: function(item) {
+        if (!item.docHTML) {
+            item.docHTML = [
+                'MDN Web Docs<a href="https://developer.mozilla.org/en-US/search?q=',item.caption,'" target="_blank"><br><br><br>', item.caption, '</a><br><br><center><input type="button" onclick=\'openinwindow("',item.caption,'")\' value="open in window"><br></center>',
+            ].join("");
+        }
+    }
+};
+function openinwindow(what){
+  var url='https://developer.mozilla.org/en-US/search?q='+what;
+  var urlt= escape(url);
+  console.debug("urlt",urlt);
+  window.open(url, "mdn", "adressbar=yes,toolbar=yes,scrollbars=yes,resizable=yes,top=300,left=300,width=800,height=600");
+}
+function openwindow(what){
+  window.open(what, "AIChatGPT", "adressbar=yes,toolbar=yes,scrollbars=yes,resizable=yes,top=300,left=300,width=800,height=600");
+}
+// finally, bind to langTools:
+langTools.addCompleter(javascriptCompleter);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 		editor.setOptions({
 			enableBasicAutocompletion: true,
 			enableLiveAutocompletion: true,
