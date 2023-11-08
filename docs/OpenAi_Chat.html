@@ -196,36 +196,42 @@ var copyButtons;
       // Create a new div element 
       var newDiv = document.createElement("div");
       // Append the new div element to the messageDiv 
-      message=message.replace(/```html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
-      message=message.replace(/```javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
-      message=message.replace(/```css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
-      message=message.replace(/``` html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
-      message=message.replace(/``` javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"> columns=\"10\" class=\"myTextarea\">");
-      message=message.replace(/``` css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\"a class=\"myTextarea\">");
+      message=message.replace(/```html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/```javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/```css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/``` html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/``` javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br> columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/``` css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\"a class=\"myTextarea\">");
       
-      message=message.replace("```", "</textarea></code></pre></div>");
+      message=message.replace("```", "</textarea></div>");
       newDiv.innerHTML = "<pre>" + `${sender}: ${message}` + "</pre>";
       newDiv.id = sender;   // sender div id can be You or OpenAI, handy for colloring css style id
       newDiv.style.color = color; // Change text color to red
  
       messageDiv.appendChild(newDiv);
       // Get all "Copy" buttons by their class name
-      setTimeout(function(){
+     
        copyButtons = document.querySelectorAll('.copy-button');
-       },250);
-    }
-
-
-// Add click event listeners for each "Copy" button
-copyButtons.forEach(function (button, index) {
-  button.addEventListener('click', function () {
-    var textarea = document.querySelector('.myTextarea-' + index);
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); // Select the text inside the textarea
-    document.execCommand('copy'); // Copy the selected text to the clipboard
-    alert('Text copied to clipboard: ' + textarea.value);
+      
+      // Add click event listeners for each "Copy" button
+      copyButtons.forEach(function (button, index) {
+      button.addEventListener('click', function () {
+      var nodelist = document.querySelectorAll('.myTextarea');
+ console.debug("textarea",nodelist[index]);
+      var element =nodelist[index];
+      element.select();
+      element.setSelectionRange(0, 99999); // Select the text inside the textarea
+      document.execCommand('copy'); // Copy the selected text to the clipboard
+      alert('Text copied to clipboard: ' + element.value);
+    });
   });
-});
+    
+
+}
+
+
+
+
 
     // Add an event listener to the input element for the "input" event.
     document.getElementById("apikey").addEventListener("input", function(event) {
