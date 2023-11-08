@@ -63,9 +63,10 @@
 
     #spinnert {
  
-  width: 180px; /* Make the spinner smaller by adjusting width */
+  width: 400px; /* Make the spinner smaller by adjusting width */
   height: 18px; /* Make the spinner smaller by adjusting height */
-      font-size: 15px;
+      font-size: 18px;
+      color:purple;
       animation: blink 1.5s infinite;
        display: none; /* Initially hidden */
     }
@@ -180,7 +181,11 @@ sendButton.addEventListener("click", async () => {
       Prism.highlightAll();
     });
 
+var copyButtons;
+
+
     function appendMessage(sender, message,color) {
+      createtext(message);
       console.info("", sender, message);
       var messageElement = document.createElement("div");
      
@@ -191,22 +196,36 @@ sendButton.addEventListener("click", async () => {
       // Create a new div element 
       var newDiv = document.createElement("div");
       // Append the new div element to the messageDiv 
-      message=message.replace(/```html/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
-      message=message.replace(/```javascript/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
-      message=message.replace(/```css/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
-      message=message.replace(/``` html/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
-      message=message.replace(/``` javascript/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
-      message=message.replace(/``` css/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\"a id=\"myTextarea\">");
+      message=message.replace(/```html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/```javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/```css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/``` html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/``` javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"> columns=\"10\" class=\"myTextarea\">");
+      message=message.replace(/``` css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><pre>/<code class=\"language-javascript\"><textarea columns=\"10\"a class=\"myTextarea\">");
       
-      message=message.replace("```", "</textarea><br><small> resize textarea, drag on bottom right corner</small>");
+      message=message.replace("```", "</textarea></code></pre></div>");
       newDiv.innerHTML = "<pre>" + `${sender}: ${message}` + "</pre>";
       newDiv.id = sender;   // sender div id can be You or OpenAI, handy for colloring css style id
       newDiv.style.color = color; // Change text color to red
  
       messageDiv.appendChild(newDiv);
-     
+      // Get all "Copy" buttons by their class name
+      setTimeout(function(){
+       copyButtons = document.querySelectorAll('.copy-button');
+       },250);
     }
 
+
+// Add click event listeners for each "Copy" button
+copyButtons.forEach(function (button, index) {
+  button.addEventListener('click', function () {
+    var textarea = document.querySelector('.myTextarea-' + index);
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // Select the text inside the textarea
+    document.execCommand('copy'); // Copy the selected text to the clipboard
+    alert('Text copied to clipboard: ' + textarea.value);
+  });
+});
 
     // Add an event listener to the input element for the "input" event.
     document.getElementById("apikey").addEventListener("input", function(event) {
@@ -220,13 +239,13 @@ sendButton.addEventListener("click", async () => {
 const textarea = document.querySelector('language-javascript');
 
 // Set the initial height to fit the content
-textarea.style.height = `${textarea.scrollHeight}px`;
+//textarea.style.height = textarea.scrollHeight+'px`;
 
 // Add an event listener for input changes
 textarea.addEventListener('input', () => {
   // Set the height to fit the content again when the input changes
   Prism.highlightAll();
-  textarea.style.height = `${textarea.scrollHeight}px`;
+  //textarea.style.height = textarea.scrollHeight+'px`;
 });
 
 
@@ -245,10 +264,32 @@ textarea.addEventListener('input', () => {
    document.execCommand("copy"); alert("Text copied to clipboard: " + textarea.value); 
    }  
 
+// ask => create a webpage with an analog clock in spearate html css javascript files
+function createtext(message){
+const inputString=message;
+// Regular expression to match code sections enclosed in triple backticks
+const codeSections = inputString.match(/```(\w+)\n(.*?)```/gs);
 
+if (codeSections) {
+  codeSections.forEach((section, index) => {
+    const codeType = section.match(/```(\w+)\n/)[1];
+    const code = section.match(/```(\w+)\n(.*?)```/s)[2];
 
+    // Create a textarea element for each code section
+    const textarea = document.createElement('textarea');
+    textarea.value = code;
+    textarea.placeholder = codeType;
+    textarea.rows = 10;
+    textarea.cols = 50;
+    textarea.id = `code-${index}`;
 
-
+    // Append the textarea to the document body
+    document.body.appendChild(textarea);
+  });
+}
+ Prism.highlightAll();
+}
+</script>
   
   
 
