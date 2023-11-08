@@ -1,5 +1,9 @@
 # Ace_Seventh_Heaven
 Ace Editor Seventh Heaven
+---
+OpenAI Chat webpage, a chat with Heaven or Hell
+ https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Chat.html
+---
 
 Demo HTML Preview: https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 
@@ -8,6 +12,8 @@ Demo: https://ldijkman.github.io/Ace_Seventh_Heaven/Seventh_Heaven.html
 Source: https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
 
 BlahBlah: https://github.com/ldijkman/Ace_Seventh_Heaven/discussions
+
+https://ldijkman.github.io/Ace_Seventh_Heaven/shortcutkeys.html
 
 compare 2 text files
 Ace Diff: https://ldijkman.github.io/Ace_Seventh_Heaven/Ace-Diff.html
