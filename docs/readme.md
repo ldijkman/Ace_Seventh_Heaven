@@ -1,8 +1,9 @@
 # Ace_Seventh_Heaven
 Ace Editor Seventh Heaven
-
+---
 OpenAI Chat webpage, a chat with Heaven or Hell
-https://ldijkman.github.io/OpenAi_Chat.html
+ https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Chat.html
+---
 
 Demo HTML Preview: https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html
 
