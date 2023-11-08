@@ -90,6 +90,7 @@
   Get your key at <a href="https://platform.openai.com/account/api-keys" target="hell">https://platform.openai.com/account/api-keys</a><br>
   api-key <input type="text" id="apikey"> <button id="clearApiKeyButton">Clear API Key from localstorage</button>
 <br>
+Your Name: <input type="text" value="User" id="nameuser">
   <h1>Chat with OpenAI</h1>
   <div id="chat-container">
     <div id="chat-log"></div>
@@ -111,7 +112,13 @@
   const storedApiKey = localStorage.getItem("apiKey");
   if (storedApiKey) {
     document.getElementById("apikey").value = storedApiKey;
-  }
+  } 
+  const storednameuser = localStorage.getItem("nameuser");
+  if (storednameuser) {
+    document.getElementById("nameuser").value = storednameuser;
+  } 
+
+ 
 
   userInput.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
@@ -122,7 +129,7 @@
   // Inside the event listener for the "Send" button
 sendButton.addEventListener("click", async () => {
   const userMessage = userInput.value;
-  appendMessage("You", userMessage);
+  appendMessage(nameuser.value, userMessage);
   userInput.value = "";
 
   // Show the spinner while waiting for a response
@@ -167,6 +174,8 @@ sendButton.addEventListener("click", async () => {
           // Store the API key in local storage
           localStorage.setItem("apiKey", document.getElementById("apikey").value);
            console.log("ak",localStorage.getItem("apiKey"));
+           localStorage.setItem("nameuser", document.getElementById("nameuser").value);
+           console.log("nameuser",localStorage.getItem("nameuser"));
         } else {
           appendMessage("OpenAI", "\nNo response received from OpenAI. \ndid you enter a valid api key","red");
           console.error("did you enter a valid api key ?!");
@@ -417,4 +426,4 @@ if (!rapiKey) {
 
 </body>
 
-</html>
+</html> 
