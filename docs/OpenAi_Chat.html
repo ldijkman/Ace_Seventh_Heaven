@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>OpenAI Chat Webpage</title>
+  <style>
+
+   body {
+    
+      background-color: rgba(0, 0, 0, 0.1); /* Adjust the transparency by modifying the alpha value */
+      background-blend-mode: multiply;
+  
+    }
+    #You {
+      color: green;
+    }
+
+    #OpenAI {
+      color: navy;
+    }
+  </style>
+
+  <style>
+    textarea {
+      background-color: black;
+      color: lightgray;
+      width: 80%;
+      height: 200px;
+      resize: both; /* Enable both horizontal and vertical resizing */
+      overflow: auto; /* Hide the textarea content when resizing */
+      position: relative; /* Required for ::after pseudo-element */
+    }
+
+    textarea::after {
+      content: ''; /* Add content to the pseudo-element */
+      width: 15px; /* Set the width of the resize handle */
+      height: 15px; /* Set the height of the resize handle */
+      background-color: lightgray; /* Set the background color of the handle */
+      position: absolute; /* Position it absolutely within the textarea */
+      right: 0; /* Place the handle to the right of the textarea */
+      bottom: 0; /* Place the handle at the bottom of the textarea */
+      cursor: pointer; /* Change the cursor to indicate it's resizable */
+      pointer-events: auto; /* Allow clicking and dragging the handle */
+    }
+  /* CSS for the spinner */
+#spinner {
+  border: 4px solid #f3f3f3; /* Light gray border */
+  border-top: 4px solid orange; /* Orange color for spinning */
+  border-radius: 50%; /* Circular shape */
+  width: 18px; /* Make the spinner smaller by adjusting width */
+  height: 18px; /* Make the spinner smaller by adjusting height */
+  animation: spin 2s linear infinite; /* Spin animation */
+  display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+ <style>
+
+
+    #spinnert {
+ 
+  width: 180px; /* Make the spinner smaller by adjusting width */
+  height: 18px; /* Make the spinner smaller by adjusting height */
+      font-size: 15px;
+      animation: blink 1.5s infinite;
+       display: none; /* Initially hidden */
+    }
+
+    @keyframes blink {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+
+</head>
+
+<body>
+  <!-- next adds the console to the HTML webpage -->
+  <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
+  <!-- above adds the console to the HTML webpage -->
+  You must enter an api key<br>
+  Get your key at <a href="https://platform.openai.com/account/api-keys" target="hell">https://platform.openai.com/account/api-keys</a><br>
+  api-key <input type="text" id="apikey"> <button id="clearApiKeyButton">Clear API Key from localstorage</button>
+<br>
+  <h1>Chat with OpenAI</h1>
+  <div id="chat-container">
+    <div id="chat-log"></div>
+    <div id="spinnert">Waiting for OpenAI response... <div id="spinner"></div></div>
+   
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button id="send-button">Send</button> may take some time for response
+  
+  </div>
+  <br>
+  create a for loop in javascript 1000 times
+  <script>
+    const chatLog = document.getElementById("chat-log");
+    const userInput = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-button");
+    var apiKey;
+  // Check if there is an API key in local storage on page load
+  // console.log("aks",localStorage.getItem("apiKey"));
+  const storedApiKey = localStorage.getItem("apiKey");
+  if (storedApiKey) {
+    document.getElementById("apikey").value = storedApiKey;
+  }
+
+  userInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Prevent Enter key from adding a newline
+    sendButton.click(); // Trigger the Send button click event
+  }
+});
+  // Inside the event listener for the "Send" button
+sendButton.addEventListener("click", async () => {
+  const userMessage = userInput.value;
+  appendMessage("You", userMessage);
+  userInput.value = "";
+
+  // Show the spinner while waiting for a response
+  const spinner = document.getElementById("spinner");
+  spinner.style.display = "block";
+  const spinnert = document.getElementById("spinnert");
+  spinnert.style.display = "block";
+  
+
+      console.debug("userMessage", userMessage);
+  
+      // Send the user message to OpenAI using your API key.
+      // = 'your_api_key_here'; // Replace with your actual API key
+      const endpoint = 'https://api.openai.com/v1/chat/completions';
+      // Define the request payload with the user's message.
+      const requestBody = {
+        model: 'gpt-3.5-turbo',
+        messages: [{
+            role: 'system',
+            content: 'You are a helpful assistant.'
+          },
+          {
+            role: 'user',
+            content: userMessage
+          },
+        ],
+      };
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${document.getElementById("apikey").value}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestBody),
+        });
+        const data = await response.json();
+        if (data.choices && data.choices.length > 0) {
+          const openAIReply = data.choices[0].message.content;
+          appendMessage("OpenAI", openAIReply);
+           
+          // Store the API key in local storage
+          localStorage.setItem("apiKey", document.getElementById("apikey").value);
+           console.log("ak",localStorage.getItem("apiKey"));
+        } else {
+          appendMessage("OpenAI", "\nNo response received from OpenAI. \ndid you enter a valid api key","red");
+          console.error("did you enter a valid api key ?!");
+        }
+        spinner.style.display = "none";
+        spinnert.style.display = "none";
+      } catch (error) {
+        console.error("Error sending message to OpenAI:", error);
+     spinner.style.display = "none";
+      spinnert.style.display = "none";
+      }
+      Prism.highlightAll();
+    });
+
+    function appendMessage(sender, message,color) {
+      console.info("", sender, message);
+      var messageElement = document.createElement("div");
+     
+      messageElement.id = "message";
+      chatLog.appendChild(messageElement);
+      var messageDiv = document.getElementById("message");
+     
+      // Create a new div element 
+      var newDiv = document.createElement("div");
+      // Append the new div element to the messageDiv 
+      message=message.replace(/```html/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
+      message=message.replace(/```javascript/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
+      message=message.replace(/```css/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
+      message=message.replace(/``` html/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
+      message=message.replace(/``` javascript/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\" id=\"myTextarea\">");
+      message=message.replace(/``` css/i, "<button onclick=\"copyToClipboard()\">Copy</button><br><textarea class=\"language-javascript\" columns=\"10\"a id=\"myTextarea\">");
+      
+      message=message.replace("```", "</textarea><br><small> resize textarea, drag on bottom right corner</small>");
+      newDiv.innerHTML = "<pre>" + `${sender}: ${message}` + "</pre>";
+      newDiv.id = sender;   // sender div id can be You or OpenAI, handy for colloring css style id
+      newDiv.style.color = color; // Change text color to red
+ 
+      messageDiv.appendChild(newDiv);
+     
+    }
+
+
+    // Add an event listener to the input element for the "input" event.
+    document.getElementById("apikey").addEventListener("input", function(event) {
+      // This function will be called whenever the user types in the input field.
+      apiKey = document.getElementById("apikey").value;
+      console.debug("got an api key", apiKey)
+    });
+
+
+    // Get the textarea element
+const textarea = document.querySelector('language-javascript');
+
+// Set the initial height to fit the content
+textarea.style.height = `${textarea.scrollHeight}px`;
+
+// Add an event listener for input changes
+textarea.addEventListener('input', () => {
+  // Set the height to fit the content again when the input changes
+  Prism.highlightAll();
+  textarea.style.height = `${textarea.scrollHeight}px`;
+});
+
+
+
+
+
+
+
+
+
+
+
+ function copyToClipboard() { 
+   var textarea = document.getElementById("myTextarea"); 
+   textarea.select(); textarea.setSelectionRange(0, 99999); 
+   document.execCommand("copy"); alert("Text copied to clipboard: " + textarea.value); 
+   }  
+
+
+
+
+
+  
+  
+
+
+ 
+   
+    </script>
+
+  
+  <br><br><br>
+  <center>
+    Heaven or Hell, That is the question <br>
+    <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html</a>
+
+    <br><br>me using it to change this code<br>
+    <pre><textarea rows="30" style="width:95%;">
+
+You: how do i append a div to div id message
+
+OpenAI: To append a `<div>` element to another `<div>` element with the id "message," you can use JavaScript. Here's an example code snippet: ```javascript // Select the div with id "message" var messageDiv = document.getElementById("message"); // Create a new div element var newDiv = document.createElement("div"); // Append the new div element to the messageDiv messageDiv.appendChild(newDiv); ``` In this example, we select the div with the id "message" using `getElementById()`. Then, we create a new `<div>` element using `createElement()`. Finally, we append the new `<div>` to the messageDiv using `appendChild()`.
+
+  thats handy AI helpes me solve things
+
+  <div id="message">
+    <div id="You">You: hello</div>
+    <div id="OpenAI">OpenAI: Hello! How can I assist you today?</div>
+  </div>
+
+xxxxxxxxxxxxxxxxxxxx
+
+You: javascript textContent is there also htmlContent
+
+OpenAI: No, in JavaScript there is no property called "htmlContent". However, there is a property called "innerHTML" that allows you to get or set the HTML content of an element. For example, to get the HTML content of an element, you can use the following code: ```javascript var element = document.getElementById("myElement"); var htmlContent = element.innerHTML; ``` To set the HTML content of an element, you can assign a value to the "innerHTML" property: ```javascript var element = document.getElementById("myElement"); element.innerHTML = "<b>Hello, world!</b>"; ``` Note that using the "innerHTML" property is not recommended for security reasons, as it can potentially be vulnerable to cross-site scripting (XSS) attacks. If you need to manipulate the content in a safer way, you can use other methods such as creating and appending new elements using the DOM API. 
+</textarea>
+
+<a href="https://plnkr.co/edit/CKxVETQllVUrGM7E
+" target="HeavenorHell">https://plnkr.co/edit/CKxVETQllVUrGM7E
+</a><br>
+<a href="https://codepen.io/ldijkman/pen/RwvKgeW
+" target="HellorHeaven">https://codepen.io/ldijkman/pen/RwvKgeW
+</a><br>
+<br>
+<br><br>
+<center>
+Heaven or Hell, That is the question 
+<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html</a>
+<br>
+Copyright Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
+  
+  
+  <br><br>
+   All Local Storage Data
+    <div id="localStorageData"></div>
+
+    <script>
+        // Check if local storage is supported
+        if (typeof(Storage) !== "undefined") {
+            const localStorageData = document.getElementById('localStorageData');
+
+            // Initialize an empty array to store data
+            const data = [];
+
+            // Iterate through all local storage items
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                data.push({ key, value });
+            }
+
+            if (data.length > 0) {
+                // Display data on the webpage
+                localStorageData.innerHTML = JSON.stringify(data, null, 2); // Display as formatted JSON
+            } else {
+                localStorageData.textContent = 'Local Storage is empty.';
+            }
+        } else {
+            document.getElementById('localStorageData').textContent = 'Local Storage is not supported in this browser.';
+        }
+    </script>
+
+
+<script>
+
+
+// Add a click event listener to the button
+document.getElementById('clearApiKeyButton').addEventListener('click', function() {
+  // Remove the 'apiKey' from local storage
+  localStorage.removeItem('apiKey');
+  console.log('API Key cleared from local storage.');
+});
+
+// You can also hide or disable the button if there's no API key stored
+const rapiKey = localStorage.getItem('apiKey');
+if (!rapiKey) {
+  clearApiKeyButton.disabled = true;
+}
+  </script>
+
+</body>
+
+</html>
