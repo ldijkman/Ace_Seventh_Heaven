@@ -116,6 +116,8 @@ Your Name: <input type="text" value="User" id="nameuser">
   const storednameuser = localStorage.getItem("nameuser");
   if (storednameuser) {
     document.getElementById("nameuser").value = storednameuser;
+    setTimeout(function(){console.info("Wow, Welcome back! ",storednameuser);},2500);
+    
   } 
 
  
@@ -426,4 +428,4 @@ if (!rapiKey) {
 
 </body>
 
-</html> 
+</html>
