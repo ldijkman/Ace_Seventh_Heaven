@@ -77,6 +77,33 @@
       100% { opacity: 0; }
     }
   </style>
+
+      <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #previewer {
+            width: 100%;
+            height: 150px;
+        }
+
+        #preview {
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
 
@@ -101,7 +128,8 @@ Your Name: <input type="text" value="User" id="nameuser">
   
   </div>
   <br>
-  Create a for loop in javascript 666 times
+ 
+ 
   <script>
     const chatLog = document.getElementById("chat-log");
     const userInput = document.getElementById("user-input");
@@ -204,6 +232,11 @@ function countTripleBackticks(inputString) {
     function appendMessage(sender, message,color) {
       createtext(message);
       console.info("", sender, message);
+   const textarea = document.getElementById('previewer');
+            
+            // Set the content of the textarea
+            textarea.value = message;
+
       var messageElement = document.createElement("div");
      
       messageElement.id = "message";
@@ -218,6 +251,7 @@ console.debug("Count of triple backticks: " + count);
      
       // Create a new div element 
       var newDiv = document.createElement("div");
+
       // Append the new div element to the messageDiv 
       message=message.replace(/```html/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\" class=\"myTextarea\">");
       message=message.replace(/```javascript/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\" class=\"myTextarea\">");
@@ -330,10 +364,31 @@ if (codeSections) {
 
  
    
-    </script>
+   
 
   
-  <br><br><br>
+  <br>HTML previewer remove tripple backticks?
+      <div id="container">
+        <textarea id="previewer" placeholder="Enter HTML content here..."></textarea>
+        <div id="preview"></div>
+    </div>
+
+    <script>
+        const previewer = document.getElementById('previewer');
+        const preview = document.getElementById('preview');
+
+        previewer.addEventListener('input', () => {
+            // Get the content from the previewer
+            const htmlContent = previewer.value;
+            
+            // Set the content of the preview div to the HTML content
+            preview.innerHTML = htmlContent;
+        });
+    </script>
+  
+  
+  
+  <br><br>
   <center>
     Heaven or Hell, That is the question <br>
     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html</a>
