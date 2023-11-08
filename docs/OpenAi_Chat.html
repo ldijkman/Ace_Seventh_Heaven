@@ -183,6 +183,12 @@ sendButton.addEventListener("click", async () => {
 
 var copyButtons;
 
+function countTripleBackticks(inputString) {
+  const matches = inputString.match(/```/g);
+  return matches ? matches.length : 0;
+}
+
+
 
     function appendMessage(sender, message,color) {
       createtext(message);
@@ -192,6 +198,12 @@ var copyButtons;
       messageElement.id = "message";
       chatLog.appendChild(messageElement);
       var messageDiv = document.getElementById("message");
+
+
+
+
+const count = countTripleBackticks(message);
+console.debug("Count of triple backticks: " + count);
      
       // Create a new div element 
       var newDiv = document.createElement("div");
@@ -204,7 +216,12 @@ var copyButtons;
       message=message.replace(/``` css/i, "<div class=\"code-container\"><button class=\"copy-button\">Copy</button><br><textarea columns=\"10\"a class=\"myTextarea\">");
       
       message=message.replace("```", "</textarea></div>");
-      newDiv.innerHTML = "<pre>" + `${sender}: ${message}` + "</pre>";
+
+      //message=message.replace(". ", ".<br>");
+      //message=message.replace(", ", ",<br>");
+     
+      
+      newDiv.innerHTML = "" + `${sender}: ${message}` + "";
       newDiv.id = sender;   // sender div id can be You or OpenAI, handy for colloring css style id
       newDiv.style.color = color; // Change text color to red
  
