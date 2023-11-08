@@ -131,7 +131,7 @@ Your Name: <input type="text" value="User" id="nameuser">
   // Inside the event listener for the "Send" button
 sendButton.addEventListener("click", async () => {
   const userMessage = userInput.value;
-  appendMessage(nameuser.value, userMessage);
+  appendMessage(nameuser.value, userMessage,"green");
   userInput.value = "";
 
   // Show the spinner while waiting for a response
