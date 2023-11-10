@@ -13,9 +13,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+   
    <!--<script src="https://cdn.tailwindcss.com"></script>-->
-    <title>Streaming OpenAI API Completions in JavaScript</title>
+    <title>Streaming OpenAI API Completions Chat in HTML JavaScript</title>
     <!--<script type="module" src="lib/stream-response.js"></script>-->
+  
+  <style>
+    body{
+      background:lightgray;
+      margin:100px;
+      
+    }
+
+  </style>  
+  
+  
+  
+  
+  
+  
   </head>
   <body
     class="bg-grey text-black min-h-screen flex items-center justify-center"
@@ -30,6 +47,8 @@
     api-key <input type="text" id="apikey"> <button id="clearApiKeyButton">Clear API Key from localstorage</button>
   <br>
 Your Name: <input type="text" value="User" id="nameuser">
+
+
       <h3 class="text-1xl font-bold mb-6">
         <!--Streaming OpenAI API Completions in JavaScript-->
         OpenAI Stream Completions
@@ -94,7 +113,7 @@ const resultText = document.getElementById("resultText");
     document.getElementById("apikey").addEventListener("input", function(event) {
       // This function will be called whenever the user types in the input field.
       API_KEY = document.getElementById("apikey").value;
-      console.debug("got an api key", API_KEY)
+      console.debug("API_KEY ", API_KEY)
     });
 
 
@@ -127,7 +146,7 @@ const generate = async () => {
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: promptInput.value }],
-        max_tokens: 4000,
+        max_tokens: 4000,  // think 4000 chars for response leaves 96 for ask
         stream: true, // For streaming responses
       }),
       signal, // Pass the signal to the fetch request
@@ -136,7 +155,7 @@ const generate = async () => {
     // Read the response as a stream of data
     const reader = response.body.getReader();
     const decoder = new TextDecoder("utf-8");
-    //resultText.innerText = "";
+    //resultText.innerText = "";  //  i do not want to clear on each new question
 
     while (true) {
       const { done, value } = await reader.read();
@@ -209,7 +228,7 @@ stopBtn.addEventListener("click", stop);
      OpenAI Stream Chat, HTML WebPage
        https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
        https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
-       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Stream_Chat.html
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
              https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
 -->
      </body>
