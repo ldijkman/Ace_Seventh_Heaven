@@ -97,15 +97,29 @@ as a floating code suggestion helper in my editor<br>
     </div>
     
     <script>
-//<!-- original source https://github.com/gopinav/ai -->
+/*
+<!-- 
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
+             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+-->
+*/
 // Add your code here
 /**
  * This code demonstrates how to use the OpenAI API to generate chat completions.
- * The generated completions are received as a stream of data from the API and the
+ * The generated completions are received as a stream of data from the API 
+ * and the
  * code includes functionality to handle errors and abort requests using an AbortController.
- * The API_KEY variable needs to be updated with the appropriate value from OpenAI for successful API communication.
+ * The API_KEY variable needs to be updated 
+ * with the appropriate value from OpenAI for successful API communication.
  */
-//https://github.com/gopinav/ai
+
+
+
 const API_URL = "https://api.openai.com/v1/chat/completions";
 var API_KEY = document.querySelector("#apikey").value;
 
@@ -134,7 +148,7 @@ const generate = async () => {
   // Disable the generate button and enable the stop button
   generateBtn.disabled = true;
   stopBtn.disabled = false;
-  resultText.innerText += "\nGenerating...\n";
+  resultText.innerText += "\nOpenAI Generating...\n";
 
   // Create a new AbortController instance
   controller = new AbortController();
@@ -151,10 +165,10 @@ const generate = async () => {
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: promptInput.value }],
-        max_tokens: 4000,  // think 4000 chars for response leaves 96 for ask
-        stream: true, // For streaming responses
+        max_tokens: 4000,     // think 4000 chars for response leaves 96 for ask
+        stream: true,         // For streaming responses
       }),
-      signal, // Pass the signal to the fetch request
+      signal,                 // Pass the signal to the fetch request
     });
 
     // Read the response as a stream of data
@@ -192,7 +206,7 @@ const generate = async () => {
       resultText.innerText += "\nRequest aborted.\n";
     } else {
       console.error("Error:", error);
-      resultText.innerText += "\nError occurred while generating.\n";
+      resultText.innerText += "\nError, is your API_KEY valid ?\n";
      
     }
   } finally {
@@ -217,13 +231,25 @@ promptInput.addEventListener("keyup", (event) => {
     generate();
   }
 });
+
 generateBtn.addEventListener("click", (event)=>{
-resultText.innerText +="\nYou:"+ promptInput.value+"\n";
-generate();
+  resultText.innerText +="\nYou:"+ promptInput.value+"\n";
+  generate();
 });
+
 stopBtn.addEventListener("click", stop);
 
-//<!-- original source https://github.com/gopinav/ai -->
+/*
+<!-- 
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
+             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+-->
+*/
       </script>
     
     
