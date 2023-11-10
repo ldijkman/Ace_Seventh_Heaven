@@ -67,11 +67,10 @@ Copyright, Free to use if this/above message is left in the code
       }
       .header {
         position:absolute;
-        height: 30px;
+        height: 25px;
         width:100%;
         border-bottom: 1px solid #eee;
         background-color: lightblue;
-        height: 40px;
         -webkit-border-top-left-radius: 5px;
         -webkit-border-top-right-radius: 5px;
         -moz-border-radius-topleft: 5px;
@@ -83,7 +82,7 @@ Copyright, Free to use if this/above message is left in the code
       }
       .footer {
         position:absolute;
-        height:60px;
+        height:20px;
         width:100%;
         background-color: lightgray;
         border-top: 1px solid #ddd;
@@ -131,26 +130,25 @@ Copyright, Free to use if this/above message is left in the code
       <div class="mainbody">
       	
       	
-      	    <div style="border :1px solid gray;margin:10px;padding:10px;">
-    <!-- next adds the console to the HTML webpage -->
-    <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
-    <!-- above adds the console to the HTML webpage -->
+      	    <div style="border :1px solid white;margin:10px;padding:10px;">
+<center>
    API_KEY <input type="text" id="apikey"> 
    <a href="https://platform.openai.com/account/api-keys" target="hell">Get API_KEY here</a>
-    
-  <br>
+    </center>
+  
 
 </div>
 
-<div>
+<div><center>
       <h3 class="">
         <!--Streaming OpenAI API Completions in JavaScript-->
-        OpenAI Chat, Stream Completions
-      </h3>
+        OpenAI Code Assistant
+      </h3></center>
       <div id="resultContainer" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <p class="">Generated Text</p>
         <p id="resultText" class=""></p>
       </div>
+      <center>
       <input
         type="text"
         id="promptInput"
@@ -158,6 +156,7 @@ Copyright, Free to use if this/above message is left in the code
         placeholder="Enter prompt..."
       />
       <div class=""><div id="spinner"></div>
+      <br>
         <button
           id="generateBtn"
           class=""
@@ -171,14 +170,16 @@ Copyright, Free to use if this/above message is left in the code
         >
           Stop
         </button>
+        </center>
       </div>
      <center>
+       <br>
     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">Heaven or Hell, That is the Question.</a><br>
 </center>
     </div>
       	
       	
-      </div>
+      
       <div class="footer">
 
       </div>
