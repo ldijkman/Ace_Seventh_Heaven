@@ -40,7 +40,7 @@
   </head>
   <body>
   
-    <div>
+    <div style="border :1px solid gray;margin:10px;padding:10px;">
     <!-- next adds the console to the HTML webpage -->
     <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
     <!-- above adds the console to the HTML webpage -->
@@ -50,17 +50,17 @@
   <br>
 Your Name: <input type="text" value="User" id="nameuser">
 <br><br>
-would liketo use this <br>
-as a floating code suggestion helper in my editor<br>
+would like to use this <br>
+as a floating code suggestion helper in my editor / HTML previewer<br>
  <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">Heaven or Hell, That is the Question.</a><br>
+</div>
 
-
-
+<div>
       <h3 class="">
         <!--Streaming OpenAI API Completions in JavaScript-->
         OpenAI Stream Completions
       </h3>
-      <div id="resultContainer" class="">
+      <div id="resultContainer" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <p class="">Generated Text</p>
         <p id="resultText" class=""></p>
       </div>
@@ -208,7 +208,8 @@ const generate = async () => {
       resultText.innerText += "\nRequest aborted.\n";
     } else {
       console.error("Error:", error);
-      resultText.innerText += "\nError, is your API_KEY valid ?\n";
+      resultText.innerHTML += "<br><font style=\"color:red;\">Error, is your API_KEY valid ?</font><br>";
+      console.error("Error, is your API_KEY valid ?");
      
     }
   } finally {
