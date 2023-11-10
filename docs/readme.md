@@ -6,7 +6,6 @@ OpenAI Chat webpage, a chat with Heaven or Hell
 
  [https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Stream_Chat.html](https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html)
 
- Floating_OpenAI.html
  
   [https://ldijkman.github.io/Ace_Seventh_Heaven/Floating_OpenAI.html](https://ldijkman.github.io/Ace_Seventh_Heaven/Floating_OpenAI.html)
 ---
