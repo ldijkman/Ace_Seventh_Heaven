@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- 
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+  -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <!--<script src="https://cdn.tailwindcss.com"></script>-->
+    <title>Streaming OpenAI API Completions in JavaScript</title>
+    <!--<script type="module" src="lib/stream-response.js"></script>-->
+  </head>
+  <body
+    class="bg-grey text-black min-h-screen flex items-center justify-center"
+  >
+  
+    <div class="lg:w-1/2 2xl:w-1/3 p-8 rounded-md bg-gray-100">
+       <!-- next adds the console to the HTML webpage -->
+    <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
+    <!-- above adds the console to the HTML webpage -->
+    You must enter an api key<br>
+    Get your key at <a href="https://platform.openai.com/account/api-keys" target="hell">https://platform.openai.com/account/api-keys</a><br>
+    api-key <input type="text" id="apikey"> <button id="clearApiKeyButton">Clear API Key from localstorage</button>
+  <br>
+Your Name: <input type="text" value="User" id="nameuser">
+      <h3 class="text-1xl font-bold mb-6">
+        <!--Streaming OpenAI API Completions in JavaScript-->
+        OpenAI Stream Completions
+      </h3>
+      <div id="resultContainer" class="mt-4 h-48 overflow-y-auto">
+        <p class="text-gray-500 text-sm mb-2">Generated Text</p>
+        <p id="resultText" class="whitespace-pre-line"></p>
+      </div>
+      <input
+        type="text"
+        id="promptInput"
+        class="w-full px-4 py-2 rounded-md bg-gray-200 placeholder-gray-500 focus:outline-none mt-4"
+        placeholder="Enter prompt..."
+      />
+      <div class="flex justify-center mt-4">
+        <button
+          id="generateBtn"
+          class="w-1/2 px-4 py-2 rounded-md bg-black text-white hover:bg-gray-900 focus:outline-none mr-2 disabled:opacity-75 disabled:cursor-not-allowed"
+        >
+          Generate
+        </button>
+        <button
+          id="stopBtn"
+          disabled
+          class="w-1/2 px-4 py-2 rounded-md border border-gray-500 text-gray-500 hover:text-gray-700 hover:border-gray-700 focus:outline-none ml-2 disabled:opacity-75 disabled:cursor-not-allowed"
+        >
+          Stop
+        </button>
+      </div><br>
+    <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html</a><br>
+<a href="https://plnkr.co/edit/CKxVETQllVUrGM7E
+" target="HeavenorHell">https://plnkr.co/edit/CKxVETQllVUrGM7E
+</a><br>
+<a href="https://codepen.io/ldijkman/pen/RwvKgeW
+" target="HellorHeaven">https://codepen.io/ldijkman/pen/RwvKgeW
+</a><br>
+<a href="https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Chat.html
+" target="HellorHeaven">https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Chat.html
+</a><br>      
+ 
+    </div>
+    
+    <script>
+//<!-- original source https://github.com/gopinav/ai -->
+// Add your code here
+/**
+ * This code demonstrates how to use the OpenAI API to generate chat completions.
+ * The generated completions are received as a stream of data from the API and the
+ * code includes functionality to handle errors and abort requests using an AbortController.
+ * The API_KEY variable needs to be updated with the appropriate value from OpenAI for successful API communication.
+ */
+//https://github.com/gopinav/ai
+const API_URL = "https://api.openai.com/v1/chat/completions";
+var API_KEY = document.querySelector("#apikey").value;
+
+const promptInput = document.getElementById("promptInput");
+const generateBtn = document.getElementById("generateBtn");
+const stopBtn = document.getElementById("stopBtn");
+const resultText = document.getElementById("resultText");
+
+    // Add an event listener to the input element for the "input" event.
+    document.getElementById("apikey").addEventListener("input", function(event) {
+      // This function will be called whenever the user types in the input field.
+      API_KEY = document.getElementById("apikey").value;
+      console.debug("got an api key", API_KEY)
+    });
+
+
+let controller = null; // Store the AbortController instance
+
+const generate = async () => {
+  // Alert the user if no prompt value
+  if (!promptInput.value) {
+    alert("Please enter a prompt.");
+    return;
+  }
+
+  // Disable the generate button and enable the stop button
+  generateBtn.disabled = true;
+  stopBtn.disabled = false;
+  resultText.innerText += "\nGenerating...\n";
+
+  // Create a new AbortController instance
+  controller = new AbortController();
+  const signal = controller.signal;
+
+  try {
+    // Fetch the response from the OpenAI API with the signal from AbortController
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: promptInput.value }],
+        max_tokens: 4000,
+        stream: true, // For streaming responses
+      }),
+      signal, // Pass the signal to the fetch request
+    });
+
+    // Read the response as a stream of data
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    //resultText.innerText = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+      // Massage and parse the chunk of data
+      const chunk = decoder.decode(value);
+      const lines = chunk.split("\n");
+      const parsedLines = lines
+        .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
+        .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
+        .map((line) => JSON.parse(line)); // Parse the JSON string
+
+      for (const parsedLine of parsedLines) {
+        const { choices } = parsedLine;
+        const { delta } = choices[0];
+        const { content } = delta;
+        // Update the UI with the new content
+        if (content) {
+          resultText.innerText += content;
+          console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
+        }
+      }
+    }
+  } catch (error) {
+    // Handle fetch request errors
+    if (signal.aborted) {
+      resultText.innerText += "\nRequest aborted.\n";
+    } else {
+      console.error("Error:", error);
+      resultText.innerText += "\nError occurred while generating.\n";
+     
+    }
+  } finally {
+    // Enable the generate button and disable the stop button
+    generateBtn.disabled = false;
+    stopBtn.disabled = true;
+    controller = null; // Reset the AbortController instance
+  }
+};
+
+const stop = () => {
+  // Abort the fetch request by calling abort() on the AbortController instance
+  if (controller) {
+    controller.abort();
+    controller = null;
+  }
+};
+
+promptInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    resultText.innerText +="\nYou:"+ promptInput.value+"\n";
+    generate();
+  }
+});
+generateBtn.addEventListener("click", (event)=>{
+resultText.innerText +="\nYou:"+ promptInput.value+"\n";
+generate();
+});
+stopBtn.addEventListener("click", stop);
+
+//<!-- original source https://github.com/gopinav/ai -->
+      </script>
+    
+    
+   <!-- original source https://github.com/gopinav/ai --> 
+     </body>
+</html>
