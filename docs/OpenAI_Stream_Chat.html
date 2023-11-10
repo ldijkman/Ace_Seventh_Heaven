@@ -45,11 +45,13 @@
     <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
     <!-- above adds the console to the HTML webpage -->
     You must enter an api key<br>
-    Get your key at <a href="https://platform.openai.com/account/api-keys" target="hell">https://platform.openai.com/account/api-keys</a><br>
+    Get your key at <a href="https://platform.openai.com/account/api-keys" target="hell">Get Your API_KEY here</a><br>
     api-key <input type="text" id="apikey"> <button id="clearApiKeyButton">Clear API Key from localstorage</button>
   <br>
 Your Name: <input type="text" value="User" id="nameuser">
-<br><br>
+<br>
+   
+<br>
 would like to use this <br>
 as a floating code suggestion helper in my editor / HTML previewer<br>
  <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">Heaven or Hell, That is the Question.</a><br>
@@ -84,7 +86,13 @@ as a floating code suggestion helper in my editor / HTML previewer<br>
         >
           Stop
         </button>
-      </div><br>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+       <a href="https://platform.openai.com/usage" target="use">Open AI traffic</a><br>
+      <br>
     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">Heaven or Hell, That is the Question.</a><br>
 <a href="https://plnkr.co/edit/CKxVETQllVUrGM7E
 " target="HeavenorHell">https://plnkr.co/edit/CKxVETQllVUrGM7E
@@ -177,7 +185,7 @@ const generate = async () => {
     const reader = response.body.getReader();
     const decoder = new TextDecoder("utf-8");
     //resultText.innerText = "";  //  i do not want to clear on each new question
-
+console.time();
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
@@ -202,6 +210,7 @@ const generate = async () => {
         }
       }
     }
+console.timeEnd();
   } catch (error) {
     // Handle fetch request errors
     if (signal.aborted) {
