@@ -142,12 +142,47 @@ Copyright, Free to use if this/above message is left in the code
     <!-- next adds the console to the HTML webpage -->
     <script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
     <!-- above adds the console to the HTML webpage -->
+       
+       
+        <button onclick="toggleVisibility('container')"">Toggle OpenAi</button>
+     <button onclick="toggleVisibility('console-log-div')"">Toggle Console</button>
     
+   
+
+    <script>
+        function toggleVisibility(what) {
+            var myDiv = document.getElementById(what);
+
+            // Toggle the visibility
+            if (myDiv.style.display === "none") {
+                myDiv.style.display = "block";
+            } else {
+                myDiv.style.display = "none";
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="container" id="container">
       <div class="header" id="header" title="Experimental ">
       	<center>
-      	 <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">Floating AI Code Assistant</a>
+      	 Floating AI Code Assistant <button onclick="toggleVisibility('container')" style="float:right;margin-right:5px;"> X </button>
+   
          </center>
       </div>
       <div class="mainbody">
@@ -155,8 +190,8 @@ Copyright, Free to use if this/above message is left in the code
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;">
 <center>
-   API_KEY <input type="text" id="apikey"> 
-   <a href="https://platform.openai.com/account/api-keys" target="hell">Get API_KEY here</a>
+   <a href="https://platform.openai.com/account/api-keys" target="HEAVEN">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
+   
     </center>
   
 
@@ -169,14 +204,14 @@ Copyright, Free to use if this/above message is left in the code
       </h3></center>
       <div id="resultContainer" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <!--<p class="">Generated Text</p>-->
-        <p id="resultText" class="">PrAi,</p>
+        <p id="resultText" class="">Ai Reponse...</p>
       </div>
       <center>
       <input
         type="text"
         id="promptInput"
         class=""
-        placeholder="Enter prompt..."
+        placeholder="Ask Question..."
       />
       <div class=""><div id="spinner"></div>
       <br>
