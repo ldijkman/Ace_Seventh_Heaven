@@ -113,6 +113,29 @@ Copyright, Free to use if this/above message is left in the code
     height:20px;
 }
     </style>
+
+      <style>
+    body{
+      background:lightgray;
+      margin:100px;
+      
+    }
+  /* CSS for the spinner */
+#spinner {
+  border: 4px solid #f3f3f3; /* Light gray border */
+  border-top: 4px solid orange; /* Orange color for spinning */
+  border-radius: 50%; /* Circular shape */
+  width: 22px; /* Make the spinner smaller by adjusting width */
+  height: 22px; /* Make the spinner smaller by adjusting height */
+  animation: spin 2s linear infinite; /* Spin animation */
+  display: none; /* Initially hidden */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>  
     </head>
 
   <body>
