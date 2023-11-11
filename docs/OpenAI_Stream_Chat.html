@@ -116,8 +116,10 @@ Copyright, Free to use if this/above message is left in the code
 
       <style>
     body{
+      
       background:lightgray;
       margin:100px;
+
       
     }
   /* CSS for the spinner */
@@ -162,9 +164,53 @@ Copyright, Free to use if this/above message is left in the code
         }
     </script>
 
+<br><br>
+<iframe width="480" height="320" src="https://www.youtube.com/embed/VaPQZR8EarI" title="OpenAi API Stream Floating Code Assitant" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br><br><textarea rows="25" cols="80">
+<pre>
+  You: bruine bonen met spek
 
+OpenAI Generating...
+Bruine bonen met spek is een heerlijk en traditioneel Nederlands gerecht. 
+Om het te maken heb je de volgende ingrediënten nodig:
 
+-400 gram bruine bonen
+-200 gram gerookte spekblokjes
+-1 ui, gesnipperd
+-2 teentjes knoflook, fijngehakt
+-1 laurierblad
+-1 theelepel paprikapoeder
+-1 theelepel komijnpoeder
+-1 blikje tomatenpuree
+-500 ml water
+- Zout en peper naar smaak
+- Optioneel: een rookworst
 
+Bereidingswijze:
+
+1. Laat de bruine bonen een nacht in ruim water weken, spoel ze daarna goed af.
+
+2. Verhit een beetje olie in een grote pan en bak de spekblokjes goudbruin.
+
+3. Voeg de gesnipperde ui en knoflook toe en bak deze kort mee totdat ze glazig zijn.
+
+4. Voeg het paprikapoeder, komijnpoeder, 
+tomatenpuree en laurierblad toe en bak dit een minuutje mee zodat de smaken vrijkomen.
+
+5. Voeg vervolgens de bruine bonen en het water toe. 
+Breng het geheel aan de kook en laat het vervolgens op laag vuur ongeveer1,5 -2 uur sudderen, 
+of totdat de bonen zacht zijn. Roer af en toe door en voeg meer water toe indien nodig.
+
+6. Breng het gerecht op smaak met zout en peper.
+
+7. Als je van rookworst houdt, kun je deze apart koken 
+volgens de instructies op de verpakking en daarna in plakjes snijden. 
+Voeg de plakjes rookworst toe aan de pan met bruine bonen en laat deze nog even mee verwarmen.
+
+Serveer de bruine bonen met spek warm met bijvoorbeeld rijst, 
+aardappelpuree of een stukje brood. Eet smakelijk!
+</pre>
+</textarea>
 
 
 
@@ -190,8 +236,8 @@ Copyright, Free to use if this/above message is left in the code
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;">
 <center>
-   <input type="text" id="apikey" title="Enter your API_KEY Here?!"> 
-   <a href="https://platform.openai.com/account/api-keys" target="hell">Get API_KEY.</a>
+   <a href="https://platform.openai.com/account/api-keys" target="HEAVEN">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
+   
     </center>
   
 
@@ -638,11 +684,13 @@ let controller = null; // Store the AbortController instance
 const generate = async () => {
   const spinner = document.getElementById("spinner");
   spinner.style.display = "block";
-  // Alert the user if no prompt value
+  
   if (!promptInput.value) {
-    alert("Please enter a prompt.");
+    alert("Please enter a prompt.");        // Alert the user if no prompt value
     return;
   }
+
+  console.debug("ask tokens ",promptInput.value.length);
 
   // Disable the generate button and enable the stop button
   generateBtn.disabled = true;
@@ -675,7 +723,7 @@ const generate = async () => {
     const decoder = new TextDecoder("utf-8");
     //resultText.innerText = "";  //  i do not want to clear on each new question
 console.time();
-
+var message="";
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
@@ -696,12 +744,16 @@ console.time();
         // Update the UI with the new content
         if (content) {
           resultText.innerText += content;
+          message+=content;
           console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
         }
       }
     }
 console.timeEnd();
 
+console.debug("message tokens? ",message.length);
+console.debug("message ",message);
+console.debug("message tokens? ",message.length);
  
   } catch (error) {
     // Handle fetch request errors
@@ -773,6 +825,7 @@ Copyright, Free to use if message is left in the code
 
 Copyright, Free to use if this/above message is left in the code           
 -->
-  
+  <br><br>
+  <iframe width="800" height="600" src="https://www.youtube.com/embed/l9wejBgCiT4" title="The Ladder (Soundcheck) - Prince" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </body>
 </html>
