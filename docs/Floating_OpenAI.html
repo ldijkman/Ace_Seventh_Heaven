@@ -219,15 +219,14 @@ aardappelpuree of een stukje brood. Eet smakelijk!
               <center> 
                     <label class="label" onmouseover="expandInput()" onmouseout="shrinkInput()" title="Get an OpenAI Api_Key Here!"><a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : </label>
                     <input type="text" class="input" id="apikey" placeholder="Type or Paste APi_KEY here..." onmouseover="expandInput()" onmouseout="shrinkInput()">
-   <br>
-   
-<select name="model" id="model">
-  
-  <option value="gpt-3.5-turbo-1106">gpt-3.5-turbo-1106  16k</option>
-  <option value="gpt-3.5-turbo">gpt-3.5-turbo 4k</option>
-  <option value="gpt-3.5-turbo-16k">gpt-3.5-turbo-16k</option>
- 
-</select>
+                    <br>
+                    <!-- https://platform.openai.com/docs/models -->
+                    <select name="model" id="model">
+                        <option value="gpt-3.5-turbo-1106" title="think fast and 16k">gpt-3.5-turbo-1106  16k</option>
+                        <option value="gpt-3.5-turbo" title="slow bussy 4k">gpt-3.5-turbo 4k</option>
+                        <option value="gpt-3.5-turbo-16k" title="dont know 16k">gpt-3.5-turbo-16k</option>
+                    </select>
+                    <!-- https://platform.openai.com/docs/models -->
    
     <script> 
         function expandInput() {
