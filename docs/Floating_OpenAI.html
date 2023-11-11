@@ -48,13 +48,13 @@ Copyright, Free to use if this/above message is left in the code
 
 
       .cont_ai_ner,
-      .mainbody,
-      .header,
-      .footer {
+      .AfterWorld,
+      .Heaven,
+      .Hell {
         padding: 0px;
         
       }
-      .mainbody {
+      .AfterWorld {
         position:absolute;
         margin-top: 0;
         min-height:15px;
@@ -65,7 +65,7 @@ Copyright, Free to use if this/above message is left in the code
         bottom:25px;
       
       }
-      .header {
+      .Heaven {
         position:absolute;
         height: 25px;
         width:100%;
@@ -80,7 +80,7 @@ Copyright, Free to use if this/above message is left in the code
         margin:2px;
         cursor:move;
       }
-      .footer {
+      .Hell {
         position:absolute;
         height:20px;
         width:100%;
@@ -94,23 +94,7 @@ Copyright, Free to use if this/above message is left in the code
         border-bottom-right-radius: 5px; 
         bottom:1px;
       }
-.linenr {
-    float: left;
-    color: rgb(180, 180, 180);
-    left: 1px;
-    position: absolute;
-}
-.log-row {
-    position:relative;
-    left: 10px;
-    margin-left: 20px;
-}
 
-#textbox {
-   font-size: 18px;
-    border:solid 2px gray;
-    width:98%;
-    height:20px;
 }
     </style>
 
@@ -227,18 +211,18 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 
 
     <div class="cont_ai_ner" id="cont_ai_ner">
-      <div class="header" id="header" title="You Can Drag Me & Resize on Corners and Borders">
+      <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders">
       	<center>
       	 Floating AI Code Assistant <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin-right:5px;"> X </button>
    
          </center>
       </div>
-      <div class="mainbody">
+      <div class="AfterWorld">
       	
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
               <center>
-                 <a href="https://platform.openai.com/account/api-keys" target="HEAVEN">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
+                 <a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
 
               </center>
             </div>
@@ -281,13 +265,13 @@ aardappelpuree of een stukje brood. Eet smakelijk!
       </div>
      <center>
        <br>
-    <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="hell">Heaven or Hell, That is the Question.</a><br>
+    <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="Hell">Heaven or Hell, That is the Question.</a><br>
 </center>
     </div>
       	
       	
       
-      <div class="footer" title="&copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands">
+      <div class="Hell" title="&copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands">
         <center>
           <font style="font-size:10px;">
                 &copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
@@ -596,12 +580,12 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
 function makeconsoledraggable() { 
   consolecont_ai_ner=document.getElementById("cont_ai_ner");
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-//  if (document.getElementById(consolecont_ai_ner.id + "header"))
-//  if present, the header is where you move the DIV from:
-//     document.getElementById(consolecont_ai_ner.id + "header").onmousedown = dragMouseDown;
+//  if (document.getElementById(consolecont_ai_ner.id + "Heaven"))
+//  if present, the Heaven is where you move the DIV from:
+//     document.getElementById(consolecont_ai_ner.id + "Heaven").onmousedown = dragMouseDown;
 //   } else {
 //   otherwise, move the DIV from anywhere inside the DIV:
-    document.getElementById("header").onmousedown = consoledragmousedown;
+    document.getElementById("Heaven").onmousedown = consoledragmousedown;
    
  
 
@@ -832,6 +816,6 @@ Copyright, Free to use if message is left in the code
 Copyright, Free to use if this/above message is left in the code           
 -->
   <br><br>
-  <iframe width="800" height="600" src="https://www.youtube.com/embed/l9wejBgCiT4" title="The Ladder (Soundcheck) - Prince" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="100%" height="600" src="https://www.youtube.com/embed/l9wejBgCiT4" title="The Ladder (Soundcheck) - Prince" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </body>
 </html>
