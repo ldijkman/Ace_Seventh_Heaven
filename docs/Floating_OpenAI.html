@@ -243,11 +243,14 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 
 </div>
 
-<div><center>
-      <h3 class="">
-        <!--Streaming OpenAI API Completions in JavaScript-->
-        OpenAI Code Assistant
-      </h3></center>
+<div>   <!--Streaming OpenAI API Completions in JavaScript-->
+<!--
+      <center>
+      <h3 class=""> 
+       OpenAI Code Assistant
+      </h3>
+      </center>
+-->
       <div id="resultContainer" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <!--<p class="">Generated Text</p>-->
         <p id="resultText" class="">Ai Reponse...</p>
@@ -750,8 +753,10 @@ var message="";
       }
     }
 console.timeEnd();
-console.debug("message tokens? ",message.length);//promptInput.value.length);
 
+console.debug("message tokens? ",message.length);
+console.debug("message ",message);
+console.debug("message tokens? ",message.length);
  
   } catch (error) {
     // Handle fetch request errors
