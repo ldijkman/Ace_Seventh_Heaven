@@ -18,7 +18,7 @@ Copyright, Free to use if this/above message is left in the code
 <html>
   <head>
     <style>
-      .container {
+      .cont_ai_ner {
       /*  width: 500px;
         max-height: 500px;
         margin: 10px;
@@ -47,7 +47,7 @@ Copyright, Free to use if this/above message is left in the code
       }
 
 
-      .container,
+      .cont_ai_ner,
       .mainbody,
       .header,
       .footer {
@@ -146,7 +146,7 @@ Copyright, Free to use if this/above message is left in the code
     <!-- above adds the console to the HTML webpage -->
        
        
-        <button onclick="toggleVisibility('container')"">Toggle OpenAi</button>
+        <button onclick="toggleVisibility('cont_ai_ner')"">Toggle OpenAi</button>
      <button onclick="toggleVisibility('console-log-div')"">Toggle Console</button>
     
    
@@ -224,10 +224,10 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 
 
 
-    <div class="container" id="container">
+    <div class="cont_ai_ner" id="cont_ai_ner">
       <div class="header" id="header" title="You Can Drag Me & Resize on Corners and Borders">
       	<center>
-      	 Floating AI Code Assistant <button onclick="toggleVisibility('container')" style="float:right;margin-right:5px;"> X </button>
+      	 Floating AI Code Assistant <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin-right:5px;"> X </button>
    
          </center>
       </div>
@@ -249,7 +249,7 @@ aardappelpuree of een stukje brood. Eet smakelijk!
       </h3>
       </center>
 -->
-      <div id="resultContainer" class="" style="border :1px solid gray;margin:10px;padding:10px;">
+      <div id="resultcont_ai_ner" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <!--<p class="">Generated Text</p>-->
         <p id="resultText" class="" title="insane">Ai Reponse...</p>
       </div>
@@ -318,7 +318,7 @@ Copyright, Free to use if this/above message is left in the code
     
 <script>
   // https://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript
- var element = document.querySelector(".container")
+ var element = document.querySelector(".cont_ai_ner")
 makeResizable(element,10,10)
 
 
@@ -328,7 +328,7 @@ function (event) {
     console.info("console.js, Running, Making it Draggable.");
     makeconsoledraggable(); // https://www.w3schools.com/howto/howto_js_draggable.asp
 
- var element = document.querySelector(".container")
+ var element = document.querySelector(".cont_ai_ner")
 makeResizable(element,10,10)
 
     console.info("Ok, You can Drag Me now!.");
@@ -592,11 +592,11 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
 
 // start drag https://www.w3schools.com/howto/howto_js_draggable.asp
 function makeconsoledraggable() { 
-  consolecontainer=document.getElementById("container");
+  consolecont_ai_ner=document.getElementById("cont_ai_ner");
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-//  if (document.getElementById(consolecontainer.id + "header"))
+//  if (document.getElementById(consolecont_ai_ner.id + "header"))
 //  if present, the header is where you move the DIV from:
-//     document.getElementById(consolecontainer.id + "header").onmousedown = dragMouseDown;
+//     document.getElementById(consolecont_ai_ner.id + "header").onmousedown = dragMouseDown;
 //   } else {
 //   otherwise, move the DIV from anywhere inside the DIV:
     document.getElementById("header").onmousedown = consoledragmousedown;
@@ -623,8 +623,8 @@ function makeconsoledraggable() {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    consolecontainer.style.top = (consolecontainer.offsetTop - pos2) + "px";
-    consolecontainer.style.left = (consolecontainer.offsetLeft - pos1) + "px";
+    consolecont_ai_ner.style.top = (consolecont_ai_ner.offsetTop - pos2) + "px";
+    consolecont_ai_ner.style.left = (consolecont_ai_ner.offsetLeft - pos1) + "px";
   }
 
   function closeconsoledrag() {
