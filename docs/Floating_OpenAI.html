@@ -282,8 +282,9 @@ aardappelpuree of een stukje brood. Eet smakelijk!
         <center>
           <font style="font-size:10px;">
                 &copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
-          </font>
+          </font><input type="button" onclick="scrollToTop()" value="Top" style="float:right;">
         </center>
+        
       </div>
     </div>
 
@@ -333,7 +334,7 @@ makeResizable(element,16,16)
 
 
 
-function makeResizable(element, minW = 500, minH = 500, size = 16)
+function makeResizable(element, minW = 500, minH = 500, size = 10)
 {
     const top = document.createElement('div');
     top.style.width = '100%';
@@ -828,6 +829,24 @@ function scrollAfterWorldToBottom() {
   var afterWorld = document.getElementById("afterWorld");
   afterWorld.scrollTop = afterWorld.scrollHeight;
 }
+
+  function scrollToTop() {
+    afterWorld.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+</script>
+
+</body>
+</html>
+This example includes a button (#scrollToTopBtn) that is initially hidden but becomes visible when the #afterworld div is scrolled. Clicking the button triggers a smooth scroll to the top of the afterworld content. Adjust the styles and behavior according to your specific needs.
+
+
+
+
+
+
 
 /*
 <!-- 
