@@ -116,8 +116,10 @@ Copyright, Free to use if this/above message is left in the code
 
       <style>
     body{
+      
       background:lightgray;
       margin:100px;
+
       
     }
   /* CSS for the spinner */
@@ -682,11 +684,13 @@ let controller = null; // Store the AbortController instance
 const generate = async () => {
   const spinner = document.getElementById("spinner");
   spinner.style.display = "block";
-  // Alert the user if no prompt value
+  
   if (!promptInput.value) {
-    alert("Please enter a prompt.");
+    alert("Please enter a prompt.");        // Alert the user if no prompt value
     return;
   }
+
+  console.debug("ask tokens ",promptInput.value.length);
 
   // Disable the generate button and enable the stop button
   generateBtn.disabled = true;
@@ -719,7 +723,7 @@ const generate = async () => {
     const decoder = new TextDecoder("utf-8");
     //resultText.innerText = "";  //  i do not want to clear on each new question
 console.time();
-
+var message="";
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
@@ -740,11 +744,13 @@ console.time();
         // Update the UI with the new content
         if (content) {
           resultText.innerText += content;
+          message+=content;
           console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
         }
       }
     }
 console.timeEnd();
+console.debug("message tokens? ",message.length);//promptInput.value.length);
 
  
   } catch (error) {
