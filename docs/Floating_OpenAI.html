@@ -209,7 +209,8 @@ aardappelpuree of een stukje brood. Eet smakelijk!
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
               <center>
-                 <a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
+                 <a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : 
+                 <input type="text" id="apikey" size="8" title="Enter or Paste your API_KEY Here?!"> 
 
               </center>
             </div>
@@ -699,7 +700,7 @@ const generate = async () => {
     // Store the API key in local storage
     localStorage.setItem("apiKey", document.getElementById("apikey").value);
     console.log("ak",localStorage.getItem("apiKey"));
-    
+
 console.time();
 var message="";
     while (true) {
