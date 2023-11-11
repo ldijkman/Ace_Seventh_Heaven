@@ -114,6 +114,7 @@ Copyright, Free to use if this/above message is left in the code
     <!-- above adds the console to the HTML webpage -->
        <pre>
          not sure changed to => model: "gpt-3.5-turbo-16k",
+                                        gpt-3.5-turbo-1106
          Code Asistant:
             try for example:
               javascript switch case 
@@ -702,7 +703,7 @@ const generate = async () => {
         Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo-16k",
+        model: "gpt-3.5-turbo-1106",
         messages: [{ role: "user", content: promptInput.value }],
         max_tokens: 4000,     // think 4000 chars for response leaves 96 for ask
         stream: true,         // For streaming responses
