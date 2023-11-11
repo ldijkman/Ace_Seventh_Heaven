@@ -626,6 +626,15 @@ Copyright, Free to use if this/above message is left in the code
 
 
 const API_URL = "https://api.openai.com/v1/chat/completions";
+
+
+ var apiKey;
+  // Check if there is an API key in local storage on page load
+  // console.log("aks",localStorage.getItem("apiKey"));
+  const storedApiKey = localStorage.getItem("apiKey");
+  if (storedApiKey) {
+    document.querySelector("#apikey").value = storedApiKey;
+  } 
 var API_KEY = document.querySelector("#apikey").value;
 
 const promptInput = document.getElementById("promptInput");
@@ -639,6 +648,8 @@ const resultText = document.getElementById("resultText");
       API_KEY = document.getElementById("apikey").value;
       console.debug("API_KEY ", API_KEY)
     });
+
+   
 
 
 let controller = null; // Store the AbortController instance
@@ -684,6 +695,11 @@ const generate = async () => {
     const reader = response.body.getReader();
     const decoder = new TextDecoder("utf-8");
     //resultText.innerText = "";  //  i do not want to clear on each new question
+
+    // Store the API key in local storage
+    localStorage.setItem("apiKey", document.getElementById("apikey").value);
+    console.log("ak",localStorage.getItem("apiKey"));
+    
 console.time();
 var message="";
     while (true) {
