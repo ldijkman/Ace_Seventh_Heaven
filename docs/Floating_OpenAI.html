@@ -240,12 +240,12 @@ aardappelpuree of een stukje brood. Eet smakelijk!
                     <br>
                     <!-- https://platform.openai.com/docs/models -->
                     <select name="model" id="model">
-                        <option value="gpt-3.5-turbo-1106" title="think fast and 16k" style="color:green;">gpt-3.5-turbo-1106  16k</option>
-                        <option value="gpt-3.5-turbo" title="slow bussy 4k" style="color:green;">gpt-3.5-turbo 4k</option>
-                        <option value="gpt-3.5-turbo-16k" title="dont know 16k">gpt-3.5-turbo-16k</option>
-                        <option value="code-davinci-002" title="dont know" style="color:red;">code-davinci-002</option>
-                        <option value="gpt-4-1106-preview" title="dont know" style="color:red;">gpt-4-1106-preview</option>
-                        <option value="gpt-4" title="dont know" style="color:red;">gpt-4</option>
+                        <option value="gpt-3.5-turbo-1106" title="For me the Fastest and 16k" style="color:yellowgreen;">gpt-3.5-turbo-1106  16k</option>
+                        <option value="gpt-3.5-turbo" title="Slow for Me? Bussy? and 4k" style="color:green;">gpt-3.5-turbo 4k</option>
+                        <option value="gpt-3.5-turbo-16k" title="Dont know 16k">gpt-3.5-turbo-16k</option>
+                        <option value="code-davinci-002" title="Dont know" style="color:red;">code-davinci-002</option>
+                        <option value="gpt-4-1106-preview" title="Dont know" style="color:red;">gpt-4-1106-preview</option>
+                        <option value="gpt-4" title="Dont know" style="color:red;">gpt-4</option>
                     
                    
                     </select>
@@ -693,6 +693,8 @@ const API_URL = "https://api.openai.com/v1/chat/completions";
   const storedApiKey = localStorage.getItem("apiKey");
   if (storedApiKey) {
     document.querySelector("#apikey").value = storedApiKey;
+    setTimeout(function(){console.warn("Wow!, Welcome Back!");
+    },500);
   } 
 var API_KEY = document.querySelector("#apikey").value;
 
@@ -804,6 +806,8 @@ console.timeEnd();
 console.debug("message tokens? ",message.length);
 console.debug("message ",message);
 console.debug("message tokens? ",message.length);
+
+  promptInput.value="";  // clear ask field
  
   } catch (error) {
     // Handle fetch request errors
