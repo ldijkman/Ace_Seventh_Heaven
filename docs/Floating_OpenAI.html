@@ -701,7 +701,7 @@ const generate = async () => {
         Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "gpt-3.5-turbo-16k",
         messages: [{ role: "user", content: promptInput.value }],
         max_tokens: 4000,     // think 4000 chars for response leaves 96 for ask
         stream: true,         // For streaming responses
