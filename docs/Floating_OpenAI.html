@@ -706,6 +706,7 @@ const generate = async () => {
     // Store the API key in local storage
     localStorage.setItem("apiKey", document.getElementById("apikey").value);
     console.log("ak",localStorage.getItem("apiKey"));
+    document.getElementById("apikey").style.color="green";
 
 console.time();
 var message="";
@@ -748,6 +749,7 @@ console.debug("message tokens? ",message.length);
       console.error("Error:", error);
       resultText.innerHTML += "<br><font style=\"color:red;\">Error, is your API_KEY valid ?</font><br>";
       console.error("Error, is your API_KEY valid ?");
+      document.getElementById("apikey").style.color="red";
      
     }
   } finally {
