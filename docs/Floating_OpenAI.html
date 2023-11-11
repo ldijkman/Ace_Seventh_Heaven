@@ -282,7 +282,10 @@ aardappelpuree of een stukje brood. Eet smakelijk!
         <center>
           <font style="font-size:10px;">
                 &copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
-          </font><input type="button" onclick="scrollToTop()" value="Top" style="float:right;">
+          </font>
+          <button onclick="scrollToTop()"  style="float:right;" title="Scroll to Top"><font style="transform: rotate(90deg);float:left;"><</font></button>
+          <button onclick="scrollToBottom()"  style="float:right;" title="Scroll to Bottom"><font style="transform: rotate(90deg);float:left;">></font></button>
+        
         </center>
         
       </div>
@@ -320,7 +323,7 @@ makeResizable(element,16,16)
 document.addEventListener("DOMContentLoaded",
 function (event) {
     console.info("AI Code Assistant, Running, Making it Draggable.");
-    makeconsoledraggable(); // https://www.w3schools.com/howto/howto_js_draggable.asp
+    make_AI_draggable(); // https://www.w3schools.com/howto/howto_js_draggable.asp
 
  var element = document.querySelector(".cont_ai_ner")
 makeResizable(element,16,16)
@@ -453,56 +456,56 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
     function resizeXPositive()
     {
         let offsetX
-        function dragMouseDown(e) {
+        function AIdragMouseDown(e) {
             if(e.button !== 0) return
             e = e || window.event;
             e.preventDefault();
             const {clientX} = e;
             offsetX = clientX - element.offsetLeft - get_int_style('width');
-            document.addEventListener('mouseup', closeDragElement)
-            document.addEventListener('mousemove', elementDrag)
+            document.addEventListener('mouseup', AIcloseDragElement)
+            document.addEventListener('mousemove', AIelementDrag)
           }
         
-          function elementDrag(e) {
+          function AIelementDrag(e) {
                 const {clientX} = e;
                 let x = clientX - element.offsetLeft - offsetX
                 if(x < minW) x = minW;
                 element.style.width =  x + 'px';
           }
         
-          function closeDragElement() {
-            document.removeEventListener("mouseup", closeDragElement);  
-            document.removeEventListener("mousemove", elementDrag);
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
           }
-        return dragMouseDown
+        return AIdragMouseDown
     }
 
     function resizeYPositive()
     {
         let offsetY
-        function dragMouseDown(e) {
+        function AIdragMouseDown(e) {
             if(e.button !== 0) return
             e = e || window.event;
             e.preventDefault();
             const {clientY} = e;
             offsetY = clientY - element.offsetTop - get_int_style('height');
     
-            document.addEventListener('mouseup',closeDragElement)
-            document.addEventListener('mousemove',elementDrag)
+            document.addEventListener('mouseup',AIcloseDragElement)
+            document.addEventListener('mousemove',AIelementDrag)
           }
         
-          function elementDrag(e) {
+          function AIelementDrag(e) {
                 const {clientY} = e;
                 let y =  clientY - element.offsetTop - offsetY;
                 if(y < minH) y = minH;
                 element.style.height = y + 'px';
           }
         
-          function closeDragElement() {
-            document.removeEventListener("mouseup", closeDragElement);  
-            document.removeEventListener("mousemove", elementDrag);
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
           }
-        return dragMouseDown
+        return AIdragMouseDown
     }
 
     function resizeXNegative()
@@ -511,7 +514,7 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
         let startX
         let startW
         let maxX
-        function dragMouseDown(e) {
+        function AIdragMouseDown(e) {
             if(e.button !== 0) return
             e = e || window.event;
             e.preventDefault();
@@ -521,11 +524,11 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
             offsetX = clientX - startX;
             maxX = startX + startW - minW
     
-            document.addEventListener('mouseup',closeDragElement)
-            document.addEventListener('mousemove',elementDrag)
+            document.addEventListener('mouseup',AIcloseDragElement)
+            document.addEventListener('mousemove',AIelementDrag)
           }
         
-          function elementDrag(e) {
+          function AIelementDrag(e) {
                 const {clientX} = e;
                 let x = clientX - offsetX
                 let w = startW + startX - x
@@ -535,11 +538,11 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
                 element.style.width = w + 'px';
           }
         
-          function closeDragElement() {
-            document.removeEventListener("mouseup", closeDragElement);  
-            document.removeEventListener("mousemove", elementDrag);
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
           }
-        return dragMouseDown
+        return AIdragMouseDown
     }
 
     function resizeYNegative()
@@ -548,7 +551,7 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
         let startY
         let startH
         let maxY
-        function dragMouseDown(e) {
+        function AIdragMouseDown(e) {
             if(e.button !== 0) return
             e = e || window.event;
             e.preventDefault();
@@ -558,11 +561,11 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
             offsetY = clientY - startY;
             maxY = startY + startH - minH 
     
-            document.addEventListener('mouseup',closeDragElement,false)
-            document.addEventListener('mousemove',elementDrag,false)
+            document.addEventListener('mouseup',AIcloseDragElement,false)
+            document.addEventListener('mousemove',AIelementDrag,false)
           }
         
-          function elementDrag(e) {
+          function AIelementDrag(e) {
                 const {clientY} = e;
                 let y =  clientY - offsetY
                 let h = startH + startY - y
@@ -572,11 +575,11 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
                 element.style.height = h + 'px';
           }
         
-          function closeDragElement() {
-            document.removeEventListener("mouseup", closeDragElement);  
-            document.removeEventListener("mousemove", elementDrag);
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
           }
-        return dragMouseDown
+        return AIdragMouseDown
     }
 }
 // https://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript
@@ -585,19 +588,19 @@ function makeResizable(element, minW = 500, minH = 500, size = 10)
 
 
 // start drag https://www.w3schools.com/howto/howto_js_draggable.asp
-function makeconsoledraggable() { 
+function make_AI_draggable() { 
   consolecont_ai_ner=document.getElementById("cont_ai_ner");
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 //  if (document.getElementById(consolecont_ai_ner.id + "Heaven"))
 //  if present, the Heaven is where you move the DIV from:
-//     document.getElementById(consolecont_ai_ner.id + "Heaven").onmousedown = dragMouseDown;
+//     document.getElementById(consolecont_ai_ner.id + "Heaven").onmousedown = AIdragMouseDown;
 //   } else {
 //   otherwise, move the DIV from anywhere inside the DIV:
-    document.getElementById("Heaven").onmousedown = consoledragmousedown;
+    document.getElementById("Heaven").onmousedown = consoleAIdragMouseDown;
    
  
 
-  function consoledragmousedown(e) {
+  function consoleAIdragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
@@ -835,6 +838,13 @@ function scrollAfterWorldToBottom() {
       top: 0,
       behavior: "smooth"
     });
+  }
+
+  function scrollToBottom() {
+    afterWorld.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
   }
 </script>
 
