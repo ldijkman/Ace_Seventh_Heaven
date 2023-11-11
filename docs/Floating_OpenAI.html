@@ -225,7 +225,7 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 
 
     <div class="container" id="container">
-      <div class="header" id="header" title="Experimental ">
+      <div class="header" id="header" title="You Can Drag Me & Resize on Corners and Borders">
       	<center>
       	 Floating AI Code Assistant <button onclick="toggleVisibility('container')" style="float:right;margin-right:5px;"> X </button>
    
@@ -234,14 +234,12 @@ aardappelpuree of een stukje brood. Eet smakelijk!
       <div class="mainbody">
       	
       	
-      	    <div style="border :1px solid white;margin:10px;padding:10px;">
-<center>
-   <a href="https://platform.openai.com/account/api-keys" target="HEAVEN">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
-   
-    </center>
-  
+      	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
+              <center>
+                 <a href="https://platform.openai.com/account/api-keys" target="HEAVEN">API_KEY</a> : <input type="text" id="apikey" title="Enter or Paste your API_KEY Here?!"> 
 
-</div>
+              </center>
+            </div>
 
 <div>   <!--Streaming OpenAI API Completions in JavaScript-->
 <!--
@@ -253,7 +251,7 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 -->
       <div id="resultContainer" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <!--<p class="">Generated Text</p>-->
-        <p id="resultText" class="">Ai Reponse...</p>
+        <p id="resultText" class="" title="insane">Ai Reponse...</p>
       </div>
       <center>
       <input
@@ -287,10 +285,13 @@ aardappelpuree of een stukje brood. Eet smakelijk!
       	
       	
       
-      <div class="footer"><center><font style="font-size:10px;">
- &copy;Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
- </font>
-      </center></div>
+      <div class="footer" title="&copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands">
+        <center>
+          <font style="font-size:10px;">
+                &copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
+          </font>
+        </center>
+      </div>
     </div>
 
    
