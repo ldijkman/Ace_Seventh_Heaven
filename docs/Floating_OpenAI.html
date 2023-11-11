@@ -305,28 +305,28 @@ Copyright, Free to use if this/above message is left in the code
 <script>
   // https://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript
  var element = document.querySelector(".cont_ai_ner")
-makeResizable(element,10,10)
+makeResizable(element,16,16)
 
 
 // wait for the page loaded, and make console draggable 
 document.addEventListener("DOMContentLoaded",
 function (event) {
-    console.info("console.js, Running, Making it Draggable.");
+    console.info("AI Code Assistant, Running, Making it Draggable.");
     makeconsoledraggable(); // https://www.w3schools.com/howto/howto_js_draggable.asp
 
  var element = document.querySelector(".cont_ai_ner")
-makeResizable(element,10,10)
+makeResizable(element,16,16)
 
-    console.info("Ok, You can Drag Me now!.");
-    console.info("Resize, bottom right corner!.");
-     console.debug('This Bug is RosyBrown');
+    console.info("Ok, You can Drag it now!.");
+    console.info("& Wow!, Resize on Borders and Corners!.");
+     console.debug('ai => RosyBrown');
 });
 
 
 
 
 
-function makeResizable(element, minW = 500, minH = 500, size = 10)
+function makeResizable(element, minW = 500, minH = 500, size = 16)
 {
     const top = document.createElement('div');
     top.style.width = '100%';
