@@ -214,10 +214,21 @@ aardappelpuree of een stukje brood. Eet smakelijk!
       	
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
-              <center>
-                 <a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : 
-                 <input type="text" id="apikey" size="8" title="Enter or Paste your API_KEY Here?!"> 
+              <center> 
+                    <label class="label" onmouseover="expandInput()" onmouseout="shrinkInput()"><a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : </label>
+                    <input type="text" class="input" id="apikey" placeholder="Type or Paste APi_KEY here..." onmouseover="expandInput()" onmouseout="shrinkInput()">
+    <script> 
+        function expandInput() {
+            var container = document.querySelector('.input');
+            container.style.width = '200px';
+        }
 
+        function shrinkInput() {
+            var container = document.querySelector('.input');
+            container.style.width = '0'; 
+        }
+        shrinkInput();
+    </script>
               </center>
             </div>
 
