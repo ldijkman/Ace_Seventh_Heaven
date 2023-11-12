@@ -192,6 +192,7 @@ Copyright, Free to use if this/above message is left in the code
      <div id="buttons" title="The Sky was All Purple &#013; There were People running Everywhere">  
         <button onclick="toggleVisibility('cont_ai_ner')"">Toggle OpenAi</button>
         <button onclick="toggleVisibility('console-log-div')"">Toggle Console</button> 
+        <button id="fullscreenButton" onclick="toggleFullscreen()">Fullscreen</button>
         <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" title="Hellup"><button>?</button></a>        
     </div>
    
@@ -929,6 +930,34 @@ function scrollAfterWorldToBottom() {
 
 
 
+
+<script>
+  function toggleFullscreen() {
+    const elem = document.documentElement;
+
+    if (!document.fullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) { /* Firefox */
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE/Edge */
+        document.msExitFullscreen();
+      }
+    }
+  }
+</script>
 
 
 
