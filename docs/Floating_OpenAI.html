@@ -239,12 +239,12 @@ Copyright, Free to use if this/above message is left in the code
         
         <center>
       	 Floating AI Code Assistant
-          <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin-right:5px;"> X </button>
-          <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" style="float:right;margin-right:5px;"><button>?</button></a>
+          <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin-right:5px;" title="Close Window"> X </button>
+          <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" style="float:right;margin-right:5px;" title="Hellup"><button>?</button></a>
          
          </center>
       </div>
-      <div class="AfterWorld"  id="afterWorld">
+      <div class="AfterWorld"  id="AfterWorld" title="The AfterWorld">
       	
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
@@ -265,7 +265,7 @@ Copyright, Free to use if this/above message is left in the code
                     </select>
                     <!-- https://platform.openai.com/docs/models -->
                          
-                   <button onclick='resultText.innerText=""' Title="Clear Chat Area/History">Clear Chat</button>
+                   <button onclick='resultText.innerText=""' Title="WARNING!!!: Clear Chat Area/History">Clear Chat</button>
    
     <script> 
         function expandInput() {
@@ -868,19 +868,19 @@ stopBtn.addEventListener("click", stop);
 
 // Function to scroll the AfterWorld div to the bottom
 function scrollAfterWorldToBottom() {
-  var afterWorld = document.getElementById("afterWorld");
-  afterWorld.scrollTop = afterWorld.scrollHeight;
+  var AfterWorld = document.getElementById("AfterWorld");
+  AfterWorld.scrollTop = AfterWorld.scrollHeight;
 }
 
   function scrollToTop() {
-    afterWorld.scrollTo({
+    AfterWorld.scrollTo({
       top: 0,
       behavior: "smooth"
     });
   }
 
   function scrollToBottom() {
-    afterWorld.scrollTo({
+    AfterWorld.scrollTo({
     top: document.body.scrollHeight,
     behavior: "smooth"
   });
@@ -889,7 +889,7 @@ function scrollAfterWorldToBottom() {
 
 </body>
 </html>
-This example includes a button (#scrollToTopBtn) that is initially hidden but becomes visible when the #afterworld div is scrolled. Clicking the button triggers a smooth scroll to the top of the afterworld content. Adjust the styles and behavior according to your specific needs.
+This example includes a button (#scrollToTopBtn) that is initially hidden but becomes visible when the #AfterWorld div is scrolled. Clicking the button triggers a smooth scroll to the top of the AfterWorld content. Adjust the styles and behavior according to your specific needs.
 
 
 
