@@ -131,7 +131,7 @@ Copyright, Free to use if this/above message is left in the code
 
 .dropdown {
   position: absolute;
-  display: inline-block;
+  display: block;
 }
 
 .dropdown-content {
@@ -146,7 +146,7 @@ Copyright, Free to use if this/above message is left in the code
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  nopadding: 12px 16px;
   text-decoration: none;
   display: block;
 }
@@ -221,11 +221,14 @@ Copyright, Free to use if this/above message is left in the code
       <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders">
       <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
       <div class="dropdown">
-       <button class="dropbtn">Set.</button>
+       <button class="dropbtn">Menu</button>
        <div class="dropdown-content">
-         <button class="dropbt">test</button><br>
-         <button class="dropbt">test</button><br>
-         <a href="https://chat.openai.com" target="_blank"><button class="dropbt">chat.openai.com</button></a><br>
+         
+         <a href="https://chat.openai.com" target="_blank"><button class="dropbt" style="border:none;">chat.openai.com</button></a>
+         <a href="https://platform.openai.com/docs/models" target="_blank"><button class="dropbt" style="border:none;">AI models info</button></a>
+         <a href="https://platform.openai.com/usage" target="_blank"><button class="dropbt" style="border:none;">AI Usage Info</button></a>
+        <button class="dropbt" style="border:none;">Empty</button><br>
+         <button class="dropbt" style="border:none;">Empty</button><br>
          
         </div>
        </div>	
@@ -247,8 +250,8 @@ Copyright, Free to use if this/above message is left in the code
                     <input type="text" class="input" id="apikey" placeholder="Type or Paste APi_KEY here..." onmouseover="expandInput()" onmouseout="shrinkInput()">
                     <br>
                     <!-- https://platform.openai.com/docs/models -->
-                    <select name="model" id="model">
-                        <option value="gpt-3.5-turbo-1106" title="For me the Fastest and 16k" style="color:yellowgreen;">gpt-3.5-turbo-1106  16k</option>
+                    <select name="model" id="model" title="Select an AI model">
+                        <option value="gpt-3.5-turbo-1106" title="For me the Fastest and 16k" style="color:green;">gpt-3.5-turbo-1106  16k</option>
                         <option value="gpt-3.5-turbo" title="Slow for Me? Bussy? and 4k" style="color:green;">gpt-3.5-turbo 4k</option>
                         <option value="gpt-3.5-turbo-16k" title="Dont know 16k">gpt-3.5-turbo-16k</option>
                         <option value="code-davinci-002" title="Dont know" style="color:red;">code-davinci-002</option>
