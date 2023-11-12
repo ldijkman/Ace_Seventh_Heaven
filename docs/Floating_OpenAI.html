@@ -224,14 +224,14 @@ Copyright, Free to use if this/above message is left in the code
        <button class="dropbtn">Menu</button>
        <div class="dropdown-content">
          <button class="dropbt" style="border:none;">-</button><br>
-         <a href="https://chat.openai.com" target="_blank"><button class="dropbt" style="border:none;">chat.openai.com</button></a>
-         <a href="https://platform.openai.com/docs/models" target="_blank"><button class="dropbt" style="border:none;">AI models info</button></a>
-         <a href="https://platform.openai.com/usage" target="_blank"><button class="dropbt" style="border:none;">AI Usage Info</button></a>
+         <a href="https://chat.openai.com" target="_blank" title="Chat-GPT WebPage"><button class="dropbt" style="border:none;">chat.openai.com</button></a>
+         <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;">AI models info</button></a>
+         <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;">AI Usage Info</button></a>
         <button class="dropbt" style="border:none;">-</button><br>
-        <a href="https://status.openai.com/" target="_blank"><button class="dropbt" style="border:none;color:green">OpenAI server status</button></a>
+        <a href="https://status.openai.com/" target="_blank" title="OpenAI Server Status&#013;&#013;Has some downtime&#013;&#013;&#013;would loke to have a status image"><button class="dropbt" style="border:none;color:orange">OpenAI API Server Status</button></a>
       
          <button class="dropbt" style="border:none;">-</button><br>
-         <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank"><button class="dropbt" style="border:none;">Comments, Suggestions, Feedback</button></a>
+         <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" title=""><button class="dropbt" style="border:none;">Comments, Suggestions, Feedback</button></a>
       
         </div>
        </div>	
@@ -734,10 +734,8 @@ const generate = async () => {
   spinner.style.display = "block";
   
   if (!promptInput.value) {
-    //alert("Please enter a prompt.");        // Alert the user if no prompt value
-
+    // alert("Please enter a prompt.");        // Alert is annoying change it         the user if no prompt value
     resultText.innerHTML += "<br><font style=\"color:red;\"><b>ERROR: </b>Enter a Question in input text field</font><br>";
-     
     return;
   }
 
