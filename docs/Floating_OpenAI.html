@@ -746,6 +746,8 @@ const generate = async () => {
   if (!promptInput.value) {
     // alert("Please enter a prompt.");        // Alert is annoying change it         the user if no prompt value
     resultText.innerHTML += "<br><font style=\"color:red;\"><b>ERROR: </b>Enter a Question in input text field</font><br>";
+    promptInput.value= "a prayer for my foolishness";
+    generate();
     return;
   }
 
