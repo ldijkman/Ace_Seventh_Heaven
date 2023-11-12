@@ -123,6 +123,44 @@ Copyright, Free to use if this/above message is left in the code
     100% { transform: rotate(360deg); }
   }
   </style>  
+
+  <style>
+.dropbtn {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  mmin-width: 260px;
+  mmin-height: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+</style>
+
+
 </head>
 
   <body>
@@ -159,54 +197,12 @@ Copyright, Free to use if this/above message is left in the code
     </script>
 
 <br><br>
-<iframe width="100%" height="600" src="https://www.youtube.com/embed/VaPQZR8EarI" title="OpenAi API Stream Floating Code Assitant" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="360" height="240" src="https://www.youtube.com/embed/VaPQZR8EarI" title="OpenAi API Stream Floating Code Assitant" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <br>
 <!--
 <br><textarea rows="25" cols="80">
-<pre>
-  You: bruine bonen met spek
 
-OpenAI Generating...
-Bruine bonen met spek is een heerlijk en traditioneel Nederlands gerecht. 
-Om het te maken heb je de volgende ingrediënten nodig:
-
--400 gram bruine bonen
--200 gram gerookte spekblokjes
--1 ui, gesnipperd
--2 teentjes knoflook, fijngehakt
--1 laurierblad
--1 theelepel paprikapoeder
--1 theelepel komijnpoeder
--1 blikje tomatenpuree
--500 ml water
-- Zout en peper naar smaak
-- Optioneel: een rookworst
-
-Bereidingswijze:
-
-1. Laat de bruine bonen een nacht in ruim water weken, spoel ze daarna goed af.
-
-2. Verhit een beetje olie in een grote pan en bak de spekblokjes goudbruin.
-
-3. Voeg de gesnipperde ui en knoflook toe en bak deze kort mee totdat ze glazig zijn.
-
-4. Voeg het paprikapoeder, komijnpoeder, 
-tomatenpuree en laurierblad toe en bak dit een minuutje mee zodat de smaken vrijkomen.
-
-5. Voeg vervolgens de bruine bonen en het water toe. 
-Breng het geheel aan de kook en laat het vervolgens op laag vuur ongeveer1,5 -2 uur sudderen, 
-of totdat de bonen zacht zijn. Roer af en toe door en voeg meer water toe indien nodig.
-
-6. Breng het gerecht op smaak met zout en peper.
-
-7. Als je van rookworst houdt, kun je deze apart koken 
-volgens de instructies op de verpakking en daarna in plakjes snijden. 
-Voeg de plakjes rookworst toe aan de pan met bruine bonen en laat deze nog even mee verwarmen.
-
-Serveer de bruine bonen met spek warm met bijvoorbeeld rijst, 
-aardappelpuree of een stukje brood. Eet smakelijk!
-</pre>
 </textarea>
 
 -->
@@ -223,7 +219,19 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 
     <div class="cont_ai_ner" id="cont_ai_ner">
       <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders">
-      	<center>
+      <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
+      <div class="dropdown">
+       <button class="dropbtn">Set.</button>
+       <div class="dropdown-content">
+         <button class="dropbt">test</button><br>
+         <button class="dropbt">test</button><br>
+         <a href="https://chat.openai.com" target="_blank"><button class="dropbt">chat.openai.com</button></a><br>
+         
+        </div>
+       </div>	
+        
+        
+        <center>
       	 Floating AI Code Assistant
           <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin-right:5px;"> X </button>
           <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" style="float:right;margin-right:5px;"><button>?</button></a>
@@ -278,7 +286,7 @@ aardappelpuree of een stukje brood. Eet smakelijk!
 -->
       <div id="resultcont_ai_ner" class="" style="border :1px solid gray;margin:10px;padding:10px;">
         <!--<p class="">Generated Text</p>-->
-        <p id="resultText" class="" title="insane">Ai Reponse...</p>
+        <p id="resultText" class="" title="Chat Content" ></p>
       </div>
 
       <center>
@@ -729,7 +737,7 @@ const generate = async () => {
   // Disable the generate button and enable the stop button
   generateBtn.disabled = true;
   stopBtn.disabled = false;
-  resultText.innerText += "\nOpenAI Generating...\n";
+  resultText.innerText += "\n\n";
 
   // Create a new AbortController instance
   controller = new AbortController();
@@ -839,13 +847,13 @@ const stop = () => {
 
 promptInput.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
-    resultText.innerText +="\nYou: "+ promptInput.value+"\n";
+    resultText.innerText +="\n---------------\nYou: "+ promptInput.value+"";
     generate();
   }
 });
 
 generateBtn.addEventListener("click", (event)=>{
-  resultText.innerText +="\nYou: "+ promptInput.value+"\n";
+  resultText.innerText +="\n---------------\nYou: "+ promptInput.value+"";
   generate();
 });
 
@@ -914,7 +922,7 @@ Copyright, Free to use if this/above message is left in the code
 <br><br>
 <br><br>
 
-  <iframe width="100%" height="600" src="https://www.youtube.com/embed/l9wejBgCiT4" title="The Ladder (Soundcheck) - Prince" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="360" height="240" src="https://www.youtube.com/embed/l9wejBgCiT4" title="The Ladder (Soundcheck) - Prince" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <br><br>thank you for your help, i am impressed<br>
 <br>
 ChatGPT<br>
@@ -936,25 +944,3 @@ paste all of above
 cq the source of this HTML doucument
 in the question text field
 at Google Bard Cannot do that (is it AI that gave it that stupid name)
-
-
-OpenAI Generating...
-The code you provided is an HTML document 
-that includes a floating AI code assistant using the OpenAI API. 
-The document also includes a console 
-and buttons to toggle the visibility of the AI code assistant and console.
-
-The code uses various styles to define the appearance of the AI code assistant, 
-console, and other elements in the document. 
-It also includes JavaScript functions for toggling visibility, 
-making the AI code assistant draggable and resizable, 
-and interacting with the OpenAI API to generate chat completions.
-
-The document contains inputs for entering an API key, 
-a text input for asking a question, 
-and buttons for generating the AI response and stopping the generation. 
-The generated AI response is displayed in a result container.
-
-Overall, this code provides a user interface 
-for interacting with the OpenAI API to generate chat completions 
-and includes features such as draggable and resizable elements and a console.
