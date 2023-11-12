@@ -734,7 +734,10 @@ const generate = async () => {
   spinner.style.display = "block";
   
   if (!promptInput.value) {
-    alert("Please enter a prompt.");        // Alert the user if no prompt value
+    //alert("Please enter a prompt.");        // Alert the user if no prompt value
+
+    resultText.innerHTML += "<br><font style=\"color:red;\"><b>ERROR: </b>Enter a Question in input text field</font><br>";
+     
     return;
   }
 
