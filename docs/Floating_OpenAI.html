@@ -259,7 +259,8 @@ Copyright, Free to use if this/above message is left in the code
       	 Floating AI Code Assistant
           <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin:3px;margin-right:5px;" title="Close Window"> X </button>
           <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" style="float:right;margin:3px;" title="Hellup"><button>?</button></a>
-          <button onclick="toggleMaximize()" style="float:right;margin:3px;margin-right:5px;" title="Maximize AI Window to fullscreen"> + </button>
+          <button onclick="MaximizeAI()" style="float:right;margin:3px;margin-right:5px;" title="Maximize AI Window to fullscreen"> + </button>
+         <button onclick="normalsize()" style="float:right;margin:3px;margin-right:5px;" title="normalsize AI Window"> - </button>
         
          </center>
       </div>
@@ -909,11 +910,18 @@ function scrollAfterWorldToBottom() {
 
 
 
-  function toggleMaximize() {
+  function MaximizeAI() {
       document.getElementById("cont_ai_ner").style.width = '100%';
       document.getElementById("cont_ai_ner").style.height = '100%';
       document.getElementById("cont_ai_ner").style.left = '0';
       document.getElementById("cont_ai_ner").style.top = '0';
+  }
+
+    function normalsize() {
+      document.getElementById("cont_ai_ner").style.width = '50%';
+      document.getElementById("cont_ai_ner").style.height = '50%';
+      document.getElementById("cont_ai_ner").style.left = '25%';
+      document.getElementById("cont_ai_ner").style.top = '25%';
   }
 
 
