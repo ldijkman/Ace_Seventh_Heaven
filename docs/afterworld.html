@@ -394,6 +394,146 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 }
 
 </style>
+
+
+ <style>
+      .cont_ai_ner {
+        position: fixed;
+        display:float;
+        min-height:90px;
+        min-width:350px;
+        background-color: #f1f1f1;
+        border: 1px solid gray;
+        left: 100px;
+        top:  140px;
+        width: 500px;
+        height: 500px;
+        border-radius: 5px;
+        z-index:100000;
+      }
+      .cont_ai_ner,
+      .AfterWorld,
+      .Heaven,
+      .Hell {
+        padding: 0px; 
+      }
+      .AfterWorld {
+        position:absolute;
+        margin-top: 0;
+        min-height:15px;
+        nomax-height: 508px;
+        width:100%;
+        overflow: auto;
+        top:25px;
+        bottom:20px;
+       
+      }
+      .Heaven {
+        position:absolute;
+        height: 25px;
+        width:99%;
+        border-bottom: 1px solid #eee;
+        background-color: lightblue;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-topright: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin:2px;
+        cursor:move;
+        border: 1px solid gray;
+      }
+      .Hell {
+        position:absolute;
+        height:20px;
+        width:99.5%;
+        background-color: lightgray;
+        border-top: 1px solid #ddd;
+        -webkit-border-bottom-left-radius: 5px;
+        -webkit-border-bottom-right-radius: 5px;
+        -moz-border-radius-bottomleft: 5px;
+        -moz-border-radius-bottomright: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px; 
+        bottom:1px;
+         border: 1px solid gray;
+      }
+
+
+
+#buttons {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: purple;
+  padding: 8px;
+}
+    </style>
+
+    <style>
+    body{
+      
+      //background:lightgray;
+     // margin:50px;
+
+      
+    }
+    /* CSS for the spinner */
+  #spinner {
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid orange; /* Orange color for spinning */
+    border-radius: 50%; /* Circular shape */
+    width: 22px; /* Make the spinner smaller by adjusting width */
+    height: 22px; /* Make the spinner smaller by adjusting height */
+    animation: spin 2s linear infinite; /* Spin animation */
+    display: none; /* Initially hidden */
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  </style>  
+
+  <style>
+.dropbtn {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 200px;
+  mmin-height: 260px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin:-3px;  /*otherwise there is a gap, loose mouse focus */
+}
+
+.dropdown-content a {
+  color: black;
+  nopadding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+</style>
+
 <!--
    <style>
    /*   console   */
@@ -5223,7 +5363,784 @@ function play() {
         }, 250);
 
    
-               </script>           
+               </script>  
+
+
+
+               <script>
+  // https://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript
+
+
+
+// wait for the page loaded, and make console draggable 
+document.addEventListener("DOMContentLoaded",
+function (event) {
+
+           setTimeout(function () { var element = document.querySelector(".cont_ai_ner")
+makeResizable(element,16,16)
+    console.info("AI Code Assistant, Running, Making it Draggable.");
+    make_AI_draggable(); // https://www.w3schools.com/howto/howto_js_draggable.asp
+
+
+ var element = document.querySelector(".cont_ai_ner")
+makeResizable(element,16,16)
+  }, 250);
+    console.info("Ok, You can Drag it now!.");
+    console.info("& Wow!, Resize on Borders and Corners!.");
+     console.debug('ai => RosyBrown');
+});
+
+
+
+
+
+function makeResizable(element, minW = 500, minH = 500, size = 10)
+{
+    const top = document.createElement('div');
+    top.style.width = '100%';
+    top.style.height = size + 'px';
+    top.style.backgroundColor = 'transparent';
+    top.style.position = 'absolute';
+    top.style.top = - (size/2) + 'px';
+    top.style.left = '0px';
+    top.style.cursor = 'n-resize';
+
+    top.addEventListener('mousedown',resizeYNegative())
+
+    element.appendChild(top);
+
+    const bottom = document.createElement('div');
+    bottom.style.width = '100%';
+    bottom.style.height = size + 'px';
+    bottom.style.backgroundColor = 'transparent';
+    bottom.style.position = 'absolute';
+    bottom.style.bottom = - (size/2) + 'px';
+    bottom.style.left = '0px';
+    bottom.style.cursor = 'n-resize';
+
+    bottom.addEventListener('mousedown',resizeYPositive())
+
+    element.appendChild(bottom);
+
+    const left = document.createElement('div');
+    left.style.width = size + 'px';
+    left.style.height = '100%';
+    left.style.backgroundColor = 'transparent';
+    left.style.position = 'absolute';
+    left.style.top = '0px';
+    left.style.left = - (size/2) + 'px';
+    left.style.cursor = 'e-resize';
+
+    left.addEventListener('mousedown',resizeXNegative())
+
+    element.appendChild(left);
+
+    const right = document.createElement('div');
+    right.style.width = size + 'px';
+    right.style.height = '100%';
+    right.style.backgroundColor = 'transparent';
+    right.style.position = 'absolute';
+    right.style.top = '0px';
+    right.style.right = - (size/2) + 'px';
+    right.style.cursor = 'e-resize';
+
+    right.addEventListener('mousedown',resizeXPositive())
+
+    element.appendChild(right);
+
+
+    const corner1 = document.createElement('div');
+    corner1.style.width = size + 'px';
+    corner1.style.height = size + 'px';
+    corner1.style.backgroundColor = 'transparent';
+    corner1.style.position = 'absolute';
+    corner1.style.top = - (size/2) + 'px';
+    corner1.style.left = - (size/2) + 'px';
+    corner1.style.cursor = 'nw-resize';
+
+    corner1.addEventListener('mousedown',resizeXNegative())
+    corner1.addEventListener('mousedown',resizeYNegative())
+    
+    element.appendChild(corner1);
+
+    const corner2 = document.createElement('div');
+    corner2.style.width = size + 'px';
+    corner2.style.height = size + 'px';
+    corner2.style.backgroundColor = 'transparent';
+    corner2.style.position = 'absolute';
+    corner2.style.top = - (size/2) + 'px';
+    corner2.style.right = - (size/2) + 'px';
+    corner2.style.cursor = 'ne-resize';
+
+    corner2.addEventListener('mousedown',resizeXPositive())
+    corner2.addEventListener('mousedown',resizeYNegative())
+
+    element.appendChild(corner2);
+
+    const corner3 = document.createElement('div');
+    corner3.style.width = size + 'px';
+    corner3.style.height = size + 'px';
+    corner3.style.backgroundColor = 'transparent';
+    corner3.style.position = 'absolute';
+    corner3.style.bottom = - (size/2) + 'px';
+    corner3.style.left = - (size/2) + 'px';
+    corner3.style.cursor = 'sw-resize';
+
+    corner3.addEventListener('mousedown',resizeXNegative())
+    corner3.addEventListener('mousedown',resizeYPositive())
+
+    element.appendChild(corner3);
+
+    const corner4 = document.createElement('div');
+    corner4.style.width = size + 'px';
+    corner4.style.height = size + 'px';
+    corner4.style.backgroundColor = 'transparent';
+    corner4.style.position = 'absolute';
+    corner4.style.bottom = - (size/2) + 'px';
+    corner4.style.right = - (size/2) + 'px';
+    corner4.style.cursor = 'se-resize';
+
+    corner4.addEventListener('mousedown',resizeXPositive())
+    corner4.addEventListener('mousedown',resizeYPositive())
+
+    element.appendChild(corner4);
+    
+    function get_int_style(key)
+    {
+        return parseInt(window.getComputedStyle(element).getPropertyValue(key));
+    }
+
+    function resizeXPositive()
+    {
+        let offsetX
+        function AIdragMouseDown(e) {
+            if(e.button !== 0) return
+            e = e || window.event;
+            e.preventDefault();
+            const {clientX} = e;
+            offsetX = clientX - element.offsetLeft - get_int_style('width');
+            document.addEventListener('mouseup', AIcloseDragElement)
+            document.addEventListener('mousemove', AIelementDrag)
+          }
+        
+          function AIelementDrag(e) {
+                const {clientX} = e;
+                let x = clientX - element.offsetLeft - offsetX
+                if(x < minW) x = minW;
+                element.style.width =  x + 'px';
+          }
+        
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
+          }
+        return AIdragMouseDown
+    }
+
+    function resizeYPositive()
+    {
+        let offsetY
+        function AIdragMouseDown(e) {
+            if(e.button !== 0) return
+            e = e || window.event;
+            e.preventDefault();
+            const {clientY} = e;
+            offsetY = clientY - element.offsetTop - get_int_style('height');
+    
+            document.addEventListener('mouseup',AIcloseDragElement)
+            document.addEventListener('mousemove',AIelementDrag)
+          }
+        
+          function AIelementDrag(e) {
+                const {clientY} = e;
+                let y =  clientY - element.offsetTop - offsetY;
+                if(y < minH) y = minH;
+                element.style.height = y + 'px';
+          }
+        
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
+          }
+        return AIdragMouseDown
+    }
+
+    function resizeXNegative()
+    {
+        let offsetX
+        let startX
+        let startW
+        let maxX
+        function AIdragMouseDown(e) {
+            if(e.button !== 0) return
+            e = e || window.event;
+            e.preventDefault();
+            const {clientX} = e;
+            startX = get_int_style('left')
+            startW = get_int_style('width')
+            offsetX = clientX - startX;
+            maxX = startX + startW - minW
+    
+            document.addEventListener('mouseup',AIcloseDragElement)
+            document.addEventListener('mousemove',AIelementDrag)
+          }
+        
+          function AIelementDrag(e) {
+                const {clientX} = e;
+                let x = clientX - offsetX
+                let w = startW + startX - x
+                if(w < minW) w = minW;
+                if(x > maxX) x = maxX;
+                element.style.left = x + 'px';
+                element.style.width = w + 'px';
+          }
+        
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
+          }
+        return AIdragMouseDown
+    }
+
+    function resizeYNegative()
+    {
+        let offsetY
+        let startY
+        let startH
+        let maxY
+        function AIdragMouseDown(e) {
+            if(e.button !== 0) return
+            e = e || window.event;
+            e.preventDefault();
+            const {clientY} = e;
+            startY = get_int_style('top')
+            startH = get_int_style('height')
+            offsetY = clientY - startY;
+            maxY = startY + startH - minH 
+    
+            document.addEventListener('mouseup',AIcloseDragElement,false)
+            document.addEventListener('mousemove',AIelementDrag,false)
+          }
+        
+          function AIelementDrag(e) {
+                const {clientY} = e;
+                let y =  clientY - offsetY
+                let h = startH + startY - y
+                if(h < minH) h = minH;
+                if(y > maxY) y = maxY;
+                element.style.top = y + 'px';
+                element.style.height = h + 'px';
+          }
+        
+          function AIcloseDragElement() {
+            document.removeEventListener("mouseup", AIcloseDragElement);  
+            document.removeEventListener("mousemove", AIelementDrag);
+          }
+        return AIdragMouseDown
+    }
+}
+// https://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript
+  
+
+
+
+// start drag https://www.w3schools.com/howto/howto_js_draggable.asp
+function make_AI_draggable() { 
+  consolecont_ai_ner=document.getElementById("cont_ai_ner");
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+//  if (document.getElementById(consolecont_ai_ner.id + "Heaven"))
+//  if present, the Heaven is where you move the DIV from:
+//     document.getElementById(consolecont_ai_ner.id + "Heaven").onmousedown = AIdragMouseDown;
+//   } else {
+//   otherwise, move the DIV from anywhere inside the DIV:
+    document.getElementById("Heaven").onmousedown = consoleAIdragMouseDown;
+   
+ 
+
+  function consoleAIdragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeconsoledrag;
+    // call a function whenever the cursor moves:
+    document.onmousemove = consoledrag;
+  }
+
+  function consoledrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    consolecont_ai_ner.style.top = (consolecont_ai_ner.offsetTop - pos2) + "px";
+    consolecont_ai_ner.style.left = (consolecont_ai_ner.offsetLeft - pos1) + "px";
+  }
+
+  function closeconsoledrag() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+// end drag https://www.w3schools.com/howto/howto_js_draggable.asp
+
+
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="cont_ai_ner" id="cont_ai_ner">
+      <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders">
+      <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
+      <div class="dropdown">
+        <button class="dropbtn" style="margin:3px;">Menu</button>
+          <div class="dropdown-content">
+            <button class="dropbt" style="border:none;">-</button><br>
+             <a href="https://platform.openai.com/signup" target="_blank" title='Get Started &#013;SignUp for OpenAI Chat-GPT&#013;&#013;if you have a key&#013;enter it in the main window&#013; &#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me!'>
+             <button class="dropbt" style="border:none;color:green" onmouseover="this.focus()" onmouseout="this.blur()">Get Started OpenAI Signup</button></a>
+            <button class="dropbt" style="border:none;">-</button><br>
+            <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:green" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
+            <button class="dropbt" style="border:none;">-</button><br>
+            <a href="https://chat.openai.com" target="_blank" title="Chat-GPT WebPage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">chat.openai.com</button></a>
+            <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
+            <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button></a>
+            <button class="dropbt" style="border:none;">-</button><br>
+            <a href="https://status.openai.com/" target="_blank" title="OpenAI Server Status&#013;&#013;Has some downtime&#013;&#013;&#013;would loke to have a status image"><button class="dropbt" style="border:none;color:orange" onmouseover="this.focus()" onmouseout="this.blur()">OpenAI API Server Status</button></a>
+            <button class="dropbt" style="border:none;">-</button><br>
+            <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Comments, Suggestions, Feedback</button></a>
+            <button class="dropbt" style="border:none;">-</button><br>
+            <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="_blank" title="Heaven or Hell"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Heaven or Hell</button></a>
+            <button class="dropbt" style="border:none;">-</button><br>
+             <button class="dropbt" onclick="MaximizeAI();"style="border:none;">FullScreen</button><br>
+              <button class="dropbt" style="border:none;">-</button><br>
+          </div>
+       </div>	
+       <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover--> 
+        
+        <center>
+      	 Floating AI Code Assistant
+          <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin:3px;margin-right:5px;" title="Close Window"> X </button>
+          <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" style="float:right;margin:3px;" title="Hellup"><button>?</button></a>
+          <button onclick="MaximizeAI()" style="float:right;margin:3px;margin-right:5px;" title="Maximize AI Window to fullscreen"> + </button>
+         <button onclick="normalsize()" style="float:right;margin:3px;margin-right:5px;" title="normalsize AI Window"> - </button>
+        
+         </center>
+      </div>
+      <div class="AfterWorld"  id="AfterWorld" title="The AfterWorld">
+      	
+      	
+      	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
+              <center> 
+                    <label class="label" onmouseover="expandInput()" onmouseout="shrinkInput()" title="Get an OpenAI Api_Key Here!"><a href="https://platform.openai.com/account/api-keys" target="Heaven">API_KEY</a> : </label>
+                    <input type="text" class="input" id="apikey" placeholder="Type or Paste APi_KEY here..." title="Type or Paste APi_KEY here..." onmouseover="expandInput()" onmouseout="shrinkInput()">
+                    <br>
+                    <!-- https://platform.openai.com/docs/models -->
+                    <select name="model" id="model" title="Select an AI model">
+                        <option value="gpt-3.5-turbo-1106" title="For me the Fastest and 16k" style="color:green;">gpt-3.5-turbo-1106  16k</option>
+                        <option value="gpt-3.5-turbo" title="Slow for Me? Bussy? and 4k" style="color:green;">gpt-3.5-turbo 4k</option>
+                        <option value="gpt-3.5-turbo-16k" title="Dont know 16k">gpt-3.5-turbo-16k</option>
+                        <option value="code-davinci-002" title="Dont know" style="color:red;">code-davinci-002</option>
+                        <option value="gpt-4-1106-preview" title="Dont know" style="color:red;">gpt-4-1106-preview</option>
+                        <option value="gpt-4" title="Dont know" style="color:red;">gpt-4</option>
+                    
+                   
+                    </select>
+                    <!-- https://platform.openai.com/docs/models -->
+                         
+                   <button onclick='resultText.innerText=""' Title="WARNING!!!: Clear Chat Area/History">Clear Chat</button>
+   
+    <script> 
+        function expandInput() {
+            var container = document.querySelector('.input');
+            container.style.width = '200px';
+        }
+
+        function shrinkInput() {
+            var container = document.querySelector('.input');
+            container.style.width = '0'; 
+        }
+        shrinkInput();
+    </script>
+              </center>
+            </div>
+
+<div>   <!--Streaming OpenAI API Completions in JavaScript-->
+<!--
+      <center>
+      <h3 class=""> 
+       OpenAI Code Assistant
+      </h3>
+      </center>
+-->
+      <div id="resultcont_ai_ner" class="" style="border :1px solid gray;margin:10px;padding:10px;">
+        <!--<p class="">Generated Text</p>-->
+        <p id="resultText" class="" title="Chat Content" ></p>
+      </div>
+
+      <center>
+      <input type="text" id="promptInput" placeholder="Question Me..." title="Type or Paste your Question here...&#013;&#013;Looks like a little input field&#013;But it Handles more input as Google Bard"/>
+      <div class=""><div id="spinner"></div>
+        <br>
+        <button id="generateBtn" class="" title="Submit Question">Generate</button>
+        <button id="stopBtn" disabled class="" Title="Guess">Stop</button><br>
+   
+        </center>
+      </div>
+     <center>
+     <br>
+     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="Hell">Heaven or Hell, That is the Question.</a><br>
+     </center>
+    </div>
+      	
+      	
+      
+      <div class="Hell" title="&copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands">
+        <center>
+          <font style="font-size:10px;">
+                &copy; Dirk Luberth Dijkman Bangert 30 Andijk The Netherlands
+          </font>
+          <button onclick="scrollToTop()"  style="float:right;" title="Scroll to Top"><font style="transform: rotate(90deg);float:left;"><</font></button>
+          <button onclick="scrollToBottom()"  style="float:right;" title="Scroll to Bottom"><font style="transform: rotate(90deg);float:left;">></font></button>
+        
+        </center>
+        
+      </div>
+    </div>
+
+   
+<!-- 
+Copyright, Free to use if this/next message is left in the code   
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
+             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+       https://www.facebook.com/luberth.dijkman/
+Copyright, Free to use if this/above message is left in the code           
+-->
+    
+
+
+ <script>
+/*
+<!-- 
+Copyright, Free to use if this/next message is left in the code   
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
+             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+       https://www.facebook.com/luberth.dijkman/
+Copyright, Free to use if this/above message is left in the code   
+-->
+*/
+// Add your code here
+/**
+ * This code demonstrates how to use the OpenAI API to generate chat completions.
+ * The generated completions are received as a stream of data from the API 
+ * and the
+ * code includes functionality to handle errors and abort requests using an AbortController.
+ * The API_KEY variable needs to be updated 
+ * with the appropriate value from OpenAI for successful API communication.
+ */
+
+
+
+const API_URL = "https://api.openai.com/v1/chat/completions";
+
+
+ var apiKey;
+  // Check if there is an API key in local storage on page load
+  // console.log("aks",localStorage.getItem("apiKey"));
+  const storedApiKey = localStorage.getItem("apiKey");
+  if (storedApiKey) {
+    document.querySelector("#apikey").value = storedApiKey;
+    setTimeout(function(){console.warn("Wow!,You have been here before, Welcome Back!");
+    },500);
+  } 
+var API_KEY = document.querySelector("#apikey").value;
+
+const promptInput = document.getElementById("promptInput");
+const generateBtn = document.getElementById("generateBtn");
+const stopBtn = document.getElementById("stopBtn");
+const resultText = document.getElementById("resultText");
+
+    // Add an event listener to the input element for the "input" event.
+    document.getElementById("apikey").addEventListener("input", function(event) {
+      // This function will be called whenever the user types in the input field.
+      API_KEY = document.getElementById("apikey").value;
+      console.debug("API_KEY ", API_KEY)
+    });
+
+   
+
+
+let controller = null; // Store the AbortController instance
+
+const generate = async () => {
+  const spinner = document.getElementById("spinner");
+  spinner.style.display = "block";
+  
+  if (!promptInput.value) {
+    // alert("Please enter a prompt.");        // Alert is annoying change it         the user if no prompt value
+    resultText.innerHTML += "<br><font style=\"color:red;\"><b>ERROR: </b>Enter a Question in input text field</font><br>";
+    promptInput.value= "a prayer for my foolishness";
+    generate();
+    return;
+  }
+
+  console.debug("ask tokens ",promptInput.value.length);
+
+  // Disable the generate button and enable the stop button
+  generateBtn.disabled = true;
+  stopBtn.disabled = false;
+  resultText.innerText += "\n\n";
+
+  // Create a new AbortController instance
+  controller = new AbortController();
+  const signal = controller.signal;
+
+              // Get the dropdown element
+            var dropdown = document.getElementById("model");
+
+            // Get the selected value
+            var aiGPT_Model = dropdown.options[dropdown.selectedIndex].value;
+
+            // Log or use the selected value
+            console.log("aiGPT_Model:", aiGPT_Model);
+
+  try {
+    // Fetch the response from the OpenAI API with the signal from AbortController
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: aiGPT_Model,
+        messages: [{ role: "user", content: promptInput.value }],
+        max_tokens: 4000,     // think 4000 chars for response leaves 96 for ask
+        stream: true,         // For streaming responses
+      }),
+      signal,                 // Pass the signal to the fetch request
+    });
+
+    // Read the response as a stream of data
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+    //resultText.innerText = "";  //  i do not want to clear on each new question
+
+    // Store the API key in local storage
+    localStorage.setItem("apiKey", document.getElementById("apikey").value);
+    console.log("ak",localStorage.getItem("apiKey"));
+    document.getElementById("apikey").style.color="green";
+
+console.time();
+var message="";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) {
+        break;
+      }
+      // Massage and parse the chunk of data
+      const chunk = decoder.decode(value);
+      const lines = chunk.split("\n");
+      const parsedLines = lines
+        .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
+        .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
+        .map((line) => JSON.parse(line)); // Parse the JSON string
+
+      for (const parsedLine of parsedLines) {
+        const { choices } = parsedLine;
+        const { delta } = choices[0];
+        const { content } = delta;
+        // Update the UI with the new content
+        if (content) {
+          resultText.innerText += content;
+          message+=content;
+          console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
+           
+          scrollAfterWorldToBottom(); // Scroll to the bottom after generating a message
+
+        }
+      }
+    }
+console.timeEnd();
+
+console.debug("message tokens? ",message.length);
+console.debug("message ",message);
+console.debug("message tokens? ",message.length);
+
+  promptInput.value="";  // clear ask field
+ 
+  } catch (error) {
+    // Handle fetch request errors
+    if (signal.aborted) {
+      resultText.innerText += "\nRequest aborted.\n";
+    } else {
+      console.error("Error:", error);
+      resultText.innerHTML += "<br><font style=\"color:red;\">Error, is your API_KEY valid ?</font><br>";
+      console.error("Error, is your API_KEY valid ?");
+      document.getElementById("apikey").style.color="red";
+     
+    }
+  } finally {
+    // Enable the generate button and disable the stop button
+    generateBtn.disabled = false;
+    stopBtn.disabled = true;
+    controller = null; // Reset the AbortController instance
+  }
+   spinner.style.display = "none";
+};
+
+const stop = () => {
+  // Abort the fetch request by calling abort() on the AbortController instance
+  if (controller) {
+    controller.abort();
+    controller = null;
+  }
+};
+
+promptInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    resultText.innerText +="\n---------------\nYou: "+ promptInput.value+"";
+    generate();
+  }
+});
+
+generateBtn.addEventListener("click", (event)=>{
+  resultText.innerText +="\n---------------\nYou: "+ promptInput.value+"";
+  generate();
+});
+
+stopBtn.addEventListener("click", stop);
+
+// Function to scroll the AfterWorld div to the bottom
+function scrollAfterWorldToBottom() {
+  var AfterWorld = document.getElementById("AfterWorld");
+  AfterWorld.scrollTop = AfterWorld.scrollHeight;
+}
+
+  function scrollToTop() {
+    AfterWorld.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  function scrollToBottom() {
+    AfterWorld.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth"
+  });
+  }
+
+
+
+  function MaximizeAI() {
+      document.getElementById("cont_ai_ner").style.width = '100%';
+      document.getElementById("cont_ai_ner").style.height = '100%';
+      document.getElementById("cont_ai_ner").style.left = '0';
+      document.getElementById("cont_ai_ner").style.top = '0';
+  }
+
+    function normalsize() {
+      document.getElementById("cont_ai_ner").style.width = '40%';
+      document.getElementById("cont_ai_ner").style.height = '80%';
+      document.getElementById("cont_ai_ner").style.left = '30%';
+      document.getElementById("cont_ai_ner").style.top = '10%';
+  }
+
+
+</script>
+
+
+
+
+<script>
+  function toggleFullscreen() {
+    const elem = document.documentElement;
+
+    if (!document.fullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) { /* Firefox */
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE/Edge */
+        document.msExitFullscreen();
+      }
+    }
+  }
+</script>
+
+
+
+
+
+/*
+<!-- 
+Copyright, Free to use if this/next message is left in the code   
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
+             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+       https://www.facebook.com/luberth.dijkman/
+Copyright, Free to use if this/above message is left in the code   
+-->
+*/
+      </script>
+    
+    
+<!-- 
+Copyright, Free to use if this/next message is left in the code   
+    original source https://github.com/gopinav/ai 
+  this: 
+     OpenAI Stream Chat, HTML WebPage
+       https://plnkr.co/edit/KmmUTa3FNTQ6WLa7
+       https://codepen.io/ldijkman/pen/gOqWwxw?editors=1010
+       https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html
+             https://github.com/ldijkman/Ace_Seventh_Heaven/tree/main/docs
+       https://www.facebook.com/luberth.dijkman/
+Copyright, Free to use if this/above message is left in the code           
+-->        
                                   
 </body>
 
