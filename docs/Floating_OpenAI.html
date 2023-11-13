@@ -333,7 +333,9 @@ Copyright, Free to use if this/above message is left in the code
       </div>
      <center>
      <br>
-     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="Hell">Heaven or Hell, That is the Question.</a><br>
+     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="_blank">Heaven or Hell, That is the Question.</a><br>
+     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html" target="_Blank">The AfterWorld.</a><br>
+   
      </center>
     </div>
       	
@@ -816,6 +818,7 @@ const generate = async () => {
     document.getElementById("apikey").style.color="green";
 
 console.time();
+ var isCodeTag = false;
 var message="";
     while (true) {
       const { done, value } = await reader.read();
@@ -829,14 +832,31 @@ var message="";
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
         .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
         .map((line) => JSON.parse(line)); // Parse the JSON string
+      
 
       for (const parsedLine of parsedLines) {
         const { choices } = parsedLine;
         const { delta } = choices[0];
-        const { content } = delta;
+        var { content } = delta;
         // Update the UI with the new content
+        // console.warn(choices);
+        // console.warn(delta);
+        
         if (content) {
-          resultText.innerText += content;
+
+ 
+resultText.innerText += content;
+
+
+
+
+resultText.innerText = resultText.innerText.replace(/```/g, function(match) {
+    // Toggle the value of isCodeTag for each match
+    isCodeTag = !isCodeTag;
+
+    // Return the appropriate replacement based on isCodeTag
+    return isCodeTag ? '<br><textarea>' : '</textarea><br>';
+});
           message+=content;
           console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
            
@@ -845,6 +865,7 @@ var message="";
         }
       }
     }
+    //resultText.innerHTML=resultText.innerText;
 console.timeEnd();
 
 console.debug("message tokens? ",message.length);
