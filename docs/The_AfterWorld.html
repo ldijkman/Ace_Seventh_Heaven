@@ -309,6 +309,8 @@ a:-webkit-any-link {              /* change color link in topmenu*/
 .dropdown {
   position: relative;
   display: inline-block;
+    noposition: absolute;
+  nodisplay: block;
 }
 
 .dropdown-content {
@@ -5521,27 +5523,27 @@ function make_AI_draggable() {
   <div class="cont_ai_ner" id="cont_ai_ner">
       <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders">
       <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
-      <div class="dropdown">
+      <div class="dropdown"style="position: absolute;" >
         <button class="dropbtn" style="margin:3px;">Menu</button>
           <div class="dropdown-content">
-            
+           
              <a href="https://platform.openai.com/signup" target="_blank" title='Get Started &#013;SignUp for OpenAI Chat-GPT&#013;&#013;if you have a key&#013;enter it in the main window&#013; &#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me!'>
              <button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get Started OpenAI Signup</button></a>
-           
-            <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
             
+            <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
+         
             <a href="https://chat.openai.com" target="_blank" title="Chat-GPT WebPage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">chat.openai.com</button></a>
             <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
             <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button></a>
             
             <a href="https://status.openai.com/" target="_blank" title="OpenAI Server Status&#013;&#013;Has some downtime&#013;&#013;&#013;would loke to have a status image"><button class="dropbt" style="border:none;color:orange" onmouseover="this.focus()" onmouseout="this.blur()">OpenAI API Server Status</button></a>
-            
+           
             <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Comments, Suggestions, Feedback</button></a>
-            
+           
             <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="_blank" title="Heaven or Hell"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Heaven or Hell</button></a>
-            
+           
              <button class="dropbt" onclick="MaximizeAI();"style="border:none;">FullScreen</button><br>
-              
+            
           </div>
        </div>	
        <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover--> 
