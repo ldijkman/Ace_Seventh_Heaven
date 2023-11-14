@@ -5527,31 +5527,31 @@ function make_AI_draggable() {
         <button class="dropbtn" style="margin:3px;">Menu</button>
           <div class="dropdown-content">
            
-             <a href="https://platform.openai.com/signup" target="_blank" title='Get Started &#013;SignUp for OpenAI Chat-GPT&#013;&#013;if you have a key&#013;enter it in the main window&#013; &#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me!'>
-             <button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get Started OpenAI Signup</button></a>
+            <a href="https://platform.openai.com/signup" target="_blank" title='Get Started &#013;SignUp for OpenAI Chat-GPT&#013;&#013;if you have a key&#013;enter it in the main window&#013; &#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me!'>
+            <button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get Started OpenAI Signup</button></a>
             
             <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
          
-           <button onclick="openNewWindow()" value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
+            <button onclick='openNewWindow("https://chat.openai.com/")' value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
             <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
             <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button></a>
             
-            <a href="https://status.openai.com/" target="_blank" title="OpenAI Server Status&#013;&#013;Has some downtime&#013;&#013;&#013;would loke to have a status image"><button class="dropbt" style="border:none;color:orange" onmouseover="this.focus()" onmouseout="this.blur()">OpenAI API Server Status</button></a>
-           
+            <button onclick='openNewWindow("https://status.openai.com/")' value="Chat-GPT WebPage" title="OpenAI Server Status&#013;&#013;Has some downtime&#013;&#013;&#013;would loke to have a status image" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">OpenAI API Server Status</button></button>
+          
             <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Comments, Suggestions, Feedback</button></a>
            
             <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="_blank" title="Heaven or Hell"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Heaven or Hell</button></a>
            
-             <button class="dropbt" onclick="MaximizeAI();"style="border:none;">FullScreen</button><br>
+            <button class="dropbt" onclick="MaximizeAI();"style="border:none;">FullScreen</button><br>
             
           </div>
        </div>	
        <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover--> 
         <script>
-function openNewWindow() {
-window.open("https://chat.openai.com/", "_blank", "width=600, height=400");
-}
-</script>
+            function openNewWindow(what) {
+                 window.open(what, "_blank", "width=600, height=400");
+           }
+        </script>
         <center>
       	A.I. Code Assistant<!-- Ace Editor with AI / Ace Editor with AI -->
           <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin:3px;margin-right:5px;" title="Close Window"> X </button>
