@@ -5532,7 +5532,7 @@ function make_AI_draggable() {
             
             <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
          
-            <a href="https://chat.openai.com" target="_blank" title="Chat-GPT WebPage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">chat.openai.com</button></a>
+           <button onclick="openNewWindow()" value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
             <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
             <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button></a>
             
@@ -5547,7 +5547,11 @@ function make_AI_draggable() {
           </div>
        </div>	
        <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover--> 
-        
+        <script>
+function openNewWindow() {
+window.open("https://chat.openai.com/", "_blank", "width=600, height=400");
+}
+</script>
         <center>
       	 Floating AI Code Assistant
           <button onclick="toggleVisibility('cont_ai_ner')" style="float:right;margin:3px;margin-right:5px;" title="Close Window"> X </button>
