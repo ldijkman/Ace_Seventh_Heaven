@@ -1,19 +1,19 @@
 # Ace_Seventh_Heaven
 Ace Editor Seventh Heaven
----
+
+Editor with AI / Editor With GPT OpenAI / Editor With OpenAI API
 
 ## The AfterWorld
 A World of never ending HappiNess 
 ### https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html
 
 ---
-
-
 OpenAI Chat webpage, a chat with Heaven or Hell
  https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Chat.html
 
  [https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAi_Stream_Chat.html](https://ldijkman.github.io/Ace_Seventh_Heaven/OpenAI_Stream_Chat.html)
 
+ Floating_OpenAI.html
  
   [https://ldijkman.github.io/Ace_Seventh_Heaven/Floating_OpenAI.html](https://ldijkman.github.io/Ace_Seventh_Heaven/Floating_OpenAI.html)
 ---
@@ -52,7 +52,7 @@ Ace Diff: https://ldijkman.github.io/Ace_Seventh_Heaven/Ace-Diff.html
 
 <p align="center"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCn5P8yE7Nd7QBcKb9-JZbMWKPSwYT1weQpaY2tJaE9WUFU8bqQwYyLXvthWWqD4wZ_6s&usqp=CAU"></p>
 
-<p align="center">Http://paypal.me/LDijkman</p>
+[<p align="center">Http://paypal.me/LDijkman</p>](Http://paypal.me/LDijkman)Http://paypal.me/LDijkman
 
   
 
