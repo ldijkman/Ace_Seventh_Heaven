@@ -6,7 +6,7 @@ Ace Editor Seventh Heaven
 A World of never ending HappiNess 
 ### https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html
 
-
+---
 
 
 OpenAI Chat webpage, a chat with Heaven or Hell
