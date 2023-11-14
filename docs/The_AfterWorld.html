@@ -1488,7 +1488,7 @@ $( document ).tooltip({
 
 
  <input type="button"  id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="&#x26F6;">
-   
+   <input type="button"  id="AIbutton" onclick="toggleVisibility('cont_ai_ner')" title="GPT OpenAI API" style="color:greenyellow;" onmouseover="this.focus()" value="AI">
 
 
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
@@ -5954,6 +5954,20 @@ Copyright, Free to use if this/next message is left in the code
        https://www.facebook.com/luberth.dijkman/
 Copyright, Free to use if this/above message is left in the code           
 -->        
+    <script>
+        function toggleVisibility(what) {
+            var myDiv = document.getElementById(what);
+
+            // Toggle the visibility
+            if (myDiv.style.display === "none") {
+                myDiv.style.display = "block";
+                 console.warn('run in console => toggleVisibility("'+what+'");');
+            } else {
+                myDiv.style.display = "none";
+                console.warn('run in console => toggleVisibility("'+what+'");');
+            }
+        }
+    </script>
                                   
 </body>
 
