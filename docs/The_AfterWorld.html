@@ -706,7 +706,7 @@ var backup="";
 </head>
 
 <body>
-
+<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
  <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
  <div class="dropdown">
   <button class="dropbtn" onmouseover="this.focus()">File</button>
@@ -4980,7 +4980,7 @@ function play() {
 
         //const stylesheet = '#console-log-div{min-height:55px;max-height:200px;width:600px;top:200px;left:100px;margin:1px;padding:1px 0 0;font-family:"Input Mono",monospace;font-weight:400;font-size:.8em;line-height:1em;color:rgba(0,0,0,.61);box-shadow:inset 0 0 2px rgba(0,0,0,.1);background-color:#ebebeb;overflow:auto;overscroll-behavior-y:auto;transform:scale(100%);z-index:50000}#console-log-div #legend,#console-log-div .log-row,#console-log-div td{padding:1px 0 8px;text-indent:1px;z-index:50000}#console-log-div #legend{padding-bottom:12px;font-size:1.2em;cursor:move;z-index:50000}#console-log-div .log-row:nth-child(odd){background:rgba(0,0,0,.1);z-index:50000}#console-log-div thead{background:rgba(0,0,0,.2)}';
         //document.adoptedStyleSheets = [stylesheet];
-
+/*
       var etype = "log";
 
       (function initConsoleLogDiv() {
@@ -5180,11 +5180,11 @@ function play() {
         }, 250);
 
    
-               </script>  
+    //           <\/script>  
 
+*/
 
-
-               <script>
+ 
   // https://stackoverflow.com/questions/8960193/how-to-make-html-element-resizable-using-pure-javascript
 
 
@@ -5194,14 +5194,14 @@ document.addEventListener("DOMContentLoaded",
 function (event) {
 
            setTimeout(function () { var element = document.querySelector(".cont_ai_ner")
-makeResizable(element,16,16)
+AImakeResizable(element,16,16)
     console.info("AI Code Assistant, Running, Making it Draggable.");
     make_AI_draggable(); // https://www.w3schools.com/howto/howto_js_draggable.asp
 
 
  var element = document.querySelector(".cont_ai_ner")
-makeResizable(element,16,16)
-  }, 250);
+AImakeResizable(element,16,16)
+  }, 2500);
     console.info("Ok, You can Drag it now!.");
     console.info("& Wow!, Resize on Borders and Corners!.");
      console.debug('ai => RosyBrown');
@@ -5211,8 +5211,9 @@ makeResizable(element,16,16)
 
 
 
-function makeResizable(element, minW = 500, minH = 500, size = 10)
-{
+function AImakeResizable(element, minW = 500, minH = 500, size = 10)
+{ var element = document.querySelector(".cont_ai_ner")
+
     const top = document.createElement('div');
     top.style.width = '100%';
     top.style.height = size + 'px';
@@ -5480,12 +5481,12 @@ function make_AI_draggable() {
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
     pos4 = e.clientY;
-    document.onmouseup = closeconsoledrag;
+    document.onmouseup = closeaiconsoledrag;
     // call a function whenever the cursor moves:
-    document.onmousemove = consoledrag;
+    document.onmousemove = aiconsoledrag;
   }
 
-  function consoledrag(e) {
+  function aiconsoledrag(e) {
     e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
@@ -5498,7 +5499,7 @@ function make_AI_draggable() {
     consolecont_ai_ner.style.left = (consolecont_ai_ner.offsetLeft - pos1) + "px";
   }
 
-  function closeconsoledrag() {
+  function closeaiconsoledrag() {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
@@ -5509,6 +5510,8 @@ function make_AI_draggable() {
 
  </script>
 
+
+<!---->
 
 
 
@@ -5538,8 +5541,16 @@ function make_AI_draggable() {
          
             <button onclick='openNewWindow("https://chat.openai.com/")' value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
             <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
-            <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button></a>
             
+            <!--
+            <a href="https://platform.openai.com/usage" target="_blank" title="Traffic Tokens Usage"><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button></a>
+            -->
+            <button onclick='openNewWindow("https://platform.openai.com/usage")' value="Chat-GPT WebPage" title="Traffic Cost, Tokens, Usage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">AI Usage Info</button><br>
+            <br>
+          
+
+
+
             <button onclick='openNewWindow("https://status.openai.com/")' value="Chat-GPT WebPage" title="OpenAI Server Status&#013;&#013;Has some downtime&#013;&#013;&#013;would loke to have a status image" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">OpenAI API Server Status</button></button>
           
             <a href="https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/6" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">Comments, Suggestions, Feedback</button></a>
