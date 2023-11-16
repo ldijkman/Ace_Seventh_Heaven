@@ -4054,7 +4054,7 @@ var javascriptCompleter = {
    getDocTooltip: function(item) {
         if (!item.docHTML) {
             item.docHTML = [
-                'MDN Web Docs<a href="https://developer.mozilla.org/en-US/search?q=',item.caption,'" target="_blank"><br><br><br>', item.caption, '</a><br><br><center><input type="button" onclick=\'openinwindow("',item.caption,'")\' value="Open MDN Docs in window"><br></center>',
+                'MDN Web Docs<a href="https://developer.mozilla.org/en-US/search?q=',item.caption,'" target="_blank"><br><br><br>', item.caption, '</a><br><br><center><input type="button" style="color:greenyellow;" onclick=\'openinwindow("',item.caption,'")\' value="Open MDN Docs in window"  onmouseover="this.focus()" onmouseout="this.blur()"><br><br></center>',
             ].join("");
         }
     }
