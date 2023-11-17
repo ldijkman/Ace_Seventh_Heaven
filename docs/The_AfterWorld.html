@@ -5568,7 +5568,11 @@ function make_AI_draggable() {
        <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover--> 
         <script>
             function openNewWindow(what) {
-                 window.open(what, "_blank", "width=600, height=400");
+              var screenWidth = screen.width;
+              var screenHeight = screen.height;              
+               console.log("screensize ", screenWidth,"  ",screenHeight);
+               // center window on screen, window.open does not qaccept % or vw
+                 window.open(what, "_blank", 'width=600, height=400,left='+(screenWidth-600)/2+', top='+(screenHeight-400)/2+'');
            }
         </script>
         <center>
@@ -5900,6 +5904,8 @@ function scrollAfterWorldToBottom() {
 
 
   function MaximizeAI() {
+    if( document.getElementById("cont_ai_ner").style.width == '100%'){normalsize();return;}
+
       document.getElementById("cont_ai_ner").style.width = '100%';
       document.getElementById("cont_ai_ner").style.height = '100%';
       document.getElementById("cont_ai_ner").style.left = '0';
