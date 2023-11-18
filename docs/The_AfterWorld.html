@@ -616,6 +616,10 @@ color:green;
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 
+
+ <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
+
+
 <style>
 .ui-tooltip {
 	padding: 8px;
@@ -5655,15 +5659,19 @@ function make_AI_draggable() {
         <br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
         <button id="stopBtn" disabled class="" Title="Guess">Stop</button><br>
-   
+        <div id="BrainPain" title="server errors"></div>
+
+ 
+
+
+
+
         </center>
       </div>
      <center>
      <br>
      <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="_blank">Heaven or Hell, That is the Question.</a><br>
-     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html" target="_blank" title="Ace Editor with AI.">The AfterWorld.</a><br>
-    <br>
-   
+     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html" target="_blank" title="Ace Editor with AI.">The AfterWorld.</a>
      </center>
     </div>
       	
@@ -5764,9 +5772,22 @@ const generate = async () => {
     // alert("Please enter a prompt.");        // Alert is annoying change it         the user if no prompt value
     resultText.innerHTML += "<br><font style=\"color:red;\"><b>ERROR: </b>Enter a Question in input text field</font><br>";
     promptInput.value= "a prayer for my foolishness";
+
     generate();
     return;
   }
+
+  // https://status.openai.com/api/v2
+  // https://status.openai.com/api/v2/status.json
+  var sp = new StatusPage.page({ page : 'jbxzcdv9xc4d' });
+  sp.status({
+    success : function(data) {
+      console.warn("server errors: ",data.status.indicator," == ",data.status.description);
+      BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+" == "+data.status.description+"</small>";
+    }
+  });
+  // https://status.openai.com/api/v2/status.json
+  // https://status.openai.com/api/v2
 
   console.debug("ask tokens ",promptInput.value.length);
 
@@ -5787,6 +5808,8 @@ const generate = async () => {
 
             // Log or use the selected value
             console.log("aiGPT_Model:", aiGPT_Model);
+
+  
 
   try {
     // Fetch the response from the OpenAI API with the signal from AbortController
@@ -5814,6 +5837,11 @@ const generate = async () => {
     localStorage.setItem("apiKey", document.getElementById("apikey").value);
     console.log("ak",localStorage.getItem("apiKey"));
     document.getElementById("apikey").style.color="green";
+
+
+ 
+
+
 
 console.time();
 var message="";
@@ -6004,7 +6032,6 @@ Copyright, Free to use if this/above message is left in the code
 
 
 
-      </script>
     
     
 <!-- 
