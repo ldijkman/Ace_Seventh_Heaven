@@ -5543,7 +5543,7 @@ function make_AI_draggable() {
             
             <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
          
-            <button onclick='openNewWindow("https://chat.openai.com/","Chat-GPT")' value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
+            <button onclick='openNewWindow("https://chat.openai.com","chat")' value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
             <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
             
             <!--
@@ -5572,13 +5572,13 @@ function make_AI_draggable() {
        <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover--> 
         <script>
             function openNewWindow(what,target) {
-              if(target==""){target="_blank";}
+              if(target==""){target="_blank";} // do not know, o want chat to open in same target, but wil not do, usage does
               console.debug("window.open target",target);
               var screenWidth = screen.width;
               var screenHeight = screen.height;              
                console.log("screensize ", screenWidth,"  ",screenHeight);
                // center window on screen, window.open does not qaccept % or vw
-                 window.open(what, target, 'width=600, height=400,left='+(screenWidth-600)/2+', top='+(screenHeight-400)/2+'');
+                 window.open(what, target, 'width=600, height=400,left='+(screenWidth-600)/2+', top='+(screenHeight-400)/2);
            }
         </script>
         <center>
