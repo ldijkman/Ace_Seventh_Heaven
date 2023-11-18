@@ -5916,7 +5916,23 @@ function scrollAfterWorldToBottom() {
 
 
   function MaximizeAI() {
-    if( document.getElementById("cont_ai_ner").style.width == '100%'){normalsize();console.debug("MaximizeAI() going to normalsize()");return;}
+    var wi =  document.getElementById("cont_ai_ner").style.width;
+    var he =  document.getElementById("cont_ai_ner").style.height;
+
+
+    if(wi == '100%' & he == '100%'){
+      console.debug("MaximizeAI() bottom");
+      document.getElementById("cont_ai_ner").style.width = '100%';
+      document.getElementById("cont_ai_ner").style.height = '35%';
+      document.getElementById("cont_ai_ner").style.left = '0';
+      document.getElementById("cont_ai_ner").style.top = '65%';
+      return;
+    }
+    if(wi == '100%'){
+      normalsize();
+      console.debug("MaximizeAI() going to normalsize()");
+      return;
+    }
       console.debug("MaximizeAI()");
       document.getElementById("cont_ai_ner").style.width = '100%';
       document.getElementById("cont_ai_ner").style.height = '100%';
