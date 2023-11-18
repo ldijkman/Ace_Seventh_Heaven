@@ -5645,8 +5645,16 @@ function make_AI_draggable() {
       <center>
         <!--
       Question: <input type="text" id="promptInput"  styleplaceholder="Question Me..." title="Type or Paste your Question here...&#013;&#013;Looks like a little input field&#013;But it Handles more input as Google Bard"/>
-     -->
+    
      Question: <input type="text" id="promptInput" size="40" placeholder="Type or Paste your Question here..." title="Looks like a little input field, but it handles more input like Google Bard" />
+      -->
+
+     Ask: <textarea id="promptInput" tabindex="0" data-id="root" rows="1" cols="40" placeholder="Message ChatGPT…" class="m-0 w-full resize-none border-0 bg-transparent py-[10px] pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:py-4 md:pr-12 gizmo:md:py-3.5 gizmo:placeholder-black/50 gizmo:dark:placeholder-white/50 pl-3 md:pl-4" style="max-height: 200px; height: 44px; overflow-y: auto;"></textarea>
+     
+     
+     
+     
+     
       <div class=""><div id="spinner"></div>
         <br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
