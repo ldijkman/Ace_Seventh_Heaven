@@ -5892,11 +5892,13 @@ stopBtn.addEventListener("click", stop);
 
 // Function to scroll the AfterWorld div to the bottom
 function scrollAfterWorldToBottom() {
+    console.debug("scrollAfterWorldToBottom()");
   var AfterWorld = document.getElementById("AfterWorld");
   AfterWorld.scrollTop = AfterWorld.scrollHeight;
 }
 
   function scrollToTop() {
+    console.debug("scrollToTop()");
     AfterWorld.scrollTo({
       top: 0,
       behavior: "smooth"
@@ -5904,6 +5906,7 @@ function scrollAfterWorldToBottom() {
   }
 
   function scrollToBottom() {
+    console.debug("scrollToBottom()");
     AfterWorld.scrollTo({
     top: document.getElementById("AfterWorld").scrollHeight,
     behavior: "smooth"
@@ -5913,8 +5916,8 @@ function scrollAfterWorldToBottom() {
 
 
   function MaximizeAI() {
-    if( document.getElementById("cont_ai_ner").style.width == '100%'){normalsize();return;}
-
+    if( document.getElementById("cont_ai_ner").style.width == '100%'){normalsize();console.debug("MaximizeAI() going to normalsize()");return;}
+      console.debug("MaximizeAI()");
       document.getElementById("cont_ai_ner").style.width = '100%';
       document.getElementById("cont_ai_ner").style.height = '100%';
       document.getElementById("cont_ai_ner").style.left = '0';
@@ -5922,6 +5925,7 @@ function scrollAfterWorldToBottom() {
   }
 
     function normalsize() {
+      console.debug("normalsize()");
       document.getElementById("cont_ai_ner").style.width = '40%';
       document.getElementById("cont_ai_ner").style.height = '80%';
       document.getElementById("cont_ai_ner").style.left = '30%';
