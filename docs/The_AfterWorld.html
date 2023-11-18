@@ -5671,7 +5671,8 @@ function make_AI_draggable() {
      <center>
      <br>
      <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/Hell.html" target="_blank">Heaven or Hell, That is the Question.</a><br>
-     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html" target="_blank" title="Ace Editor with AI.">The AfterWorld.</a>
+     <a href="https://ldijkman.github.io/Ace_Seventh_Heaven/The_AfterWorld.html" target="_blank" title="Ace Editor with AI.">The AfterWorld.</a><br>
+   
      </center>
     </div>
       	
@@ -5783,6 +5784,8 @@ const generate = async () => {
   sp.status({
     success : function(data) {
       console.warn("server errors: ",data.status.indicator," == ",data.status.description);
+      BrainPain.style.color="green";
+      if(data.status.indicator!="none"){BrainPain.style.color="red";}
       BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+" == "+data.status.description+"</small>";
     }
   });
