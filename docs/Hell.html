@@ -5659,7 +5659,7 @@ function make_AI_draggable() {
         <br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
         <button id="stopBtn" disabled class="" Title="Guess">Stop</button><br>
-   <div id="text" title="server errors"></div>
+        <div id="BrainPain" title="server errors"></div>
 
  
 
@@ -5784,7 +5784,7 @@ const generate = async () => {
   sp.status({
     success : function(data) {
       console.warn("server errors: ",data.status.indicator);
-      text.innerHTML="<small>Brain Pain: "+data.status.indicator+"</small>";
+      BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+"</small>";
     }
   });
   // https://status.openai.com/api/v2
