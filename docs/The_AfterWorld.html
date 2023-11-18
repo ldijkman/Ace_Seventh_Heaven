@@ -5617,6 +5617,19 @@ function make_AI_draggable() {
                     <!-- https://platform.openai.com/docs/models -->
                          
                    <button onclick='resultText.innerText="";' Title="WARNING!!!: Clear Chat Area/History">Clear Chat</button>
+                     <button id="removeKeyButton" title="Erase API_KEY from Browsers LocalStorage">Erase API Key</button>
+
+  <script>
+    // Function to remove the API key from local storage
+    function removeApiKey() {
+      localStorage.removeItem("apiKey");
+      alert("API Key has been removed from local storage.");
+      apikey.value="Erased By Owner";
+    }
+
+    // Add an event listener to the button to trigger the removal of the API key
+    document.getElementById("removeKeyButton").addEventListener("click", removeApiKey);
+  </script>
    
     <script> 
         function expandInput() {
