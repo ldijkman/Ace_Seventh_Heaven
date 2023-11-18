@@ -5780,13 +5780,15 @@ const generate = async () => {
   }
 
   // https://status.openai.com/api/v2
+  // https://status.openai.com/api/v2/status.json
   var sp = new StatusPage.page({ page : 'jbxzcdv9xc4d' });
   sp.status({
     success : function(data) {
-      console.warn("server errors: ",data.status.indicator);
-      BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+"</small>";
+      console.warn("server errors: ",data.status.indicator," == ",data.status.description);
+      BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+" == "+data.status.description+"</small>";
     }
   });
+  // https://status.openai.com/api/v2/status.json
   // https://status.openai.com/api/v2
 
   console.debug("ask tokens ",promptInput.value.length);
