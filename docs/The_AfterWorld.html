@@ -5779,7 +5779,7 @@ Copyright, Free to use if this/above message is left in the code
 
 const API_URL = "https://api.openai.com/v1/chat/completions";
 
-
+var start=0;
  var apiKey;
   // Check if there is an API key in local storage on page load
   // console.log("aks",localStorage.getItem("apiKey"));
@@ -5809,6 +5809,8 @@ const resultText = document.getElementById("resultText");
 let controller = null; // Store the AbortController instance
 
 const generate = async () => {
+
+
   const spinner = document.getElementById("spinner");
   spinner.style.display = "block";
   
@@ -5912,14 +5914,15 @@ var message="";
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
         .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
         .map((line) => JSON.parse(line)); // Parse the JSON string
-
+ console.debug("parsedLines",parsedLines);
+     
       for (const parsedLine of parsedLines) {
         const { choices } = parsedLine;
        // console.debug("parsedLine",parsedLine );
         const { delta } = choices[0];
         const { content } = delta;
         const { finish_reason } = choices[0];
-        console.debug("finish_reason",finish_reason);
+       // console.debug("finish_reason",finish_reason);
 
         // Update the UI with the new content
         if (content) {
@@ -5996,6 +5999,7 @@ promptInput.addEventListener("keyup", (event) => {
 });
 
 generateBtn.addEventListener("click", (event)=>{
+  if(start==0){ resultText.innerText = "";start=1;}
   resultText.innerText +="\n---------------\nYou: "+ promptInput.value+"";
   generate();
 });
