@@ -5731,6 +5731,19 @@ Copyright, Free to use if this/above message is left in the code
 
 
  <script>
+
+setInterval(function(){ 
+  var brainpain = new StatusPage.page({ page : 'jbxzcdv9xc4d' });
+  brainpain.status({
+    success : function(data) {
+      console.warn("server errors: ",data.status.indicator," == ",data.status.description);
+      BrainPain.style.color="green";
+      if(data.status.indicator!="none"){BrainPain.style.color="red";}
+      BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+" == "+data.status.description+"</small>";
+    }
+  });
+},20000);
+
 /*
 <!-- 
 Copyright, Free to use if this/next message is left in the code   
@@ -5814,8 +5827,11 @@ const generate = async () => {
       BrainPain.innerHTML="<small>Brain Pain: "+data.status.indicator+" == "+data.status.description+"</small>";
     }
   });
+
   // https://status.openai.com/api/v2/status.json
   // https://status.openai.com/api/v2
+
+
 
   console.debug("ask tokens ",promptInput.value.length);
 
