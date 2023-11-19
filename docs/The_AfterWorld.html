@@ -5879,7 +5879,9 @@ const generate = async () => {
 
     // Store the API key in local storage
     localStorage.setItem("apiKey", document.getElementById("apikey").value);
-    console.log("ak",localStorage.getItem("apiKey"));
+    //console.log("ak",localStorage.getItem("apiKey"));
+    var str=localStorage.getItem("apiKey");
+    console.log("API_KEY ",str.slice(0,4), " ********** "  , str.slice(-4));// only show first 5 and last 5 chars
     document.getElementById("apikey").style.color="green";
 
 
