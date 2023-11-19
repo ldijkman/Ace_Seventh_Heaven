@@ -5682,13 +5682,14 @@ Dirk Luberth Dijkman
      Ask: <textarea id="promptInput" tabindex="0" data-id="root" rows="1" cols="40" placeholder="Ask Chat-GPT OpenAi API…" class="m-0 w-full resize-none border-0 bg-transparent py-[10px] pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:py-4 md:pr-12 gizmo:md:py-3.5 gizmo:placeholder-black/50 gizmo:dark:placeholder-white/50 pl-3 md:pl-4" style="max-height: 200px; height: 44px; overflow-y: auto;"></textarea>
      Ask:  <textarea id="promptInput" cols="40" placeholder="Ask Chat-GPT OpenAi API…" style="resize: none; overflow-y: scroll; height: 1.2em; min-height: 1.2em; max-height: calc(5 * 1.2em);" oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 2) + 'px'"></textarea>
        -->
+       <div id="BrainPain" title="server errors"><small>BrainPain Status</small></div>
    Ask:  <textarea id="promptInput" cols="40" placeholder="Ask Chat-GPT OpenAi API…" style="resize: both; overflow-y: auto; height: 1.2em; min-height: 1.2em; max-height: calc(5 * 1.2em);" oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 2) + 'px'"></textarea>
      
       <div class=""><div id="spinner"></div>
         <br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
         <button id="stopBtn" disabled class="" Title="Guess">Stop</button><br>
-        <div id="BrainPain" title="server errors"></div>
+        
 
  
 
@@ -5926,8 +5927,9 @@ var message="";
       }
     }
 console.timeEnd();
-
-
+console.log(resultText.innerText);
+//resultText.innerHTML=resultText.innerText;
+/*
 let inputString = resultText.innerHTML;
 // not what i want but code is now in a texarea created if message is complete
 let count = 0;
@@ -5936,9 +5938,10 @@ let replacedString = inputString.replace(/(\r\n|\r|\n)/g, '<br>');
   count++;
   return count % 2 === 0 ? '</textarea><br>' : '<br><textarea class="autoExpand" style="height:auto;">'; 
 });
-
 console.log(replacedString);
 resultText.innerHTML=replacedString;
+*/
+
 
 
 //  this.style.height = 'auto';
