@@ -5905,7 +5905,9 @@ var message="";
       }
       // Massage and parse the chunk of data
       const chunk = decoder.decode(value);
+      //console.debug("chunk",chunk);
       const lines = chunk.split("\n");
+      //console.debug("lines",lines);
       const parsedLines = lines
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
         .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
@@ -5913,8 +5915,12 @@ var message="";
 
       for (const parsedLine of parsedLines) {
         const { choices } = parsedLine;
+       // console.debug("parsedLine",parsedLine );
         const { delta } = choices[0];
         const { content } = delta;
+        const { finish_reason } = choices[0];
+        console.debug("finish_reason",finish_reason);
+
         // Update the UI with the new content
         if (content) {
           resultText.innerText += content;
