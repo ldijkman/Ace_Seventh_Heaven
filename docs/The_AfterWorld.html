@@ -541,6 +541,26 @@ color:green;
   height: auto;
   min-height: 40px; /* You can adjust this to your preferred minimum height */
 }
+
+
+.floating-div {
+position: absolute;
+right:10px;
+top:50%; /* position in the middle of the parent div */
+transform: translateY(-50%);
+background-color: #fff;
+border:1px solid #ccc;
+padding:4px;
+z-index:2500000;
+}
+
+.up-button,
+.down-button {
+display: block;
+margin-bottom:0px;
+width:100%;
+z-index:2500000;
+}
 </style>
 
 <!--
@@ -5539,6 +5559,11 @@ function make_AI_draggable() {
 
 
   <div class="cont_ai_ner" id="cont_ai_ner" >
+     	<div class="floating-div">
+<button class="up-button" onclick="scrollToTop();">U</button>
+<button class="down-button"  onclick="scrollToBottom();">D</button>
+</div>
+
       <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders" ondblclick="MaximizeAI()">
       <!--https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover-->
       <div class="dropdown"style="position: absolute;" >
@@ -5599,7 +5624,7 @@ function make_AI_draggable() {
          </center>
       </div>
       <div class="AfterWorld"  id="AfterWorld" title="The AfterWorld">
-      	
+ 
       	
       	    <div style="border :1px solid white;margin:10px;padding:10px;" title="Enter an Openai API_KEY">
               <center> 
