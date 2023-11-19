@@ -552,7 +552,7 @@ background-color: #fff;
 border:1px solid #ccc;
 padding:2px;
 z-index:2500000;
-opacity:.4;
+opacity:.6;
 }
 
 .up-button,
@@ -562,8 +562,8 @@ margin:0px;
 padding:2px;
 width:100%;
 z-index:2500000;
-opacity:.5;
-text-color:#000000FF;
+opacity:.7;
+color:#FF0000EE;
 }
 </style>
 
@@ -5564,8 +5564,8 @@ function make_AI_draggable() {
 
   <div class="cont_ai_ner" id="cont_ai_ner" >
      	<div class="floating-div">
-<button class="up-button" onclick="scrollToTop();">U</button>
-<button class="down-button"  onclick="scrollToBottom();">D</button>
+<button class="up-button" onclick="scrollToTop();" title="Scroll UP"><font style="transform: rotate(90deg);float:left;"><</font></button>
+<button class="down-button" onclick="scrollToBottom();" title="Scroll Down"><font style="transform: rotate(90deg);float:left;">></font></button>
 </div>
 
       <div class="Heaven" id="Heaven" title="You Can Drag Me & Resize on Corners and Borders" ondblclick="MaximizeAI()">
