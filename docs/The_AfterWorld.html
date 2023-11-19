@@ -537,7 +537,10 @@ color:green;
 
 .ddropdown:hover .dropbtn {background-color: #3e8e41;}
 
-
+.autoExpand {
+  height: auto;
+  min-height: 40px; /* You can adjust this to your preferred minimum height */
+}
 </style>
 
 <!--
@@ -5923,6 +5926,24 @@ var message="";
       }
     }
 console.timeEnd();
+
+
+let inputString = resultText.innerHTML;
+// not what i want but code is now in a texarea created if message is complete
+let count = 0;
+let replacedString = inputString.replace(/(\r\n|\r|\n)/g, '<br>');
+    replacedString = inputString.replace(/```/g, function(match) {
+  count++;
+  return count % 2 === 0 ? '</textarea><br>' : '<br><textarea class="autoExpand" style="height:auto;">'; 
+});
+
+console.log(replacedString);
+resultText.innerHTML=replacedString;
+
+
+//  this.style.height = 'auto';
+ // this.style.height = (this.scrollHeight) + 'px';
+
 
 console.debug("message tokens? ",message.length);
 console.debug("message ",message);
