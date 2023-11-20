@@ -5924,6 +5924,7 @@ const generate = async () => {
     });
     // Stream OpenAI Chat Completions Like ChatGPT in JavaScript
     // https://youtu.be/wDtjBb4ZJwA?si=3JBIZTcTEDgWjaiB
+    // https://www.builder.io/blog/stream-ai-javascript
 
     // Read the response as a stream of data
     const reader = response.body.getReader();
@@ -5946,6 +5947,7 @@ console.time();
 var message="";
     // Stream OpenAI Chat Completions Like ChatGPT in JavaScript
     // https://youtu.be/wDtjBb4ZJwA?si=3JBIZTcTEDgWjaiB
+    // https://www.builder.io/blog/stream-ai-javascript
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
