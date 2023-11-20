@@ -570,6 +570,15 @@ background:#FF000000;
 }
 </style>
 
+  <style>
+code {
+color: #00ff00;
+background-color: #000;
+padding:5px;
+display: block;
+}
+</style>
+
 <!--
    <style>
    /*   console   */
@@ -648,7 +657,8 @@ background:#FF000000;
 
 
  <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+ 
 
 <style>
 .ui-tooltip {
@@ -5990,6 +6000,9 @@ var message="";
     }
 console.timeEnd();
 console.log(resultText.innerText);
+ 
+    resultText.innerHTML = marked.parse(resultText.innerText);
+
 //resultText.innerHTML=resultText.innerText;
 /*
 let inputString = resultText.innerHTML;
