@@ -5709,6 +5709,10 @@ Tip!<br>
 if you have a question about sourcecode you have<br>
 paste the sourcecode together with the question<br>
 in 1 message<br>
+<br>
+Chat-GPT sends previous messages with the question<br>
+i do not, saves data<br>
+
 </p>
      
       </div>
@@ -5918,6 +5922,8 @@ const generate = async () => {
       }),
       signal,                 // Pass the signal to the fetch request
     });
+    // Stream OpenAI Chat Completions Like ChatGPT in JavaScript
+    // https://youtu.be/wDtjBb4ZJwA?si=3JBIZTcTEDgWjaiB
 
     // Read the response as a stream of data
     const reader = response.body.getReader();
@@ -5938,9 +5944,12 @@ const generate = async () => {
 
 console.time();
 var message="";
+    // Stream OpenAI Chat Completions Like ChatGPT in JavaScript
+    // https://youtu.be/wDtjBb4ZJwA?si=3JBIZTcTEDgWjaiB
     while (true) {
       const { done, value } = await reader.read();
       if (done) {
+        console.debug("done",done);
         break;
       }
       // Massage and parse the chunk of data
@@ -5952,7 +5961,7 @@ var message="";
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
         .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
         .map((line) => JSON.parse(line)); // Parse the JSON string
- console.debug("parsedLines",parsedLines);
+        console.debug("parsedLines",parsedLines);
      
       for (const parsedLine of parsedLines) {
         const { choices } = parsedLine;
