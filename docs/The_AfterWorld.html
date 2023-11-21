@@ -5740,7 +5740,8 @@ i do not, saves data<br>
           <button onclick='openNewWindow("https://platform.openai.com/usage","Usage")' value="Chat-GPT WebPage" title="Traffic Cost, Tokens, Usage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">?</button><br>
        -->    
    Ask:  <textarea id="promptInput" cols="40" placeholder="Ask Chat-GPT OpenAi API…" style="resize: both; overflow-y: auto; height: 1.2em; min-height: 1.2em; max-height: calc(5 * 1.2em);" oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 2) + 'px'"></textarea>
-     
+     <br><input type="checkbox" id="myCheckbox" onchange="updateStatus()">
+<label for="myCheckbox">Parse MarkDown to HTML when stream done</label>
       <div class=""><div id="spinner"></div>
         <br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
@@ -6000,8 +6001,69 @@ var message="";
     }
 console.timeEnd();
 console.log(resultText.innerText);
+
+
+
+if (document.getElementById('myCheckbox').checked) {
+
+resultText.innerHTML = marked.parse(resultText.innerText);
+} else {
+ //
+}
+//<input type="checkbox" id="myCheckbox" onchange="updateStatus()">
+//<label for="myCheckbox">Mark as read</label>
+
  
-    resultText.innerHTML = marked.parse(resultText.innerText);
+   
+
+//////////////////////////////////////////////////////////////////
+/*
+setTimeout(function(){
+  // Function to copy code content
+    function copyCode(index) {
+      const codeBlocks = document.querySelectorAll('code.language-javascript');
+      const codeBlock = codeBlocks[index];
+      const codeContent = codeBlock.textContent;
+
+      // Create a textarea element to copy the code
+      const textarea = document.createElement('textarea');
+      textarea.value = codeContent;
+
+      // Append the textarea to the body
+      document.body.appendChild(textarea);
+
+      // Select and copy the text
+      textarea.select();
+      document.execCommand('copy');
+
+      // Remove the textarea
+      document.body.removeChild(textarea);
+
+      alert('Code copied to clipboard!');
+    }
+
+    // Function to add copy buttons
+    function addCopyButtons() {
+      const codeBlocks = document.querySelectorAll('code.language-javascript');
+
+      codeBlocks.forEach((codeBlock, index) => {
+        // Create a copy button
+        const copyButton = document.createElement('button');
+        copyButton.textContent = 'Copy';
+        copyButton.addEventListener('click', () => copyCode(index));
+
+        // Append the copy button before the code block
+        codeBlock.parentNode.insertBefore(copyButton, codeBlock);
+      });
+    }
+
+    // Call the function to add copy buttons when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', addCopyButtons);
+},1500);
+*/
+//////////////////////////////////////////////////////////////////////
+
+
 
 //resultText.innerHTML=resultText.innerText;
 /*
