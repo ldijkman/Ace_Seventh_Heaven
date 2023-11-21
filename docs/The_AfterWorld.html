@@ -5740,12 +5740,13 @@ i do not, saves data<br>
           <button onclick='openNewWindow("https://platform.openai.com/usage","Usage")' value="Chat-GPT WebPage" title="Traffic Cost, Tokens, Usage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">?</button><br>
        -->    
    Ask:  <textarea id="promptInput" cols="40" placeholder="Ask Chat-GPT OpenAi API…" style="resize: both; overflow-y: auto; height: 1.2em; min-height: 1.2em; max-height: calc(5 * 1.2em);" oninput="this.style.height = 'auto'; this.style.height = (this.scrollHeight + 2) + 'px'"></textarea>
-     <br><input type="checkbox" id="myCheckbox" onchange="updateStatus()">
-<label for="myCheckbox">Parse MarkDown to HTML when stream done</label>
+    
       <div class=""><div id="spinner"></div>
         <br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
         <button id="stopBtn" disabled class="" Title="Guess">Stop</button><br>
+        <input type="checkbox" id="myCheckbox" onchange="updateStatus()">
+<label for="myCheckbox" title="Parse MarkDown to HTML when stream done">Parse MarkDown to HTML, when stream is done</label>
         
 
  
@@ -6005,11 +6006,27 @@ console.log(resultText.innerText);
 
 
 if (document.getElementById('myCheckbox').checked) {
-
-resultText.innerHTML = marked.parse(resultText.innerText);
+    resultText.innerHTML = marked.parse(resultText.innerText);
 } else {
  //
 }
+
+
+// Add an event listener for the "change" event
+document.getElementById('myCheckbox').addEventListener("change", function(event) {
+// Check if the checkbox is checked
+if (myCheckbox.checked) {
+      console.log("MD to HTML Checkbox is checked");
+      resultText.innerHTML = marked.parse(resultText.innerText);
+} else {
+      console.log("MD to HTML Checkbox is unchecked");
+      // Do something when the checkbox is unchecked
+      resultText.innerText= message;
+}
+});
+
+
+
 //<input type="checkbox" id="myCheckbox" onchange="updateStatus()">
 //<label for="myCheckbox">Mark as read</label>
 
