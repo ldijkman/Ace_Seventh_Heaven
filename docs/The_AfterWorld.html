@@ -5749,7 +5749,7 @@ i do not, saves data<br>
         <button id="generateBtn" class="" title="Submit Question">Generate</button>
         <button id="stopBtn" disabled class="" Title="Guess">Stop</button><br>
         <br>
-        <input type="checkbox" id="myCheckbox">
+        <input type="checkbox" id="myCheckbox" checked>
         <label for="myCheckbox" title="Parse MarkDown to HTML when stream done&#010;&#010;https://github.com/markedjs/marked">MarkDown to HTML</label>
         
 
@@ -6007,10 +6007,16 @@ var message="";
         // Update the UI with the new content
         if (content) {
          console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
-          
-         // resultText.innerText += content;         
-          message+=content;
-          resultText.innerHTML=marked.parse(message);
+ /*         
+if (content.includes("<!DOCTYPE html>")) {
+    // console.log("The string contains <html>");
+    content=content.replace("<!DOCTYPE html>", "'''\n<!DOCTYPE html>");
+} else {
+      //console.log("The string does not contain <html>");
+}
+*/
+  message+=content;
+          resultText.innerHTML=marked.parse(message.replace("<html>", "'''<html>"));
            
           scrollAfterWorldToBottom(); // Scroll to the bottom after generating a message
 
