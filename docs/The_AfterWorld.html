@@ -5716,6 +5716,9 @@ A.I. is an amazing impressive tool for code help.<br>
 i am just a hobbyist, trying to make an Editor.<br>
 Happy Coding, Greet, Dirk Luberth Dijkman!.<br>
 <br>
+playing a bit with markdown to html chat message <br>
+maybe a problem with html code without tripple backticks 
+<br><br>
 Tip!<br>
 if you have a question about sourcecode you have<br>
 paste the sourcecode together with the question<br>
@@ -6003,9 +6006,11 @@ var message="";
 
         // Update the UI with the new content
         if (content) {
-          resultText.innerText += content;
+         console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
+          
+         // resultText.innerText += content;         
           message+=content;
-          console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
+          resultText.innerHTML=marked.parse(message);
            
           scrollAfterWorldToBottom(); // Scroll to the bottom after generating a message
 
