@@ -5973,14 +5973,21 @@ var message="";
       }
       // Massage and parse the chunk of data
       const chunk = decoder.decode(value);
-      //console.debug("chunk",chunk);
-      const lines = chunk.split("\n");
+    //  console.debug("chunk",chunk);
+    //  data: {"id":"chatcmpl-8NCypeVBmYNc77kqmx5BnzBXjm024","object":"chat.completion.chunk","created":1700542131,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{"content":" today"},"finish_reason":null}]} 
+    //  data: {"id":"chatcmpl-8NCypeVBmYNc77kqmx5BnzBXjm024","object":"chat.completion.chunk","created":1700542131,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{"content":"?"},"finish_reason":null}]} 
+    //  data: {"id":"chatcmpl-8NCypeVBmYNc77kqmx5BnzBXjm024","object":"chat.completion.chunk","created":1700542131,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{},"finish_reason":"stop"}]} data: [DONE]
+      
+      const lines = chunk.split("\n");  // split
       //console.debug("lines",lines);
       const parsedLines = lines
         .map((line) => line.replace(/^data: /, "").trim()) // Remove the "data: " prefix
         .filter((line) => line !== "" && line !== "[DONE]") // Remove empty lines and "[DONE]"
         .map((line) => JSON.parse(line)); // Parse the JSON string
         console.debug("parsedLines",parsedLines);
+        // {"id":"chatcmpl-8ND55ADaPwEokMeXTanr0yXJpxWTC","object":"chat.completion.chunk","created":1700542519,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{"content":" today"},"finish_reason":null}]},
+        // {"id":"chatcmpl-8ND55ADaPwEokMeXTanr0yXJpxWTC","object":"chat.completion.chunk","created":1700542519,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{"content":"?"},"finish_reason":null}]},
+        // {"id":"chatcmpl-8ND55ADaPwEokMeXTanr0yXJpxWTC","object":"chat.completion.chunk","created":1700542519,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{},"finish_reason":"stop"}]}]
      
       for (const parsedLine of parsedLines) {
         const { choices } = parsedLine;
@@ -5988,7 +5995,11 @@ var message="";
         const { delta } = choices[0];
         const { content } = delta;
         const { finish_reason } = choices[0];
-       // console.debug("finish_reason",finish_reason);
+         console.debug("result ",delta,"---",content,"---",finish_reason);
+          // DEBUG: result {} --- --- stop
+          // DEBUG: result {"content":"?"} --- ? --- null
+          // DEBUG: result {"content":" today"} --- today --- null
+
 
         // Update the UI with the new content
         if (content) {
