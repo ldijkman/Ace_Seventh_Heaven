@@ -6003,20 +6003,14 @@ var message="";
           // DEBUG: result {"content":"?"} --- ? --- null
           // DEBUG: result {"content":" today"} --- today --- null
 
-
+if(finish_reason=="stop"){message+="\n\nEnd";resultText.innerHTML=marked.parse(message);}
         // Update the UI with the new content
         if (content) {
+
          console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
- /*         
-if (content.includes("<!DOCTYPE html>")) {
-    // console.log("The string contains <html>");
-    content=content.replace("<!DOCTYPE html>", "'''\n<!DOCTYPE html>");
-} else {
-      //console.log("The string does not contain <html>");
-}
-*/
+
   message+=content;
-          resultText.innerHTML=marked.parse(message.replace("<html>", "'''<html>"));
+          resultText.innerHTML=marked.parse(message);
            
           scrollAfterWorldToBottom(); // Scroll to the bottom after generating a message
 
