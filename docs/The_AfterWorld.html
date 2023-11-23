@@ -658,7 +658,13 @@ display: block;
 
  <script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
- 
+
+<!--
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
+
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+-->
 
 <style>
 .ui-tooltip {
@@ -5593,6 +5599,9 @@ function make_AI_draggable() {
             <a href="https://platform.openai.com/account/api-keys" target="_blank" title="Get an API_KEY&#013;&#013;if you have a key&#013;enter it in the main window&#013;&#013;API_KEY label expands with an input field&#013;&#013;Paste your key in the input field&#013;&#013;would you give me feedback?&#013;is my info//guide/description right&#013;This is also new for me"><button class="dropbt" style="border:none;color:greenyellow" onmouseover="this.focus()" onmouseout="this.blur()">Get an API_KEY</button></a>
          
             <button onclick='openNewWindow("https://chat.openai.com","chat")' value="Chat-GPT WebPage" title="Chat-GPT WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">Chat-GPT WebPage</button>
+           <br><br>
+            <button onclick='openNewWindow("https://blackbox.ai","blackbox")' value="BLACKBOX.AI WebPage" title="BLACKBOX.AI WebPage" class="dropbt" style="border:none;color:greenyellow;" onmouseover="this.focus()" onmouseout="this.blur()">BLACKBOX.AI WebPage</button>
+            
             <a href="https://platform.openai.com/docs/models" target="_blank" title=""><button class="dropbt" style="border:none;" onmouseover="this.focus()" onmouseout="this.blur()">AI models info</button></a>
             
             <!--
@@ -5809,9 +5818,9 @@ Copyright, Free to use if this/next message is left in the code
        https://www.facebook.com/luberth.dijkman/
 Copyright, Free to use if this/above message is left in the code           
 -->
-    
-
-
+    <!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+-->
  <script>
 
 setInterval(function(){ 
@@ -5825,6 +5834,7 @@ setInterval(function(){
     }
   });
 },60000);
+
 
 /*
 <!-- 
@@ -5850,7 +5860,7 @@ Copyright, Free to use if this/above message is left in the code
  * with the appropriate value from OpenAI for successful API communication.
  */
 
-
+ 
 
 const API_URL = "https://api.openai.com/v1/chat/completions";
 
@@ -5937,7 +5947,6 @@ const generate = async () => {
             // Log or use the selected value
             console.log("aiGPT_Model:", aiGPT_Model);
 
-  
 
   try {
     // Fetch the response from the OpenAI API with the signal from AbortController
@@ -5964,7 +5973,7 @@ const generate = async () => {
     const decoder = new TextDecoder("utf-8");
     //resultText.innerText = "";  //  i do not want to clear on each new question
 
-    // Store the API key in local storage
+    // Whe are trough, a valid key, Store the API key in your Browser local storage
     localStorage.setItem("apiKey", document.getElementById("apikey").value);
     //console.log("ak",localStorage.getItem("apiKey"));
     var str=localStorage.getItem("apiKey");
@@ -5972,10 +5981,11 @@ const generate = async () => {
     document.getElementById("apikey").style.color="green";
 
 
+
  
 
 
-
+resultText.innerHTML+='<div class="answer">';
 console.time();
 var message="";
     // Stream OpenAI Chat Completions Like ChatGPT in JavaScript
@@ -6015,6 +6025,7 @@ var message="";
           // DEBUG: result {} --- --- stop
           // DEBUG: result {"content":"?"} --- ? --- null
           // DEBUG: result {"content":" today"} --- today --- null
+// or UMD script
 
 if(finish_reason=="stop"){
  // message+="\n\nEnd";
@@ -6027,6 +6038,8 @@ if(finish_reason=="stop"){
 
           message+=content;
           resultText.innerHTML=marked.parse(message);
+          
+
            
           scrollAfterWorldToBottom(); // Scroll to the bottom after generating a message
 
@@ -6035,6 +6048,7 @@ if(finish_reason=="stop"){
     }
 console.timeEnd();
 console.log(resultText.innerText);
+resultText.innerHTML+='</div>';
 
 
 
@@ -6050,7 +6064,7 @@ document.getElementById('myCheckbox').addEventListener("change", function(event)
 // Check if the checkbox is checked
 if (myCheckbox.checked) {
       console.log("MD to HTML Checkbox is checked");
-      resultText.innerHTML = marked.parse(resultText.innerText);
+      resultText.innerHTML = marked.parse(message);
 } else {
       console.log("MD to HTML Checkbox is unchecked");
       // Do something when the checkbox is unchecked
