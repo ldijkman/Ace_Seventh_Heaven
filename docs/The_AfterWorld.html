@@ -4156,6 +4156,7 @@ langTools.addCompleter(javascriptCompleter);
       scrollPastEnd: .5,
       dragEnabled: true, // boolean: enable dragging
   	});
+ editor.renderer.setScrollMargin(150, 150, 0, 0); // Adds 50px padding at the top and bottom
 
 
 //https://codepen.io/zymawy/pen/XwbxoJ
@@ -4984,7 +4985,7 @@ function play() {
 
  <!-- hitwebcounter Code START -->
 <a href="https://www.hitwebcounter.com" target="_blank" >
-<img src="https://hitwebcounter.com/counter/counter.php?page=9338682&style=0038&nbdigits=6&type=page&initCount=0" title="i think this is a safe Counter Widget" Alt="Visit counter For Websites"   border="0" style="float:right;padding:5x;"/></a>                                    
+<img src="https://hitwebcounter.com/counter/counter.php?page=9338682&style=0005&nbdigits=6&type=page&initCount=0" title="i think this is a safe Counter Widget" Alt="Visit counter For Websites"   border="0" style="float:right;padding:5x;"/></a>                                    
             
             
             
@@ -5548,8 +5549,11 @@ function make_AI_draggable() {
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
-    // set the element's new position:
-    consolecont_ai_ner.style.top = (consolecont_ai_ner.offsetTop - pos2) + "px";
+    //console.log("pos2 ",pos2);
+    if (consolecont_ai_ner.offsetTop - pos2 >=30 ){
+         // set the element's new position:
+         consolecont_ai_ner.style.top = (consolecont_ai_ner.offsetTop - pos2) + "px";
+    }
     consolecont_ai_ner.style.left = (consolecont_ai_ner.offsetLeft - pos1) + "px";
   }
 
