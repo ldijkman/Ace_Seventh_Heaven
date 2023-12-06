@@ -4156,7 +4156,7 @@ langTools.addCompleter(javascriptCompleter);
       scrollPastEnd: .5,
       dragEnabled: true, // boolean: enable dragging
   	});
- editor.renderer.setScrollMargin(150, 150, 0, 0); // Adds 50px padding at the top and bottom
+ editor.renderer.setScrollMargin(200, 200, 0, 0); // Adds 50px padding at the top and bottom
 
 
 //https://codepen.io/zymawy/pen/XwbxoJ
@@ -6041,8 +6041,11 @@ if(finish_reason=="stop"){
          console.info("Blah ",content); // https://youtu.be/mfJhMfOPWdE
 
           message+=content;
-          resultText.innerHTML=marked.parse(message);
-          
+          // Output the formatted Markdown
+          formatHTMLForMarkdown(message);  
+          //resultText.innerHTML=marked.parse(message);
+resultText.innerHTML=marked.parse((formatHTMLForMarkdown(message)));
+      
 
            
           scrollAfterWorldToBottom(); // Scroll to the bottom after generating a message
@@ -6201,6 +6204,24 @@ generateBtn.addEventListener("click", (event)=>{
 });
 
 stopBtn.addEventListener("click", stop);
+
+
+function formatHTMLForMarkdown(htmlString) {
+  // Regular expression to detect HTML tags
+  const htmlTagRegex = /<("[^"]*"|'[^']*'|[^'">])*>/;
+  // Check if the string contains HTML
+  if (htmlTagRegex.test(htmlString)) {
+    // If it contains HTML, wrap it with triple backticks for Markdown code block
+    return `\`\`\`html\n${htmlString}\n\`\`\``;
+  } else {
+    // If not, return the original string
+    return htmlString;
+  }
+}
+
+
+
+
 
 // Function to scroll the AfterWorld div to the bottom
 function scrollAfterWorldToBottom() {
