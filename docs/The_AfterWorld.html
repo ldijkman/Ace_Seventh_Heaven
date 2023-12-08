@@ -5731,7 +5731,8 @@ Happy Coding, Greet, Dirk Luberth Dijkman!.<br>
 <br>
 playing a bit with markdown to html chat message <br>
 maybe a problem with html code without tripple backticks <br>
-
+<a href="javascript:void(0);" onclick='setTextInInput("html countdown to newyear 2024")' style="color:red;">Example that goes wrong: ask: html countdown to newyear 2024</a><br>
+<br>
 <a href="javascript:void(0);" onclick='setTextInInput("create html webpage with clock")' style="color:red;">Example that goes wrong: ask: create html webpage with clock</a><br>
 <br>
 <a href="javascript:void(0);" onclick='setTextInInput("javascript for loop examples")' style="color:red;">Example that is ok: ask: javascript for loop examples</a><br>
@@ -6007,7 +6008,20 @@ var message="";
     //  data: {"id":"chatcmpl-8NCypeVBmYNc77kqmx5BnzBXjm024","object":"chat.completion.chunk","created":1700542131,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{"content":" today"},"finish_reason":null}]} 
     //  data: {"id":"chatcmpl-8NCypeVBmYNc77kqmx5BnzBXjm024","object":"chat.completion.chunk","created":1700542131,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{"content":"?"},"finish_reason":null}]} 
     //  data: {"id":"chatcmpl-8NCypeVBmYNc77kqmx5BnzBXjm024","object":"chat.completion.chunk","created":1700542131,"model":"gpt-3.5-turbo-1106","system_fingerprint":"fp_eeff13170a","choices":[{"index":0,"delta":{},"finish_reason":"stop"}]} data: [DONE]
-      
+
+
+//test
+// Parse the JSON string into an object
+/////var mdataObject = JSON.parse(chunk);
+// Access the content within the 'choices' array
+/////var mcontent = mdataObject.choices[0].delta.content;
+// Output the content
+//////console.log("test",mcontent); // This will log " today" to the console
+//test
+
+
+
+
       const lines = chunk.split("\n");  // split
       //console.debug("lines",lines);
       const parsedLines = lines
