@@ -879,6 +879,11 @@ override theme colors<br><br>
 <!-- Color Picker for Gutter Background -->
 <label for="gutterBgColorPicker">Gutter background color:</label>
 <input type="color" id="gutterBgColorPicker" value="editorStyles.backgroundColor"><br>
+
+<!-- Color Picker for Gutter Foreground -->
+<label for="gutterFgColorPicker">Gutter foreground color:</label>
+<input type="color" id="gutterFgColorPicker" value="#FFFFFF"> 
+<!-- Replace #FFFFFF with your default gutter foreground color -->
 <script>
     // Get the color picker elements
     var editorBgColorPicker = document.getElementById('editorBgColorPicker');
@@ -893,6 +898,17 @@ override theme colors<br><br>
     gutterBgColorPicker.addEventListener('input', function() {
         document.querySelector('.ace_gutter').style.background = this.value;
     }, false);
+
+    // Get the gutter foreground color picker element
+var gutterFgColorPicker = document.getElementById('gutterFgColorPicker');
+
+// Gutter Foreground Color Picker event listener
+gutterFgColorPicker.addEventListener('input', function() {
+    var gutterCells = document.querySelectorAll('.ace_gutter-cell');
+    for (var i = 0; i < gutterCells.length; i++) {
+        gutterCells[i].style.color = this.value;
+    }
+}, false);
 </script>
    <!--
     <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
