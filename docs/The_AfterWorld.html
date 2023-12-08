@@ -866,6 +866,53 @@ var backup="";
 <button onclick='ace.edit("minimapeditor").setFontSize(parseFloat(ace.edit("minimapeditor").getFontSize())+.1);document.getElementById("minimapfontSize").value=minimapeditor.getFontSize()' title="MiniMap FontSize +" onmouseover="this.focus()">+</button>
 
 
+ <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+ <div class="dropdown">
+  <button class="dropbtn" onmouseover="this.focus()" title="override theme colors">BGC</button>
+  <div class="dropdown-content">
+override theme colors<br><br>
+
+    <!-- Color Picker for Editor Background -->
+<label for="editorBgColorPicker">Editor background color:</label>
+<input type="color" id="editorBgColorPicker" value="editorStyles.backgroundColor"><br>
+
+<!-- Color Picker for Gutter Background -->
+<label for="gutterBgColorPicker">Gutter background color:</label>
+<input type="color" id="gutterBgColorPicker" value="editorStyles.backgroundColor"><br>
+<script>
+    // Get the color picker elements
+    var editorBgColorPicker = document.getElementById('editorBgColorPicker');
+    var gutterBgColorPicker = document.getElementById('gutterBgColorPicker');
+
+    // Editor Background Color Picker event listener
+    editorBgColorPicker.addEventListener('input', function() {
+         editor.container.style.background = this.value;
+    }, false);
+
+    // Gutter Background Color Picker event listener
+    gutterBgColorPicker.addEventListener('input', function() {
+        document.querySelector('.ace_gutter').style.background = this.value;
+    }, false);
+</script>
+   <!--
+    <input type="button" class="dropbt" onclick="showhideminimap()" id="minimapbutton" value="Hide MiniMap" onmouseover="this.focus()">
+    <input type="button" class="dropbt" onclick="showhidepreview()" id="previewbutton" value="Hide Preview" onmouseover="this.focus()">
+    <input type="button" class="dropbt" id="fullscreenbutton" onclick="toggleFullScreen()" title="Toggle FullScreen" style="" onmouseover="this.focus()" value="FullScreen">
+    <input type="button" class="dropbt" id="linenmbrsbutton" onclick="togglelinenumbers()" title="Toggle the Gutter LineNumbers" style="" onmouseover="this.focus()" value="Hide LineNumbers">
+    <input type="button" class="dropbt" id="invisiblesbutton" onclick="toggleinvisibles()" title="Toggle Invisibles" style="" onmouseover="this.focus()" value="Hide Invisibles">
+    <input type="button" onclick="toggleconsole()" title="Toggle Editor console" style="" onmouseover="this.focus()" value="Toggle Editor Console">
+    <input type="button"   onclick="toggleVisibility('cont_ai_ner')" title="GPT OpenAI API" style="color:greenyellow;" onmouseover="this.focus()" value="Toggle A.I. Chat">
+ -->
+  </div>
+</div>
+<!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
+
+
+
+
+
+
 <!--
 ///////////////////////////
 // menu button Edit
