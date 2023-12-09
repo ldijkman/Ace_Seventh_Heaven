@@ -6113,6 +6113,9 @@ var message="asked: "+asked;
 if(finish_reason=="stop"){
  // message+="\n\nEnd";
 //resultText.innerHTML=message;
+
+resultText.innerHTML+='<input type="button" value="paste at cursor" onclick="var messag=resultText.innerText;editor.getSession().insert(editor.getCursorPosition(), messag);">';
+
 }
         // Update the UI with the new content
         if (content) {
