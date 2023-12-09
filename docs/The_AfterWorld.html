@@ -5794,7 +5794,7 @@ Happy Coding, Greet, Dirk Luberth Dijkman!.<br>
 <br>
 playing a bit with markdown to html chat message <br>
 maybe a problem with html code without tripple backticks <br>
-<a href="javascript:void(0);" onclick='setTextInInput("html draw a lemniscaat, and animate the drawing continu,change color each time, leave the previous drawn be overwrtitten by new color");generate();' style="color:red;">Example: ask: html draw a lemniscaat, and animate the drawing continu,change color each time, leave the previous drawn be overwrtitten by new color</a><br>
+<a href="javascript:void(0);" onclick='setTextInInput("html draw a lemniscaat, and animate the drawing continu,change color each time, leave the previous drawn be overwrtitten by new color, include text to html, forever and thats a mighty long time");generate();' style="color:red;">Example: ask: html draw a lemniscaat, and animate the drawing continu,change color each time, leave the previous drawn be overwrtitten by new color, include text to html, forever and that's a mighty long time</a><br>
 <br>
 <a href="javascript:void(0);" onclick='setTextInInput("html countdown to newyear 2024");generate();' style="color:red;">Example: ask: html countdown to newyear 2024</a><br>
 <br>
@@ -5998,7 +5998,7 @@ const generate = async () => {
 
 
   console.debug("ask tokens ",promptInput.value.length);
-
+var asked = promptInput.value+"\n\n";
   // Disable the generate button and enable the stop button
   generateBtn.disabled = true;
   stopBtn.disabled = false;
@@ -6057,7 +6057,7 @@ const generate = async () => {
 
 resultText.innerHTML+='<div class="answer">';
 console.time();
-var message="";
+var message="asked: "+asked;
     // Stream OpenAI Chat Completions Like ChatGPT in JavaScript
     // https://youtu.be/wDtjBb4ZJwA?si=3JBIZTcTEDgWjaiB
     // https://www.builder.io/blog/stream-ai-javascript
@@ -6150,11 +6150,11 @@ document.getElementById('myCheckbox').addEventListener("change", function(event)
 // Check if the checkbox is checked
 if (myCheckbox.checked) {
       console.log("MD to HTML Checkbox is checked");
-      resultText.innerHTML = marked.parse(message);
+      resultText.innerHTML = asked+ marked.parse(message);
 } else {
       console.log("MD to HTML Checkbox is unchecked");
       // Do something when the checkbox is unchecked
-      resultText.innerText= message;
+      resultText.innerText= asked+message;
 }
 });
 
