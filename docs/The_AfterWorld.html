@@ -789,6 +789,27 @@ var backup="";
 
 
 
+<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
+ <!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+ <div class="dropdown">
+  <button class="dropbtn" onmouseover="this.focus()">New</button>
+  <div class="dropdown-content">
+ <input type="button" class="savebutton dropbt" type="button" style="" 
+ title="New blank file&#013;" 
+ onmouseover="this.focus()" value="New"
+ onclick='filename.value="New.html"; editor.setValue("", -1);'>
+ </div>
+</div>
+<!--/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_hover*/-->
+
+
+
+
+
+
+
+
+
 <input
         type="file"
         id="openbton"
@@ -798,7 +819,7 @@ var backup="";
         title="For PC load a file from Disk"
         hidden
       />
-<input class="text" value="7th_Heaven.html" size="15" title="FileName" onmouseover="this.focus()">
+<input class="text" id="filename" value="7th_Heaven.html" size="15" title="FileName" onmouseover="this.focus()">
 
   <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())-1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize -" onmouseover="this.focus()">-</button>
   <input type="number" id="fontSize" style="width: 2.2em;" value='20' oninput='ace.edit("editor").setFontSize(parseInt(this.value))'  title="FontSize" onmouseover="this.focus()">
