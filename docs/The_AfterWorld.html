@@ -1811,2100 +1811,609 @@ function XFunction() {
 
 
 <div class="container">
-    <div id="editor" onmouseover='ace.edit("editor").focus();'><textarea>
-<!DOCTYPE html> <!-- this should be the first line of the document not all the blahblah before this-->
-<html> <!--trigger an Error should be <html> see vertical scrollbar red line-->
+    <div id="editor" onmouseover='ace.edit("editor").focus();'><textarea><!doctype html>
+
+<html>
 <head>
-
-  <title>Visual TimeSlot Day Week Scheduler, Touch Friendly</title>
-
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/Electra.jpg">
-  <!-- on my android icon is also shown on home screen, if saved to home screen -->
-<!--
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  -->
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- when save to home screen on phone - it is full screen - no annoying adres bar -->
-    <!-- Allow web app to be run in full-screen mode - iOS. -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- Allow web app to be run in full-screen mode - Android. -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-     <!--
-       do not show google translate popup, translate does not work
-       should not be translated Google won't translate any of the content
-     -->
-    <meta name="google" value="notranslate">
-    <meta name="google" content="notranslate">
-
-    <meta name="description" content="Visual Day scheduler.">
-    <meta name="author" content="Copyright Dirk Luberth Dijkman 2023">
-
-
-  <!--
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  -->
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-   <!-- modified version analog timepcker on github https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs -->
-   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/timepicker.js"></script>
-   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/ismobile.js"></script>
-   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/suncalc.js"></script>
-
-	    
-  <link rel="stylesheet" href="https://ldijkman.github.io/Ace_Seventh_Heaven/console.css">
-<!--
-<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>
--->
-
+  <script src="//cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js">
+</script>
 <style>
-  #editpopup {          /* # = id */
-  position: fixed;
-  left:40%;
-  top:30%;
-  z-index: 9;
-  background-color: #f1f1f1;
-  text-align: center;
-  border: 1px solid orange;
-  padding: 1px;
-  z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000*/
-  display: none;
-}
-
-#editpopupheader {      /* # = id */
-  padding: 5px;
-  cursor: move;
-  z-index: 10;
-  background-color: #2196F3;
-  color: #fff;
-  z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000 */
-}
-
-.clock-timepicker-popup{    /* . = class */
-  opacity:90%;
-  }
-
-#outerDiv {                 /* # = id */
-  position:relative;
-  width:100%;
-  height:50px;
-  border: 1px solid black;
-  background-color: lightgray;
-  cursor: pointer;
-
-}
-.outerDiv {               /* . = class */
-  width:100%;
-  height:50px;
-  border: 1px solid black;
-
-}
-#innerDiv {
-  position:relative;
-  //left:50px;
-  width: 0px;
-  height:50px;
-  background-color: green;
-  opacity:50%;
-  z-index:500;
-
-}
-.ruler-line {               /* . = class */
-  background: #999;
-  top: -30px;
-  position: absolute;
-  left: 50%;
-}
-
-.ruler-number {               /* . = class */
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  margin-left: -.20em;
-  width: 2em;
-  z-index:-1;  /*  stops it from click add timeslots*/
-}
-
-
-.evening_shade {               /* . = class */
- position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;
- width: 5%;
-}
-.morning_shade {
-  position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;
-  left:91%;
-  width: 5%;
-}
-
-#label_monday{
-  color:green;
-}
-input{
-  caret-color: red;   /*no blibking cursor at some places*/
-}
-
-label  {
-  cursor:pointer;             /*mouse hand on label monday ....*/
-  caret-color: transparent;   /*no blinking cursor at some places*/
-  user-select: none;          /*disable mouse text drag selection on labels*/
- }
-
-body{
-  caret-color: transparent;   /*no blibking cursor at some places*/
-  user-select: none;
-  /*
-  disable mouse text drag selection on body
-  is that what facebook uses?
-  */
-}
-
-
-
+#qrcode {transform: rotate(45deg);}
 </style>
-
 </head>
-<body bgcolor="#f2f2ed">
 
-
-<script>
-/////////////////////////////////////////////
-// served from ESP32
-// screenshots
-// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch
-// Chrome inspect => Network => WS
-/////////////////////////////////////////////
-/**
- * ----------------------------------------------------------------------------
- * ESP32 Remote Control with WebSocket
- * ----------------------------------------------------------------------------
- * © 2020 Stéphane Calderoni
- *
- * https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
- *
- * https://github.com/m1cr0lab-esp32/remote-control-with-websocket
- * ----------------------------------------------------------------------------
- */
-
-var gateway = `ws://${window.location.hostname}/ws`;
-var websocket;
-
-// ----------------------------------------------------------------------------
-// Initialization
-// ----------------------------------------------------------------------------
-
-window.addEventListener('load', onLoad);
-
-function onLoad(event) {
-    initWebSocket();
-}
-
-// ----------------------------------------------------------------------------
-// WebSocket handling
-// ----------------------------------------------------------------------------
-
-function initWebSocket() {
-    console.log('Trying to open a WebSocket connection...');
-    websocket = new WebSocket(gateway);
-    websocket.onopen  = onOpen;
-    websocket.onclose = onClose;
-}
-
-function onOpen(event) {
-    console.log('Connection opened');
-}
-
-function onClose(event) {
-    console.log('Connection closed');
-    setTimeout(initWebSocket, 2000);
-}
-
-/* later on the page next code for sending websocket
-function send_to_ESP(){                              // call by save and delete
-    var dy=daytext;
-    var ts=timeslots;
-    timeslot_to_ESP = {dy,ts};        // active day timeslot
-    console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
-
-    websocket.send(JSON.stringify( timeslot_to_ESP ));  // send the websocket to ESP
-    // {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
-
-}
-*/
-
-/////////////////////////////////////////////
-// served from ESP32
-// screenshots
-// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch
-// Chrome inspect => Network => WS
-/////////////////////////////////////////////
-
-
-/*
-*  var dy=daytext;
-   var ts=timeslots;
-   timeslot_to_ESP = {dy,ts};
-
-* deserialize {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
-* websocket message {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
-* https://arduinojson.org/v6/assistant/#/step2
-* result arduino code
-// Stream& input; {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
-
-StaticJsonDocument<256> doc;
-
-DeserializationError error = deserializeJson(doc, input);
-
-if (error) {
-  Serial.print(F("deserializeJson() failed: "));
-  Serial.println(error.f_str());
-  return;
-}
-
-const char* dy = doc["dy"]; // "Tue"
-
-JsonArray ts = doc["ts"];
-int ts_0 = ts[0]; // 0
-int ts_1 = ts[1]; // 60
-int ts_2 = ts[2]; // 300
-int ts_3 = ts[3]; // 360
-int ts_4 = ts[4]; // 600
-int ts_5 = ts[5]; // 660
-int ts_6 = ts[6]; // 900
-int ts_7 = ts[7]; // 960
-int ts_8 = ts[8]; // 1200
-int ts_9 = ts[9]; // 1260
-*/
-
-console.info(' Hello World', new Date());	    
-	    
-</script>
-
-
-
-
-
-
-
+<body>
+  
+<h1>Printable Big Font Large Text week calendar 
+      <br>
+      with write space for reminders, paper memory anchor
+      <br>
+      Printable Senior Alzheimer Dementia Calendar
+      <br>
+      <a href="https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/" target="printit"> full screen https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/</a></h1>
+<button onClick="window.print()">Print this page</button>
 <center>
-<pre class="gofullscreenmessage" id="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>
-<pre class="pleaserotatetolandscape" id="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>
+  <a href="https://tinyurl.com/plnkr" target="ly">
+  <div id="qrcode"></div><br><br><br>
+  https://tinyurl.com/plnkr</a><br><br>
+<script type="text/javascript">new QRCode(document.getElementById("qrcode"), "https://tinyurl.com/plnkr");</script>
 
-<br>
+ 
+<button onClick="window.print()">Print this page</button>
 
-<!-- radio button is hidden -->
-<label for="radio_monday" id="label_monday"  style="border: 1px solid gray;border-radius: 13px; padding:5px;margin:3px;color:green;">
-Monday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_monday" style="color:gray;" checked hidden >
-</label>
-<label for="radio_tuesday" id="label_tuesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Tuesday
-<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit(this.id)" id="radio_tuesday" style="color:gray;" hidden>
-</label>
-<label for="radio_wednesday" id="label_wednesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Wednesday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_wednesday" style="color:gray;" hidden>
-</label>
-<label for="radio_thursday" id="label_thursday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Thursday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_thursday" style="color:gray;" hidden>
-</label>
-<label for="radio_friday" id="label_friday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Friday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_friday" style="color:gray;" hidden>
-</label>
-<label for="radio_saturday" id="label_saturday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Saturday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_saturday" style="color:gray;" hidden>
-</label>
-<label for="radio_sunday" id="label_sunday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Sunday
-<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit(this.id)" id="radio_sunday" style="color:gray;" hidden>
-</label>
-
-</center>
-<br>
-
-<div id="container" class="container" style="">
-
-    <div id="day"><h1>Monday</h1><!-- big dayname on left gets here --></div>
-
-    <div id='outerDiv' class="outerDiv" onclick = 'changeWidth(event)'>
-        <div id='innerDiv'></div>
-    </div>
-
-</div>
 <br><br>
-<center>
-<br>
-<br>
-<br>
-<label for="days">Copy <b class id="copyday"></b> Schema to</label>
-<select id="days">
-  <option id="firstoption" value="none" style="color:gray;" selected disabled>Select Day</option>
-  <optgroup label=" ">
-  <option value="monday">Monday</option>
-  <option value="tuesday">Tuesday</option>
-  <option value="wednesday">Wednesday</option>
-  <option value="thursday">Thursday</option>
-  <option value="friday">Friday</option>
-  <option value="saturday">Saturday</option>
-  <option value="sunday">Sunday</option>
-  </optgroup>
-  <optgroup label=" ">
-  <option value="weekdays">Weekdays Mon...Fri</option>
-  </optgroup
-  ><optgroup label=" "> </optgroup>
 
+
+<h1>Language Calendar</h1>
+<button onClick='make_calendar("fy")'>Frysk Frisk Friesland Fries FY</button><br>
+<br>
+<button onClick='make_calendar("us")'>Englisch</button>
+<button onClick='make_calendar("sw")'>Sweden</button>
+<button onClick='make_calendar("nl")'>Dutch Nederlands</button>
+<button onClick='make_calendar("it")'>Italie</button>
+<button onClick='make_calendar("pl")'>Poland</button>
+<button onClick='make_calendar("de")'>Germany</button>
+<button onClick='make_calendar("da")'>Denmark</button>
+<button onClick='make_calendar("es")'>Espanja</button>
+
+
+<button onClick='make_calendar("fr")'>France</button>
+<button onClick='make_calendar("FI")'>Finland</button>
+
+<button onClick='make_calendar("PT")'>Portugese</button>
+<button onClick='make_calendar("UKR")'>Ukraine</button>
+<button onClick='make_calendar("TR")'>Turkije</button>
+
+
+<button onClick='make_calendar("zh")'>Chinese</button>
+<button onClick='make_calendar("bg")'>Bulgarian</button>
+<button onClick='make_calendar("he")'>Hebrew</button>
+
+<button onClick='make_calendar("ja")'>Japanese ja</button>
+<button onClick='make_calendar("lv")'>Latvian </button>
+<button onClick='make_calendar("lt")'>Lithuanian</button>
+ 
+
+
+<button onClick='make_calendar("hi")'>Hindi</button>
+<button onClick='make_calendar("ar")'>Arabic</button>
+<button onClick='make_calendar("bn")'>Bengali</button>
+
+<button onClick='make_calendar("ru")'>Russian</button>
+<button onClick='make_calendar("pa")'>Punjabi</button>
+
+
+
+
+<h1>or Select a Language for the Calendar</h1>
+
+<!-- 
+https://www.w3schools.com/tags/ref_language_codes.asp 
+https://www.html-code-generator.com/html/drop-down/languages-name
+-->
+
+<select id="languages" name="languages">
+    <option>Select Language</option>
+    <option value="fy">Fries Frisk Frysk Friesland</option>
+    <option value="af">Afrikaans</option>
+    <option value="sq">Albanian - shqip</option>
+    <option value="am">Amharic - አማርኛ</option>
+    <option value="ar">Arabic - العربية</option>
+    <option value="an">Aragonese - aragonés</option>
+    <option value="hy">Armenian - հայերեն</option>
+    <option value="ast">Asturian - asturianu</option>
+    <option value="az">Azerbaijani - azərbaycan dili</option>
+    <option value="eu">Basque - euskara</option>
+    <option value="be">Belarusian - беларуская</option>
+    <option value="bn">Bengali - বাংলা</option>
+    <option value="bs">Bosnian - bosanski</option>
+    <option value="br">Breton - brezhoneg</option>
+    <option value="bg">Bulgarian - български</option>
+    <option value="ca">Catalan - català</option>
+    <option value="ckb">Central Kurdish - کوردی (دەستنوسی عەرەبی)</option>
+    <option value="zh">Chinese - 中文</option>
+    <option value="zh-HK">Chinese (Hong Kong) - 中文（香港）</option>
+    <option value="zh-CN">Chinese (Simplified) - 中文（简体）</option>
+    <option value="zh-TW">Chinese (Traditional) - 中文（繁體）</option>
+    <option value="co">Corsican</option>
+    <option value="hr">Croatian - hrvatski</option>
+    <option value="cs">Czech - čeština</option>
+    <option value="da">Danish - dansk</option>
+    <option value="nl">Dutch - Nederlands</option>
+    <option value="en">English</option>
+    <option value="en-AU">English (Australia)</option>
+    <option value="en-CA">English (Canada)</option>
+    <option value="en-IN">English (India)</option>
+    <option value="en-NZ">English (New Zealand)</option>
+    <option value="en-ZA">English (South Africa)</option>
+    <option value="en-GB">English (United Kingdom)</option>
+    <option value="en-US">English (United States)</option>
+    <option value="eo">Esperanto - esperanto</option>
+    <option value="et">Estonian - eesti</option>
+    <option value="fo">Faroese - føroyskt</option>
+    <option value="fil">Filipino</option>
+    <option value="fi">Finnish - suomi</option>
+    <option value="fr">French - français</option>
+    <option value="fr-CA">French (Canada) - français (Canada)</option>
+    <option value="fr-FR">French (France) - français (France)</option>
+    <option value="fr-CH">French (Switzerland) - français (Suisse)</option>
+    <option value="gl">Galician - galego</option>
+    <option value="ka">Georgian - ქართული</option>
+    <option value="de">German - Deutsch</option>
+    <option value="de-AT">German (Austria) - Deutsch (Österreich)</option>
+    <option value="de-DE">German (Germany) - Deutsch (Deutschland)</option>
+    <option value="de-LI">German (Liechtenstein) - Deutsch (Liechtenstein)</option>
+    <option value="de-CH">German (Switzerland) - Deutsch (Schweiz)</option>
+    <option value="el">Greek - Ελληνικά</option>
+    <option value="gn">Guarani</option>
+    <option value="gu">Gujarati - ગુજરાતી</option>
+    <option value="ha">Hausa</option>
+    <option value="haw">Hawaiian - ʻŌlelo Hawaiʻi</option>
+    <option value="he">Hebrew - עברית</option>
+    <option value="hi">Hindi - हिन्दी</option>
+    <option value="hu">Hungarian - magyar</option>
+    <option value="is">Icelandic - íslenska</option>
+    <option value="id">Indonesian - Indonesia</option>
+    <option value="ia">Interlingua</option>
+    <option value="ga">Irish - Gaeilge</option>
+    <option value="it">Italian - italiano</option>
+    <option value="it-IT">Italian (Italy) - italiano (Italia)</option>
+    <option value="it-CH">Italian (Switzerland) - italiano (Svizzera)</option>
+    <option value="ja">Japanese - 日本語</option>
+    <option value="kn">Kannada - ಕನ್ನಡ</option>
+    <option value="kk">Kazakh - қазақ тілі</option>
+    <option value="km">Khmer - ខ្មែរ</option>
+    <option value="ko">Korean - 한국어</option>
+    <option value="ku">Kurdish - Kurdî</option>
+    <option value="ky">Kyrgyz - кыргызча</option>
+    <option value="lo">Lao - ລາວ</option>
+    <option value="la">Latin</option>
+    <option value="lv">Latvian - latviešu</option>
+    <option value="ln">Lingala - lingála</option>
+    <option value="lt">Lithuanian - lietuvių</option>
+    <option value="mk">Macedonian - македонски</option>
+    <option value="ms">Malay - Bahasa Melayu</option>
+    <option value="ml">Malayalam - മലയാളം</option>
+    <option value="mt">Maltese - Malti</option>
+    <option value="mr">Marathi - मराठी</option>
+    <option value="mn">Mongolian - монгол</option>
+    <option value="ne">Nepali - नेपाली</option>
+    <option value="no">Norwegian - norsk</option>
+    <option value="nb">Norwegian Bokmål - norsk bokmål</option>
+    <option value="nn">Norwegian Nynorsk - nynorsk</option>
+    <option value="oc">Occitan</option>
+    <option value="or">Oriya - ଓଡ଼ିଆ</option>
+    <option value="om">Oromo - Oromoo</option>
+    <option value="ps">Pashto - پښتو</option>
+    <option value="fa">Persian - فارسی</option>
+    <option value="pl">Polish - polski</option>
+    <option value="pt">Portuguese - português</option>
+    <option value="pt-BR">Portuguese (Brazil) - português (Brasil)</option>
+    <option value="pt-PT">Portuguese (Portugal) - português (Portugal)</option>
+    <option value="pa">Punjabi - ਪੰਜਾਬੀ</option>
+    <option value="qu">Quechua</option>
+    <option value="ro">Romanian - română</option>
+    <option value="mo">Romanian (Moldova) - română (Moldova)</option>
+    <option value="rm">Romansh - rumantsch</option>
+    <option value="ru">Russian - русский</option>
+    <option value="gd">Scottish Gaelic</option>
+    <option value="sr">Serbian - српски</option>
+    <option value="sh">Serbo-Croatian - Srpskohrvatski</option>
+    <option value="sn">Shona - chiShona</option>
+    <option value="sd">Sindhi</option>
+    <option value="si">Sinhala - සිංහල</option>
+    <option value="sk">Slovak - slovenčina</option>
+    <option value="sl">Slovenian - slovenščina</option>
+    <option value="so">Somali - Soomaali</option>
+    <option value="st">Southern Sotho</option>
+    <option value="es">Spanish - español</option>
+    <option value="es-AR">Spanish (Argentina) - español (Argentina)</option>
+    <option value="es-419">Spanish (Latin America) - español (Latinoamérica)</option>
+    <option value="es-MX">Spanish (Mexico) - español (México)</option>
+    <option value="es-ES">Spanish (Spain) - español (España)</option>
+    <option value="es-US">Spanish (United States) - español (Estados Unidos)</option>
+    <option value="su">Sundanese</option>
+    <option value="sw">Swahili - Kiswahili</option>
+    <option value="sv">Swedish - svenska</option>
+    <option value="tg">Tajik - тоҷикӣ</option>
+    <option value="ta">Tamil - தமிழ்</option>
+    <option value="tt">Tatar</option>
+    <option value="te">Telugu - తెలుగు</option>
+    <option value="th">Thai - ไทย</option>
+    <option value="ti">Tigrinya - ትግርኛ</option>
+    <option value="to">Tongan - lea fakatonga</option>
+    <option value="tr">Turkish - Türkçe</option>
+    <option value="tk">Turkmen</option>
+    <option value="tw">Twi</option>
+    <option value="uk">Ukrainian - українська</option>
+    <option value="ur">Urdu - اردو</option>
+    <option value="ug">Uyghur</option>
+    <option value="uz">Uzbek - o‘zbek</option>
+    <option value="vi">Vietnamese - Tiếng Việt</option>
+    <option value="wa">Walloon - wa</option>
+    <option value="cy">Welsh - Cymraeg</option>
+    <option value="fy">Fries Frysk Friesland Western Frisian</option>
+    <option value="xh">Xhosa</option>
+    <option value="yi">Yiddish</option>
+    <option value="yo">Yoruba - Èdè Yorùbá</option>
+    <option value="zu">Zulu - isiZulu</option>
 </select>
-    
-<input type="button" id="copyokbutton" value="OK" onclick='copy_schema(document.getElementById("days").value)'>
-
-<br>
-<!--
-  time picker does not like when pagescale is changed
-  or is it touch that does not like scale change
-  think it would be nice to have page zoom scale
-
-Zoom test<br>
-<input type="range" style="width:95%;height:100px;"  min="50" max="200" value="100" oninput="setZoom(this.value)"list=tickmarks>
-<datalist id=tickmarks>
-<option>0</option>
-<option>50</option>
-<option>75</option>
-<option>100 </option>
-<option>125</option>
-<option>150</option>
-<option>175</option>
-<option>200</option>
-</datalist><br>
+<!-- 
+https://www.w3schools.com/tags/ref_language_codes.asp 
+https://www.html-code-generator.com/html/drop-down/languages-name
 -->
-<pre class="message" id="message"></pre>
-<pre class="message2" id="message2"></pre>
-<pre class="message3" id="message3"></pre>
+<div id="selected-language"></div>
 
-<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
-Open Chrome Inspect Console = Ctrl + Shift + j<br>
-<br>
-
-
-
-
-<hr width="40%">
-
-<a href="https://www.google.com/search?q=52.7354,5.179" target="google">GeoLocation for sunrise, sunset </a>
-<br>
-<br>
-lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" onchange="dogeoloc()"/>
-lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
-
-<hr width="40%">
-
-<br>
-<br>
-
-<!--begin https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
-sunrise sunset geolocation picker map lat lon<br>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
-<link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/leaflet-locationpicker.css" />
-
-<div class="container">
-      <input id="geoloc" type="text" value="52.7354,5.179" class="form-control mb-3"  />
-      <input type="button" value="use location" onclick="useit()"  /><br><br>
-      <div id="fixedMapCont" style="border: 3px solid #222; width:275px;"></div>
-</div>
-Think the time / timezone of your device must match geolocation<br>
-i am in europe, if i choose caribean location<br>
-time sunrise sunset is about 7 hours of target<br>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
-<script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/leaflet-locationpicker.js"></script>
 <script>
-  $('#geoloc').leafletLocationPicker({
-    alwaysOpen: true,
-    mapContainer: "#fixedMapCont"
-});
+  
+(function () {
+    var language_select = document.getElementById("languages");
+    var result = document.getElementById("selected-language");
 
-function useit(){
-    var location = document.getElementById("geoloc").value.split(',');   // make an array splitted at comma                             // split hh:mm  at the colons
-    document.getElementById("lat").value=location[0];   // left of comma val 0 of array
-    document.getElementById("lon").value=location[1];   // rigth of comma val 1 of array
-    dogeoloc();
-}
+    language_select.addEventListener('change', function (event) {
+        var selected_value = this.value;
+        var selected_text = this.options[this.selectedIndex].text;
+        result.innerText = selected_value + '\n' + selected_text;
+        make_calendar(selected_value);
+    });
+})();
 </script>
-<!-- end https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
+</center>
 
-<br>
-<br>
-a bar for each day<br>
-click on bar should open a popup at that clicked time<br>
-text field should open an analog timepicker dail that looks the same on all systems<br>
-<br>
-i Think most people use a phone or tablet not pc with mouse<br>
-so should work for phone or tablet touch<br>
-Touch drag edit popup should work<br>
-<br>
-<br>
-<br>
-<div style="width:100%;font-size:1vw;">
+
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+ <button onclick="w3.hide('.week')">Hide Week</button>
+<button onclick="w3.show('.week')">Show Week</button>
+ 
+   
+<script> 
+
+
+// Printable Big Text Alzheimer week calendar Senior Calendar
+// memory anchor
+// want to change things 
+// dirk luberth dijkman
+// https://codepen.io/luberth-dijkman/pen/OJwjLbQ
+// https://plnkr.co/edit/SfYvlFhFkHV5UEZc
+
+
 /*
+nl-NL Gives back 'Vrijdag' which is Dutch for Friday.
+de germany
+fr france
+es espanja
+sw  sweden
+PL Polen
+it italie
+
+ml
+*/
+
+var locale = "pl";    //set lnguage for the calendar
+
+var jaar= 2024;
+
+
+
+
+
+
+
+
+
+
+
+function getDayName(dateStr, locale)
+{
+    var date = new Date(dateStr);
+    return date.toLocaleDateString(locale, { weekday: 'long' });        
+}
+
+
+var getMonth = function(idx, locale) {
+
+  var objDate = new Date();
+  objDate.setDate(1);
+  objDate.setMonth(idx-1);
+
+  //var locale = "it",
+      month = objDate.toLocaleString(locale, { month: "long" });
+
+    return month+' ';
+}
+
+
+     
+var getDays = (year, month) => {
+    return new Date(year, month, 0).getDate();
+};
+
+
+
+var days_fries = ['snein', 'moandei', 'tiisdei', 'woansdei', 'tongersdei', 'freed', 'sneon'];
+var months_fries = ['','Jannewaris', 'Febrewaris', 'Maart', 'April', 'Maaie', 'Juny', 'July', 'Augustus', 'Septimber', 'Oktober', 'novimber', 'Desimber'];
+
+var days_uyghur = ['snein', 'moandei', 'tiisdei', 'woansdei', 'tongersdei', 'freed', 'sneon'];
+var months_uyghur = ['','Jannewaris', 'Febrewaris', 'Maart', 'April', 'Maaie', 'Juny', 'July', 'Augustus', 'Septimber', 'Oktober', 'novimber', 'Desimber'];
+/*https://omniglot.com/language/time/months.htm
+يانۋار
+(yanwar)	فېۋرال
+(fewral)	مارت
+(mart)	ئاپرېل
+(aprel)	ماي
+(may)	ئىيۇن
+(iyun)	ئىيۇل
+(iyul)	ئاۋغۇست
+(awğust)	سېنتەبىر
+(sentäbir)	ئۆكتەبىر
+(öktäbir)	نويابىر
+(noyabir)	دېكابىر
+(dekabir)
+*/
+var days_eskimo = ['snein', 'moandei', 'tiisdei', 'woansdei', 'tongersdei', 'freed', 'sneon'];
+var months_eskimo = ['','Jannewaris', 'Febrewaris', 'Maart', 'April', 'Maaie', 'Juny', 'July', 'Augustus', 'Septimber', 'Oktober', 'novimber', 'Desimber'];
+
+var days_olddutch = ['snein', 'moandei', 'tiisdei', 'woansdei', 'tongersdei', 'freed', 'sneon'];
+var months_olddutch = ['','Jannewaris', 'Febrewaris', 'Maart', 'April', 'Maaie', 'Juny', 'July', 'Augustus', 'Septimber', 'Oktober', 'novimber', 'Desimber'];
+
+
+function make_calendar(locale, welkjaar) {
+document.write('<br><center>Maybe custom scale print preview  to fit the page better <button onClick="window.print()">Print this page</button><br></center>');
+document.write('<a href="https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/" target="kalender">https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/</a><br>');
+document.write('<style>#qrcode {transform: rotate(45deg);}</style>');
+//month loop
+var doy=0;
+for (var maand = 1; maand <= 12; ++maand) {       
+  
+  
+  var aantaldagen=getDays(jaar, maand);    // get number of days for year month
+       
+//day loop      
+       for (var dag = 1; dag <= aantaldagen; ++dag) {
+doy++;
+         var daynrr=new Date(maand+"/"+dag+"/"+jaar);
+         //document.writeln(daynrr.getDay())  
+         if(daynrr.getDay()==0){     // qrcode link on sunday
+            document.write('<div style="float:right;">');
+            document.write('<div id="qrcode"><br><br><a href=\"https://tinyurl.com/plnkr\" target=\"plnkrcalendar\"> <img src=\"data:image/png;base64,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" heigth=\"80\" width=\"80\"></a>&nbsp;&nbsp;&nbsp;<br></div>');
+            document.write('</div>');
+         }
+         if(daynrr.getDay()==1){   // if daynr of week is monday printer break before
+                 
+                document.write("<center><font style=\"font-size:10px;\">Copyright D.L.D. "+jaar+" <a href=\"//facebook.com/luberth.dijkman\" target=\"facebook\">//facebook.com/luberth.dijkman</a>  <a href=\"//PayPal.me/LDijkman\" target=\"paypal\">//PayPal.me/LDijkman</a></font></center><hr style=\"page-break-before: always;\">"); //printer pagebreak start the week at monday
+                document.write("<br><center>x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x</center><br>");
+                var dt = new Date(maand+"/"+dag+"/"+jaar);
+                document.write('<div style="float:right;">');
+                if(locale=="fy"){
+                   document.write('<div id="wike"><h1>Wike '+ISO8601_week_no(dt)+'<br>'+jaar+'</h1></div>');
+                }else{
+                  document.write('<div class="week"><h1>Week '+ISO8601_week_no(dt)+'<br>'+jaar+'</h1></div>');
+                }
+                document.write('</div>');
+         }
+
+         var dateStr = maand+"/"+dag+"/"+jaar;
+         if(locale=="fy"){
+           var day = days_fries[daynrr.getDay()];
+         }else{
+            var day = getDayName(dateStr, locale);
+          }
+         document.write('<h1>'+day.toUpperCase()+'<br>'); 
+
+         
+         if(locale=="fy"){
+             document.write(''+dag+' '+months_fries[maand]+'</h1> '+jaar);
+         }else{
+             document.write(''+dag+' '+getMonth(maand,locale)+'</h1> '+jaar);
+         }
+         if(locale=="ru"){
+             document.write(' Putin Criminal Terrorist'); 
+         }
+ document.write("<small><small><small> doy "+doy+"</small></small></small>");
+         document.write('<hr>');
+        
+       }
+
+
+}
+document.write('<br><center><button onClick="window.print()">Print this page</button><br></center>');
+document.write('<a href="https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/" target="kalender">https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/</a><br>');
+
+}
+
+make_calendar("us");
+
+
+function ISO8601_week_no(dt) {
+     var tdt = new Date(dt.valueOf());
+     var dayn = (dt.getDay() + 6) % 7;
+     tdt.setDate(tdt.getDate() - dayn + 3);
+     var firstThursday = tdt.valueOf();
+     tdt.setMonth(0, 1);
+     if (tdt.getDay() !== 4) {
+      tdt.setMonth(0, 1 + ((4 - tdt.getDay()) + 7) % 7);
+    }
+     return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+}
+
+
+
+
+</script>
+
+
+<center>
+Maybe custom scale print preview  to fit the page better  <button onClick="window.print()">Print this page</button>
+<img src="https://phpqrcode.sourceforge.net/qrsample.php?data=https://run.plnkr.co/plunks/SfYvlFhFkHV5UEZc/+%3A%29&ecc=L&matrix=6" heigth="300" width="300"><br>
+<button onClick="window.print()">Print this page</button>
+</center>
+zorg kalender, groot letter Kalender,slechtzienden kalender, geheugnhulp, Groot letter weekkalender, Zorgkalender grootletter voor slechtzienden<br>
+papieren geheugen voor dementie alzheimer senioren <br>
+Alzheimer & Dementie hulpmiddelen week kalender,  dementerenden kalender
+big text week calendar	
+senior elderly large text week calendar,,Senior bejaardes groot teksweek kalender,,,
+
 <pre>
- __      ___                 _        _____      _              _       _           
- \ \    / (_)               | |      / ____|    | |            | |     | |          
-  \ \  / / _ ___ _   _  __ _| |_____| (___   ___| |__   ___  __| |_   _| | ___ _ __ 
-   \ \/ / | / __| | | |/ _` | |______\___ \ / __| '_ \ / _ \/ _` | | | | |/ _ \ '__|
-    \  /  | \__ \ |_| | (_| | |      ____) | (__| | | |  __/ (_| | |_| | |  __/ |   
-     \/   |_|___/\__,_|\__,_|_|     |_____/ \___|_| |_|\___|\__,_|\__,_|_|\___|_|   
-                                                                                    
-                                                                                    
-Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
-</pre>
-*/
-</div>
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-  console.clear();
-
-// and Luberth said he prefers not to use JQuery
-// and now he Luberth Creates his own AbraCadaBra JaBaDabba Script
-// id() short for document.getElementById()
-// makes the code much better readable for me even better as JQquery $()
-//
-// id("label_monday").style.borderColor = "green";
-// same as
-// document.getElementById("label_monday").style.borderColor = "green";
-function id(id) {
-  return document.getElementById(id);
-}
-
-// classname() short for document.getElementsByClassName()
-function classname(classname) {
-  return document.getElementsByClassName(classname);
-}
-
-
-
-
-// ESP8266 ESP32 webserver should set next on pageload?
-// with %template_placeholder% variable replace on load?
-// https://github.com/me-no-dev/ESPAsyncWebServer#template-processing
-// but the % sign is a bit tricky i would say if not an even number page may be messed up by other % signs
-
-  //let monday_timeslots = [%monday_times_from_ESP_on_upload%];       // %vaiable% filled with variables in ESP on upload
-
-  let monday_timeslots = [450,990,15,135,240,285,1200,1440];          // timeslots pairs of 2 in minutes of day
-  let tuesday_timeslots = [0,60,300,360,600,660,900,960,1200,1260];   // timeslots pairs of 2 in minutes of day
-  let wednesday_timeslots = [0,300,360,660,900,1260];                 // timeslots pairs of 2 in minutes of day
-  let thursday_timeslots = [0,300,660,900,1200,1440];                 // timeslots pairs of 2 in minutes of day
-  let friday_timeslots = [0,30,360,1260];                             // timeslots pairs of 2 in minutes of day
-  let saturday_timeslots = [0,720];                                   // timeslots pairs of 2 in minutes of day
-  let sunday_timeslots = [720,1440];                                  // timeslots pairs of 2 in minutes of day
-// ESP8266 ESP32 webserver should set above on pageload?
-
-  let timeslots = monday_timeslots;
-  var daytext;
-///////////////////////////////////////////////////
-// send_to_ESP()
-// test add a dayname to the array
-// https://stackoverflow.com/questions/44746912/adding-array-name-to-anonymous-array-in-a-json-string
-////////////////////////////////////////////////////////////////////////////////
-function send_to_ESP(){                              // call by save and delete
-    var dy=daytext;
-    var ts=timeslots;
-    timeslot_to_ESP = {dy,ts};        // active day timeslot
-    console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
-
-    websocket.send(JSON.stringify( timeslot_to_ESP ));  // send the websocket to ESP
-    // {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
-
-}
-// if changes are made send it to ESP8266 ESP32 webserver?
-// https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
-
-
-
-
-
-////////////////////////////////////////////////////////////
-// copy_schema(wichtimeslot)
-// wichtimeslot holds the day to paste current timeslot in
-////////////////////////////////////////////////////////////
-function copy_schema(wichtimeslot){
-    console.log("copy_schema to ",wichtimeslot);
-    if(wichtimeslot=="monday"){
-      monday_timeslots=[];                // empty timeslot
-      monday_timeslots= timeslots;        //
-    }
-    if(wichtimeslot=="tuesday"){
-      tuesday_timeslots=[];
-      tuesday_timeslots= timeslots;
-    }
-    if(wichtimeslot=="wednesday"){
-      wednesday_timeslots=[];
-      wednesday_timeslots= timeslots;
-    }
-    if(wichtimeslot=="thursday"){
-      thursday_timeslots=[];
-      thursday_timeslots= timeslots;
-    }
-    if(wichtimeslot=="friday"){
-      friday_timeslots=[];
-      friday_timeslots= timeslots;
-    }
-    if(wichtimeslot=="saturday"){
-      saturday_timeslots=[];
-      saturday_timeslots= timeslots;
-    }
-    if(wichtimeslot=="sunday"){
-      sunday_timeslots=[];
-      sunday_timeslots= timeslots;
-    }
-
-
-
-    if(wichtimeslot=="weekdays"){    // monday to friday
-      monday_timeslots=[];
-      monday_timeslots= timeslots;
-
-      tuesday_timeslots=[];
-      tuesday_timeslots= timeslots;
-
-      wednesday_timeslots=[];
-      wednesday_timeslots= timeslots;
-
-      thursday_timeslots=[];
-      thursday_timeslots= timeslots;
-
-      friday_timeslots=[];
-      friday_timeslots= timeslots;
-    }
-
-  // change option text and ok button text for a moment
-  id("firstoption").innerHTML = "Copy Done!";
-  id("copyokbutton").value = "Sending to Server!";
-  // reset text after 2.5 second
-  setTimeout( () => {
-      id("copyokbutton").value = "OK";
-      id("firstoption").innerHTML = "Select Day";
-  }, 2500 );
-
-  id("days").value="none";
-}
-
-
-
-
-  function setZoom(value) {
-        document.body.style.zoom = value+'%';
-    };
-
-
-
-
-/////////////////////////////////////////////////////
-// check radio labels weekdays
-/////////////////////////////////////////////////////
-function checkit(wich) {
-   console.log("wich ",wich);
-  timeslots = [];
-  if (id("radio_monday").checked) {
-    daytext="Mon";
-    timeslots = monday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Monday</h1>";
-    id("copyday").innerHTML = "Monday";
-    //id('radio_monday').checked
-    console.log("radio_monday");
-    id("label_monday").style.color = "green";
-    id("label_monday").style.borderColor = "green";
-  } else {
-    id("label_monday").style.color = "gray";
-    id("label_monday").style.borderColor = "gray";
-  }
-
-  if (id("radio_tuesday").checked) {
-    daytext="Tue";
-    timeslots = tuesday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Tuesday</h1>";
-    id("copyday").innerHTML = "Tuesday";
-    //id('radio_tuesday').checked
-    console.log("radio_tuesday");
-    id("label_tuesday").style.color = "green";
-    id("label_tuesday").style.borderColor = "green";
-  } else {
-    id("label_tuesday").style.color = "gray";
-    id("label_tuesday").style.borderColor = "gray";
-  }
-
-  if (id("radio_wednesday").checked) {
-    daytext="Wed";
-    timeslots = wednesday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Wednesday</h1>";
-    id("copyday").innerHTML = "Wednesday";
-    //id('radio_wednesday').checked
-    console.log("radio_wednesday");
-    id("label_wednesday").style.color = "green";
-    id("label_wednesday").style.borderColor = "green";
-  } else {
-    id("label_wednesday").style.color = "gray";
-    id("label_wednesday").style.borderColor = "gray";
-  }
-
-  if (id("radio_thursday").checked) {
-    daytext="Thu";
-    timeslots = thursday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Thursday</h1>";
-    id("copyday").innerHTML = "Thursday";
-    //id('radio_thursday').checked
-    console.log("radio_thursday");
-    id("label_thursday").style.color = "green";
-    id("label_thursday").style.borderColor = 'green'
-  } else {
-    id("label_thursday").style.color = "gray";
-    id("label_thursday").style.borderColor = "gray";
-
-  }
-
-  if (id("radio_friday").checked) {
-    daytext="Fri";
-    timeslots = friday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Friday</h1>";
-    id("copyday").innerHTML = "Friday";
-    //id('radio_friday').checked
-    console.log("radio_friday");
-    id("label_friday").style.color = "green";
-    id("label_friday").style.borderColor = 'green'
-  } else {
-    id("label_friday").style.color = "gray";
-    id("label_friday").style.borderColor = 'gray'
-  }
-
-  if (id("radio_saturday").checked) {
-    daytext="Sat";
-    timeslots = saturday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Saturday</h1>";
-    id("copyday").innerHTML = "Saturday";
-    //id('radio_saturday').checked
-    console.log("radio_saturday");
-    id("label_saturday").style.color = "green";
-    id("label_saturday").style.borderColor = "green";
-  } else {
-    id("label_saturday").style.color = "gray";
-    id("label_saturday").style.borderColor = "gray";
-  }
-
-  if (id("radio_sunday").checked) {
-    daytext="Sun";
-    timeslots = sunday_timeslots;                           // load selected day in timeslots
-    drawtimeslots();
-    id("day").innerHTML = "<h1>Sunday</h1>";
-    id("copyday").innerHTML = "Sunday";
-    //id('radio_saturday').checked
-    console.log("radio_sunday");
-    id("label_sunday").style.color = "green";
-    id("label_sunday").style.borderColor = "green";
-  } else {
-    id("label_sunday").style.color = "gray";
-    id("label_sunday").style.borderColor = "gray";
-  }
-}
-
-
-
-//////////////////////////////////////////
-// offtimechange
-/////////////////////////////////////////
-function offtimechange(){
-  console.log("function offtimechange(){");
-   if(id("offtime").value == "00:00"){
-        id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
-  }
-}
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()">
-///////////////////////////////////////////////////////////////////////////////////////////////////
-function deletebutton(){
-    console.log("deletebutton clicked");
-    console.log("timeslotpointer  ",timeslotpointer);
-
-    if(timeslotpointer===""){return;}                  // timeslotpointer is from function timeslotclicked(wich)
-    timeslots.splice( timeslotpointer, 2);             // remove 2 from timeslotarray
-    timeslotpointer = "";                              // otherwise if delete is clicked again it will remove other
-
-    domessage();
-    showhideeditpopup();
-    drawtimeslots();
-    savefromedit = 0;                                  // do not know, have some strange overwrite / delete
-                                                       // its a flag used when save button is clicked
-    send_to_ESP();
-}
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()">
-//////////////////////////////////////////////////////////////////////////////////////////////
-function cancelbutton(){
-  showhideeditpopup();
-  id('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
-  id('innerDiv').style.width='';
-  id('startlabel').innerHTML='';
-  id('endlabel').innerHTML='';
-
-   savefromedit = 0;
-   selected_highlight = -1;                              // erase edit timeslot highlight
-}
-
-
-
-
-
-
-
-
-var timeslotpointer="";
-var savefromedit=0;
-var sorted;
-var timeslotsnested;
-
-
-
-//////////////////////////////////////
-// time slot clicked edit or delete?
-/////////////////////////////////////
-function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
-    timeslotdivclick = 1;         // i do not now a flag to keep outerdiv click away cq return from outerdiv click
-                                  // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
-                                  // maybe an overlaying div is clicked first followed by underlaying div, i dont know
-    console.log("timeslotclicked",wich);
-    timeslotpointer = wich;
-
-    selected_highlight = wich;                        // wich timeslot edit highlight color
-
-
-
-
-    id("addoredit").innerHTML="EDIT TimeSlot";
-    id("deletebutton").disabled = false;   // enablee the delete button
-    id("deletebutton").hidden = false;     // not hide the delete button, show delete button
-    showhideeditpopup();                                        // show edit popup
-
-    // wich holds the array position of first data we need in minutes
-    id("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
-    id("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
-    savefromedit=1;                                 // a flag for savebutton
-// if changes need to modify the timeslot array data
-
-}
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// save time slot
-// call from HTML save button <input type="button" value="Save" onclick="savetimeslot()">
-// save button pressed, save to timeslot array
-//////////////////////////////////////////////////////////////////////////////////////////
-function savetimeslot() {
-
-     if(id("offtime").value == "00:00"){
-        id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
-         console.log("change 00:00 to 24:00");
-  }
-
-    var onhhmm = id("ontime").value;
-    var offhhmm = id("offtime").value;
-    console.log("onval, offval", onhhmm, offhhmm);
-
-    showhideeditpopup();          // hide edit popup
-
-
-  if(savefromedit==1){
-      console.log("savefromedit",savefromedit);
-      // here from a save click from possible modified timeslot save
-      // edit timeslot overwrite values in timeslot array
-        console.log("timeslotpointer",timeslotpointer);
-        timeslots[timeslotpointer] = hhmm_to_minutes(id("ontime").value);     // change the values in the timeslot array
-        timeslots[timeslotpointer+1] = hhmm_to_minutes(id("offtime").value);  // hh:mm to minutes
-        savefromedit=0;
-  }else{
-        // push / add values pair to a new timeslot array             hh:mm to minutes
-        timeslots.push(hhmm_to_minutes(id("ontime").value) , hhmm_to_minutes(id("offtime").value));
-  }
-
-
-/////////////////////////////////////////////////////////////////
-// test nest
-// try overlapping when sort is on
-// timeslots.sort(function(a, b){return a - b});   // sort array following order of values
-// should do something to prevent overlapping the pairs mix in new pairs
-// make an aray in array, nested array? [[0,0],[0,0],[0,0]] do not know how to do that in javascript
-// so that the paris stay pairs
-//
-// this creates a nested array from timeslots
-// https://stackoverflow.com/questions/44937470/turning-an-array-into-a-multidimensional-array-javascript
-timeslotsnested = timeslots.reduce((a, c, i) => {
-  return i % 2 === 0 ? a.concat([timeslots.slice(i, i + 2)]) : a;
-}, []);
-//$('pre.message2').html("timeslotsnested"+JSON.stringify(timeslotsnested)); //jquery
-id('message2').innerHTML = ("timeslotsnested"+JSON.stringify(timeslotsnested));//javascript
-console.log("timeslotsnested ",timeslotsnested);
-
-/*
-(5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
-0: (2) [450, 990]
-1: (2) [15, 135]
-2: (2) [240, 285]
-3: (2) [1200, 1440]
-4: (2) [387, 402]
-length: 5
-*/
-////////////////////////////
-// sort a nested array???
-sorted=timeslotsnested.sort((a,b) => a[0] - b[0]);
-//$('pre.message3').html("nestedsorted"+JSON.stringify(sorted));  //jquery
-id('message3').innerHTML = ("nestedsorted"+JSON.stringify(sorted));//javascript
-
-console.log("nestedsorted?",sorted);
-/*
-nestedsorted?
-(5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
-0: (2) [15, 135]
-1: (2) [240, 285]
-2: (2) [363, 1110]
-3: (2) [450, 990]
-4: (2) [1200, 1440]
-length: 5
-*/
-////////////////////////////
-// empty timemeslots array
-var nestedsorted=sorted;
-timeslots.length = 0;                            // Clear contents
-// next line makes no sense?
-// timeslots.push.apply(timeslots, nestedsorted);   // push put nestedsorted in timeslots
-
-console.log("timeslots ",timeslots);
-
-// go from nested array to single array again
-var newArray = Array.prototype.concat.apply([], nestedsorted);
-console.log("newArray",newArray);
-timeslots.length = 0;                  // Clear contents
-timeslots.push.apply(timeslots, newArray);
-// thats silly, this is stupid
-////////////////////////////////
-
-
-
-/******************************************************
-* block a timeslot to go / past overlap next timeslot
-*******************************************************/
-for (let i = 0; i < timeslots.length; i=i+2) {
- if(timeslots[i+1] >= timeslots[i+2]){            // compare off to next on
-      timeslots[i+1]=timeslots[i+2];
-      alert(`
-      cannot create that endpoint,\n`
-      +toHoursAndMinutes(timeslots[i+3])+
-      ` not reached`
-      +id("offtime").value+
-      `\n`
-      + toHoursAndMinutes(timeslots[i+1]) +
-      `-`
-      + toHoursAndMinutes(timeslots[i+2])  +
-      ` remove`);
-
- }
-}
-
-// delete the points that are in middle of selection timeslot overlap
-for (let i = 0; i < timeslots.length; i=i+2) {
-  if(timeslots[i+1] == timeslots[i+2]){          // compare off to next on
-      timeslots.splice( (i+1), 2);               // if off & next on the same, delete both from array
-  }
-}
-//////////////////////////////////////////////
-    console.log("timeslots ",timeslots);
-
-
-    domessage();
-    drawtimeslots();
-    send_to_ESP();
-
-
-}
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-// write messsage to html <pre id="" or class=""> will be replaced, message goes here </pre>
-/////////////////////////////////////////////////////////////////////////////////////////////
-function domessage(){
-    // next muttiline because use of ` = ~ tilde key lef side number keys keyboard
-    // Alternatively known as acute, backtick, left quote, or an open quote,
-    // the back quote or backquote is a punctuation mark (`).
-    // It's on the same U.S. computer keyboard key as the tilde ~.
-
-    // just for easy compare to minutes next hours array has no other use
-    const hourarray=[];
-    for (var i=0 ;  i < timeslots.length; i++) {
-          hourarray[i]=toHoursAndMinutes(timeslots[i]);
-    }
-
-
-// when i compare this to other sites the vissiblity calculated is not correct
-// https://hemel.waarnemen.com/applets/missiemaan.cgi
-// https://www.kalender-365.nl/maan/actuele-maanstand.html
-// they say 6% i get 15%
-var moonval=moon.phase;
-if(moon.phase > 0.5)moonval=1-moon.phase; // moon.phase  0.9220658851746119
-console.log("moonval",moonval);
-// moonval=0.25;                          // 0.07797258947334718; i get 16% other sites say 6%
-
-// map moonval in range 0 to 0.5 to scale 0% to 100%
-var moonvisible=Math.round(map_range(moonval,0,0.5,0,100));
-
-// a message writen to <pre class="message"></pre> in the html
-$('pre.message').html(`
-    <p style=\"color:red\">timeslots array length `
-    +timeslots.length+
-    "<br>timeslots in minutes <br>"
-    +timeslots+
-    `<br><br>in hours<br>`
-    +hourarray+`
-    <br>moon.phase 0 to 1, 0,5 is full moon?<br>`
-    +moon.phase+'<br>Moon visible '
-    +moonvisible+
-    `% (not correct, not square)</p>`);  // not squares, circle segments
-
-}
-
-var selected_highlight;
-
-
-// left() of a sting maybe a bit Basica, GWBasic, Qbasic ;-)
-// var num = "1008px".left(4);
-// https://stackoverflow.com/questions/490508/left-function-in-javascript-or-jquery
-String.prototype.left = function(n) {
-    return this.substring(0, n);                 // return n number of characters on left side of string
-}
-
-
-/////////////////////////////////////
-// drawtimeslots
-/////////////////////////////////////
-function drawtimeslots(){
-// draw timeslots array
-
-
-  id('innerDiv').style.left='';   // erase edit timeslot???????
-  id('innerDiv').style.width='';
-  id('startlabel').innerHTML='';
-  id('endlabel').innerHTML='';
- // draw timeslots array
-  $("div.timeslot").remove(); // remove all previous generated divs with Class timeslot
-  $("div.slabel").remove(); // remove all previous generated divs with Class timeslot
-  $("div.elabel").remove(); // remove all previous generated divs with Class timeslot
-  $("div.startlabel").remove(); // remove all previous generated divs with Class timeslot
-  $("div.endlabel").remove(); // remove all previous generated divs with Class timeslot
-  for (let i = 0; i < timeslots.length; i=i+2) {
-    console.log("timeslots[i] and [i+1]", timeslots[i]," ",timeslots[i+1]);
-
-
-     var left=map_range(timeslots[i],  0,1440,0,100);              // scale time in range 0to1440 to 0 to 100%
-     var width=map_range(timeslots[i+1],  0,1440,0,100)-left;      // scale time in range 0to1440 to 0 to 100%
-     width=width.toFixed(2);   // to 2 decimals;
-     console.log("left width",left," ",width);
-
-    var timeslotcolor = "rgba(44,44, 99, 0.6)";   // use RGBA color opacity 0.6
-    var label_opacity = 100;                      // opacity for timeslot time text labels
-    var timeslot_opacity = 80;
-    if(i == selected_highlight){
-        timeslotcolor = "rgba(100,200, 250, 0.6)";  // use RGBA highlight color edit timeslot
-        label_opacity = 60;                         // if edit timeslot, shade original timeslot time text labels
-        timeslot_opacity = 40;
-    }
-
-// want to remove leading zero from timelabel
-var ontext = toHoursAndMinutes(timeslots[i]);
-console.log("ontext.left(1) ",ontext.left(1)+" "+ontext);
-if (ontext.left(1)=="0"){ontext=ontext.substring(1);} // want to remove leading zero from timelabel
-console.log("ontext.left(1) ",ontext.left(1)+" "+ontext);
-
-
-// want to remove leading zero from timelabel
-var offtext = toHoursAndMinutes(timeslots[i+1]);
-console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
-if (offtext.left(1)=="0"){offtext=offtext.substring(1);} // want to remove leading zero from timelabel
-console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
-
-
-// fontsize for time labels underneath the timeslots
-// maybe if slots are close together, change fontsze to smaller
-// or nouislider has a join merging https://refreshless.com/nouislider/examples/#section-merging-tooltips
-// or do a webkit rotate label
-var fontsize;          // nochange
-// var fontsize = 12;  // px
-
-
-    //debugger;
-
-      // problem with opacity , timetext labels
-      // The opacity of the parent's background sets the maximum perceived opacity of the child elements.
-      // child div class "slabel" opacity can never be made greater as parent "timeslot"
-      // thats why the time text labels are fade, and i can not change it
-      // workaround set background-color RGBA color with opacity value in color for <div class="timeslot"
-
-     $(".outerDiv").append(   // draw timeslots and textlabels underneath
-          `<div class="timeslot" data-index="`
-          +i+
-          `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:`
-          +timeslotcolor+
-          `;top:0px;left:`
-          +left+
-          `%;width:`
-          +width+
-          `%;z-index:40;opacity:`
-          +timeslot_opacity+
-          `%;">
-          <div class="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;opacity:`
-          +label_opacity+  // next child startlabel takes same opacity
-          `%;">
-          <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -17px; top: 15px;font-size:`
-          +fontsize+
-          `px;">`
-          +ontext+
-          `</div></div>
-          <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;opacity:`
-          +label_opacity+  // next child endlabel takes same opacity
-          `%;">
-          <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -17px; top: 30px;font-size:`
-          +fontsize+
-          `px;">`
-          +offtext+
-          `</div>
-          </div>
-          </div>`
-     );
-
-  } // end for
-
-}
-
-
-
-
-////////////////////////////////////////
-// showhideeditpopup();             // toggle show hide on each call
-// showhideeditpopup("show");       // show
-// showhideeditpopup("hide");       // hide
-////////////////////////////////////////
-function showhideeditpopup(showorhide) {
-  if (showorhide == "show") {
-      id("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
-      document.body.style.backgroundColor="#c3c3c3";                              // make body background a little darker so that popup stands out?
-
-  } else if (showorhide == "hide") {
-      id("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
-      document.body.style.backgroundColor= "";                                  // reset body background to lighter shade
-
-  }else {
-    if (id("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
-      id("editpopup").style.display = "block";
-      document.body.style.backgroundColor="#c3c3c3";                           // make body background a little darker so that popup stands out?
-
-    } else {
-      id("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
-      document.body.style.backgroundColor= "";                                   // reset body background to lighter shade
-
-    }
-  }
-  drawtimeslots(); // if you close by x green selection may be left if not closed bij cancel or save
-}
-
-
-
-
-
-
-
-
-var innerdivclick=0;
-var timeslotdivclick=0;
-var sunclicked=0;
-/////////////////////////////////
-// think next is not used anymore
-$( "#innerDiv" ).on( "click", function() {
-    // $('pre.message').html("edit / remove timeslot popup");
-    console.log("innerdiv clicked");
-    innerdivclick=1;
- });
- // do not know open analog time picker if textlabel is clicked
-$( "#startlabel" ).on( "click", function() {
-    // $('pre.message').html("slabel click");
-    console.log("slabel clicked");
-    $("#ontime").focus();
-
-    //return;
- });
-  $( "#endlabel" ).on( "click", function() {
-    // $('pre.message').html("elabel click");
-    console.log("elabel clicked");
-    $("#offtime").focus();
-    //return;
- });
-
-// think above is not used anymore
-//////////////////////////////////////
-
-// click on timescale added new slots inside timeslots
-// https://stackoverflow.com/questions/5259191/disable-clicking-of-a-divs-element
-//$(".outerDiv").children().bind('click', function(){
-//  console.log("click event is turned off for this")
-  //return false;
-//});
-
-// next no use
-
-function sunriselabelclicked(){
-  // call from HTML onclick
-  sunclicked=1;                     // a flag to return from outerdiv click
-  //showhideeditpopup("hide");
-  console.log("function sunriselabelclicked(){");
-  // maybe set ontime an hour before sunrisetime
-  // maybe set offtime to sunrisetime
-}
-
-
-
-function sunsetlabelclicked(){
-  // call from HTML onclick
-  sunclicked=1;                     // a flag to return from outerdiv click
-  //showhideeditpopup("hide");
-  console.log("function sunsetlabelclicked(){");
-  // maybe set ontime to sunsettime
-  // maybe set offtime to hor after sunsettime
-}
-
-
-/*
-$(document).on('click', '.sunriselabel', function(event) {
-  event.stopPropagation();
-  event.preventDefault();
-  //sunclicked=1;
-  //console.clear();
-  console.log('sunrise Child Clicked');
-});
-
-$(document).on('click', '.sunsetlabel', function(event) {
-  event.stopPropagation();
-  event.preventDefault();
-  //sunclicked=1;
-  //console.clear();
-  console.log('sunset Child Clicked');
-});
-*/
-
-
-$( ".timeslot" ).on( "click", function() {
-    console.log("timeslot function click");
-});
-
-
-
-
-/*
-              _               _ _                          _ _      _
-   ___  _   _| |_ ___ _ __ __| (_)_   __   ___  _ __   ___| (_) ___| | __
-  / _ \| | | | __/ _ \ '__/ _` | \ \ / /  / _ \| '_ \ / __| | |/ __| |/ /
- | (_) | |_| | ||  __/ | | (_| | |\ V /  | (_) | | | | (__| | | (__|   <
-  \___/ \__,_|\__\___|_|  \__,_|_| \_/    \___/|_| |_|\___|_|_|\___|_|\_\
-
-Figlet font Standard https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
-*/
-// $("#outerDiv").on("click", function(event) { // jquery
-id( "outerDiv" ).addEventListener("click", function(event){    // javascript
-  //event.stopPropagation();
-  //event.preventDefault();
-  selected_highlight = -1;        // erase edit timeslot highlight
-  if(innerdivclick==1){           // outerdiv click comes after innerdivclick
-    showhideeditpopup("show");
-    innerdivclick=0;
-    return;                       // i want to return to the innerdiv click
-  }
-   if(timeslotdivclick==1){       // outerdiv click comes after innerdivclick
-    timeslotdivclick=0;
-    return;                       // i want to return to the timeslotdivclick
-  }
-
-  if(sunclicked==1){              // outerdiv click comes after innerdivclick
-    sunclicked=0;
-    return;                       // i want to return to the timeslotdivclick
-  }
-
-   id("addoredit").innerHTML="Add New TimeSlot";                 // text on showhideeditpopup changes from add or edit timeslot
-   id("deletebutton").disabled = true;  // greyout disable the delete button
-   id("deletebutton").hidden = true;    // hide the delete button
-   showhideeditpopup("show");
-
-   // $('pre.message').html("new add / edit / save timeslot popup");
-   console.log("outerdiv clicked");
-   savefromedit=0;
-   let outerDiv = id('outerDiv');
-
-
-  id('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
-  console.log("mouse click x position on outerdiv ",event.clientX-outerDiv.offsetLeft);
-  console.log("outerDiv width ",outerDiv.offsetWidth);
-
-         // map_range returns a float that does not work for later convert to hh:mm
-         // but the float is better for left% width% scaling otherwise the selections are of target
-  var clickposinminutes=Math.round(map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440));
-  console.log("clickposinminutes ",clickposinminutes);
-
-  var hhmm=toHoursAndMinutes(clickposinminutes);              // add 15 minutes for timeslot
-  var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
-  if(clickposinminutes+15>=1440)hhmmplus15="24:00";
-  console.log("hhmm ",hhmm);
-  id("ontime").value=hhmm;               // set on time textfield
-  id("offtime").value=hhmmplus15;        // set off time textfield
-
-  drawtemp();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// https://stackoverflow.com/questions/60923136/how-to-get-the-width-on-where-the-mouse-clicks-a-div
-function changeWidth(event) {
-/*
-  let outerDiv = document.getElementById('outerDiv');
-
-  document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
-  console.log(event.clientX-outerDiv.offsetLeft);
-  console.log(outerDiv.offsetWidth);
-
-  var clickposinminutes=map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440)
-  console.log("clickposinminutes ",clickposinminutes);
-  var hhmm=toHoursAndMinutes(clickposinminutes);
-  var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
-  if(clickposinminutes+15>=1440)hhmmplus15="24:00";
-  console.log("hhmm ",hhmm);
-  document.getElementById("ontime").value=hhmm;
-  document.getElementById("offtime").value=hhmmplus15;
-
-  drawtemp();
-  */
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////
-// arduino alike map function == Re-maps a number from one range to another.
-// https://www.arduino.cc/reference/en/language/functions/math/map/
-// https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
-// scale range 1 into range2 bar range to 0 to 1440 minute range
-// or
-// scale a minutevalue in range 0 to 1440 minutes to 0% to 100%,  used for left and width of timeslot divs
-///////////////////////////////////////////////////////////////////////////////
-function map_range(value, low1, high1, low2, high2) {
-    return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
-}
-
-
-
-///////////////////////////////////////////////////////////////
-// 0 to 1440 minutes in a day convert timeinminutes to hh:mm
-// https://codingbeautydev.com/blog/javascript-convert-minutes-to-hours-and-minutes/#:~:text=To%20convert%20minutes%20to%20hours%20and%20minutes%20in%20JavaScript%2C%20divide,the%20remainder%20of%20the%20division.
-/////////////////////////////////////////////////////////////////////////////
-function toHoursAndMinutes(totalMinutes) {
-  if(totalMinutes>=1440)totalMinutes=1440;       // max 24:00
-  var hours = Math.floor(totalMinutes / 60);
-  var minutes = totalMinutes % 60;
-  if (hours<=9){hours='0'+hours;}
-  if (minutes<=9){minutes='0'+minutes;}         // add a zero if <= 9
-
-  return (hours+":"+minutes) ;
-}
-
-
-
-/////////////////////////////////////
-// convert hh:mm to time in minutes
-////////////////////////////////////
-function hhmm_to_minutes(hhmm) {
-  console.log("hhmm_to_minutes(hhmm) ",hhmm);
-
-  var hhmm_array = hhmm.split(':');                                       // split hh:mm  at the colons
-  var timeinminutes = (+hhmm_array[0]) * 60 + (+hhmm_array[1]);          // Hours are worth 60 minutes
-
-  console.log("timeinminutes ",timeinminutes);
-
-  return (timeinminutes) ;
-}
-
-
-
-
-//////////////////////////////////////////
-// draw selection on bar from text input
-/////////////////////////////////////////
-function drawtemp (){
-  // document.getElementById("ontime").value;                                     // get time from on text field
-  // document.getElementById("offtime").value;                                    // get time from off text field
-
-
-  if(id("offtime").value == "00:00"){
-        id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
-  }
-
-
-  var startminutes = hhmm_to_minutes(id("ontime").value);    // convert hh:mm to minutes
-  var endminutes = hhmm_to_minutes(id("offtime").value);     // convert hh:mm to minutes
-
-  console.log("start / endminutes",startminutes," / ",endminutes)
-
-  var divwidth=outerDiv.offsetWidth;
-
-  // console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
-  // console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));
-
-// better not in pixels /////////////////////////////
-      var startpos=map_range(startminutes,  0,1440, 0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
-      var endpos=map_range(endminutes,  0,1440, 0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
-      id('innerDiv').style.left=(startpos)+'px';
-      id('innerDiv').style.width=(endpos-startpos)+'px';
-// do left and width in % not in px
-// do it again better in % above in px did strange on screen rotate
-      var startpos = map_range(startminutes,  0,1440, 0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
-      var endpos = map_range(endminutes,  0,1440, 0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
-      id('innerDiv').style.left=(startpos)+'%';             // set left%
-      id('innerDiv').style.width=(endpos-startpos)+'%';     // set width %
-//////////////////////////////////////////////////
-
-  id('startlabel').innerHTML=id("ontime").value;      // write hh:mm to label
-  id('endlabel').innerHTML=id("offtime").value;       // write hh:mm to label
-
-}
-
-
-
-
-
-
-////////////////////////////////////////
-// create the slider numbers and scale
-// https://codepen.io/ldijkman/pen/XWyBPpG
-///////////////////////////////////////
-var pips = 96;                                // 24hour x 4quarters
-
-for (i = 0; i <= pips; i = i + 1) {
-  var number;
-  var imod4 = i % 4;                          // for hour numbers
-  // console.log("imod4", imod4);
-
-  if (imod4 == 0) {
-    number = i / 4;                            // for hour numbers
-  } else {
-    number = "";                               // no number for 15, 30, 45, minutes
-  }
-
-  var ruler = $(
-    '\n\n<span class="ruler-pip">\n<span class="ruler-line" style="width:2px; color:black;"></span>\n<span class="ruler-number" style="position:absolute;">' +
-      number +
-      "</span>\n"
-  );
-
-  ruler.css({ left: "" + ((100 / pips) * i).toFixed(3) + "%" });
-  ruler.css({ position: "absolute" });
-
-  ruler.css({ top: "32px" });
-
-  // console.log("left ", ((100 / pips) * i).toFixed(1), "%"); // 1 decimals
-
-  $(".outerDiv").append(ruler);
-
-
-  if (imod4 == 0) {
-    $(".ruler-line").eq(i).css("height", "35px");       // hour line
-    $(".ruler-line").eq(i).css("width", "2px");
-    $(".ruler-line").eq(i).css("background", "black");
-    $(".ruler-line").eq(i).css("left", "-1px");
-  }
-  if (imod4 == 1) {
-    $(".ruler-line").eq(i).css("height", "10px");       // 15 minute line
-    $(".ruler-line").eq(i).css("width", "1px");
-    $(".ruler-line").eq(i).css("background", "gray");
-    $(".ruler-line").eq(i).css("left", "-0.5px");
-  }
-  if (imod4 == 2) {
-    $(".ruler-line").eq(i).css("height", "20px");       // 30 minute line
-    $(".ruler-line").eq(i).css("width", "1px");
-    $(".ruler-line").eq(i).css("background", "gray");
-    $(".ruler-line").eq(i).css("left", "-0.5px");
-  }
-  if (imod4 == 3) {
-    $(".ruler-line").eq(i).css("height", "10px");       // 45 minute line
-    $(".ruler-line").eq(i).css("width", "1px");
-    $(".ruler-line").eq(i).css("background", "gray");
-    $(".ruler-line").eq(i).css("left", "-0.5px");
-  }
-}
-
-$(".outerDiv").append(
-  '<div class="selection" style="position:absolute;height:55px;background-color:green;opacity:50%;top:20px;left:50%;z-index:-1;"></div>'
-);
-//////////////////////////////////////////////
-// END // create the slider numbers and scale
-//////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-// add div for time text label below timeslot selection
-// you do not see this in the browser view page source
-// use chrome browser inspect to see this in the generated source
-$('#innerDiv').append('<div id="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;"><div  id="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;"></div></div>');
-// endlabel bit lower so they do not overlap when close to eachother
-$('#innerDiv').append('<div id="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;"><div id="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;"></div></div>');
-
-
-// add divs for sunrise actualtime and sunset line and label
-// you do not see this in the browser view page source
-// use chrome browser inspect to see this in the generated source
-$('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');
-$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" onclick="sunrise_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunrise</div></div>');
-$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" onclick="sunset_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunset</div></div>');
-
-
-// add 3 divs for night shade and dayshine
-// sunrise width % is later set changed
-// sunset left % and width % is later set changed
-// dayshine left % and width % is later set changed
-// you do not see this in the browser view page source
-// use chrome browser inspect to see this in the generated source
-// z-index:-1 stops parent child clicks
-$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;"></div>');
-$('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px;z-index:-1;"></div>');
-$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;" ></div>');
-
-
-
-
-
-
-
-// https://github.com/mourner/suncalc
-// https://www.latlong.net/
-
-// do not know make it global
-var times;
-var sunrisemin;
-var sunriseStr;
-var sunsetmin;
-var sunsetStr;
-var moon;
-
-// get today's sunlight times for                          // https://www.latlong.net/
-// geolocation for sunrise sunset
-// var lat=52.7354;
-// var lon=5.1790;
-function dogeoloc(){
-  var lat=id('lat').value;
-  var lon=id('lon').value;
-  console.log(lat," : ",lon);
-  times = SunCalc.getTimes(new Date(),lat,lon);
-
-
- moon = SunCalc.getMoonIllumination(new Date());
- console.log("moon ", moon);
-console.log("moon.phase ", moon.phase);
-
-// format sunrise time from the Date object
- sunrisemin =times.sunrise.getMinutes();
-if(sunrisemin<=9)sunrisemin="0"+sunrisemin;                     // 0-9 add a zero
-var sunriseStr = times.sunrise.getHours() + ':' + sunrisemin;
-
-sunsetmin =times.sunset.getMinutes();
-if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zero
-sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
-
-var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
-  for (let i = 0; i < 1; i++) {
-   //document.getElementsByClass('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-
-   //document.getElementsByClass('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
-  }
-
-var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
-  for (let i = 0; i < 1; i++) {
-   //document.getElementsByClass('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-
-   //document.getElementsByClass('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
-  }
-
-// get position of the sun (azimuth and altitude) at today's sunrise
-/////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
-
-// get sunrise azimuth in degrees
-/////var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
-
-// https://github.com/mourner/suncalc
-console.log(times);
-
-console.log("sunrise "+sunriseStr);
-console.log("sunset "+sunsetStr);
-
-//console.log(sunrisePos);
-//console.log(sunriseAzimuth);
-//document.getElementsByClass('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
-//document.getElementsByClass('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
-//document.getElementsByClass('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
-//document.getElementsByClass('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";
-
-/*
-const sunrise = document.querySelectorAll('.sunrise');
-sunrise.forEach(sunrise => {
-  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
-  //sunrise.innerHTML =("<!--"+lat+","+lon+"--> <a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise "+sunriseStr)+" </a>";
-});
-
-
-
-const sunset = document.querySelectorAll('.sunset');
-sunset.forEach(sunset => {
-  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
-  //sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet "+sunsetStr)+"</a>   ";
-});
-*/
-}
-
-
- dogeoloc();
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////
-// doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond()
-///////////////////////////////////////////////////////////////////////////
-function doiteverysecond() {
-
-  // console.log("Using JavaScript version:", navigator.userAgent);
-  // console.log("websocket.readyState ",websocket.readyState;
-
-  if(window.innerHeight > window.innerWidth){
-        id('pleaserotatetolandscape').innerHTML="<h4>Rotate device to LandScape?</h4>";
-  }else{
-        // erase rotatemessage if in landscape"
-        id('pleaserotatetolandscape').innerHTML="";
-  }
-
-
-  if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
-        id("gofullscreenmessage").innerHTML='<h3><a href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html" target="fullscreen">Go Full Screen,it works Better!</a></h3>';
-  }else{      // erase
-        id("gofullscreenmessage").innerHTML="";
-  }
-
-
-  const now = new Date();
-  const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
-  var sec;
-  var min;
-
-  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  var dayName = days[now.getDay()];
-
-
-
-
-  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
-  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
-
- for (let i = 0; i < 1; i++) {
-      classname('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
-
-      classname('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
- }
-
- var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
-  var sunrisecur=currents;
-  for (let i = 0; i < 1; i++) {
-      classname('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-
-      classname('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
-
-      classname('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
-  }
-
-var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
-  var sunsetcur=currents;
-  for (let i = 0; i < 1; i++) {
-      classname('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
-
-      classname('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
-
-      classname('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
-
-      classname('morning_shade')[i].style.left= currents+"%";
-
-      classname('dayshine')[i].style.left= sunrisecur+"%";
-      classname('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%";
-  }
-
-
-}
-///////////////////////////////////////////////////////////////////////
-// end doiteverysecond()  end doiteverysecond()  end doiteverysecond()
-///////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-//////////////////////
-// DOMContentLoaded
-/////////////////////
-document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
-
-    // https://github.com/loebi-ch/jquery-clock-timepicker
-    $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> ON time</font><br>"});  // activate analog timepicker popup for id ontime text field
-    $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> OFF time</font><br>"}); // activate analog timepicker popup for id offtime text field
-
-    dragElement(id("editpopup"));            // make editpopup draggable by mouse and touch
-
-    drawtemp();
-    domessage();
-    showhideeditpopup();
-    drawtimeslots();
-
-    // select day, set radio day to today,  makes label for radiobutton green
-    var daynr=new Date().getDay();                  // 0=sunday ... 6=saturday
-    if (daynr==0)daynr=7;
-    console.log("daynr ",daynr);
-    // $('.radioday')[daynr-1].checked="true";                                // jquery
-    classname('radioday')[daynr-1].checked="true";      // javascript
-    // 0=monday ... 6=sunday
-    checkit();
-
-    setInterval(doiteverysecond, 1000); // Milliseconds  call function doiteverysecond() every second
-
-
-
-
-}, false);
-//////////////////////
-// END DOMContentLoaded
-/////////////////////
-
-
-
-/////////////////////////////
-// show or hide About popup
-////////////////////////////
-function showhideabout() {
-  if (id("aboutDIV").style.display === "none") {
-    id("aboutDIV").style.display = "block";
-     // should be something to block scrolling of body
-     // only popup scroll
-     // https://codepen.io/anon/pen/oEMmrm
-  } else {
-    id("aboutDIV").style.display = "none";
-  }
-}
-
-
-
-/////////////////////////////////////////////////////////////////////
-// Make the DIV add or edit popup element draggable:
-// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
-// touch should be added == think it works , touch me
-// https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
-// https://codepen.io/ldijkman/pen/abQxbdM
-//////////////////////////////////////////////////////////////////////
-function dragElement(elmnt) {
-  let pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
-
-  let dragHandle = id("editpopupheader");
-
-  if (dragHandle !== undefined) {
-    // if present, the header is where you move the DIV from:
-    dragHandle.onmousedown = dragMouseDown;
-    dragHandle.ontouchstart = dragMouseDown; //added touch event
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-    elmnt.ontouchstart = dragMouseDown; //added touch event
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-
-    //Get touch or click position
-    //https://stackoverflow.com/a/41993300/5078983
-    if (
-      e.type == "touchstart" ||
-      e.type == "touchmove" ||
-      e.type == "touchend" ||
-      e.type == "touchcancel"
-    ) {
-      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
-      let touch = evt.touches[0] || evt.changedTouches[0];
-      x = touch.pageX;
-      y = touch.pageY;
-    } else if (
-      e.type == "mousedown" ||
-      e.type == "mouseup" ||
-      e.type == "mousemove" ||
-      e.type == "mouseover" ||
-      e.type == "mouseout" ||
-      e.type == "mouseenter" ||
-      e.type == "mouseleave"
-    ) {
-      x = e.clientX;
-      y = e.clientY;
-    }
-
-    console.log("drag start x: " + x + " y:" + y);
-
-    // get the mouse cursor position at startup:
-    pos3 = x;
-    pos4 = y;
-    document.onmouseup = closeDragElement;
-    document.ontouchend = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-    document.ontouchmove = elementDrag;
-  }
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-
-    //Get touch or click position
-    //https://stackoverflow.com/a/41993300/5078983
-    if (
-      e.type == "touchstart" ||
-      e.type == "touchmove" ||
-      e.type == "touchend" ||
-      e.type == "touchcancel"
-    ) {
-      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
-      let touch = evt.touches[0] || evt.changedTouches[0];
-      x = touch.pageX;
-      y = touch.pageY;
-    } else if (
-      e.type == "mousedown" ||
-      e.type == "mouseup" ||
-      e.type == "mousemove" ||
-      e.type == "mouseover" ||
-      e.type == "mouseout" ||
-      e.type == "mouseenter" ||
-      e.type == "mouseleave"
-    ) {
-      x = e.clientX;
-      y = e.clientY;
-    }
-
-    // calculate the new cursor position:
-    pos1 = pos3 - x;
-    pos2 = pos4 - y;
-    pos3 = x;
-    pos4 = y;
-    // set the element's new position:
-    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-  }
-
-  function closeDragElement() {
-    console.log("drag end x: " + pos3 + " y:" + pos4);
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.ontouchcancel = null;                      // added touch event
-    document.ontouchend = null;                         // added touch event
-    document.onmousemove = null;
-    document.ontouchmove = null;                        // added touch event
-
-    selected_highlight=-1;                              // erase edit timeslot highlight
-  }
-} // end function dragMouseDown(e) {
-
-</script>
-
-
-
-
-
-
-<!--
-  ///////////////////////////
-  // begin editpopup HTML
-  //////////////////////////
-  -->
-<div id="editpopup">
- <div id="editpopupheader" class="drag-handle">
-    <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;">
-      <b>X</b></button>
-    </div>
- </div>
-  <br>
- <div id="addoredit">add / edit  a time slot<!--this text will be changed to add or edit--></div><br>
-
-    <input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
-<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="offtimechange();drawtemp()"  value="16:30" change="offtimechange();" onchange="offtimechange();drawtemp();console.log('Time changed to: ' + this.value)"/>
-  <br><br>
-<input type="button" value="Cancel" onclick="cancelbutton()">
-<input type="button" value="Save" onclick="savetimeslot()">
-<br><br>
-<input type="button" id="deletebutton" value="Delete" onclick="deletebutton()">
-<br><br>
-<font color="green"">
-<small>Touch drag is Working ;-) ???</small>
-</font>
-<br>
-</div>
-</div>
-<!--
-  ////////////////////////
-  // end editpopup HTML
-  ///////////////////////
-  -->
-
-
-<!--
-  ////////////////////////
-  // begin aboutdiv HTML
-  ///////////////////////
-  -->
-
-  <div id="aboutDIV" style="position: fixed;
-  width: 98%;
-  top:0%;
-  padding: 10px 0;
-  text-align: center;
-  background-color: lightgray;borderColor:black;border:5px solid;border-radius:10px;
-  margin-top: 10px;display:none;z-index:1001;overflow-y:scroll; height:100%;overscroll-behavior: contain;">
-
- <div id="closeit" style="
- position: fixed;
- display: absolute;
- float:right;right: 2em;">
-    <button onclick="showhideabout()" style="border-color:red; color:red;"><b>X</b></button>
-  </div><h1>Visual Scheduler / Graphical Scheduler</h1>
-
-  <br>Visual TimeSlot Scheduler<br>
-Easy Set and Overview Scheduled timeslots<br>
-Touch Friendly Scheduler<br>
-<br>
-Create a scheduler from scratch <br>
-(a bit like Plasma-Cloud WiFi POE Scheduler / Apple Elgato Eve Schedule)<br>
-<br>
-Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<br>
-  irrigation Scheduler, Sprinkler Scheduler, Light Scheduler, WiFi relays Scheduler, WiFi switches Scheduler<br>
-  Time Activated Relays - Relay Control on a Schedule<br>
-  daily scheduler, weekly scheduler, timed switching<br>
-  visual timed automation, etcetera <a href="https://www.youtube.com/watch?v=mfJhMfOPWdE" target="blahblah">BlahBlah!</a><br>
-  <br>
-  Youtube Video <a href="https://youtu.be/GQpa_UIErT0" target="youtube">https://youtu.be/GQpa_UIErT0</a><br>
-  Do not forget to Subscribe at the end of the video ?! ;-)<br>
-  Better Youtube Video <a href="https://youtu.be/17K2TtYPI_A" target="youtube">better youtube video, served from ESP32 ace editor websockets</a><br>
-  Do not forget to Subscribe at the end of the video ?! ;-)<br>
-  <br>
-  <a href="https://youtu.be/Uy8vY94GGuE" target="phonehome">youtube video => Add icon link to phone home screen</a><br>
-  <br>
-  <br>
-  <center>
-  <hr>
-   Sources used<br>
-   <hr>
-  <a href="https://plugins.slyweb.ch/jquery-clock-timepicker" target="jquery-clock-timepicker">plugins.slyweb.ch/jquery-clock-timepicker</a>
-  <br><br>
-  <a href="https://github.com/mourner/suncalc" target="suncalc">github.com/mourner/suncalc</a>
-  <br><br>
-  <a href="https://github.com/kaimallea/isMobile" target="ismobile">github.com/kaimallea/isMobile</a>
-  <br><br>
-  <a href="https://www.w3schools.com" target="w3schools">www.w3schools.com</a>
-  <br><br>
-  <a href="https://stackoverflow.com" target="stackoverflow">stackoverflow.com</a><br>
-  <br>
-
-
-  <hr>
-  <br>
-  open HTML/CSS/Javascript, not closed like apps with wifi wall switches<br>
-  Possble to Edit it with Ace editor on ESP8266 / ESP32 webserver<br>
-  <br>
-  on phone<br>
-  from browser, save to phone home screen<br>
-  and it almost looks like an app without the addres location bar<br>
-  <br>
-  <br>
-  <a href="https://facebook.com/luberth.dijkman" target="facebook">facebook.com/luberth.dijkman</a><br>
-  <br>
-  <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs" target="mrs_github">github mrs visual scheduler</a><br>
-  <br>
-  <a href="https://plnkr.co/edit/p7xyOMhDtuTc49aZ" target="plunker">//plnkr.co/edit/p7xyOMhDtuTc49aZ</a><br>
-  <br>
-  <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions" target="discussions">github discussions</a><br>
-  <br>
-  Sorry for the kindergarden aged, there is no AM/PM<br>
-  <br>
-  <br>
-  Free for personal use.<br>
-  Not free for commercial use.<br>
-  Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script><br>
-  <br>
-  <br>
-  <button onclick="showhideabout()" style="color:green;">Accept!</button><br>
-  <br><br><br><br><br><br><br><br>
-</div>
-
-  <div id="about" style="position: fixed; top: 1em; right: 1em;">
-    <button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>
-  </div>
-<!--
-  //////////////////////
-  // end  aboutdiv HTML
-  //////////////////////
-  -->
-
-<br><br>
-
-<input type="button" onclick="showhideabout()" value="About"><br>
-<!-- Copyright Dirk Luberth Dijkman 2023 -->
-<br><br>
-<small><small><small>
-Free for personal use.<br>
-Not free for commercial use.<br>
-Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script></small></small></small>
-<!-- https://stackoverflow.com/questions/4562587/shortest-way-to-print-current-year-in-a-website -->
-
-
-<br><br>
-<!--
-webcam for sound in my youtune videos screen recordings<br>
--->
-<button class="btn btn-primary" id="button">Display Webcam feed in Picture-in-Picture mode</button>
-<script>
-const button = document.getElementById('button');
-
-button.addEventListener('click', async () => {
-  const video= document.createElement('video');
-  //video.muted = true;
-  video.srcObject = await navigator.mediaDevices.getUserMedia({ video: true });
-  video.play();
-  video.addEventListener('loadedmetadata', () => {
-    video.requestPictureInPicture()
-    .catch(console.error)
-  });
-});
-    </script>
-<br><br>it is Almost Time to Switch<!--it is Time to SWitch - SwitchTime--><br>
-    <img src="https://media.s-bol.com/N15Y8Y0kYB9p/D9BL5K/1200x1172.jpg" width="150px" height="150px"><br>
+translate to multiple languages
+google multilanguage translate spreadsheet
+https://docs.google.com/spreadsheets/d/1cg4fxA8wpfjk5TPABPNsmXEJa0EtpScuERCMjMMgwx0/edit?usp=sharing
+</pre>						
+							
+			Gelukkige Nuwe Jaar! , senior bejaardes groot teksweek kalender demensie papier geheue anker
+Gëzuar Vitin e Ri! , i moshuar i moshuar i moshuar i madh i javës së madhe të tekstit të kalendarit të çmendurisë së kujtesës së letrës
+መልካም አዲስ ዓመት! , አዛውንት አዛውንት ትልቅ የጽሑፍ ሳምንት የቀን መቁጠሪያ የወረቀት ማህደረ ትውስታ መልህቅ መልህቅ
+سنة جديدة سعيدة! ، كبار المسنين كبير النص الكبير في أسبوع التقويم الخرف مرساة ذاكرة ورقة الخرف
+#VALUE!
+Շնորհավոր Նոր Տարի! , ավագ տարեցների մեծ տեքստի շաբաթվա օրացույց Դեմենտիա Թղթի հիշողության խարիսխ
+#VALUE!
+Yeni iliniz mübarək! , böyük yaşlı böyük mətn həftəsi təqvim demans kağız yaddaşı lövbər
+Urte berri on! , adineko adineko adinekoen astearen asteko egutegia dementzia paper memoria aingura
+З Новым годам! , старэйшы пажылы вялікі тэкставы тыдзень каляндарная дэменцыя, папера памяці
+শুভ নব বর্ষ! , প্রবীণ প্রবীণ বড় পাঠ্য সপ্তাহ ক্যালেন্ডার ডিমেনশিয়া পেপার মেমরি অ্যাঙ্কর
+Sretna Nova godina! , stariji stariji veliki tjedan teksta Kalendar DEMENTIA papirna memorija Sidro
+#VALUE!
+Честита Нова Година! , Старши възрастни големи текстови седмици Календар Деменция Котва за памет за памет
+Bon any nou! , gent gran gran text de la setmana de text de la setmana de la memòria de la memòria de la memòria de la setmana
+#VALUE!
+新年快乐！ ，高级老年大型文字周历日历痴呆式记忆锚
+新年快樂！ ，高級老年大型文字週曆日曆癡呆式記憶錨
+新年快乐！ ，高级老年大型文字周历日历痴呆式记忆锚
+新年快樂！ ，高級老年大型文字週曆日曆癡呆式記憶錨
+Bon annu! Senior anzianu teste grande calendariu di settimana dementina di carta di memoria di carta
+Sretna Nova godina! , stariji stariji veliki tekstni tjedan kalendar demencija papirnato memorijsko sidro
+Šťastný nový rok! , senior starší, velký textový týden kalendář demence papírová paměť kotva
+Godt nytår! , Senior ældre store tekstuge kalender demens papirhukommelse anker
+Gelukkig nieuwjaar! , senior oudere grote tekstweek kalender dementie papieren geheugen anker
+Feliĉan Novjaron! , Altranga Maljuna Granda Teksta Semajna Kalendara Dementika Papera Memoro -Ankro
+Head uut aastat! , vanem eakas suur tekstinädala kalendri dementsuse paberi mälu ankur
+#VALUE!
+Maligayang bagong Taon! , Senior Elderly Malaking Text Week Calendar Dementia Paper Memory Anchor
+Hyvää uutta vuotta! , vanhempi vanhusten suuri tekstin viikko Kalenteri Dementiapaperimuistin Ankkuri
+Bonne année! , Anchor de mémoire de la démence de la semaine de la semaine du texte de la semaine
+Feliz aninovo! , ancián anciáns de idade de texto grande calendario de demencia de demencia áncora de memoria de papel
+Გილოცავთ ახალ წელს! , უფროსი ხანდაზმული დიდი ტექსტური კვირის კალენდარი დემენცია ქაღალდის მეხსიერების წამყვანი
+Feliĉan Novjaron! , Altranga Maljuna Granda Teksta Semajna Kalendara Dementika Papera Memoro -Ankro
+Head uut aastat! , vanem eakas suur tekstinädala kalendri dementsuse paberi mälu ankur
+#VALUE!
+Maligayang bagong Taon! , Senior Elderly Malaking Text Week Calendar Dementia Paper Memory Anchor
+Hyvää uutta vuotta! , vanhempi vanhusten suuri tekstin viikko Kalenteri Dementiapaperimuistin Ankkuri
+Bonne année! , Anchor de mémoire de la démence de la semaine de la semaine du texte de la semaine
+
+
+
+Feliz aninovo! , ancián anciáns de idade de texto grande calendario de demencia de demencia áncora de memoria de papel
+Გილოცავთ ახალ წელს! , უფროსი ხანდაზმული დიდი ტექსტური კვირის კალენდარი დემენცია ქაღალდის მეხსიერების წამყვანი
+Frohes neues Jahr! , ältere ältere Large Text Week Kalender Demenz Papierspeicher Anker
+
+
+
+
+Ευτυχισμένο το νέο έτος! , ανώτερος ηλικιωμένος μεγάλος κειμένου Ημερολόγιο Ημερολογική άνοδος χαρτιού μνήμης
+#VALUE!
+સાલ મુબારક! , વરિષ્ઠ વૃદ્ધ મોટા ટેક્સ્ટ અઠવાડિયું કેલેન્ડર ડિમેન્શિયા પેપર મેમરી એન્કર
+Barka da sabon shekara! , babban tsofaffi manyan sati kalandar Tallan Kwallan Takardar Takarda Takardar Little Anga
+Hauʻoli makahiki hou! , ka mua o nā makahiki he nui i ka mua o ka helu leka uila dementia
+שנה טובה! , קשיש בכיר בשבוע הטקסט הגדול של שבוע לוח השנה דמנציה דמנציה עוגן נייר
+नववर्ष की शुभकामनाएं! , वरिष्ठ बुजुर्ग बड़े पाठ सप्ताह कैलेंडर डिमेंशिया पेपर मेमोरी एंकर
+Boldog új évet! , Senior idős, nagy szöveghét naptári demencia papír memória horgony
+Gleðilegt nýtt ár! , eldri aldraðir stórir textaviku dagatal vitglöp pappírsminni
+Selamat Tahun Baru! , Senior Lansia Teks Besar Kalender Kalender Dementia Kertas Memori
+Felix New Year? , Senior senes Large Text Week Calendar Dementia charta memoria anchoram
+Athbhliain faoi mhaise daoibh! , Ancaire Cuimhne Páipéar Féilire Seachtain Sinsearach Sean -Sean -Seanóir
+Buon Anno! , anziani anziani anziani del calendario della settimana del calendario della demenza di memoria di memoria
+
+
+あけましておめでとう！ 、高齢者の大規模なテキストウィークカレンダー認知症紙メモリアンカー
+ಹೊಸ ವರ್ಷದ ಶುಭಾಶಯ! , ಹಿರಿಯ ಹಿರಿಯ ದೊಡ್ಡ ಪಠ್ಯ ವಾರ ಕ್ಯಾಲೆಂಡರ್ ಬುದ್ಧಿಮಾಂದ್ಯತೆ ಪೇಪರ್ ಮೆಮೊರಿ ಆಂಕರ್
+Жаңа жыл құтты болсын! , аға қарттар үлкен мәтіндік апта Күнтізбе Dementia Paper Memory AdChor
+រីករាយ​ឆ្នាំ​ថ្មី! , សប្តាហ៍ប្រតិទិនមួយដ៏ធំនៃអត្ថបទដ៏ចាស់របស់មនុស្សចាស់ចាស់ជរា
+새해 복 많이 받으세요! , 선임 노인 대형 텍스트 주정 달력 치매 종이 메모리 앵커
+Sersala ve mibarek be! , Salnameya Memê Memê Memê Memê Memê Memê Memê Mezinahiya Pîr û kal
+Жаны жылыңар менен! , улгайган улгайган улгайган жогорку тексттик жумалыгы
+ສະ​ບາຍ​ດີ​ປີ​ໃຫມ່! , ອາທິດຜູ້ສູງອາຍຸຜູ້ສູງອາຍຸອາທິດປະຕິທິນປະຕິທິນ Dementia
+Felix New Year? , Senior senes Large Text Week Calendar Dementia charta memoria anchoram
+Laimīgu Jauno gadu! , vecāka gadagājuma vecāka gadagājuma lielā teksta nedēļas kalendāra demences papīra atmiņas enkurs
+#VALUE!
+Laimingų Naujųjų metų! , vyresnysis pagyvenęs didelis teksto savaitės kalendoriaus demencijos popierinės atminties inkaras
+Среќна Нова година! , постари постари постари текстуални текстуални недела календари за деменција на меморија за хартија
+Selamat tahun Baru! , Kalendar Kanan Minggu Besar Kalendar Dementia Dementia Kertas Anchor
+പുതുവത്സരാശംസകൾ! , മുതിർന്ന വൃത്താകൃതിയിലുള്ള വാചക വാചകം കലണ്ടർ ഡിമെൻഷ്യ പേപ്പർ മെമ്മറി ആങ്കർ
+Is-Sena t-Tajba! , Anzjani Anzjani Kbar Kalendarju Kalendarju Kalendarju Dementia tal-Memorja Ankra
+नवीन वर्षाच्या शुभेच्छा! , ज्येष्ठ वृद्ध मोठा मजकूर आठवडा कॅलेंडर डिमेंशिया पेपर मेमरी अँकर
+Шинэ жилийн мэнд! , нас ахих насныхан том текстийн долоо хоног Calendar Dementia цаасан ой санамж
+नयाँ बर्षको शुभकामना! , वरिष्ठ वृद्ध ठूलो पाठ हप्ता क्यालेन्डर डिमेन्सिया कागजको मेमोरी ए ch ्कर
+Godt nytt år! , senior eldre stor tekstuke kalender demens papirminneanker
+
+
+#VALUE!
+ନବବର୍ଷର ଶୁଭେଚ୍ଛା! , ସିନିୟର ବୃଦ୍ଧଙ୍କର ବଡ଼ ପାଠ୍ୟ ସପ୍ତାହ କ୍ୟାଲେଣ୍ଡର ଡିମେନ୍ସିଆ କାଗଜ ସ୍ମୃତି ଆଇଚର୍ |
+#VALUE!
+نوی کال مو مبارک شه! ، لوړ پوړي ستړیا د متن اونۍ اونۍ کلي کلي د ډنډر ډیلینټیا د کاغذ حافظه اینن اداره
+سال نو مبارک! ، لنگرگاه حافظه کاغذ دمانس هفته بزرگ سالخورده بزرگان
+Szczęśliwego Nowego Roku! , Senior Starszy Kalendarz Kalendarza Duża Tydzień Tekstu Dementia
+Feliz Ano Novo! , idosos idosos da semana de teatro de texto grande âncora âncora de memória de papel
+
+
+ਨਵਾ ਸਾਲ ਮੁਬਾਰਕ! , ਸੀਨੀਅਰ ਵੱਡੇ ਟੈਕਸਟ ਹਫ਼ਤੇ ਕੈਲੰਡਰ ਡਿਮੇਨਸ਼ੀਆ ਪੇਪਰ ਮੈਮੋਰੀ ਲੰਗਰ
+#VALUE!
+An Nou Fericit! , senior vârstnic de text mare calendar de demență de demență ancoră de memorie de hârtie
+An Nou Fericit! , senior vârstnic de text mare calendar de demență de demență ancoră de memorie de hârtie
+#VALUE!
+С новым годом! , старшие пожилые люди с большой текстовой неделей календарь деменция бумажная память
+Срећна Нова година! , старији старији велики текстуални недељник Календар Деменција Папер меморије меморије
+Срећна Нова година! , старији старији велики текстуални недељник Календар Деменција Папер меморије меморије
+#VALUE!
+Goredzva rakanaka! , Serior Subsly Break United Svondo Khalenda Dementia Pepa Remrory Anchor
+نئون سال مبارڪ! ، سينيئر بزرگ وڏي متن واري هفتي ڪئلينڊر ديميا پيپر ميموري ميموري لنگر
+සුභ නව වසරක්! , ජ්යෙෂ් senior වැඩිහිටි විශාල පෙළ සතියේ දින දර්ශනය ඩිමෙන්ටා කඩදාසි මතක නැංගුරම
+Šťastný nový rok! , Senior Starší veľký textový týždeň kalendár demencia papierová kotva
+Srečno novo leto! , Starejši starejši teksto
+Sannad cusub oo faraxsan! , Sarkaal sare oo waayeel ah usbuuca caadiga ah ee Telennderka Telement ProneShar CONESOR
+සුභ නව වසරක්! , ජ්යෙෂ් senior වැඩිහිටි විශාල පෙළ සතියේ දින දර්ශනය ඩිමෙන්ටා කඩදාසි මතක නැංගුරම
+Buon Anno! , Anziani anziani anziani del calendario della settimana del calendario della demenza di memoria di memoria
+
+
+
+
+
+Wilujeng taun énggal! , sasarengan swaster sepi ageung
+Heri ya mwaka mpya! , Wazee Wazee wa Maandishi ya Wazee wa Kalenda ya Kalenda Kumbukumbu ya Karatasi
+Gott nytt år! , Senior äldre stor textvecka Kalender Demens Pappersminnet Ankare
+Соли Нав Муборак! , калони калони пиронсолони Калон
+புத்தாண்டு வாழ்த்துக்கள்! , மூத்த வயதான பெரிய உரை வார காலண்டர் டிமென்ஷியா காகித நினைவக நங்கூரம்
+#VALUE!
+నూతన సంవత్సర శుభాకాంక్షలు! , సీనియర్ పెద్ద పెద్ద టెక్స్ట్ వీక్ క్యాలెండర్ చిత్తవైకల్యం పేపర్ మెమరీ యాంకర్
+สวัสดีปีใหม่! , ผู้สูงอายุอาวุโสข้อความใหญ่ในปฏิทิน dementia paper memory anchor
+#VALUE!
+#VALUE!
+Yeni Yılın Kutlu Olsun! , kıdemli yaşlı büyük metin haftası takvim demans kağıt bellek ankrajı
+Täze ýylyňyz gutly bolsun! , uly garry köne tekst hepdelik senenama kapitalynyň kazy ýatgysy
+#VALUE!
+Щасливого Нового року! , старший літній великий текстовий тиждень календаря деменція Паперова пам'ять
+نیا سال مبارک ہو! ، سینئر بزرگ بڑے ٹیکسٹ ہفتہ کیلنڈر ڈیمینشیا پیپر میموری اینکر
+يېڭى يىلىڭىزغا مۇبارەك بولسۇن! , يۇقىرى دەرىجىلىك ياشانغانلار ھەپتىلىك كالىملار كالېندار قەغەز ئىچكى ساقلىغۇچ لەڭگەر
+Yangi Yil muborak! , Katta yoshdagi katta matn haftaligining qog'ozli disportia xodimi langar
+Chúc mừng năm mới! con
+#VALUE!
+Blwyddyn Newydd Dda! .
+Lokkich nijjier! , Senior Alderly Grutte tekstwike Kalinder Dementia Paper Memory Anchor
+Nyakhomtsha! , IKHAYA LOKUGQIBELA LOLWAZI LOKUGQIBELA LWE-CALDANDER OMBINI YEKHALASIA Iphepha leMentia iPhenda Imemori
+א גוט געבענטשט יאר! , עלטער עלטערער גרויס טעקסט וואָך קאַלענדאַר דימענשיאַ פּאַפּיר זיקאָרן אַנקער
+E ku odun, eku iyedun! , agba agba agba nla ti imọ-jinlẹ Oṣu Kalẹ Kalẹji iwe Iwe-iranti Iwe Imanjo
+Jabulela unyaka omusha! , Ikhalenda Elidala Elidala Elidala Lekhalenda Lomqondo Dementia Phepha Imemori I-Anchor
+						
+<pre>
+translate to multiple languages
+google multilanguage translate spreadsheet
+https://docs.google.com/spreadsheets/d/1cg4fxA8wpfjk5TPABPNsmXEJa0EtpScuERCMjMMgwx0/edit?usp=sharing
+</pre>				
+				
+				
+				
+				
 </body>
 </html>
 
-
-<!--
-David Bird G6EJD would say it like next:
-
-This software, the ideas and concepts is Copyright (c) Dirk Luberh Dijkman Bangert 30 Andijk The Netherlands 2023 and beyond.
-All rights to this software are reserved.
-
-***DO NOT USE THIS SOFTWARE IF YOU CAN NOT AGREE TO THESE LICENCE TERMS ***
-
-It is prohibited to redistribute or reproduce of any part or all of the software contents in any form other than the following:
- 1. You may print or download to a local hard disk extracts for your personal and non-commercial use only.
- 2. You may copy the content to individual third parties for their personal use, but only if you acknowledge the author Dirk Luberth Dijkman as the source of the material.
- 3. You may not, except with my express written permission, distribute or commercially exploit the content.
- 4. You may not transmit it or store it in any other website or other form of electronic retrieval system for commercial purposes.
- 5. You MUST include all of this copyright and permission notice ('as annotated') and this shall be included in all copies or substantial portions of the software and where the software use is visible to an end-user.
-
-THE SOFTWARE IS PROVIDED "AS IS" FOR PRIVATE USE ONLY, IT IS NOT FOR COMMERCIAL USE IN WHOLE OR PART OR CONCEPT.
-
-FOR PERSONAL USE IT IS SUPPLIED WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-
-IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Elon Musk do not use this scheduler to launch your trip to Mars
-
-
-https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github.io%2Frandomnerd_esp32_wifi_manager%2Fmrs%2Fcreate_from_scratch%2Findex.html
--->
-
-
-
-   Wich Ladder Will it be,                        
-                            https://youtu.be/l9wejBgCiT4
-  
-  
 	 </textarea>
     </div>
   
