@@ -4,10 +4,10 @@
 // Function to create and append the tooltip element to the body
 
 
-// Global variable to keep track of tooltip state
+// Global variables
 var tooltipsEnabled = true;
-var tooltip; // Global reference to the tooltip element
-var lastActiveElement = null; // Variable to keep track of the last active element
+var tooltip; // Reference to the tooltip element
+var lastActiveElement = null; // Track the last active element
 
 // Function to create and append the tooltip element to the body
 function createTooltip() {
@@ -42,7 +42,7 @@ function updateTooltip(element, tooltip, event) {
         detailsList.appendChild(heightListItem);
     }
 
-    // Add other details like ID and class
+    // Add details like ID and class
     var idListItem = document.createElement('li');
     idListItem.textContent = 'ID: ' + (element.id ? element.id : 'None');
     detailsList.appendChild(idListItem);
@@ -52,6 +52,39 @@ function updateTooltip(element, tooltip, event) {
     classListItem.textContent = 'Class: ' + classText;
     detailsList.appendChild(classListItem);
 
+    // Inline styles
+    var inlineStyles = element.style;
+    if (inlineStyles.length > 0) {
+        for (var i = 0; i < inlineStyles.length; i++) {
+            var property = inlineStyles[i];
+            var value = inlineStyles.getPropertyValue(property);
+            var styleListItem = document.createElement('li');
+            styleListItem.textContent = property + ': ' + value;
+            detailsList.appendChild(styleListItem);
+        }
+    }
+
+    // Styles from stylesheets
+    Array.from(document.styleSheets).forEach((sheet) => {
+        try {
+            Array.from(sheet.rules || sheet.cssRules).forEach((rule) => {
+                if (element.matches(rule.selectorText)) {
+                    var cssText = rule.style.cssText.split(';');
+                    cssText.forEach((styleProperty) => {
+                        if (styleProperty.trim().length > 0) {
+                            var styleListItem = document.createElement('li');
+                            styleListItem.textContent = styleProperty.trim();
+                            detailsList.appendChild(styleListItem);
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            console.warn('Cannot access stylesheet: ', sheet);
+        }
+    });
+
+    // Position the tooltip
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     tooltip.style.left = (event.clientX + scrollLeft + 10) + 'px';
@@ -128,9 +161,7 @@ function onMouseOut() {
 function initializeTooltips() {
     addTooltipStyles();
     tooltip = createTooltip(); // Create the tooltip element
-
-    // Attach mouseover and mouseout event listeners to all elements if enabled
-    toggleTooltipEventListeners(tooltipsEnabled);
+    toggleTooltipEventListeners(tooltipsEnabled); // Attach event listeners if enabled
 }
 
 // Function to create and append the toggle button to the body
@@ -149,14 +180,14 @@ function createToggleTooltipButton() {
     button.style.borderRadius = '5px';
     button.style.cursor = 'pointer';
     button.style.zIndex = '1010';
-    button.style.opacity = '0.5'; // Make button a bit transparent
+    button.style.opacity = '0.8'; // Make button a bit transparent
     document.body.appendChild(button);
 
     // Event listener for the toggle button
     button.addEventListener('click', function() {
         tooltipsEnabled = !tooltipsEnabled; // Toggle the state
         toggleTooltipEventListeners(tooltipsEnabled); // Add or remove event listeners
-        // Additionally, hide the tooltip and remove any added styles if disabling
+        // Hide the tooltip and remove border if disabling
         if (!tooltipsEnabled && lastActiveElement) {
             lastActiveElement.style.border = '';
             lastActiveElement = null;
