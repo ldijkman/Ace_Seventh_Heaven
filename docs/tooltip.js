@@ -1,6 +1,8 @@
 // Function to create and append the tooltip element to the body
 
 // made by ai and dirk luberth dijkman
+// http://aicode.great-site.net/CLNDR/?year=2024&language=en
+//
 // Function to create and append the tooltip element to the body
 
 
