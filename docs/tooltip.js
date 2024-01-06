@@ -164,7 +164,7 @@ function createToggleTooltipButton() {
     button.style.borderRadius = '5px';
     button.style.cursor = 'pointer';
     button.style.zIndex = '1010';
-    button.style.opacity = '0.9'; // Make button a bit transparent
+    button.style.opacity = '0.5'; // Make button a bit transparent
     document.body.appendChild(button);
 
     // Event listener for the toggle button
