@@ -27,6 +27,22 @@ function updateTooltip(element, tooltip, event) {
     detailsList.style.listStyleType = 'none';
     tooltip.appendChild(detailsList);
 
+    // Check if the element is an image and display its info
+    if (element.tagName.toLowerCase() === 'img') {
+        var srcListItem = document.createElement('li');
+        srcListItem.textContent = 'Src: ' + (element.src ? element.src : 'None');
+        detailsList.appendChild(srcListItem);
+
+        var widthListItem = document.createElement('li');
+        widthListItem.textContent = 'Width: ' + element.width + 'px';
+        detailsList.appendChild(widthListItem);
+
+        var heightListItem = document.createElement('li');
+        heightListItem.textContent = 'Height: ' + element.height + 'px';
+        detailsList.appendChild(heightListItem);
+    }
+
+    // Add other details like ID and class
     var idListItem = document.createElement('li');
     idListItem.textContent = 'ID: ' + (element.id ? element.id : 'None');
     detailsList.appendChild(idListItem);
@@ -35,36 +51,6 @@ function updateTooltip(element, tooltip, event) {
     var classText = element.classList.length > 0 ? Array.from(element.classList).join(', ') : 'None';
     classListItem.textContent = 'Class: ' + classText;
     detailsList.appendChild(classListItem);
-
-    var inlineStyles = element.style;
-    if (inlineStyles.length > 0) {
-        for (var i = 0; i < inlineStyles.length; i++) {
-            var property = inlineStyles[i];
-            var value = inlineStyles.getPropertyValue(property);
-            var styleListItem = document.createElement('li');
-            styleListItem.textContent = property + ': ' + value;
-            detailsList.appendChild(styleListItem);
-        }
-    }
-
-    Array.from(document.styleSheets).forEach((sheet) => {
-        try {
-            Array.from(sheet.rules || sheet.cssRules).forEach((rule) => {
-                if (element.matches(rule.selectorText)) {
-                    var cssText = rule.style.cssText.split(';');
-                    cssText.forEach((styleProperty) => {
-                        if (styleProperty.trim().length > 0) {
-                            var styleListItem = document.createElement('li');
-                            styleListItem.textContent = styleProperty.trim();
-                            detailsList.appendChild(styleListItem);
-                        }
-                    });
-                }
-            });
-        } catch (e) {
-            console.warn('Cannot access stylesheet: ', sheet);
-        }
-    });
 
     var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -102,7 +88,6 @@ function addTooltipStyles() {
     head.appendChild(style);
     style.type = 'text/css';
     if (style.styleSheet) {
-        // This is required for IE8 and below.
         style.styleSheet.cssText = css;
     } else {
         style.appendChild(document.createTextNode(css));
