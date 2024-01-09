@@ -101,7 +101,7 @@ function addTooltipStyles() {
             padding: 8px;
             background: #f0f0f0;
             border: 1px solid #ccc;
-            z-index: 1000;
+            z-index: 999999;
             display: none;
             font-size: 14px;
             border-radius: 8px;
