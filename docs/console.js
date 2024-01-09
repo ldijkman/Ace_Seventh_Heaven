@@ -347,6 +347,7 @@ errorNR=0;
 console.info("Cleared Console ",new Date())\' 
 value="Clear" 
 title="Empty Console!"> 
+<button id="loadScriptButton">Load popupifo</button>
 <input type="button" 
 value="hide" 
 onclick="hideconsole()" 
@@ -575,7 +576,28 @@ onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ac
         }
       }());
 
+document.getElementById('loadScriptButton').addEventListener('click', function() {
+    // Check if the script is already loaded to prevent multiple inclusions
+    if (!document.getElementById('myDynamicScript')) {
+        // Create script element
+        var script = document.createElement('script');
+        script.id = 'myDynamicScript'; // Set an ID for the script tag so we can check if it's already loaded
+        script.src = 'https://ldijkman.github.io/Ace_Seventh_Heaven/tooltip.js';
+        script.async = true; // Optional: if you want the script to load asynchronously
 
+        // Append the script to the body or head
+        document.body.appendChild(script);
+
+        // Optional: Do something after the script is loaded
+        script.onload = function() {
+            console.log('Script loaded successfully!');
+            // You can initialize or call functions from the script here if needed
+           initializeTooltips();
+           createToggleTooltipButton();
+    
+        };
+    }
+});
       // https://codepen.io/louisr/pen/xZwJLx
       // https://github.com/bahmutov/console-log-div 
       //      changes Luberth https://plnkr.co/edit/AufqNkQe4InMuU8v
