@@ -590,7 +590,7 @@ document.getElementById('loadScriptButton').addEventListener('click', function()
 
         // Optional: Do something after the script is loaded
         script.onload = function() {
-            console.log('Script loaded successfully!');
+            console.log('Script dev. tool popup info loaded successfully!');
             // You can initialize or call functions from the script here if needed
            initializeTooltips();
            createToggleTooltipButton();
