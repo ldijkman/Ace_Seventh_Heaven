@@ -1,11 +1,3 @@
-// Function to create and append the tooltip element to the body
-
-// made by ai and dirk luberth dijkman
-// http://aicode.great-site.net/CLNDR/?year=2024&language=en
-//
-// Function to create and append the tooltip element to the body
-
-
 // Global variables
 var tooltipsEnabled = true;
 var tooltip; // Reference to the tooltip element
@@ -44,14 +36,15 @@ function updateTooltip(element, tooltip, event) {
         detailsList.appendChild(heightListItem);
     }
 
-    // Add details like ID and class
+    // Add details like ID and class with count
     var idListItem = document.createElement('li');
     idListItem.textContent = 'ID: ' + (element.id ? element.id : 'None');
     detailsList.appendChild(idListItem);
 
     var classListItem = document.createElement('li');
     var classText = element.classList.length > 0 ? Array.from(element.classList).join(', ') : 'None';
-    classListItem.textContent = 'Class: ' + classText;
+    var classCount = element.classList.length; // Count of classes
+    classListItem.textContent = 'Class [' + classCount + ']: ' + classText;
     detailsList.appendChild(classListItem);
 
     // Inline styles
