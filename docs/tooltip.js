@@ -36,15 +36,19 @@ function updateTooltip(element, tooltip, event) {
         detailsList.appendChild(heightListItem);
     }
 
-    // Add details like ID and class with count
+    // Add details like ID
     var idListItem = document.createElement('li');
     idListItem.textContent = 'ID: ' + (element.id ? element.id : 'None');
     detailsList.appendChild(idListItem);
 
+    // Add details about the classes with index
     var classListItem = document.createElement('li');
-    var classText = element.classList.length > 0 ? Array.from(element.classList).join(', ') : 'None';
-    var classCount = element.classList.length; // Count of classes
-    classListItem.textContent = 'Class [' + classCount + ']: ' + classText;
+    if (element.classList.length > 0) {
+        var classText = Array.from(element.classList).map((className, index) => index + ': ' + className).join(', ');
+        classListItem.textContent = 'Classes [' + element.classList.length + ']: ' + classText;
+    } else {
+        classListItem.textContent = 'Classes [0]: None';
+    }
     detailsList.appendChild(classListItem);
 
     // Inline styles
@@ -60,12 +64,12 @@ function updateTooltip(element, tooltip, event) {
     }
 
     // Styles from stylesheets
-    Array.from(document.styleSheets).forEach((sheet) => {
+    Array.from(document.styleSheets).forEach(sheet => {
         try {
-            Array.from(sheet.rules || sheet.cssRules).forEach((rule) => {
+            Array.from(sheet.rules || sheet.cssRules).forEach(rule => {
                 if (element.matches(rule.selectorText)) {
                     var cssText = rule.style.cssText.split(';');
-                    cssText.forEach((styleProperty) => {
+                    cssText.forEach(styleProperty => {
                         if (styleProperty.trim().length > 0) {
                             var styleListItem = document.createElement('li');
                             styleListItem.textContent = styleProperty.trim();
@@ -116,6 +120,7 @@ function addTooltipStyles() {
     head.appendChild(style);
     style.type = 'text/css';
     if (style.styleSheet) {
+        // IE8 and below
         style.styleSheet.cssText = css;
     } else {
         style.appendChild(document.createTextNode(css));
@@ -124,7 +129,7 @@ function addTooltipStyles() {
 
 // Function to attach or detach tooltip event listeners
 function toggleTooltipEventListeners(enable) {
-    document.querySelectorAll('*').forEach(function (element) {
+    document.querySelectorAll('*').forEach(element => {
         if (enable) {
             element.addEventListener('mouseover', onMouseOver);
             element.addEventListener('mouseout', onMouseOut);
