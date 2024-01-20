@@ -59,6 +59,34 @@ add next to a HTML webpage to get an Console
 </div>
 */
 
+
+function toggleDebugStyles() {
+    var existingStyles = document.getElementById('debug-css-styles');
+    if (existingStyles) {
+        existingStyles.remove();
+    } else {
+        var domStyle = document.createElement("style");
+        domStyle.id = 'debug-css-styles';
+        domStyle.textContent = `
+            * { color:#0f0!important;outline:solid #f00 1px!important; background-color: rgba(255,0,0,.2) !important; }
+            * * { background-color: rgba(0,255,0,.2) !important; }
+            * * * { background-color: rgba(0,0,255,.2) !important; }
+            * * * * { background-color: rgba(255,0,255,.2) !important; }
+            * * * * * { background-color: rgba(0,255,255,.2) !important; }
+            * * * * * * { background-color: rgba(255,255,0,.2) !important; }
+            * * * * * * * { background-color: rgba(255,0,0,.2) !important; }
+            * * * * * * * * { background-color: rgba(0,255,0,.2) !important; }
+            * * * * * * * * * { background-color: rgba(0,0,255,.2) !important; }
+        `;
+        document.body.appendChild(domStyle);
+    }
+}
+
+
+
+
+
+
 // wait for the page loaded, and make console draggable 
 document.addEventListener("DOMContentLoaded",
 function (event) {
@@ -347,6 +375,7 @@ errorNR=0;
 console.info("Cleared Console ",new Date())\' 
 value="Clear" 
 title="Empty Console!"> 
+<button onclick="toggleDebugStyles()">CSS Debug</button>
 <button id="loadScriptButton">Load popupifo</button>
 <input type="button" 
 value="hide" 
