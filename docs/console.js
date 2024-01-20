@@ -375,8 +375,8 @@ errorNR=0;
 console.info("Cleared Console ",new Date())\' 
 value="Clear" 
 title="Empty Console!"> 
-<button onclick="toggleDebugStyles()">CSS Debug</button>
-<button id="loadScriptButton">Load popupifo</button>
+<button onclick="toggleDebugStyles()">CSSBug</button>
+<button id="loadScriptButton">Popup-info</button>
 <input type="button" 
 value="hide" 
 onclick="hideconsole()" 
