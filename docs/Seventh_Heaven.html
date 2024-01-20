@@ -1702,9 +1702,9 @@ maybe add a coockie for lat lon location
  https://www.w3schools.com/js/js_cookies.asp
 -->
 
+
 <!DOCTYPE html> <!-- this should be the first line of the document not all the blahblah before this-->
-<ht
-ml> <!--trigger an Error should be <html> see vertical scrollbar red line-->
+<html> <!--trigger an Error should be <html> see vertical scrollbar red line-->
 <head>
 
   <title>Visual TimeSlot Day Week Scheduler, Touch Friendly</title>
@@ -1752,7 +1752,7 @@ ml> <!--trigger an Error should be <html> see vertical scrollbar red line-->
 -->
 
 <style>
-  #editpopup {          /* # = id */
+  #edit_popup {           /* # = id */
   position: fixed;
   left:40%;
   top:30%;
@@ -1764,8 +1764,8 @@ ml> <!--trigger an Error should be <html> see vertical scrollbar red line-->
   z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000*/
   display: none;
 }
-
-#editpopupheader {      /* # = id */
+ 
+#edit_popup_header {      /* # = id */
   padding: 5px;
   cursor: move;
   z-index: 10;
@@ -1778,7 +1778,7 @@ ml> <!--trigger an Error should be <html> see vertical scrollbar red line-->
   opacity:90%;
   }
 
-#outerDiv {                 /* # = id */
+#Day_Container {                 /* # = id */
   position:relative;
   width:100%;
   height:50px;
@@ -1787,13 +1787,13 @@ ml> <!--trigger an Error should be <html> see vertical scrollbar red line-->
   cursor: pointer;
 
 }
-.outerDiv {               /* . = class */
+.Day_Container {               /* . = class */
   width:100%;
   height:50px;
   border: 1px solid black;
 
 }
-#innerDiv {
+#New_or_Edit_Div { 
   position:relative;
   //left:50px;
   width: 0px;
@@ -1856,7 +1856,7 @@ body{
 
 </style>
 
-</head>
+</head> 
 <body bgcolor="#f2f2ed">
 
 
@@ -2022,8 +2022,8 @@ Sunday
 
     <div id="day"><h1>Monday</h1><!-- big dayname on left gets here --></div>
 
-    <div id='outerDiv' class="outerDiv" onclick = 'changeWidth(event)'>
-        <div id='innerDiv'></div>
+    <div id='Day_Container' class="Day_Container" onclick = 'changeWidth(event)'>
+        <div id='New_or_Edit_Div'></div>
     </div>
 
 </div>
@@ -2454,7 +2454,7 @@ function deletebutton(){
     timeslotpointer = "";                              // otherwise if delete is clicked again it will remove other
 
     domessage();
-    showhideeditpopup();
+    showhideedit_popup();
     drawtimeslots();
     savefromedit = 0;                                  // do not know, have some strange overwrite / delete
                                                        // its a flag used when save button is clicked
@@ -2470,9 +2470,9 @@ function deletebutton(){
 // call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()">
 //////////////////////////////////////////////////////////////////////////////////////////////
 function cancelbutton(){
-  showhideeditpopup();
-  id('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
-  id('innerDiv').style.width='';
+  showhideedit_popup();
+  id('New_or_Edit_Div').style.left='';   // erase edit timeslot green div drawing???????
+  id('New_or_Edit_Div').style.width='';
   id('startlabel').innerHTML='';
   id('endlabel').innerHTML='';
 
@@ -2498,8 +2498,8 @@ var timeslotsnested;
 // time slot clicked edit or delete?
 /////////////////////////////////////
 function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
-    timeslotdivclick = 1;         // i do not now a flag to keep outerdiv click away cq return from outerdiv click
-                                  // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
+    timeslotdivclick = 1;         // i do not now a flag to keep Day_Container click away cq return from Day_Container click
+                                  // maybe because of (i used why dont know)  different z-index for New_or_Edit_Div and Day_Container
                                   // maybe an overlaying div is clicked first followed by underlaying div, i dont know
     console.log("timeslotclicked",wich);
     timeslotpointer = wich;
@@ -2512,7 +2512,7 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
     id("addoredit").innerHTML="EDIT TimeSlot";
     id("deletebutton").disabled = false;   // enablee the delete button
     id("deletebutton").hidden = false;     // not hide the delete button, show delete button
-    showhideeditpopup();                                        // show edit popup
+    showhideedit_popup();                                        // show edit popup
 
     // wich holds the array position of first data we need in minutes
     id("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
@@ -2542,7 +2542,7 @@ function savetimeslot() {
     var offhhmm = id("offtime").value;
     console.log("onval, offval", onhhmm, offhhmm);
 
-    showhideeditpopup();          // hide edit popup
+    showhideedit_popup();          // hide edit popup
 
 
   if(savefromedit==1){
@@ -2726,8 +2726,8 @@ function drawtimeslots(){
 // draw timeslots array
 
 
-  id('innerDiv').style.left='';   // erase edit timeslot???????
-  id('innerDiv').style.width='';
+  id('New_or_Edit_Div').style.left='';   // erase edit timeslot???????
+  id('New_or_Edit_Div').style.width='';
   id('startlabel').innerHTML='';
   id('endlabel').innerHTML='';
  // draw timeslots array
@@ -2784,7 +2784,7 @@ var fontsize;          // nochange
       // thats why the time text labels are fade, and i can not change it
       // workaround set background-color RGBA color with opacity value in color for <div class="timeslot"
 
-     $(".outerDiv").append(   // draw timeslots and textlabels underneath
+     $(".Day_Container").append(   // draw timeslots and textlabels underneath
           `<div class="timeslot" data-index="`
           +i+
           `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:`
@@ -2824,26 +2824,26 @@ var fontsize;          // nochange
 
 
 ////////////////////////////////////////
-// showhideeditpopup();             // toggle show hide on each call
-// showhideeditpopup("show");       // show
-// showhideeditpopup("hide");       // hide
+// showhideedit_popup();             // toggle show hide on each call
+// showhideedit_popup("show");       // show
+// showhideedit_popup("hide");       // hide
 ////////////////////////////////////////
-function showhideeditpopup(showorhide) {
+function showhideedit_popup(showorhide) {
   if (showorhide == "show") {
-      id("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
+      id("edit_popup").style.display = "block";           // show from function parameter   showhideedit_popup(show);
       document.body.style.backgroundColor="#c3c3c3";                              // make body background a little darker so that popup stands out?
 
   } else if (showorhide == "hide") {
-      id("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
+      id("edit_popup").style.display = "none";            // hide from function parameter     showhideedit_popup(hide);
       document.body.style.backgroundColor= "";                                  // reset body background to lighter shade
 
   }else {
-    if (id("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
-      id("editpopup").style.display = "block";
+    if (id("edit_popup").style.display === "none") {      // toggle = show  showhideedit_popup();
+      id("edit_popup").style.display = "block";
       document.body.style.backgroundColor="#c3c3c3";                           // make body background a little darker so that popup stands out?
 
     } else {
-      id("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
+      id("edit_popup").style.display = "none";            // toggle = hide    showhideedit_popup();
       document.body.style.backgroundColor= "";                                   // reset body background to lighter shade
 
     }
@@ -2858,15 +2858,15 @@ function showhideeditpopup(showorhide) {
 
 
 
-var innerdivclick=0;
+var New_or_Edit_Divclick=0;
 var timeslotdivclick=0;
 var sunclicked=0;
 /////////////////////////////////
 // think next is not used anymore
-$( "#innerDiv" ).on( "click", function() {
+$( "#New_or_Edit_Div" ).on( "click", function() {
     // $('pre.message').html("edit / remove timeslot popup");
-    console.log("innerdiv clicked");
-    innerdivclick=1;
+    console.log("New_or_Edit_Div clicked");
+    New_or_Edit_Divclick=1;
  });
  // do not know open analog time picker if textlabel is clicked
 $( "#startlabel" ).on( "click", function() {
@@ -2888,7 +2888,7 @@ $( "#startlabel" ).on( "click", function() {
 
 // click on timescale added new slots inside timeslots
 // https://stackoverflow.com/questions/5259191/disable-clicking-of-a-divs-element
-//$(".outerDiv").children().bind('click', function(){
+//$(".Day_Container").children().bind('click', function(){
 //  console.log("click event is turned off for this")
   //return false;
 //});
@@ -2897,8 +2897,8 @@ $( "#startlabel" ).on( "click", function() {
 
 function sunriselabelclicked(){
   // call from HTML onclick
-  sunclicked=1;                     // a flag to return from outerdiv click
-  //showhideeditpopup("hide");
+  sunclicked=1;                     // a flag to return from Day_Container click
+  //showhideedit_popup("hide");
   console.log("function sunriselabelclicked(){");
   // maybe set ontime an hour before sunrisetime
   // maybe set offtime to sunrisetime
@@ -2908,8 +2908,8 @@ function sunriselabelclicked(){
 
 function sunsetlabelclicked(){
   // call from HTML onclick
-  sunclicked=1;                     // a flag to return from outerdiv click
-  //showhideeditpopup("hide");
+  sunclicked=1;                     // a flag to return from Day_Container click
+  //showhideedit_popup("hide");
   console.log("function sunsetlabelclicked(){");
   // maybe set ontime to sunsettime
   // maybe set offtime to hor after sunsettime
@@ -2951,44 +2951,50 @@ $( ".timeslot" ).on( "click", function() {
 
 Figlet font Standard https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 */
-// $("#outerDiv").on("click", function(event) { // jquery
-id( "outerDiv" ).addEventListener("click", function(event){    // javascript
+// $("#Day_Container").on("click", function(event) { // jquery
+Day_Container.addEventListener('click', function(event) {
+	// javascript
   //event.stopPropagation();
   //event.preventDefault();
   selected_highlight = -1;        // erase edit timeslot highlight
-  if(innerdivclick==1){           // outerdiv click comes after innerdivclick
-    showhideeditpopup("show");
-    innerdivclick=0;
-    return;                       // i want to return to the innerdiv click
+  if(New_or_Edit_Divclick==1){           // Day_Container click comes after New_or_Edit_Divclick
+    showhideedit_popup("show");
+    New_or_Edit_Divclick=0;
+    return;                       // i want to return to the New_or_Edit_Div click
   }
-   if(timeslotdivclick==1){       // outerdiv click comes after innerdivclick
+   if(timeslotdivclick==1){       // Day_Container click comes after New_or_Edit_Divclick
     timeslotdivclick=0;
     return;                       // i want to return to the timeslotdivclick
   }
 
-  if(sunclicked==1){              // outerdiv click comes after innerdivclick
+  if(sunclicked==1){              // Day_Container click comes after New_or_Edit_Divclick
     sunclicked=0;
     return;                       // i want to return to the timeslotdivclick
   }
 
-   id("addoredit").innerHTML="Add New TimeSlot";                 // text on showhideeditpopup changes from add or edit timeslot
+if (event.target === Day_Container) {
+	
+ 
+
+
+   id("addoredit").innerHTML="Add New TimeSlot";                 // text on showhideedit_popup changes from add or edit timeslot
    id("deletebutton").disabled = true;  // greyout disable the delete button
    id("deletebutton").hidden = true;    // hide the delete button
-   showhideeditpopup("show");
+   showhideedit_popup("show");
 
    // $('pre.message').html("new add / edit / save timeslot popup");
-   console.log("outerdiv clicked");
+   console.log("Day_Container clicked");
    savefromedit=0;
-   let outerDiv = id('outerDiv');
+   let Day_Container = id('Day_Container');
 
 
-  id('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
-  console.log("mouse click x position on outerdiv ",event.clientX-outerDiv.offsetLeft);
-  console.log("outerDiv width ",outerDiv.offsetWidth);
+  id('New_or_Edit_Div').style.width = event.clientX-Day_Container.offsetLeft+'px';
+  console.log("mouse click x position on Day_Container ",event.clientX-Day_Container.offsetLeft);
+  console.log("Day_Container width ",Day_Container.offsetWidth);
 
          // map_range returns a float that does not work for later convert to hh:mm
          // but the float is better for left% width% scaling otherwise the selections are of target
-  var clickposinminutes=Math.round(map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440));
+  var clickposinminutes=Math.round(map_range((event.clientX-Day_Container.offsetLeft),0, Day_Container.offsetWidth,0,1440));
   console.log("clickposinminutes ",clickposinminutes);
 
   var hhmm=toHoursAndMinutes(clickposinminutes);              // add 15 minutes for timeslot
@@ -2999,6 +3005,7 @@ id( "outerDiv" ).addEventListener("click", function(event){    // javascript
   id("offtime").value=hhmmplus15;        // set off time textfield
 
   drawtemp();
+}
 });
 
 
@@ -3018,13 +3025,13 @@ id( "outerDiv" ).addEventListener("click", function(event){    // javascript
 // https://stackoverflow.com/questions/60923136/how-to-get-the-width-on-where-the-mouse-clicks-a-div
 function changeWidth(event) {
 /*
-  let outerDiv = document.getElementById('outerDiv');
+  let Day_Container = document.getElementById('Day_Container');
 
-  document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
-  console.log(event.clientX-outerDiv.offsetLeft);
-  console.log(outerDiv.offsetWidth);
+  document.getElementById('New_or_Edit_Div').style.width = event.clientX-Day_Container.offsetLeft+'px';
+  console.log(event.clientX-Day_Container.offsetLeft);
+  console.log(Day_Container.offsetWidth);
 
-  var clickposinminutes=map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440)
+  var clickposinminutes=map_range((event.clientX-Day_Container.offsetLeft),0, Day_Container.offsetWidth,0,1440)
   console.log("clickposinminutes ",clickposinminutes);
   var hhmm=toHoursAndMinutes(clickposinminutes);
   var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
@@ -3104,22 +3111,22 @@ function drawtemp (){
 
   console.log("start / endminutes",startminutes," / ",endminutes)
 
-  var divwidth=outerDiv.offsetWidth;
+  var divwidth=Day_Container.offsetWidth;
 
   // console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
   // console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));
 
 // better not in pixels /////////////////////////////
-      var startpos=map_range(startminutes,  0,1440, 0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
-      var endpos=map_range(endminutes,  0,1440, 0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
-      id('innerDiv').style.left=(startpos)+'px';
-      id('innerDiv').style.width=(endpos-startpos)+'px';
+      var startpos=map_range(startminutes,  0,1440, 0,(Day_Container.offsetWidth));   // scale startminutes in  range 0...1440 to div size
+      var endpos=map_range(endminutes,  0,1440, 0,(Day_Container.offsetWidth));       // scale endminutes in  range 0...1440 to div size
+      id('New_or_Edit_Div').style.left=(startpos)+'px';
+      id('New_or_Edit_Div').style.width=(endpos-startpos)+'px';
 // do left and width in % not in px
 // do it again better in % above in px did strange on screen rotate
       var startpos = map_range(startminutes,  0,1440, 0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
       var endpos = map_range(endminutes,  0,1440, 0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
-      id('innerDiv').style.left=(startpos)+'%';             // set left%
-      id('innerDiv').style.width=(endpos-startpos)+'%';     // set width %
+      id('New_or_Edit_Div').style.left=(startpos)+'%';             // set left%
+      id('New_or_Edit_Div').style.width=(endpos-startpos)+'%';     // set width %
 //////////////////////////////////////////////////
 
   id('startlabel').innerHTML=id("ontime").value;      // write hh:mm to label
@@ -3162,7 +3169,7 @@ for (i = 0; i <= pips; i = i + 1) {
 
   // console.log("left ", ((100 / pips) * i).toFixed(1), "%"); // 1 decimals
 
-  $(".outerDiv").append(ruler);
+  $(".Day_Container").append(ruler);
 
 
   if (imod4 == 0) {
@@ -3191,7 +3198,7 @@ for (i = 0; i <= pips; i = i + 1) {
   }
 }
 
-$(".outerDiv").append(
+$(".Day_Container").append(
   '<div class="selection" style="position:absolute;height:55px;background-color:green;opacity:50%;top:20px;left:50%;z-index:-1;"></div>'
 );
 //////////////////////////////////////////////
@@ -3213,17 +3220,17 @@ $(".outerDiv").append(
 // add div for time text label below timeslot selection
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
-$('#innerDiv').append('<div id="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;"><div  id="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;"></div></div>');
+$('#New_or_Edit_Div').append('<div id="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;"><div  id="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;"></div></div>');
 // endlabel bit lower so they do not overlap when close to eachother
-$('#innerDiv').append('<div id="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;"><div id="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;"></div></div>');
+$('#New_or_Edit_Div').append('<div id="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;"><div id="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;"></div></div>');
 
 
 // add divs for sunrise actualtime and sunset line and label
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
-$('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');
-$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" onclick="sunrise_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunrise</div></div>');
-$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" onclick="sunset_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunset</div></div>');
+$('.Day_Container').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');
+$('.Day_Container').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" onclick="sunrise_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunrise</div></div>');
+$('.Day_Container').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" onclick="sunset_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunset</div></div>');
 
 
 // add 3 divs for night shade and dayshine
@@ -3233,9 +3240,9 @@ $('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolu
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
 // z-index:-1 stops parent child clicks
-$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;"></div>');
-$('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px;z-index:-1;"></div>');
-$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;" ></div>');
+$('.Day_Container').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;"></div>');
+$('.Day_Container').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px;z-index:-1;"></div>');
+$('.Day_Container').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;" ></div>');
 
 
 
@@ -3426,11 +3433,11 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> ON time</font><br>"});  // activate analog timepicker popup for id ontime text field
     $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> OFF time</font><br>"}); // activate analog timepicker popup for id offtime text field
 
-    dragElement(id("editpopup"));            // make editpopup draggable by mouse and touch
+    DragElement(id("edit_popup"));            // make edit_popup draggable by mouse and touch
 
     drawtemp();
     domessage();
-    showhideeditpopup();
+    showhideedit_popup();
     drawtimeslots();
 
     // select day, set radio day to today,  makes label for radiobutton green
@@ -3470,6 +3477,12 @@ function showhideabout() {
 
 
 
+
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////
 // Make the DIV add or edit popup element draggable:
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
@@ -3477,13 +3490,13 @@ function showhideabout() {
 // https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
 // https://codepen.io/ldijkman/pen/abQxbdM
 //////////////////////////////////////////////////////////////////////
-function dragElement(elmnt) {
+function DragElement(elmnt) {
   let pos1 = 0,
       pos2 = 0,
       pos3 = 0,
       pos4 = 0;
 
-  let dragHandle = id("editpopupheader");
+  let dragHandle = id("edit_popup_header");
 
   if (dragHandle !== undefined) {
     // if present, the header is where you move the DIV from:
@@ -3596,12 +3609,12 @@ function dragElement(elmnt) {
 
 <!--
   ///////////////////////////
-  // begin editpopup HTML
+  // begin edit_popup HTML
   //////////////////////////
   -->
-<div id="editpopup">
- <div id="editpopupheader" class="drag-handle">
-    <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;">
+<div id="edit_popup">
+ <div id="edit_popup_header" class="drag-handle">
+    <div id="closeedit">Please Drag Me ?<button onclick="showhideedit_popup()" style="border-color:red; color:red;position:absolute;left:85%;">
       <b>X</b></button>
     </div>
  </div>
@@ -3624,7 +3637,7 @@ function dragElement(elmnt) {
 </div>
 <!--
   ////////////////////////
-  // end editpopup HTML
+  // end edit_popup HTML
   ///////////////////////
   -->
 
@@ -3791,9 +3804,41 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 -->
 
 
+The code you've posted appears to be part of a web page that contains a custom visual scheduler interface. It's designed to be used on devices with touch capabilities, such as smartphones and tablets, but it should work with mouse input as well. The scheduler allows users to visualize and manage timeslots within a day, potentially for purposes like controlling irrigation, lighting, or other scheduled activities.
+
+Here's a breakdown of the main features and how they are implemented:
+
+Visual Timeslot Scheduler: A graphical representation of timeslots that can be interactively managed by the user. The user can add, edit, or delete timeslots by interacting with a visual bar (the Day_Container element) that represents a 24-hour day.
+
+Timeslot Management: Timeslots are managed by clicking or touching the Day_Container. A popup (edit_popup) appears, allowing the user to set start (ontime) and end (offtime) times using an analog time picker.
+
+Draggable Popup: The timeslot editing popup is made draggable using JavaScript. This allows the user to reposition the popup on the screen.
+
+Sunrise and Sunset Times: The code uses the SunCalc library to calculate sunrise and sunset times based on the user's geolocation (latitude and longitude inputs). It visually indicates these times on the timeslot bar.
+
+Responsive to Device Orientation: The code checks the device orientation and suggests the user rotate their device to landscape mode for a better experience.
+
+Day Selection: Users can select the day of the week they want to manage timeslots for, using a set of radio buttons labeled with days.
+
+WebSocket Communication: The code initializes a WebSocket connection to the server, which can be used to send and receive data in real-time. This feature seems intended for integration with an ESP32 or ESP8266 microcontroller for IoT applications.
+
+About Popup: An "About" section can be displayed to the user, providing information about the software, its usage, and copyright notices.
+
+Mobile Home Screen Link: There's a mention of adding an icon link to the phone's home screen, making the web app behave similarly to a native app.
+
+Miscellaneous Features: The code includes other UI elements such as a webcam feed button, links to external resources, and copyright notices.
+
+Timed Functions: The doiteverysecond function updates the visual representation of the actual time, sunrise, and sunset on the scheduler every second.
+
+The code is quite comprehensive and seems to be part of a larger project. It combines HTML for structure, CSS for styling, and JavaScript for interactivity and functionality. The JavaScript code manages the UI state, interacts with the SunCalc library, handles WebSocket communication, and manipulates the DOM based on user input. Additionally, the code contains comments and references to various sources and tools used in its creation.
+
 
    Wich Ladder Will it be,                        
                             https://youtu.be/l9wejBgCiT4
+  
+  
+	 
+    
   
   
 	 </textarea>
