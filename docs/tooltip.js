@@ -79,7 +79,7 @@ function updateTooltip(element, tooltip, event) {
                 }
             });
         } catch (e) {
-            console.warn('Cannot access stylesheet: ', sheet);
+            //console.warn('Cannot access stylesheet: ', sheet);
         }
     });
 
