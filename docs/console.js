@@ -60,6 +60,24 @@ add next to a HTML webpage to get an Console
 */
 /////////////////////////////////////////////////////
 
+
+// Define the function that will be called when the button is clicked
+function viewSource() {
+  (function() {
+    function htmlEscape(s) {
+      s = s.replace(/&/g, '&amp;');
+      s = s.replace(/>/g, '&gt;');
+      s = s.replace(/</g, '&lt;');
+      return s;
+    }
+    var x = window.open();
+    x.document.write('<pre>' + htmlEscape('<html>\n' + document.documentElement.innerHTML + '\n</html>'));
+    x.document.close();
+  })();
+}
+
+
+//////////////////////////////////////////////////
  function countTagsAndClasses() {
             var tagClassCounts = {}, // Object to hold tag.classname counts
                 sortedResults = [],  // Array to hold sortable results
@@ -708,6 +726,7 @@ title="Empty Console!">
     <button id="toggleButton" onclick="toggleEditable()" title="toggle page editable">Edit</button>
   <button onclick="showSource()" title="Show Page Source in new tab (includes edit)">Source</button>
 
+<button onclick="viewSource()" title="View Generated Source">VGS</button>
    
     <button onclick="countTagsAndClasses()" title="List Count Tags and Classes in new tab">List</button>
   
