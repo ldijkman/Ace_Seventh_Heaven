@@ -88,6 +88,7 @@ function applyCustomCursor() {
     style.appendChild(styleContent);
     var caput = document.getElementsByTagName('head');
     caput[0].appendChild(style);
+    console.info(" large cursor, escape exit, maybe i should make another cursor?!");
 }
 
 // Event listener for the Escape key to revert the cursor style
