@@ -58,6 +58,20 @@ add next to a HTML webpage to get an Console
   </div>
 </div>
 */
+
+
+//////////////////////////////////////////////////////
+
+    function toggleEditable() {
+            var isEditable = document.body.contentEditable === 'true' || document.designMode === 'on';
+            document.body.contentEditable = isEditable ? 'false' : 'true';
+            document.designMode = isEditable ? 'off' : 'on';
+            var button = document.getElementById('toggleButton');
+            button.textContent = isEditable ? 'Make Page Editable' : 'Stop Editing';
+        }
+  
+
+
 //////////////////////////////////////////////////////
 
 function applyCustomCursor() {
@@ -637,7 +651,10 @@ value="Clear"
 title="Empty Console!"> 
 <button id="applyCursor" onclick="applyCustomCursor()" title="Large video cursor">LVC</button>
    <button onclick="showSource()" title="Show Page Source in new tab">VS</button>
-
+  </script>
+</head>
+<body>
+    <button id="toggleButton" onclick="toggleEditable()" title="toggle page editable">Edit</button>
  
     <button onclick="invertPageColors()" title="Invert Colors">Invert</button>
 
