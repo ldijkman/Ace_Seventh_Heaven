@@ -331,6 +331,7 @@ function mainFunction() {
             link.download = "screenshot.png";
             link.click();
             console.info("BitShot, download png image");
+            console.warn("BitShot, or png image in downloads");
           
             // Clean up
             document.body.removeChild(selectionRect);
