@@ -244,7 +244,8 @@ document.head.appendChild(html2canvasScript);
 
 // Function that will be called when the button is clicked
 function startScreenshotSelection() {
-  console.info("BitShot, drag rectangle on screen for screenshot");
+  console.info("BitShot, drag rectangle on screen for Area screenshot");
+ 
     if (html2canvasLoaded) {
         mainFunction();
     } else {
@@ -329,7 +330,8 @@ function mainFunction() {
             link.href = croppedCanvas.toDataURL("image/png");
             link.download = "screenshot.png";
             link.click();
-
+            console.info("BitShot, download png image");
+          
             // Clean up
             document.body.removeChild(selectionRect);
             document.body.removeChild(overlayDiv);
