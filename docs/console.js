@@ -75,6 +75,18 @@ function viewSource() {
     x.document.close();
   })();
 }
+/////////////////////////////////////////////////
+// Define the function that will apply the dark mode styling
+function applyDarkMode() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    * {
+      color: white !important;
+      background-color: #111 !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
 
 
 //////////////////////////////////////////////////
@@ -729,7 +741,8 @@ title="Empty Console!">
 <button onclick="viewSource()" title="View Generated Source">VGS</button>
    
     <button onclick="countTagsAndClasses()" title="List Count Tags and Classes in new tab">List</button>
-  
+
+<button onclick="applyDarkMode()" title="Dark Mode">DM</button>
     <button onclick="invertPageColors()" title="Invert Colors">Invert</button>
 
 
