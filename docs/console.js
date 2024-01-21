@@ -656,12 +656,12 @@ console.info("Cleared Console ",new Date())\'
 value="Clear" 
 title="Empty Console!"> 
 <button id="applyCursor" onclick="applyCustomCursor()" title="Large video cursor">LVC</button>
-   <button onclick="showSource()" title="Show Page Source in new tab">VS</button>
-  </script>
-</head>
-<body>
-    <button id="toggleButton" onclick="toggleEditable()" title="toggle page editable">Edit</button>
+  
  
+    <button id="toggleButton" onclick="toggleEditable()" title="toggle page editable">Edit</button>
+  <button onclick="showSource()" title="Show Page Source in new tab (includes edit)">Source</button>
+
+  
     <button onclick="invertPageColors()" title="Invert Colors">Invert</button>
 
 
