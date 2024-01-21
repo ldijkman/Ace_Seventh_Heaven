@@ -488,8 +488,8 @@ console.info("Cleared Console ",new Date())\'
 value="Clear" 
 title="Empty Console!"> 
 
-<button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">shot</button>
-<button onclick="toggleDebugStyles()">CSSBug</button>
+<button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">BitShot</button>
+<button onclick="toggleDebugStyles()">CSSdBug</button>
 <button id="loadScriptButton">Popup-info</button>
 <input type="button" 
 value="hide" 
