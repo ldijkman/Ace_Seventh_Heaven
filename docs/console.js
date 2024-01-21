@@ -414,9 +414,9 @@ document.addEventListener("DOMContentLoaded",
 function (event) {
     console.info("console.js, Running, Making it Draggable.");
     dragElement(document.getElementById("console-log-div")); // https://www.w3schools.com/howto/howto_js_draggable.asp
-     console.info("add below to your html page bottom to add a console.");
+     console.warn("add below to your html page bottom to add a console.");
      console.info(`<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>`);
-     console.info("add above to your html page bottom to add a console.");
+     console.warn("add above to your html page bottom to add a console.");
      console.info("Ok, You can Drag Me now!.");
      console.info("Resize, bottom right corner!.");
      console.debug('This Bug is RosyBrown');
