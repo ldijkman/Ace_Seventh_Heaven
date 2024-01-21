@@ -58,6 +58,29 @@ add next to a HTML webpage to get an Console
   </div>
 </div>
 */
+//////////////////////////////////////////////////////
+
+function applyCustomCursor() {
+    var style = document.createElement('style'),
+        cursorData = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJBJREFUeNrs2dEKgDAIhWEN3/+VLYtBF12MppHwDxY0uvg4DJpORcSl0bB4uPcwq+oFHu8/956pbtJsAAYMGDBgwIABA044t3pMEgb8VU2XsWdn1o/aUUn4bchPBWNFYWvVidxbCFGmr7YULBs1YDPfsYcXEi9ryvDjAAwYMGDAgAED7nK8bHG7qNLs6nYXYAAheh5j8Qw5fwAAAABJRU5ErkJggg==',
+        styleContent = document.createTextNode('* { cursor: url(' + cursorData + ') 44 44, auto !important}');
+    
+    style.appendChild(styleContent);
+    var caput = document.getElementsByTagName('head');
+    caput[0].appendChild(style);
+}
+
+// Event listener for the Escape key to revert the cursor style
+document.onkeydown = function(e) {
+    var n;
+    e = e || window.event;
+    var key = e.key || e.keyCode;
+    if (key === 'Escape' || key === 'Esc' || key === 27) {
+        n = document.createElement('style');
+        document.head.appendChild(n);
+        n.sheet.insertRule('* { cursor: revert !important; }', 0);
+    }
+};
 
 //////////////////////////////////////////////////////
 
@@ -508,6 +531,9 @@ errorNR=0;
 console.info("Cleared Console ",new Date())\' 
 value="Clear" 
 title="Empty Console!"> 
+<button id="applyCursor" onclick="applyCustomCursor()" title="Large video cursor">LVC</button>
+
+
 <button id="shareOnFacebook" onclick="shareOnFacebook()">FB</button>
 
 <button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">BitShot</button>
