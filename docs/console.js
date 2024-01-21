@@ -244,6 +244,7 @@ document.head.appendChild(html2canvasScript);
 
 // Function that will be called when the button is clicked
 function startScreenshotSelection() {
+  console.info("BitShot, drag rectangle on screen for screenshot");
     if (html2canvasLoaded) {
         mainFunction();
     } else {
