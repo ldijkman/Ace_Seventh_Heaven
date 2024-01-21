@@ -67,7 +67,7 @@ add next to a HTML webpage to get an Console
             document.body.contentEditable = isEditable ? 'false' : 'true';
             document.designMode = isEditable ? 'off' : 'on';
             var button = document.getElementById('toggleButton');
-            button.textContent = isEditable ? 'Make Page Editable' : 'Stop Editing';
+            button.textContent = isEditable ? 'Edit' : 'Stop Editing';
             // Log to console
             if (isEditable) {
                 console.info('The page is now non-editable.');
