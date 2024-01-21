@@ -58,7 +58,44 @@ add next to a HTML webpage to get an Console
   </div>
 </div>
 */
+/////////////////////////////////////////////////////
 
+ function countTagsAndClasses() {
+            var tagClassCounts = {}, // Object to hold tag.classname counts
+                sortedResults = [],  // Array to hold sortable results
+                i, elem, className, key, resultWindow, resultHTML,
+                tableHTML = "<table border='1'><thead><tr><th>#</th><th>Tag</th><th>className</th></tr></thead>";  // Start of table HTML
+
+            // Loop through all elements on the page
+            for (i = 0; elem = document.getElementsByTagName("*")[i]; ++i) {
+                className = elem.className;
+                if (className) { // If element has a className
+                    key = elem.tagName + "." + className;
+                    // Increment count for this tag.classname
+                    tagClassCounts[key] = tagClassCounts[key] ? tagClassCounts[key] + 1 : 1;
+                }
+            }
+
+            // Convert tagClassCounts object to a sortable array
+            for (key in tagClassCounts) {
+                sortedResults.push([key, tagClassCounts[key]]);
+            }
+            // Sort the array based on tag.classname
+            sortedResults.sort();
+
+            // Generate table rows from the sortedResults
+            for (i in sortedResults) {
+                tableHTML += "<tr><td>" + sortedResults[i][1] + "</td><td>" + sortedResults[i][0].split(".").join("</td><td>") + "</td></tr>";
+            }
+            // Close the table HTML
+            tableHTML += "</table>";
+
+            // Open a new window and write the result table to it
+            resultWindow = open();
+            resultWindow.document.write(tableHTML);
+            resultWindow.document.close();
+        }
+ 
 
 //////////////////////////////////////////////////////
 
@@ -666,6 +703,8 @@ title="Empty Console!">
     <button id="toggleButton" onclick="toggleEditable()" title="toggle page editable">Edit</button>
   <button onclick="showSource()" title="Show Page Source in new tab (includes edit)">Source</button>
 
+   
+    <button onclick="countTagsAndClasses()" title="List Count Tags and Classes in new tab">List</button>
   
     <button onclick="invertPageColors()" title="Invert Colors">Invert</button>
 
