@@ -78,14 +78,23 @@ function viewSource() {
 /////////////////////////////////////////////////
 // Define the function that will apply the dark mode styling
 function applyDarkMode() {
-  var style = document.createElement('style');
-  style.innerHTML = `
-    * {
-      color: white !important;
-      background-color: #111 !important;
-    }
-  `;
-  document.head.appendChild(style);
+  var existingStyle = document.getElementById('dark-mode-style');
+  
+  if (existingStyle) {
+    // If the style element exists, remove it to disable dark mode
+    existingStyle.remove();
+  } else {
+    // If the style element does not exist, create it to enable dark mode
+    var style = document.createElement('style');
+    style.id = 'dark-mode-style'; // Assign an ID to the style element for later reference
+    style.innerHTML = `
+      * {
+        color: white !important;
+        background-color: #111 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 }
 
 
