@@ -252,7 +252,9 @@ function shareOnFacebook() {
     var l = d.location;
     var e = encodeURIComponent;
     var p = '.php?src=bm&v=4&i=1663759619&u=' + e(l.href) + '&t=' + e(d.title);
-    
+
+  console.info("Yes Please Share Me!?");
+  
     // Check if the current host is not Facebook to prevent sharing from Facebook itself
     if (!/^(.*\.)?facebook\.[^.]*$/.test(l.host)) {
         var url = f + 'r' + p;
