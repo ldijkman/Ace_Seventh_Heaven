@@ -59,8 +59,29 @@ add next to a HTML webpage to get an Console
 </div>
 */
 
+//////////////////////////////////////////////////////
 
-
+function shareOnFacebook() {
+    var d = document;
+    var f = 'https://www.facebook.com/share';
+    var l = d.location;
+    var e = encodeURIComponent;
+    var p = '.php?src=bm&v=4&i=1663759619&u=' + e(l.href) + '&t=' + e(d.title);
+    
+    // Check if the current host is not Facebook to prevent sharing from Facebook itself
+    if (!/^(.*\.)?facebook\.[^.]*$/.test(l.host)) {
+        var url = f + 'r' + p;
+        // Open the share dialog
+        var shareWindow = window.open(url, 'sharer', 'toolbar=0,status=0,resizable=1,width=626,height=436');
+        
+        if (!shareWindow) {
+            // If a popup blocker prevents opening the share window, change the location directly
+            l.href = f + p;
+        }
+    } else {
+        alert("You can't share a Facebook page on Facebook using this bookmarklet.");
+    }
+}
 //////////////////////////////////////////////////////
 // Variable to store the state of the html2canvas script loading
 var html2canvasLoaded = false;
@@ -487,6 +508,7 @@ errorNR=0;
 console.info("Cleared Console ",new Date())\' 
 value="Clear" 
 title="Empty Console!"> 
+<button id="shareOnFacebook" onclick="shareOnFacebook()">FB</button>
 
 <button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">BitShot</button>
 <button onclick="toggleDebugStyles()">CSSdBug</button>
