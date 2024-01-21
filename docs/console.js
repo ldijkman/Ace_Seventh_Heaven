@@ -84,6 +84,32 @@ document.onkeydown = function(e) {
 
 //////////////////////////////////////////////////////
 
+
+
+
+
+
+        function showSource() {
+            "use strict";
+            var sourceWindow = window.open('_blank');
+            var sourceDocument = sourceWindow.document;
+            sourceDocument.write('<!DOCTYPE html><html lang="en"><head><title>Source</title><meta charset="utf-8"/></head><body></body></html>');
+            sourceDocument.close();
+            var pre = sourceDocument.body.appendChild(sourceDocument.createElement('pre'));
+            var code = pre.appendChild(sourceDocument.createElement('code'));
+            code.appendChild(sourceDocument.createTextNode(document.documentElement.outerHTML));
+        }
+  
+ 
+
+
+
+
+
+
+
+///////////////////////////
+
 function shareOnFacebook() {
     var d = document;
     var f = 'https://www.facebook.com/share';
@@ -532,7 +558,7 @@ console.info("Cleared Console ",new Date())\'
 value="Clear" 
 title="Empty Console!"> 
 <button id="applyCursor" onclick="applyCustomCursor()" title="Large video cursor">LVC</button>
-
+   <button onclick="showSource()" title="Show Page Source in new tab">VS</button>
 
 <button id="shareOnFacebook" onclick="shareOnFacebook()">FB</button>
 
