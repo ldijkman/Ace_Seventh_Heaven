@@ -21,6 +21,11 @@ function updateTooltip(element, tooltip, event) {
     detailsList.style.listStyleType = 'none';
     tooltip.appendChild(detailsList);
 
+    // Add details about the tag name
+    var tagListItem = document.createElement('li');
+    tagListItem.textContent = 'Tag: ' + element.tagName.toLowerCase();
+    detailsList.appendChild(tagListItem);
+
     // Check if the element is an image and display its info
     if (element.tagName.toLowerCase() === 'img') {
         var srcListItem = document.createElement('li');
@@ -48,12 +53,12 @@ function updateTooltip(element, tooltip, event) {
         var classText = Array.from(element.classList).map(className => {
             var elementsWithClass = allElementsWithClasses.filter(el => el.classList.contains(className));
             var index = elementsWithClass.indexOf(element); // Find the index of the current element
-            return className+' Index ' + index ;
+            return className + ' Index ' + index;
         }).join(', ');
 
         classListItem.textContent = 'Class: ' + classText;
     } else {
-        classListItem.textContent = '?';
+        classListItem.textContent = 'Class: None';
     }
     detailsList.appendChild(classListItem);
 
