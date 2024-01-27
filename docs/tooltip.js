@@ -26,19 +26,11 @@ function updateTooltip(element, tooltip, event) {
     tagListItem.textContent = 'Tag: ' + element.tagName.toLowerCase();
     detailsList.appendChild(tagListItem);
 
-    // Check if the element is an image and display its info
-    if (element.tagName.toLowerCase() === 'img') {
-        var srcListItem = document.createElement('li');
-        srcListItem.textContent = 'Src: ' + (element.src ? element.src : 'None');
-        detailsList.appendChild(srcListItem);
-
-        var widthListItem = document.createElement('li');
-        widthListItem.textContent = 'Width: ' + element.width + 'px';
-        detailsList.appendChild(widthListItem);
-
-        var heightListItem = document.createElement('li');
-        heightListItem.textContent = 'Height: ' + element.height + 'px';
-        detailsList.appendChild(heightListItem);
+    // Check if the element is an input and display its type
+    if (element.tagName.toLowerCase() === 'input') {
+        var inputTypeListItem = document.createElement('li');
+        inputTypeListItem.textContent = 'Input Type: ' + (element.type ? element.type : 'text'); // Default to 'text' if type is not specified
+        detailsList.appendChild(inputTypeListItem);
     }
 
     // Add details like ID
@@ -182,8 +174,7 @@ function createToggleTooltipButton() {
     button.textContent = 'Disable Tooltips'; // Default text when tooltips are enabled
     button.style.position = 'fixed';
     button.style.top = '10px';
-    button.style.left = '50%';
-    button.style.transform = 'translateX(-50%)';
+    button.style.right = '10px';
     button.style.padding = '10px 20px';
     button.style.backgroundColor = '#3498db';
     button.style.color = 'white';
@@ -191,7 +182,6 @@ function createToggleTooltipButton() {
     button.style.borderRadius = '5px';
     button.style.cursor = 'pointer';
     button.style.zIndex = '1010';
-    button.style.opacity = '0.8'; // Make button a bit transparent
     document.body.appendChild(button);
 
     // Event listener for the toggle button
