@@ -48,10 +48,10 @@ function updateTooltip(element, tooltip, event) {
         var classText = Array.from(element.classList).map(className => {
             var elementsWithClass = allElementsWithClasses.filter(el => el.classList.contains(className));
             var index = elementsWithClass.indexOf(element); // Find the index of the current element
-            return 'Index ' + index + ': ' + className;
+            return className+' Index ' + index ;
         }).join(', ');
 
-        classListItem.textContent = 'Classes [' + element.classList.length + ']: ' + classText;
+        classListItem.textContent = 'Class: ' + classText;
     } else {
         classListItem.textContent = '?';
     }
