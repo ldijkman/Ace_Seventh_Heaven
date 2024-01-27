@@ -53,7 +53,7 @@ function updateTooltip(element, tooltip, event) {
 
         classListItem.textContent = 'Classes [' + element.classList.length + ']: ' + classText;
     } else {
-        classListItem.textContent = 'Classes [0]: None';
+        classListItem.textContent = '?';
     }
     detailsList.appendChild(classListItem);
 
