@@ -41,10 +41,16 @@ function updateTooltip(element, tooltip, event) {
     idListItem.textContent = 'ID: ' + (element.id ? element.id : 'None');
     detailsList.appendChild(idListItem);
 
-    // Add details about the classes with index
+    // Add details about the classes with index across the whole document
     var classListItem = document.createElement('li');
     if (element.classList.length > 0) {
-        var classText = Array.from(element.classList).map((className, index) => index + ': ' + className).join(', ');
+        var allElementsWithClasses = Array.from(document.querySelectorAll('*'));
+        var classText = Array.from(element.classList).map(className => {
+            var elementsWithClass = allElementsWithClasses.filter(el => el.classList.contains(className));
+            var index = elementsWithClass.indexOf(element); // Find the index of the current element
+            return 'Index ' + index + ': ' + className;
+        }).join(', ');
+
         classListItem.textContent = 'Classes [' + element.classList.length + ']: ' + classText;
     } else {
         classListItem.textContent = 'Classes [0]: None';
@@ -79,7 +85,7 @@ function updateTooltip(element, tooltip, event) {
                 }
             });
         } catch (e) {
-            //console.warn('Cannot: ', sheet);
+            //console.warn('Cannot read styles from: ', sheet);
         }
     });
 
