@@ -1002,9 +1002,10 @@ document.getElementById('loadScriptButton').addEventListener('click', function()
 
         // Optional: Do something after the script is loaded
         script.onload = function() {
-            console.log('Script dev. tool popup info loaded successfully!');
+            console.warn('Script dev. tool popup info loaded successfully!');
             console.info(`<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/tooltip.js"></script>`);
-            // You can initialize or call functions from the script here if needed
+            console.warn('Script dev. tool popup info loaded successfully!');
+          // You can initialize or call functions from the script here if needed
            initializeTooltips();
            createToggleTooltipButton();
     
