@@ -759,7 +759,7 @@ title="Empty Console!">
 
 <button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">BitShot</button>
 <button onclick="toggleDebugStyles()">CSSdBug</button>
-<button id="loadScriptButton">Popup-info</button>
+<button style="color:blue;" id="loadScriptButton">Popup-info</button>
 <input type="button" 
 value="hide" 
 onclick="hideconsole()" 
@@ -1003,6 +1003,7 @@ document.getElementById('loadScriptButton').addEventListener('click', function()
         // Optional: Do something after the script is loaded
         script.onload = function() {
             console.log('Script dev. tool popup info loaded successfully!');
+            console.info(`<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/tooltip.js"></script>`);
             // You can initialize or call functions from the script here if needed
            initializeTooltips();
            createToggleTooltipButton();
