@@ -1,6 +1,19 @@
 // made with Ai gpt 3.5 and 4 by (c)2024  dirk luberth dijkman bangert 30 andijk the netherlands
 // maybe shows a bit more as chromium inspect dev. tools 
 // like class index number
+// <script src="https://cdn.jsdelivr.net/gh/ldijkman/Ace_Seventh_Heaven/docs/tooltip.js"></script>
+
+/*
+Not understanding can be a roadblock, 
+but it's also an opportunity for growth. 
+Start by pinpointing exactly what's causing confusion. 
+Isolate that element and look for resources—books, videos, or experts—that can clarify it. 
+Don't be afraid to ask questions; there's always someone who knows the answer and most people are willing to help. 
+Take notes, practice, and apply what you learn. 
+Mistakes are part of the process, so embrace them as learning opportunities.
+With each attempt, you'll gain a better grasp. 
+Remember, comprehension is a journey—stay curious, be patient with yourself, and keep exploring.
+*/
 
 // Global variables
 var tooltipsEnabled = true;
