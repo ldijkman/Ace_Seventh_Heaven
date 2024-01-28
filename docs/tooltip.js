@@ -1,3 +1,7 @@
+// made with Ai gpt 3.5 and 4 by (c)2024  dirk luberth dijkman
+// maybe shows a bit more ad chromium dev tools 
+// like class index number
+
 // Global variables
 var tooltipsEnabled = true;
 var tooltip; // Reference to the tooltip element
