@@ -486,43 +486,50 @@ function toggleconsole() {
 // start drag https://www.w3schools.com/howto/howto_js_draggable.asp
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-//  if (document.getElementById(elmnt.id + "header"))
-//  if present, the header is where you move the DIV from:
-//     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-//   } else {
-//   otherwise, move the DIV from anywhere inside the DIV:
-    document.getElementById("legend").onmousedown = dragMouseDown;
- 
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
+    var header = document.getElementById("legend");
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
+    if (header) {
+        // if present, the header is where you move the DIV from:
+        header.onmousedown = dragMouseDown;
+        header.ontouchstart = dragMouseDown; // Add touch event listener for touch devices
+    }
 
-  function closeDragElement() {
-    /* stop moving when mouse button is released:*/
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault(); // prevent text selection
+        document.onmouseup = closeDragElement;
+        document.ontouchend = closeDragElement; // Add touch event listener for touch devices
+        document.onmousemove = elementDrag;
+        document.ontouchmove = elementDrag; // Add touch event listener for touch devices
+
+        // get the initial cursor position:
+        pos3 = e.clientX || e.touches[0].clientX;
+        pos4 = e.clientY || e.touches[0].clientY;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault(); // prevent text selection
+
+        // calculate the new cursor position:
+        pos1 = pos3 - (e.clientX || e.touches[0].clientX);
+        pos2 = pos4 - (e.clientY || e.touches[0].clientY);
+        pos3 = e.clientX || e.touches[0].clientX;
+        pos4 = e.clientY || e.touches[0].clientY;
+
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        // stop moving when mouse button or touch is released:
+        document.onmouseup = null;
+        document.onmousemove = null;
+        document.ontouchend = null;
+        document.ontouchmove = null;
+    }
 }
 // end drag https://www.w3schools.com/howto/howto_js_draggable.asp
 
