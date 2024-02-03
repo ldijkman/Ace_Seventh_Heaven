@@ -458,7 +458,7 @@ function (event) {
      console.warn("add above to your html page bottom to add a console.");
      console.info(`<script src="https://ldijkman.github.io/Ace_Seventh_Heaven/console.js"></script>`);
      console.warn("add below to your html page bottom to add a console.");
-     console.info("Ok, You can Drag Me now!.");
+     console.info("Ok, You can Drag Me now!. Think also by touch drag now");
      console.info("Resize, bottom right corner!.");
      console.debug('This Bug is RosyBrown');
 });
