@@ -768,20 +768,20 @@ title="Empty Console!">
 <button onclick="toggleDebugStyles()">CSSdBug</button>
 <button style="color:blue;" id="loadScriptButton">Popup-info</button>
 
-<input type="button" 
-value="hide" 
-onclick="hideconsole()" 
-title="Hide Console!"> 
+
 
 <input type="button" 
-value="WebSerial" 
+value="WebSerial" title="InBrowser Serial Monitor USB for ESP8266 ESP32 WebServer"
 onmouseover="this.focus()" onclick=\'window.open("https://ldijkman.github.io/async-esp-fs-webserver/WebSerialMonitor.html","_blank")\'>
 
 <input type="button" 
 value="?" 
 onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'>
 
-
+<input type="button" 
+value="hide" 
+onclick="hideconsole()" 
+title="Hide Console!"> 
 
 
 
