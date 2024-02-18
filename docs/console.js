@@ -772,6 +772,7 @@ title="Empty Console!">
 
 <input type="button" 
 value="WebSerial" title="InBrowser Serial Monitor USB for ESP8266 ESP32 WebServer"
+style="color:greenyellow;"
 onmouseover="this.focus()" onclick=\'window.open("https://ldijkman.github.io/async-esp-fs-webserver/WebSerialMonitor.html","_blank")\'>
 
 <input type="button" 
