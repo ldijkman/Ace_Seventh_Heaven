@@ -767,13 +767,26 @@ title="Empty Console!">
 <button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">BitShot</button>
 <button onclick="toggleDebugStyles()">CSSdBug</button>
 <button style="color:blue;" id="loadScriptButton">Popup-info</button>
+
 <input type="button" 
 value="hide" 
 onclick="hideconsole()" 
 title="Hide Console!"> 
+
+<input type="button" 
+value="WebSerial" 
+onmouseover="this.focus()" onclick=\'window.open("https://ldijkman.github.io/async-esp-fs-webserver/WebSerialMonitor.html","_blank")\'>
+
 <input type="button" 
 value="?" 
 onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'>
+
+
+
+
+
+
+
 </div>`;
           
           
