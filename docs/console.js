@@ -780,7 +780,7 @@ value="?"
 onmouseover="this.focus()" onclick=\'window.open("https://github.com/ldijkman/Ace_Seventh_Heaven/discussions/5","_blank")\'>
 
 <input type="button" 
-value="hide" 
+value="Hide" stryle="color:red;" 
 onclick="hideconsole()" 
 title="Hide Console!"> 
 
