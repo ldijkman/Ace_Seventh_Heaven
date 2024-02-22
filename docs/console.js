@@ -763,6 +763,7 @@ title="Empty Console!">
 
 
 <button id="shareOnFacebook" onclick="shareOnFacebook()">FB</button>
+<button id="redditShareButton">Rddt</button>
 
 <button id="startSelection" onclick="startScreenshotSelection()" title="test drag selection for screenshot download">BitShot</button>
 <button onclick="toggleDebugStyles()">CSSdBug</button>
@@ -790,7 +791,13 @@ title="Hide Console!">
 
 </div>`;
           
-          
+document.getElementById('redditShareButton').addEventListener('click', function() {
+    var url = window.location.href; // Gets the current page URL
+    var title = document.title; // Gets the current page title
+    var redditUrl = "https://www.reddit.com/submit?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title);
+    
+    window.open(redditUrl, '_blank'); // Opens the Reddit submit page in a new window/tab
+});  
    
 
           var div = document.createElement('div');
