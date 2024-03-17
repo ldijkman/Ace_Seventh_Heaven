@@ -113,11 +113,12 @@ z-index:50000;
   z-index:5555555555;
   padding: 6px;
 }
+/*
 button {
-    position: relative; /* Keep only if necessary for your layout */
-    cursor: pointer; /* Suggests an element is clickable, useful for user experience */
-    font-size: 14px; /* Reset to default browser font size if not needed */
-    /* Uncomment below if you want to remove all custom styles and use browser defaults */
+    position: relative; 
+    cursor: pointer;
+    font-size: 14px; 
+   
      padding: initial; 
      color: initial; 
      background-color: initial; 
@@ -125,3 +126,4 @@ button {
      border-radius: initial; 
      box-shadow: initial; 
 }
+*/
