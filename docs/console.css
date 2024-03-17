@@ -113,3 +113,8 @@ z-index:50000;
   z-index:5555555555;
   padding: 6px;
 }
+button {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
