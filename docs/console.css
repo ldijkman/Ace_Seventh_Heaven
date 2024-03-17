@@ -117,4 +117,5 @@ button {
   color: inherit;
   font-family: inherit;
   font-size: inherit;
+      inherit: initial;
 }
