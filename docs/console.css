@@ -114,8 +114,14 @@ z-index:50000;
   padding: 6px;
 }
 button {
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-      inherit: initial;
+    position: relative; /* Keep only if necessary for your layout */
+    cursor: pointer; /* Suggests an element is clickable, useful for user experience */
+    font-size: 14px; /* Reset to default browser font size if not needed */
+    /* Uncomment below if you want to remove all custom styles and use browser defaults */
+     padding: initial; 
+     color: initial; 
+     background-color: initial; 
+     border: initial; 
+     border-radius: initial; 
+     box-shadow: initial; 
 }
